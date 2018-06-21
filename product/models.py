@@ -5,18 +5,18 @@ from django.db import models
 
 class Item(models.Model):
     code = models.PositiveIntegerField(default=None, blank=True, verbose_name="код", unique=True, editable=False)
-    name = models.CharField(default=None, blank=True, verbose_name='наименование', max_length=40)
+    name = models.CharField(default=None, blank=True, verbose_name='найменування', max_length=40)
     description = models.TextField(default=None, verbose_name='описание', max_length=3000)
-    photo = models.ImageField(default=None, blank=True, verbose_name='основное фото')
-    price = models.IntegerField(default=None, blank=True, verbose_name='цена')
-    available = models.BooleanField(default=False, verbose_name='доступен')
+    photo = models.ImageField(default=None, blank=True, verbose_name='основне фото')
+    price = models.IntegerField(default=None, blank=True, verbose_name='ціна')
+    available = models.BooleanField(default=False, verbose_name='у продажі')
 
     class Meta:
         abstract = True
 
 
 class Genders(models.Model):
-    name = models.CharField(verbose_name="название", max_length=30)
+    name = models.CharField(verbose_name="назва", max_length=30)
 
     class Meta:
         verbose_name = "стать"
@@ -24,8 +24,8 @@ class Genders(models.Model):
 
 
 class Brand(models.Model):
-    name = models.CharField(verbose_name="производитель", max_length=30)
-    description = models.CharField(verbose_name="описание", max_length=3000)
+    name = models.CharField(verbose_name="виробник", max_length=30)
+    description = models.CharField(verbose_name="опис", max_length=3000)
 
     class Meta:
         verbose_name = "виробник"
@@ -33,8 +33,8 @@ class Brand(models.Model):
 
 
 class Fabric(models.Model):
-    name = models.CharField(verbose_name="название", max_length=30)
-    description = models.CharField(verbose_name="описание", max_length=3000)
+    name = models.CharField(verbose_name="назва", max_length=30)
+    description = models.CharField(verbose_name="опис", max_length=3000)
 
     class Meta:
         verbose_name = "тканина"
