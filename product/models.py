@@ -21,7 +21,7 @@ class Item(models.Model):
     available = models.BooleanField(default=False, verbose_name='у продажі')
     created = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='додано')
     updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='редаговано')
-    item_code = models.CharField(default=None, blank=True)
+    item_code = models.CharField(default=None, blank=True, max_length=20)
     code = '000'
 
     class Meta:
