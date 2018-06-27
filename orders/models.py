@@ -1,5 +1,7 @@
 from django.db import models
-from product.models import
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+
 
 class Order(models.Model):
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
@@ -19,7 +21,10 @@ class Order(models.Model):
 
 class ProductInOrder(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True, default=None)
-    product = models.ForeignKey()
+
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    product_object = GenericForeignKey('content_type', 'object_id')
 
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
