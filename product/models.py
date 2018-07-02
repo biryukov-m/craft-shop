@@ -1,6 +1,8 @@
 import os
 from django.db import models
 from properties import models as properties
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 
 def get_upload_path(instance, filename):
@@ -69,7 +71,11 @@ class Pattern(models.Model):
 class ItemImage(models.Model):
     created = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='додано')
     updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='редаговано')
-    code = models.PositiveIntegerField(default=1, verbose_name='код товару')
+
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    product_object = GenericForeignKey('content_type', 'object_id')
+
     is_active = models.BooleanField(default=True, verbose_name='показувати')
     is_basic = models.BooleanField(default=False, verbose_name='основне фото')
 
@@ -78,12 +84,9 @@ class ItemImage(models.Model):
         # return "Изображение для {}".format(self.)
 
     class Meta:
-        verbose_name = "зображення товару"
-        verbose_name_plural = "зображення товарів"
+        verbose_name = "Зображення товару"
+        verbose_name_plural = "Зображення товарів"
         abstract = True
-
-
-# Товары
 
 
 # Сорочка
@@ -95,12 +98,12 @@ class Shirt(Clothes):
         verbose_name_plural = "сорочки"
 
 
-class ShirtImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to=get_upload_path)
-    item = models.ForeignKey(Shirt, on_delete=models.CASCADE, verbose_name='товар')
+# class ShirtImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to=get_upload_path)
+#     item = models.ForeignKey(Shirt, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Заготовка сорочки
@@ -112,12 +115,12 @@ class ShirtPattern(Clothes, Pattern):
         verbose_name_plural = "заготовки сорочок"
 
 
-class ShirtPatternImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/shirt_pattern_images')
-    item = models.ForeignKey(ShirtPattern, on_delete=models.CASCADE, verbose_name='товар')
+# class ShirtPatternImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/shirt_pattern_images')
+#     item = models.ForeignKey(ShirtPattern, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Футболка
@@ -129,12 +132,12 @@ class TShirt(Clothes):
         verbose_name_plural = "футболки"
 
 
-class TShirtImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/tshirt_images')
-    item = models.ForeignKey(TShirt, on_delete=models.CASCADE, verbose_name='товар')
+# class TShirtImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/tshirt_images')
+#     item = models.ForeignKey(TShirt, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Заготовка футболки
@@ -146,12 +149,12 @@ class TShirtPattern(Clothes, Pattern):
         verbose_name_plural = "заготовки футболок"
 
 
-class TShirtPatternImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/tshirt_pattern_images')
-    item = models.ForeignKey(TShirtPattern, on_delete=models.CASCADE, verbose_name='товар')
+# class TShirtPatternImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/tshirt_pattern_images')
+#     item = models.ForeignKey(TShirtPattern, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Сукня
@@ -163,12 +166,12 @@ class Dress(Clothes):
         verbose_name_plural = "сукні"
 
 
-class DressImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/dress_images')
-    item = models.ForeignKey(Dress, on_delete=models.CASCADE, verbose_name='товар')
+# class DressImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/dress_images')
+#     item = models.ForeignKey(Dress, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Заготовка сукні
@@ -180,12 +183,12 @@ class DressPattern(Clothes, Pattern):
         verbose_name_plural = "заготовки суконь"
 
 
-class DressPatternImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/dress_pattern_images')
-    item = models.ForeignKey(DressPattern, on_delete=models.CASCADE, verbose_name='товар')
+# class DressPatternImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/dress_pattern_images')
+#     item = models.ForeignKey(DressPattern, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Туніка
@@ -197,12 +200,12 @@ class Tunic(Clothes):
         verbose_name_plural = "туніки"
 
 
-class TunicImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/tunic_images')
-    item = models.ForeignKey(Tunic, on_delete=models.CASCADE, verbose_name='товар')
+# class TunicImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/tunic_images')
+#     item = models.ForeignKey(Tunic, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Заготовка туніки
@@ -214,12 +217,12 @@ class TunicPattern(Clothes, Pattern):
         verbose_name_plural = "заготовки тунік"
 
 
-class TunicPatternImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/tunic_pattern_images')
-    item = models.ForeignKey(TunicPattern, on_delete=models.CASCADE, verbose_name='товар')
+# class TunicPatternImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/tunic_pattern_images')
+#     item = models.ForeignKey(TunicPattern, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Спідниця
@@ -231,12 +234,12 @@ class Skirt(Clothes):
         verbose_name_plural = "спідниці"
 
 
-class SkirtImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/skirt_images')
-    item = models.ForeignKey(Skirt, on_delete=models.CASCADE, verbose_name='товар')
+# class SkirtImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/skirt_images')
+#     item = models.ForeignKey(Skirt, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Заготовка спідниці
@@ -248,12 +251,12 @@ class SkirtPattern(Clothes, Pattern):
         verbose_name_plural = "заготовки спідниць"
 
 
-class SkirtPatternImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/skirt_pattern_images')
-    item = models.ForeignKey(SkirtPattern, on_delete=models.CASCADE, verbose_name='товар')
+# class SkirtPatternImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/skirt_pattern_images')
+#     item = models.ForeignKey(SkirtPattern, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Аксессуари
@@ -268,12 +271,12 @@ class Bag(Item):
         verbose_name_plural = "сумки"
 
 
-class BagImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/bag_images')
-    item = models.ForeignKey(Bag, on_delete=models.CASCADE, verbose_name='товар')
+# class BagImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/bag_images')
+#     item = models.ForeignKey(Bag, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Косметичка
@@ -285,12 +288,12 @@ class CosmeticBag(Item):
         verbose_name_plural = "косметички"
 
 
-class CosmeticBagImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/cosmetic_bag_images')
-    item = models.ForeignKey(CosmeticBag, on_delete=models.CASCADE, verbose_name='товар')
+# class CosmeticBagImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/cosmetic_bag_images')
+#     item = models.ForeignKey(CosmeticBag, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Чохол для мобільного
@@ -302,12 +305,12 @@ class MobileCase(Item):
         verbose_name_plural = "чохли для мобільних телефонів"
 
 
-class MobileCaseImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/mobile_case_images')
-    item = models.ForeignKey(MobileCase, on_delete=models.CASCADE, verbose_name='товар')
+# class MobileCaseImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/mobile_case_images')
+#     item = models.ForeignKey(MobileCase, on_delete=models.CASCADE, verbose_name='товар')
 
 
 # Скатертина
@@ -319,9 +322,9 @@ class TableCloth(Item):
         verbose_name_plural = "скатертини"
 
 
-class TableClothImage(ItemImage):
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to='item_images/table_cloth_images')
-    item = models.ForeignKey(TableCloth, on_delete=models.CASCADE, verbose_name='товар')
+# class TableClothImage(ItemImage):
+#     image = models.ImageField(default=None,
+#                               blank=True,
+#                               verbose_name='фото товару',
+#                               upload_to='item_images/table_cloth_images')
+#     item = models.ForeignKey(TableCloth, on_delete=models.CASCADE, verbose_name='товар')
