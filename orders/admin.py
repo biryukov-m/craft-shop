@@ -1,8 +1,19 @@
 from django.contrib import admin
+from django.contrib.contenttypes.admin import GenericTabularInline
+
 from .models import Order
 from .models import ProductInOrder
+from .models import Status
 
-admin.site.register(Order)
+
+class ProductInOrderInline(admin.TabularInline):
+    model = ProductInOrder
+
+
+class OrderAdmin(admin.ModelAdmin):
+    inlines = [ProductInOrderInline, ]
+
+
+admin.site.register(Order, OrderAdmin)
 admin.site.register(ProductInOrder)
-
-# Register your models here.
+admin.site.register(Status)

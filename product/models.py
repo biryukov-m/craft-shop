@@ -19,7 +19,7 @@ class Item(models.Model):
     # code = models.PositiveIntegerField(default=None, blank=True, verbose_name="код", unique=True, editable=False)
     name = models.CharField(default=None, blank=True, verbose_name='найменування', max_length=40)
     description = models.TextField(default=None, verbose_name='опис', max_length=3000)
-    price = models.IntegerField(default=None, blank=True, verbose_name='ціна')
+    price = models.DecimalField(default=None, blank=True, decimal_places=2, max_digits=10, verbose_name='ціна')
     available = models.BooleanField(default=False, verbose_name='у продажі')
     created = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='додано')
     updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='редаговано')

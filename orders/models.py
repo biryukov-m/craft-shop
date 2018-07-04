@@ -3,35 +3,52 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
 
-class Order(models.Model):
-    created = models.DateTimeField(auto_now=False, auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-    customer_name = models.CharField(max_length=64)
-    customer_email = models.EmailField(blank=True, null=True, default=None)
-    customer_phone = models.CharField(blank=True, null=True, default=None, max_length=40)
-    customer_comment = models.TextField(blank=True, null=True, default=None, max_length=300)
+class Status(models.Model):
+    name = models.CharField(blank=True, null=True, default=None, max_length=64, verbose_name="Назва статуса")
 
     def __str__(self):
-        return "Заказ {}".format(self.id)
+        return "{}".format(self.name)
 
     class Meta:
-        verbose_name = "Заказ"
-        verbose_name_plural = "Заказы"
+        verbose_name = "Статус замовлення"
+        verbose_name_plural = "Статуси замовлень"
+
+
+class Order(models.Model):
+    created = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name="Создан")
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name="Обновлен")
+    customer_name = models.CharField(max_length=64, verbose_name="Имя покупця")
+    customer_email = models.EmailField(blank=True, null=True, default=None, verbose_name="Електронна пошта покупця")
+    customer_phone = models.CharField(blank=True, null=True, default=None, max_length=40, verbose_name="Телефон покупця")
+    customer_comment = models.TextField(blank=True, null=True, default=None, max_length=300, verbose_name="Комментар до замовлення")
+    status = models.ForeignKey(Status, on_delete=models.CASCADE, default=None, verbose_name="Статус замовлення")
+    total_price = models.DecimalField(default=None, decimal_places=2, max_digits=10, verbose_name="Загальна ціна замовлення")
+
+    def __str__(self):
+        return "Замовлення {} - {}".format(self.id, self.status.name)
+
+    class Meta:
+        verbose_name = "Замовлення"
+        verbose_name_plural = "Замовлення"
 
 
 class ProductInOrder(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True, default=None)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, default=None)
+
     # Реализация Generic Foreign Key так как моделей товаров много
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     product_object = GenericForeignKey('content_type', 'object_id')
 
+    quantity = models.PositiveSmallIntegerField(default=1)
+    one_product_price = models.DecimalField(default=None, decimal_places=2, max_digits=10, verbose_name="ціна за одну одиницю")
+    total_price = models.DecimalField(default=None, decimal_places=2, max_digits=10, verbose_name="загальна ціна по товару")
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 
     def __str__(self):
-        return "Заказанный товар {}".format(self.id)
+        return "Замовлений товар {}".format(self.id)
 
     class Meta:
-        verbose_name = "Заказанный товар"
-        verbose_name_plural = "Заказанные товары"
+        verbose_name = "Замовлений товар"
+        verbose_name_plural = "Замовлені товари"
