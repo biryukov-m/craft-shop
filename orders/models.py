@@ -49,6 +49,14 @@ class ProductInOrder(models.Model):
     def __str__(self):
         return "Замовлений товар {}".format(self.id)
 
+    def save(self, *args, **kwargs):
+        try:
+            self.one_product_price = self.product_object.price
+        except:
+            print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой")
+        self.total_price = self.quantity*self.one_product_price
+        super(ProductInOrder, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name = "Замовлений товар"
         verbose_name_plural = "Замовлені товари"
