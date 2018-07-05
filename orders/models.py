@@ -27,6 +27,15 @@ class Order(models.Model):
     def __str__(self):
         return "Замовлення {} - {}".format(self.id, self.status.name)
 
+    # def save(self, *args, **kwargs):
+    #     try:
+    #         # Вот тут нужно расчитать общ
+    #         # self.total_price = self.productinorder_set.a
+    #     except:
+    #         print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой")
+    #     self.total_price = self.quantity*self.one_product_price
+    #     super(ProductInOrder, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name = "Замовлення"
         verbose_name_plural = "Замовлення"
@@ -55,6 +64,8 @@ class ProductInOrder(models.Model):
         except:
             print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой")
         self.total_price = self.quantity*self.one_product_price
+        # Плохой код, если несколько раз нажать сейв, то цена возростет
+        # self.order.total_price += self.total_price
         super(ProductInOrder, self).save(*args, **kwargs)
 
     class Meta:
