@@ -4,7 +4,11 @@ from django.contrib.contenttypes.models import ContentType
 
 
 class Status(models.Model):
-    name = models.CharField(blank=True, null=True, default=None, max_length=64, verbose_name="Назва статуса")
+    name = models.CharField(blank=True,
+                            null=True,
+                            default=None,
+                            max_length=64,
+                            verbose_name="Назва статуса")
 
     def __str__(self):
         return "{}".format(self.name)
@@ -15,26 +19,62 @@ class Status(models.Model):
 
 
 class Order(models.Model):
-    created = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name="Создан")
-    updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name="Обновлен")
-    customer_name = models.CharField(max_length=64, verbose_name="Имя покупця")
-    customer_email = models.EmailField(blank=True, null=True, default=None, verbose_name="Електронна пошта покупця")
-    customer_phone = models.CharField(blank=True, null=True, default=None, max_length=40, verbose_name="Телефон покупця")
-    customer_comment = models.TextField(blank=True, null=True, default=None, max_length=300, verbose_name="Комментар до замовлення")
-    status = models.ForeignKey(Status, on_delete=models.CASCADE, default=None, verbose_name="Статус замовлення")
-    total_price = models.DecimalField(default=None, decimal_places=2, max_digits=10, verbose_name="Загальна ціна замовлення")
+    created = models.DateTimeField(auto_now=False,
+                                   auto_now_add=True,
+                                   verbose_name="Создан")
+
+    updated = models.DateTimeField(auto_now=True,
+                                   auto_now_add=False,
+                                   verbose_name="Обновлен")
+
+    customer_name = models.CharField(max_length=64,
+                                     verbose_name="Имя покупця")
+
+    customer_email = models.EmailField(blank=True,
+                                       null=True,
+                                       default=None,
+                                       verbose_name="Електронна пошта покупця")
+
+    customer_phone = models.CharField(blank=True,
+                                      null=True,
+                                      default=None,
+                                      max_length=40,
+                                      verbose_name="Телефон покупця")
+
+    customer_comment = models.TextField(blank=True,
+                                        null=True,
+                                        default=None,
+                                        max_length=300,
+                                        verbose_name="Комментар до замовлення")
+
+    status = models.ForeignKey(Status,
+                               on_delete=models.CASCADE,
+                               default=None,
+                               verbose_name="Статус замовлення")
+
+    total_price = models.DecimalField(blank=True,
+                                      null=True,
+                                      default=None,
+                                      editable=False,
+                                      decimal_places=2,
+                                      max_digits=10,
+                                      verbose_name="Загальна ціна замовлення")
 
     def __str__(self):
         return "Замовлення {} - {}".format(self.id, self.status.name)
 
-    # def save(self, *args, **kwargs):
-    #     try:
-    #         # Вот тут нужно расчитать общ
-    #         # self.total_price = self.productinorder_set.a
-    #     except:
-    #         print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой")
-    #     self.total_price = self.quantity*self.one_product_price
-    #     super(ProductInOrder, self).save(*args, **kwargs)
+
+# Доработать с пост-сейв сигналами и так далее
+# Доработать с пост-сейв сигналами и так далее
+# Доработать с пост-сейв сигналами и так далее
+# Доработать с пост-сейв сигналами и так далее
+    def save(self, *args, **kwargs):
+        try:
+            for product in self.productinorder_set.all():
+                print(product.total_price)
+        except:
+            print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой")
+        super(Order, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Замовлення"
@@ -42,7 +82,9 @@ class Order(models.Model):
 
 
 class ProductInOrder(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, default=None)
+    order = models.ForeignKey(Order,
+                              on_delete=models.CASCADE,
+                              default=None)
 
     # Реализация Generic Foreign Key так как моделей товаров много
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
@@ -50,10 +92,28 @@ class ProductInOrder(models.Model):
     product_object = GenericForeignKey('content_type', 'object_id')
 
     quantity = models.PositiveSmallIntegerField(default=1)
-    one_product_price = models.DecimalField(default=None, decimal_places=2, max_digits=10, verbose_name="ціна за одну одиницю")
-    total_price = models.DecimalField(default=None, decimal_places=2, max_digits=10, verbose_name="загальна ціна по товару")
-    created = models.DateTimeField(auto_now=False, auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+
+    one_product_price = models.DecimalField(blank=True,
+                                            null=True,
+                                            default=None,
+                                            editable=False,
+                                            decimal_places=2,
+                                            max_digits=10,
+                                            verbose_name="ціна за одну одиницю")
+
+    total_price = models.DecimalField(blank=True,
+                                      null=True,
+                                      default=None,
+                                      editable=False,
+                                      decimal_places=2,
+                                      max_digits=10,
+                                      verbose_name="загальна ціна по товару")
+
+    created = models.DateTimeField(auto_now=False,
+                                   auto_now_add=True)
+
+    updated = models.DateTimeField(auto_now=True,
+                                   auto_now_add=False)
 
     def __str__(self):
         return "Замовлений товар {}".format(self.id)
@@ -64,8 +124,6 @@ class ProductInOrder(models.Model):
         except:
             print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой")
         self.total_price = self.quantity*self.one_product_price
-        # Плохой код, если несколько раз нажать сейв, то цена возростет
-        # self.order.total_price += self.total_price
         super(ProductInOrder, self).save(*args, **kwargs)
 
     class Meta:
