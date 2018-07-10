@@ -4,8 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 
 
 class Status(models.Model):
-    name = models.CharField(blank=True,
-                            null=True,
+    name = models.CharField(null=True,
                             default=None,
                             max_length=64,
                             verbose_name="Назва статуса")
@@ -21,14 +20,14 @@ class Status(models.Model):
 class Order(models.Model):
     created = models.DateTimeField(auto_now=False,
                                    auto_now_add=True,
-                                   verbose_name="Создан")
+                                   verbose_name="Створено")
 
     updated = models.DateTimeField(auto_now=True,
                                    auto_now_add=False,
-                                   verbose_name="Обновлен")
+                                   verbose_name="Оновлено")
 
     customer_name = models.CharField(max_length=64,
-                                     verbose_name="Имя покупця")
+                                     verbose_name="Ім'я покупця")
 
     customer_email = models.EmailField(blank=True,
                                        null=True,
@@ -61,7 +60,10 @@ class Order(models.Model):
                                       verbose_name="Загальна ціна замовлення")
 
     def __str__(self):
-        return "Замовлення {} - {}".format(self.id, self.status.name)
+        return "{}. {} {} - {}".format(self.id,
+                                       self.customer_name.upper(),
+                                       self.customer_email.lower(),
+                                       self.status.name)
 
 
 # Доработать с пост-сейв сигналами и так далее
@@ -84,14 +86,14 @@ class Order(models.Model):
 class ProductInOrder(models.Model):
     order = models.ForeignKey(Order,
                               on_delete=models.CASCADE,
-                              default=None)
+                              default=None, verbose_name="Замовлення")
 
     # Реализация Generic Foreign Key так как моделей товаров много
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, verbose_name="Тип товару")
+    object_id = models.PositiveIntegerField(verbose_name="ID товару")
     product_object = GenericForeignKey('content_type', 'object_id')
 
-    quantity = models.PositiveSmallIntegerField(default=1)
+    quantity = models.PositiveSmallIntegerField(default=1, verbose_name="Одиниць")
 
     one_product_price = models.DecimalField(blank=True,
                                             null=True,
@@ -99,7 +101,7 @@ class ProductInOrder(models.Model):
                                             editable=False,
                                             decimal_places=2,
                                             max_digits=10,
-                                            verbose_name="ціна за одну одиницю")
+                                            verbose_name="Ціна за одну одиницю")
 
     total_price = models.DecimalField(blank=True,
                                       null=True,
@@ -107,16 +109,18 @@ class ProductInOrder(models.Model):
                                       editable=False,
                                       decimal_places=2,
                                       max_digits=10,
-                                      verbose_name="загальна ціна по товару")
+                                      verbose_name="Загальна ціна по товару")
 
     created = models.DateTimeField(auto_now=False,
-                                   auto_now_add=True)
+                                   auto_now_add=True,
+                                   verbose_name="Створено")
 
     updated = models.DateTimeField(auto_now=True,
-                                   auto_now_add=False)
+                                   auto_now_add=False,
+                                   verbose_name="Оновлено")
 
     def __str__(self):
-        return "Замовлений товар {}".format(self.id)
+        return ''' {} - "{}"  '''.format(self.content_type.name.capitalize(), self.product_object.name.capitalize())
 
     def save(self, *args, **kwargs):
         try:

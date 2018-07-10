@@ -39,7 +39,7 @@ class Fabric(models.Model):
 
 
 class Color(models.Model):
-    name = models.CharField(verbose_name="цвет", max_length=30)
+    name = models.CharField(verbose_name="колір", max_length=30)
 
     class Meta:
         verbose_name = "колір"
@@ -50,7 +50,7 @@ class Color(models.Model):
 
 
 class Size(models.Model):
-    name = models.CharField(verbose_name="размер", max_length=20)
+    name = models.CharField(verbose_name="розмір", max_length=20)
 
     class Meta:
         verbose_name = "розмір"
