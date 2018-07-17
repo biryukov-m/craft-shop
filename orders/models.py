@@ -65,19 +65,6 @@ class Order(models.Model):
                                        self.customer_email.lower(),
                                        self.status.name)
 
-
-# Доработать с пост-сейв сигналами и так далее
-# Доработать с пост-сейв сигналами и так далее
-# Доработать с пост-сейв сигналами и так далее
-# Доработать с пост-сейв сигналами и так далее
-    def save(self, *args, **kwargs):
-        try:
-            for product in self.productinorder_set.all():
-                print(product.total_price)
-        except:
-            print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой")
-        super(Order, self).save(*args, **kwargs)
-
     class Meta:
         verbose_name = "Замовлення"
         verbose_name_plural = "Замовлення"
@@ -111,6 +98,8 @@ class ProductInOrder(models.Model):
                                       max_digits=10,
                                       verbose_name="Загальна ціна по товару")
 
+    is_inactive = models.BooleanField(default=False, verbose_name="Товар відмінено")
+
     created = models.DateTimeField(auto_now=False,
                                    auto_now_add=True,
                                    verbose_name="Створено")
@@ -120,14 +109,23 @@ class ProductInOrder(models.Model):
                                    verbose_name="Оновлено")
 
     def __str__(self):
-        return ''' {} - "{}"  '''.format(self.content_type.name.capitalize(), self.product_object.name.capitalize())
+        return '''{} - "{}"'''.format(self.content_type.name.capitalize(), self.product_object.name.capitalize())
 
     def save(self, *args, **kwargs):
         try:
             self.one_product_price = self.product_object.price
+            self.total_price = self.quantity*self.one_product_price
+            self_total_price = self.total_price
         except:
-            print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой")
-        self.total_price = self.quantity*self.one_product_price
+            print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой/количеством")
+            raise ValueError
+        all_products_in_order = ProductInOrder.objects.filter(order=self.order, is_inactive=False)
+        order_total_price = 0
+        for product in all_products_in_order:
+            order_total_price += product.total_price
+        order_total_price += self_total_price
+        self.order.total_price = order_total_price
+        self.order.save(force_update=True)
         super(ProductInOrder, self).save(*args, **kwargs)
 
     class Meta:
