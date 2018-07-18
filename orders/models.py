@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from django.db.models.signals import post_save, post_delete
 
 
 class Status(models.Model):
@@ -60,10 +61,11 @@ class Order(models.Model):
                                       verbose_name="Загальна ціна замовлення")
 
     def __str__(self):
-        return "{}. {} {} - {}".format(self.id,
-                                       self.customer_name.upper(),
-                                       self.customer_email.lower(),
-                                       self.status.name)
+        return "{}. {}, {}. {}. {}".format(self.id,
+                                           self.customer_name.capitalize(),
+                                           self.customer_email.lower(),
+                                           self.total_price,
+                                           self.status.name)
 
     class Meta:
         verbose_name = "Замовлення"
@@ -109,25 +111,31 @@ class ProductInOrder(models.Model):
                                    verbose_name="Оновлено")
 
     def __str__(self):
-        return '''{} - "{}"'''.format(self.content_type.name.capitalize(), self.product_object.name.capitalize())
+        return '''{}/{} - {}'''.format(self.content_type.name.capitalize(),
+                                       self.product_object.name.capitalize(),
+                                       self.product_object.price)
 
     def save(self, *args, **kwargs):
         try:
             self.one_product_price = self.product_object.price
             self.total_price = self.quantity*self.one_product_price
-            self_total_price = self.total_price
         except:
             print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой/количеством")
             raise ValueError
-        all_products_in_order = ProductInOrder.objects.filter(order=self.order, is_inactive=False)
-        order_total_price = 0
-        for product in all_products_in_order:
-            order_total_price += product.total_price
-        order_total_price += self_total_price
-        self.order.total_price = order_total_price
-        self.order.save(force_update=True)
         super(ProductInOrder, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Замовлений товар"
         verbose_name_plural = "Замовлені товари"
+
+
+def count_order_total_price(instance, **kwargs):
+    all_products_in_order = ProductInOrder.objects.filter(order=instance.order, is_inactive=False)
+    order_total_price = 0
+    for product in all_products_in_order:
+        order_total_price += product.total_price
+    instance.order.total_price = order_total_price
+    instance.order.save(force_update=True)
+
+post_save.connect(count_order_total_price, sender=ProductInOrder)
+post_delete.connect(count_order_total_price, sender=ProductInOrder)

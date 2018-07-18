@@ -51,7 +51,7 @@ class Item(models.Model):
         abstract = True
 
     def __str__(self):
-        return self.name
+        return "{} - {}".format(self.name, self.price)
 
 
 # Абстрактный класс для элементов одежды
