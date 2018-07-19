@@ -1,13 +1,54 @@
-body .content {
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400&subset=cyrillic");
+* {
+  padding: 0;
   margin: 0;
-  background-color: #90eeec;
-  color: red;
-  font-size: 15px; }
-body .col-4:first-of-type {
-  background: aqua; }
-body .col-4:nth-of-type(2) {
-  background: aliceblue; }
-body .col-4:nth-of-type(3) {
-  background: blanchedalmond; }
+}
+
+ul {
+  list-style: none;
+  margin: 0 !important;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.top-menu-head {
+  height: 30px;
+  background: #464646;
+}
+
+.main-layout .top-menu {
+  height: 88px;
+}
+.main-layout .top-menu .top-logo {
+  display: flex;
+  align-items: center;
+}
+.main-layout .top-menu .menu-list ul li {
+  display: inline-flex;
+  height: 88px;
+  align-items: center;
+  padding: 0 10px;
+  position: relative;
+}
+.main-layout .top-menu .menu-list ul li a {
+  font-family: "Opens Sans", sans-serif;
+  color: #464646;
+  font-size: 14px;
+}
+.main-layout .top-menu .menu-list ul li a:hover {
+  color: #ff4081;
+}
+.main-layout .top-menu .menu-list ul li a:hover:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 5px;
+  bottom: 5px;
+  left: 0;
+  background: #ff4081;
+}
 
 /*# sourceMappingURL=main.css.map */

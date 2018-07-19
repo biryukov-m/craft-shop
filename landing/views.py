@@ -4,5 +4,5 @@ from django.shortcuts import HttpResponse
 # Create your views here.
 
 
-def index(request):
-    return HttpResponse(content="It works.")
+def home(request):
+    return render(request, 'landing/home.html')
