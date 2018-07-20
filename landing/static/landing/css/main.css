@@ -37,8 +37,18 @@ a:hover {
   color: #464646;
   font-size: 14px;
 }
+.main-layout .top-menu .menu-list ul li a:before {
+  display: block;
+  content: attr(title);
+  font-weight: bold;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  padding: 0 1px;
+}
 .main-layout .top-menu .menu-list ul li a:hover {
   color: #ff4081;
+  font-weight: bold;
 }
 .main-layout .top-menu .menu-list ul li a:hover:after {
   display: inline-block;
@@ -49,6 +59,36 @@ a:hover {
   bottom: 5px;
   left: 0;
   background: #ff4081;
+}
+.main-layout .top-menu .icons .icons-inner {
+  float: right;
+}
+.main-layout .top-menu .icons .icons-inner a {
+  line-height: 88px;
+  vertical-align: middle;
+  position: relative;
+}
+.main-layout .top-menu .icons .icons-inner a ~ a:before {
+  content: "/";
+  display: inline;
+  margin: 0 9px 0 6px;
+  color: #dfdfdf;
+}
+.main-layout .top-menu .icons .icons-inner a ~ a:before img {
+  vertical-align: baseline;
+}
+.main-layout .top-menu .icons .icons-inner .circle-counter {
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  border-radius: 50%;
+  background: #ff4081;
+  text-align: center;
+  font-size: 10px;
+  color: white;
+  position: absolute;
+  right: -9px;
+  top: -6px;
 }
 
 /*# sourceMappingURL=main.css.map */
