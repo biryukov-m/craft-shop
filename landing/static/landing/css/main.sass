@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&subset=cyrillic')
-
+// cenbook-bolditalic
+// cenbook-bold
+// cenbook-italic
+// cenbook-regular
+@import "_fonts.sass"
 $dark: #464646
 $dark_slashes: lighten($dark, 60%)
 $highlight :#ff4081
@@ -21,7 +25,7 @@ a:hover
 
 .main-layout
   .top-menu
-    height: 88px
+    min-height: 88px
 
     .top-logo
       display: flex
@@ -91,3 +95,53 @@ a:hover
           position: absolute
           right: -9px
           top: -6px
+
+
+  
+  .top-billboard
+    background: $dark
+    height: 580px
+
+    .watermark-wrapper
+      .watermark
+        position: relative
+        height: 100%
+
+        img
+          position: absolute
+          bottom: 12px
+          left: 20px
+
+    .top-billboard-text-wrapper
+      .billboard-text
+        height: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        // margin-right: 16px
+
+        h2
+          font-family: 'cenbook-bolditalic'
+          color: #fff
+          font-size: 36px
+
+        h1
+          font-family: 'cenbook-bold'
+          font-size: 88px
+          color: #fff
+
+        h3
+          font-family: 'cenbook-regular'
+          font-size: 36px
+          color: #c6c6c6
+        a
+          text-align: middle
+          margin: 0 auto
+          font-family: 'cenbook-regular'
+          font-size: 14px
+          color: #fff
+
+
+
+
