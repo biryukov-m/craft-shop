@@ -57,7 +57,7 @@ a:hover {
   display: inline-flex;
   height: 88px;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 8px;
   position: relative;
 }
 .main-layout .top-menu .menu-list ul li a {
@@ -119,46 +119,104 @@ a:hover {
   top: -6px;
 }
 .main-layout .top-billboard {
-  background: #464646;
   height: 580px;
+  margin-bottom: 30px;
 }
-.main-layout .top-billboard .watermark-wrapper .watermark {
-  position: relative;
+.main-layout .top-billboard .top-billboard-wrapper {
   height: 100%;
 }
-.main-layout .top-billboard .watermark-wrapper .watermark img {
+.main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner {
+  height: 100%;
+  background: #464646;
+  position: relative;
+}
+.main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .watermark {
   position: absolute;
   bottom: 12px;
   left: 20px;
 }
-.main-layout .top-billboard .top-billboard-text-wrapper .billboard-text {
+.main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text {
   height: 100%;
+  float: right;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 40px;
 }
-.main-layout .top-billboard .top-billboard-text-wrapper .billboard-text h2 {
+.main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text h2 {
   font-family: "cenbook-bolditalic";
   color: #fff;
   font-size: 36px;
+  font-style: italic;
+  font-weight: bold;
 }
-.main-layout .top-billboard .top-billboard-text-wrapper .billboard-text h1 {
+.main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text h1 {
   font-family: "cenbook-bold";
-  font-size: 88px;
+  font-size: 80px;
   color: #fff;
+  font-weight: bold;
 }
-.main-layout .top-billboard .top-billboard-text-wrapper .billboard-text h3 {
+.main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text h3 {
   font-family: "cenbook-regular";
   font-size: 36px;
-  color: #c6c6c6;
+  color: #cccccc;
+  margin-bottom: 110px;
 }
-.main-layout .top-billboard .top-billboard-text-wrapper .billboard-text a {
+.main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text a {
   text-align: middle;
   margin: 0 auto;
   font-family: "cenbook-regular";
   font-size: 14px;
   color: #fff;
+  text-decoration: underline;
+}
+.main-layout .banners {
+  height: 190px;
+}
+.main-layout .banners .banner-wrapper {
+  margin-bottom: 25px;
+}
+.main-layout .banners .banner-wrapper .banner {
+  background: #464646;
+  height: 100%;
+}
+.main-layout .banners .banner-wrapper .banner .banner-text {
+  color: #cccccc;
+  font-family: "cenbook-regular";
+  margin-right: 12px;
+  text-align: right;
+}
+.main-layout .banners .banner-wrapper .banner .banner-text h1 {
+  font-family: "cenbook-bold";
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 20px;
+  margin-bottom: 8px;
+}
+.main-layout .banners .banner-wrapper .banner .banner-text h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.main-layout .banners .banner-wrapper .banner .banner-text h3 {
+  font-size: 12px;
+  margin-bottom: 32px;
+}
+.main-layout .banners .banner-wrapper .banner .banner-text a {
+  font-size: 12px;
+  color: #cccccc;
+  text-decoration: underline;
+}
+.main-layout .arrivals-header .text-wrapper .text {
+  font-size: 36px;
+}
+.main-layout .arrivals-header .text-wrapper .text .bold {
+  font-weight: bold;
+  color: #000;
+}
+.main-layout .arrivals-header .text-wrapper .text .normal {
+  font-color: #333;
+  font-weight: lighter;
 }
 
 /*# sourceMappingURL=main.css.map */
