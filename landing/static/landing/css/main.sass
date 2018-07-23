@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&subset=cyrillic')
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=cyrillic')
 // cenbook-bolditalic
 // cenbook-bold
 // cenbook-italic
 // cenbook-regular
 @import "_fonts.sass"
-$dark: #464646
-$dark_slashes: lighten($dark, 60%)
-$dark_letters: #cccccc
+
+$lighter: #cccccc
+$light: #999999
+$dark: #666666
+$darker: #333333
 $highlight :#ff4081
 
 *
@@ -80,7 +82,7 @@ a:hover
           content: "/"
           display: inline
           margin: 0 9px 0 6px
-          color: $dark_slashes
+          color: $lighter
           img
             vertical-align: baseline
 
@@ -98,7 +100,7 @@ a:hover
           top: -6px
 
 
-  
+
   .top-billboard
     height: 580px
     margin-bottom: 30px
@@ -142,7 +144,7 @@ a:hover
           h3
             font-family: 'cenbook-regular'
             font-size: 36px
-            color: $dark_letters
+            color: $lighter
             margin-bottom: 110px
           a
             text-align: middle
@@ -153,17 +155,18 @@ a:hover
             text-decoration: underline
 
   .banners
-    height: 190px
+    margin-bottom: 45px
 
     .banner-wrapper
       margin-bottom: 25px
+      height: 100%
 
       .banner
         background: $dark
-        height: 100%
+        height: 190px
 
         .banner-text
-          color: $dark_letters
+          color: $lighter
           font-family: 'cenbook-regular'
           margin-right: 12px
           text-align: right
@@ -185,17 +188,116 @@ a:hover
 
           a
             font-size: 12px
-            color: $dark_letters
+            color: $lighter
             text-decoration: underline
 
   .arrivals-header
     .text-wrapper
-      .text
-        font-size: 36px
-        .bold
-          font-weight: bold
-          color: #000
-        .normal
-          font-color: #333
-          font-weight: lighter
+      font-size: 36px
+
+      .bold
+        font-weight: bold
+        color: $darker
+
+      .normal
+        color: $light
+        font-weight: lighter
+
+  .selectors
+    align-items: baseline
+    margin-bottom: 30px
+
+    .categories
+      ul
+        margin: 0
+        padding: 0
+        li
+          display: inline
+          vertical-align: middle
+
+          a
+            color: $dark
+            font-size: 12px
+            display: inline-block
+            text-align: center
+            text-transform: uppercase
+
+          a.active, a:hover
+            color: $highlight
+            font-weight: bold
+
+          a:before
+            display: block
+            content: attr(title)
+            font-weight: bold
+            height: 0
+            overflow: hidden
+            visibility: hidden
+
+        li ~ li:before
+          content: "/"
+          display: inline
+          color: $lighter
+
+    .line
+      height: 5px
+      background: $lighter
+
+  .products
+    .product-wrapper
+      .image
+        height: 350px
+        background: $dark
+        margin-bottom: 15px
+
+        .active
+          background: $highlight
+          width: 170px
+          margin: auto
+          position: relative
+          top: 314px
+
+          ul
+            li
+              display: inline-block
+              a
+                display: block
+                width: 33px
+                height: 36px
+
+              span
+                position: absolute
+                display: none
+
+      .image:hover
+        //display: none
+        //display: block
+        //height: 100%
+        //width: 100%
+        background: rgba(#999, 0.5)
+        border: 5px solid $highlight
+
+      .info
+        margin-left: 10px
+        position: relative
+
+        div
+          font-family: 'Open Sans', sans-serif
+          font-size: 19px
+          font-weight: 300
+
+          a
+            color: $darker
+
+        .product-title
+          margin-bottom: 5px
+
+        .product-category
+          font-size: 11px
+          margin-bottom: 9px
+
+        .product-rating
+          position: absolute
+          bottom: 0
+          right: 0
 
