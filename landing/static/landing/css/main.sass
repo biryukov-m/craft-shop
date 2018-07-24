@@ -9,7 +9,11 @@ $lighter: #cccccc
 $light: #999999
 $dark: #666666
 $darker: #333333
-$highlight :#ff4081
+$highlight_lightest: #e18cad
+$highlight_lighter: #fe8cb9
+$highlight : #ff4081
+$highlight_darker: #fe4080
+$highlight_darkest: #c1185b
 
 *
   padding: 0
@@ -42,7 +46,7 @@ a:hover
       position: relative
 
       a
-        font-family: 'Opens Sans', sans-serif
+        font-family: 'Open Sans', sans-serif
         color: $dark
         font-size: 14px
       // Хак, чтобы когда шрифт толстел - элементы не смещались. Место для жирного шрифта заранее резервировано
@@ -99,8 +103,6 @@ a:hover
           right: -9px
           top: -6px
 
-
-
   .top-billboard
     height: 580px
     margin-bottom: 30px
@@ -147,7 +149,6 @@ a:hover
             color: $lighter
             margin-bottom: 110px
           a
-            text-align: middle
             margin: 0 auto
             font-family: 'cenbook-regular'
             font-size: 14px
@@ -191,7 +192,7 @@ a:hover
             color: $lighter
             text-decoration: underline
 
-  .arrivals-header
+  .product-header
     .text-wrapper
       font-size: 36px
 
@@ -244,60 +245,154 @@ a:hover
       background: $lighter
 
   .products
+    margin-bottom: 40px
+
     .product-wrapper
-      .image
-        height: 350px
-        background: $dark
+      .product
+        .face
+          height: 350px
+          background: $dark
+          margin-bottom: 15px
+          display: flex
+          align-items: center
+          justify-content: center
+          position: relative
+
+          .label
+            font-family: "Open Sans", sans-serif
+            font-weight: lighter
+            padding: 6px 12px
+            border-radius: 5px
+            position: absolute
+            right: 5px
+            top: 5px
+            font-size: 10px
+
+          .label.sale
+            background: #ffff04
+            color: #ff1845
+
+          .label.hot
+            background: #ff1845
+            color: #ffffff
+
+          .label.new
+            background: #1cbbb4
+            color: #ffffff
+
+          .active
+            visibility: hidden
+            background: $highlight_darkest
+            border-radius: 5px
+            padding: 0 10px
+
+
+            ul
+              li
+                display: inline-block
+                position: relative
+
+                a
+                  display: block
+                  text-align: center
+                  vertical-align: middle
+                  padding: 6px 5px
+                  color: $highlight_lighter
+
+                span
+                  display: none
+                  position: absolute
+                  bottom: -20px
+                  left: -20px
+                  font-size: 12px
+                  font-family: "Open Sans", sans-serif
+                  font-weight: 300
+                  color: $highlight_darkest
+                  width: 150px
+
+              li:hover
+                span
+                  display: block
+
+                a
+                  background: $highlight_darker
+
+                  i
+                    color: white
+
+        .face:hover
+          //display: none
+          //display: block
+          //height: 100%
+          //width: 100%
+          background: rgba(#999, 0.5)
+          border: 5px solid $highlight
+
+          .label
+            visibility: hidden
+
+          .active
+            visibility: visible
+
+        .info
+          margin-left: 10px
+          position: relative
+
+          div
+            font-family: 'Open Sans', sans-serif
+            font-size: 19px
+            font-weight: 300
+
+            a
+              color: $darker
+
+          .product-title
+            margin-bottom: 5px
+
+          .product-category
+            font-size: 11px
+            margin-bottom: 9px
+
+          .product-rating
+            position: absolute
+            bottom: 0
+            right: 0
+  .about-banners
+    margin-bottom: 50px
+
+    .banner-wrapper
+      .banner
+        border-radius: 5px
+        display: flex
+        justify-content: center
+        align-items: center
         margin-bottom: 15px
 
-        .active
-          background: $highlight
-          width: 170px
-          margin: auto
-          position: relative
-          top: 314px
+        .image
+          padding: 30px 10px
 
-          ul
-            li
-              display: inline-block
-              a
-                display: block
-                width: 33px
-                height: 36px
+          i
+            color: rgba(#000, 0.5)
 
-              span
-                position: absolute
-                display: none
+        .text
+          padding: 30px 10px
+          font-family: "Open Sans", sans-serif
+          color: rgba(#000, 0.5)
 
-      .image:hover
-        //display: none
-        //display: block
-        //height: 100%
-        //width: 100%
-        background: rgba(#999, 0.5)
-        border: 5px solid $highlight
 
-      .info
-        margin-left: 10px
-        position: relative
+          .bigger
+            font-size: 20px
+            font-weight: bold
 
-        div
-          font-family: 'Open Sans', sans-serif
-          font-size: 19px
-          font-weight: 300
+          .smaller
+            font-size: 12px
+            font-weight: lighter
 
-          a
-            color: $darker
+      .banner.shipping
+        background: #1bbc9b
 
-        .product-title
-          margin-bottom: 5px
+      .banner.returns
+        background: #fa5c5b
 
-        .product-category
-          font-size: 11px
-          margin-bottom: 9px
-
-        .product-rating
-          position: absolute
-          bottom: 0
-          right: 0
-
+      .banner.support
+        background: #cd7dff

@@ -61,7 +61,7 @@ a:hover {
   position: relative;
 }
 .main-layout .top-menu .menu-list ul li a {
-  font-family: "Opens Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #666666;
   font-size: 14px;
 }
@@ -164,7 +164,6 @@ a:hover {
   margin-bottom: 110px;
 }
 .main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text a {
-  text-align: middle;
   margin: 0 auto;
   font-family: "cenbook-regular";
   font-size: 14px;
@@ -208,14 +207,14 @@ a:hover {
   color: #cccccc;
   text-decoration: underline;
 }
-.main-layout .arrivals-header .text-wrapper {
+.main-layout .product-header .text-wrapper {
   font-size: 36px;
 }
-.main-layout .arrivals-header .text-wrapper .bold {
+.main-layout .product-header .text-wrapper .bold {
   font-weight: bold;
   color: #333333;
 }
-.main-layout .arrivals-header .text-wrapper .normal {
+.main-layout .product-header .text-wrapper .normal {
   color: #999999;
   font-weight: lighter;
 }
@@ -259,57 +258,148 @@ a:hover {
   height: 5px;
   background: #cccccc;
 }
-.main-layout .products .product-wrapper .image {
+.main-layout .products {
+  margin-bottom: 40px;
+}
+.main-layout .products .product-wrapper .product .face {
   height: 350px;
   background: #666666;
   margin-bottom: 15px;
-}
-.main-layout .products .product-wrapper .image .active {
-  background: #ff4081;
-  width: 170px;
-  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  top: 314px;
 }
-.main-layout .products .product-wrapper .image .active ul li {
-  display: inline-block;
-}
-.main-layout .products .product-wrapper .image .active ul li a {
-  display: block;
-  width: 33px;
-  height: 36px;
-}
-.main-layout .products .product-wrapper .image .active ul li span {
+.main-layout .products .product-wrapper .product .face .label {
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  padding: 6px 12px;
+  border-radius: 5px;
   position: absolute;
-  display: none;
+  right: 5px;
+  top: 5px;
+  font-size: 10px;
 }
-.main-layout .products .product-wrapper .image:hover {
+.main-layout .products .product-wrapper .product .face .label.sale {
+  background: #ffff04;
+  color: #ff1845;
+}
+.main-layout .products .product-wrapper .product .face .label.hot {
+  background: #ff1845;
+  color: #ffffff;
+}
+.main-layout .products .product-wrapper .product .face .label.new {
+  background: #1cbbb4;
+  color: #ffffff;
+}
+.main-layout .products .product-wrapper .product .face .active {
+  visibility: hidden;
+  background: #c1185b;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+.main-layout .products .product-wrapper .product .face .active ul li {
+  display: inline-block;
+  position: relative;
+}
+.main-layout .products .product-wrapper .product .face .active ul li a {
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 6px 5px;
+  color: #fe8cb9;
+}
+.main-layout .products .product-wrapper .product .face .active ul li span {
+  display: none;
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #c1185b;
+  width: 150px;
+}
+.main-layout .products .product-wrapper .product .face .active ul li:hover span {
+  display: block;
+}
+.main-layout .products .product-wrapper .product .face .active ul li:hover a {
+  background: #fe4080;
+}
+.main-layout .products .product-wrapper .product .face .active ul li:hover a i {
+  color: white;
+}
+.main-layout .products .product-wrapper .product .face:hover {
   background: rgba(153, 153, 153, 0.5);
   border: 5px solid #ff4081;
 }
-.main-layout .products .product-wrapper .info {
+.main-layout .products .product-wrapper .product .face:hover .label {
+  visibility: hidden;
+}
+.main-layout .products .product-wrapper .product .face:hover .active {
+  visibility: visible;
+}
+.main-layout .products .product-wrapper .product .info {
   margin-left: 10px;
   position: relative;
 }
-.main-layout .products .product-wrapper .info div {
+.main-layout .products .product-wrapper .product .info div {
   font-family: "Open Sans", sans-serif;
   font-size: 19px;
   font-weight: 300;
 }
-.main-layout .products .product-wrapper .info div a {
+.main-layout .products .product-wrapper .product .info div a {
   color: #333333;
 }
-.main-layout .products .product-wrapper .info .product-title {
+.main-layout .products .product-wrapper .product .info .product-title {
   margin-bottom: 5px;
 }
-.main-layout .products .product-wrapper .info .product-category {
+.main-layout .products .product-wrapper .product .info .product-category {
   font-size: 11px;
   margin-bottom: 9px;
 }
-.main-layout .products .product-wrapper .info .product-rating {
+.main-layout .products .product-wrapper .product .info .product-rating {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+.main-layout .about-banners {
+  margin-bottom: 50px;
+}
+.main-layout .about-banners .banner-wrapper .banner {
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.main-layout .about-banners .banner-wrapper .banner .image {
+  padding: 30px 10px;
+}
+.main-layout .about-banners .banner-wrapper .banner .image i {
+  color: rgba(0, 0, 0, 0.5);
+}
+.main-layout .about-banners .banner-wrapper .banner .text {
+  padding: 30px 10px;
+  font-family: "Open Sans", sans-serif;
+  color: rgba(0, 0, 0, 0.5);
+}
+.main-layout .about-banners .banner-wrapper .banner .text .bigger {
+  font-size: 20px;
+  font-weight: bold;
+}
+.main-layout .about-banners .banner-wrapper .banner .text .smaller {
+  font-size: 12px;
+  font-weight: lighter;
+}
+.main-layout .about-banners .banner-wrapper .banner.shipping {
+  background: #1bbc9b;
+}
+.main-layout .about-banners .banner-wrapper .banner.returns {
+  background: #fa5c5b;
+}
+.main-layout .about-banners .banner-wrapper .banner.support {
+  background: #cd7dff;
 }
 
 /*# sourceMappingURL=main.css.map */
