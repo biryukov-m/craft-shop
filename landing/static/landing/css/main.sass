@@ -5,15 +5,35 @@
 // cenbook-regular
 @import "_fonts.sass"
 
-$lighter: #cccccc
-$light: #999999
-$dark: #666666
-$darker: #333333
-$highlight_lightest: #e18cad
-$highlight_lighter: #fe8cb9
-$highlight : #ff4081
-$highlight_darker: #fe4080
-$highlight_darkest: #c1185b
+$lighter: #cecece
+$light: #939393
+$dark: #464646
+$darker: #282828
+//$highlight_lightest: #e18cad
+//$highlight_lighter: #fe8cb9
+$highlight : #cf2027
+
+//$highlight : #ff4081
+//$highlight_lightest: #e18cad
+//$highlight_lighter: #fe8cb9
+//$highlight_darker: #fe4080
+//$highlight_darkest: #c1185b
+
+
+//Блекло красный
+$highlight_lightest: #ffb8c5
+$highlight_lighter: #ff8192
+$highlight_darker: #ff6777
+$highlight_darkest: #cf545c
+$highlight: #f95461
+
+
+// Морковный
+$highlight_lightest: #f6b28f
+$highlight_lighter: #f1936c
+$highlight_darker: #ea704c
+$highlight_darkest: #e54833
+$highlight: #df0024
 
 *
   padding: 0
@@ -34,7 +54,7 @@ a:hover
 
 .top-menu-head
   height: 4vh
-  background: $dark
+  background: $darker
 
 .main-layout
   .top-menu
@@ -110,7 +130,6 @@ a:hover
           top: -6px
 
   .top-billboard
-    height: 580px
     margin-bottom: 30px
 
     .top-billboard-wrapper
@@ -119,19 +138,24 @@ a:hover
         background: $dark
         position: relative
 
+        .background
+          width: 100%
+
         .watermark
           position: absolute
           bottom: 12px
           left: 20px
+          width: 100px
+          opacity: 0.3
 
         .billboard-text
           height: 100%
-          float: right
+          position: absolute
           display: flex
           flex-direction: column
           align-items: center
           justify-content: center
-          margin-right: 2.5rem
+          right: 2.5rem
 
           h2
             font-family: 'cenbook-regular'
@@ -176,7 +200,7 @@ a:hover
           text-align: right
 
           h1
-            font-family: 'cenbook-bold'
+            font-family: 'cenbook-regular'
             font-size: 2rem
             font-weight: bold
             padding-top: 0.6rem
@@ -297,8 +321,7 @@ a:hover
                   text-align: center
                   vertical-align: middle
                   padding: 6px 5px
-                  color: $highlight_lighter
-
+                  color: $highlight_lightest
                 span
                   display: none
                   position: absolute
@@ -326,7 +349,7 @@ a:hover
           //height: 100%
           //width: 100%
           background: rgba(#999, 0.5)
-          border: 5px solid $highlight
+          border: 5px solid $highlight_lightest
 
           .label
             visibility: hidden
@@ -508,13 +531,71 @@ a:hover
             background: $darker
             color: #ffffff
 
-.footer-layout
-  background: $dark
-  .footer-wrapper
-    height: 360px
 
-    .description
+.footer-background
+  background: $darker
+
+  .footer-layout
+    .footer-wrapper
+      //padding: 50px 0
+      font-family: "Open Sans"
+      color: $lighter
+      padding: 50px 0 30px 0
+
+    .info
+      .logo
+        margin-bottom: 30px
+        height: 58px
+
+      .description
+        margin-bottom: 60px
+        font-weight: lighter
+        font-size: 0.9rem
+        line-height: 1.8
 
     .contacts
+      h2
+        font-weight: bold
+        font-size: 1.1rem
+        height: 58px
+        margin-bottom: 30px
+        display: flex
+        align-items: center
+
+      ul
+        font-size: 0.9rem
+        font-weight: lighter
+
+        li
+          margin-bottom: 15px
+
+        ul
+          li
+            .days
+              color: $highlight
+              text-transform: uppercase
+              font-weight: bold
 
     .links
+      h2
+        font-weight: bold
+        font-size: 1.1rem
+        height: 58px
+        margin-bottom: 30px
+        display: flex
+        align-items: center
+
+      ul
+        font-size: 0.9rem
+        font-weight: lighter
+        width: 50%
+        float: left
+
+        li
+          margin-bottom: 15px
+
+          a
+            color: $lighter
+
+          a:hover
+            color: $highlight
