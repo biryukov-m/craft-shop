@@ -5,13 +5,9 @@
 // cenbook-regular
 @import "_fonts.sass"
 
-$lighter: #cecece
-$light: #939393
-$dark: #464646
-$darker: #282828
 //$highlight_lightest: #e18cad
 //$highlight_lighter: #fe8cb9
-$highlight : #cf2027
+//$highlight : #cf2027
 
 //$highlight : #ff4081
 //$highlight_lightest: #e18cad
@@ -21,11 +17,11 @@ $highlight : #cf2027
 
 
 //Блекло красный
-$highlight_lightest: #ffb8c5
-$highlight_lighter: #ff8192
-$highlight_darker: #ff6777
-$highlight_darkest: #cf545c
-$highlight: #f95461
+//$highlight_lightest: #ffb8c5
+//$highlight_lighter: #ff8192
+//$highlight_darker: #ff6777
+//$highlight_darkest: #cf545c
+//$highlight: #f95461
 
 
 // Морковный
@@ -34,6 +30,12 @@ $highlight_lighter: #f1936c
 $highlight_darker: #ea704c
 $highlight_darkest: #e54833
 $highlight: #df0024
+
+$lighter: #cecece
+$light: #939393
+$dark: #464646
+$darker: #282828
+
 
 *
   padding: 0
@@ -52,17 +54,19 @@ a:hover
   color: $lighter
   text-decoration: underline
 
+
 .top-menu-head
   height: 4vh
   background: $darker
 
-.main-layout
-  .top-menu
-    min-height: 88px
 
+.main-layout
+
+  .top-menu
     .top-logo
       display: flex
       align-items: center
+      justify-content: center
 
     .menu-list ul li
       display: inline-flex
@@ -129,6 +133,7 @@ a:hover
           right: -9px
           top: -6px
 
+
   .top-billboard
     margin-bottom: 30px
 
@@ -155,28 +160,25 @@ a:hover
           flex-direction: column
           align-items: center
           justify-content: center
-          right: 2.5rem
+          right: 4%
+          font-family: 'cenbook-regular'
 
           h2
-            font-family: 'cenbook-regular'
             color: #fff
             font-size: 2.25rem
             font-style: italic
             font-weight: bold
 
           h1
-            font-family: 'cenbook-regular'
-            font-size: 5rem
+            font-size: 4.5rem
             color: #fff
             font-weight: bold
 
           h3
-            font-family: 'cenbook-regular'
             font-size: 2.25rem
             color: $lighter
-            margin-bottom: 110px
           a
-            margin: 0 auto
+            margin: 5% auto 0 auto
             font-family: 'cenbook-regular'
             font-size: 1rem
             color: #fff
@@ -191,16 +193,19 @@ a:hover
 
       .banner
         background: $dark
-        height: 190px
+        position: relative
 
+        .background
+          width: 100%
         .banner-text
-          color: $lighter
+          height: 100%
+          position: absolute
+          right: 4%
+          color: rgba(#000, 0.6)
           font-family: 'cenbook-regular'
-          margin-right: 0.9rem
           text-align: right
 
           h1
-            font-family: 'cenbook-regular'
             font-size: 2rem
             font-weight: bold
             padding-top: 0.6rem
@@ -212,7 +217,10 @@ a:hover
 
           h3
             font-size: 1rem
-            margin-bottom: 2.6rem
+            line-height: 20px
+
+          a
+            margin-bottom: 25px
 
 
   .product-header
@@ -226,6 +234,7 @@ a:hover
       .normal
         color: $light
         font-weight: lighter
+
 
   .selectors
     align-items: baseline
@@ -268,6 +277,7 @@ a:hover
       background: $lighter
     .description
       font-size: 0.8rem
+
   .products
     margin-bottom: 40px
 
@@ -380,6 +390,7 @@ a:hover
             position: absolute
             bottom: 0
             right: 0
+
   .about-banners
     margin-bottom: 40px
 
@@ -419,6 +430,7 @@ a:hover
 
       .banner.support
         background: #cd7dff
+
   .adv
     margin-bottom: 40px
     .adv-wrapper
@@ -448,6 +460,7 @@ a:hover
             font-size: 1.125rem
             letter-spacing: 0.25rem
             margin-bottom: 20px
+
 
   .blog-carousel
     margin-bottom: 45px
@@ -486,7 +499,6 @@ a:hover
 
           span ~ span
             padding-left: 10px
-
 
 
   .join-us
@@ -530,7 +542,6 @@ a:hover
           a:hover
             background: $darker
             color: #ffffff
-
 
 .footer-background
   background: $darker
@@ -599,3 +610,121 @@ a:hover
 
           a:hover
             color: $highlight
+
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media screen and (max-width: 1200px)
+
+// Large devices (desktops, 992px and up)
+@media screen and (max-width: 992px)
+  html
+    font-size: 12px
+
+  .main-layout
+    .top-menu
+      .menu-list ul li
+        padding: 0 5px
+        height: 5.5rem
+
+
+
+
+// Medium devices (tablets, 768px and up)
+@media screen and (max-width: 767px)
+  html
+    font-size: 10px
+
+  .main-layout
+    .top-menu
+      .menu-list ul li
+        padding: 0 2px
+
+
+      .icons
+        .icons-inner
+          display: flex
+          justify-content: space-between
+
+          .circle-counter
+            top: 20px
+
+          a ~ a:before
+            content: ""
+
+    .banners
+      .banner-wrapper
+        .banner
+          .banner-text
+            h1
+              font-size: 1.6rem
+            h2
+              font-size: 0.88rem
+            h3
+              font-size: 0.8rem
+
+
+// Small devices (landscape phones, 576px and up)
+@media screen and (max-width: 575px)
+
+  .main-layout
+    .top-menu
+
+      .menu-list
+        display: flex
+        align-items: center
+        justify-content: center
+
+        ul li a
+          font-size: 1.1rem
+
+      .icons
+        display: flex
+        align-items: center
+        justify-content: center
+
+        .icons-inner
+          margin-bottom: 15px
+
+          .circle-counter
+            top: -6px
+
+          a
+            line-height: 1
+
+    .top-billboard
+      .top-billboard-wrapper
+        .top-billboard-inner
+          .billboard-text
+            h2
+              font-size: 4vw
+            h1
+              font-size: 5vw
+            h3
+              font-size: 3vw
+            a
+              font-size: 2.6vw
+
+    .banners
+      .banner-wrapper
+        .banner
+          .background
+            max-width: 360px
+          .banner-text
+            h1
+              font-size: 2vw
+              line-height: normal
+            h2
+              font-size: 1.5vw
+              margin-bottom: 0
+              line-height: normal
+            h3
+              font-size: 1.4vw
+              margin-bottom: 0
+              line-height: normal
+
+
+
+@media screen and (max-width: 475px)
+  html
+    font-size: 8px

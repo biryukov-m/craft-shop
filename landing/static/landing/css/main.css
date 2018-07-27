@@ -33,12 +33,10 @@ a:hover {
   background: #282828;
 }
 
-.main-layout .top-menu {
-  min-height: 88px;
-}
 .main-layout .top-menu .top-logo {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .main-layout .top-menu .menu-list ul li {
   display: inline-flex;
@@ -130,29 +128,26 @@ a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  right: 2.5rem;
+  right: 4%;
+  font-family: "cenbook-regular";
 }
 .main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text h2 {
-  font-family: "cenbook-regular";
   color: #fff;
   font-size: 2.25rem;
   font-style: italic;
   font-weight: bold;
 }
 .main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text h1 {
-  font-family: "cenbook-regular";
-  font-size: 5rem;
+  font-size: 4.5rem;
   color: #fff;
   font-weight: bold;
 }
 .main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text h3 {
-  font-family: "cenbook-regular";
   font-size: 2.25rem;
   color: #cecece;
-  margin-bottom: 110px;
 }
 .main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text a {
-  margin: 0 auto;
+  margin: 5% auto 0 auto;
   font-family: "cenbook-regular";
   font-size: 1rem;
   color: #fff;
@@ -166,16 +161,20 @@ a:hover {
 }
 .main-layout .banners .banner-wrapper .banner {
   background: #464646;
-  height: 190px;
+  position: relative;
+}
+.main-layout .banners .banner-wrapper .banner .background {
+  width: 100%;
 }
 .main-layout .banners .banner-wrapper .banner .banner-text {
-  color: #cecece;
+  height: 100%;
+  position: absolute;
+  right: 4%;
+  color: rgba(0, 0, 0, 0.6);
   font-family: "cenbook-regular";
-  margin-right: 0.9rem;
   text-align: right;
 }
 .main-layout .banners .banner-wrapper .banner .banner-text h1 {
-  font-family: "cenbook-regular";
   font-size: 2rem;
   font-weight: bold;
   padding-top: 0.6rem;
@@ -187,7 +186,10 @@ a:hover {
 }
 .main-layout .banners .banner-wrapper .banner .banner-text h3 {
   font-size: 1rem;
-  margin-bottom: 2.6rem;
+  line-height: 20px;
+}
+.main-layout .banners .banner-wrapper .banner .banner-text a {
+  margin-bottom: 25px;
 }
 .main-layout .product-header .text-wrapper {
   font-size: 2.3rem;
@@ -558,6 +560,103 @@ a:hover {
 }
 .footer-background .footer-layout .links ul li a:hover {
   color: #df0024;
+}
+
+@media screen and (max-width: 992px) {
+  html {
+    font-size: 12px;
+  }
+
+  .main-layout .top-menu .menu-list ul li {
+    padding: 0 5px;
+    height: 5.5rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  html {
+    font-size: 10px;
+  }
+
+  .main-layout .top-menu .menu-list ul li {
+    padding: 0 2px;
+  }
+  .main-layout .top-menu .icons .icons-inner {
+    display: flex;
+    justify-content: space-between;
+  }
+  .main-layout .top-menu .icons .icons-inner .circle-counter {
+    top: 20px;
+  }
+  .main-layout .top-menu .icons .icons-inner a ~ a:before {
+    content: "";
+  }
+  .main-layout .banners .banner-wrapper .banner .banner-text h1 {
+    font-size: 1.6rem;
+  }
+  .main-layout .banners .banner-wrapper .banner .banner-text h2 {
+    font-size: 0.88rem;
+  }
+  .main-layout .banners .banner-wrapper .banner .banner-text h3 {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 575px) {
+  .main-layout .top-menu .menu-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .main-layout .top-menu .menu-list ul li a {
+    font-size: 1.1rem;
+  }
+  .main-layout .top-menu .icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .main-layout .top-menu .icons .icons-inner {
+    margin-bottom: 15px;
+  }
+  .main-layout .top-menu .icons .icons-inner .circle-counter {
+    top: -6px;
+  }
+  .main-layout .top-menu .icons .icons-inner a {
+    line-height: 1;
+  }
+  .main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text h2 {
+    font-size: 4vw;
+  }
+  .main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text h1 {
+    font-size: 5vw;
+  }
+  .main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text h3 {
+    font-size: 3vw;
+  }
+  .main-layout .top-billboard .top-billboard-wrapper .top-billboard-inner .billboard-text a {
+    font-size: 2.6vw;
+  }
+  .main-layout .banners .banner-wrapper .banner .background {
+    max-width: 360px;
+  }
+  .main-layout .banners .banner-wrapper .banner .banner-text h1 {
+    font-size: 2vw;
+    line-height: normal;
+  }
+  .main-layout .banners .banner-wrapper .banner .banner-text h2 {
+    font-size: 1.5vw;
+    margin-bottom: 0;
+    line-height: normal;
+  }
+  .main-layout .banners .banner-wrapper .banner .banner-text h3 {
+    font-size: 1.4vw;
+    margin-bottom: 0;
+    line-height: normal;
+  }
+}
+@media screen and (max-width: 475px) {
+  html {
+    font-size: 8px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
