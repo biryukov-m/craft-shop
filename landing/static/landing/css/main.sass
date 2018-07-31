@@ -36,7 +36,6 @@ $light: #939393
 $dark: #464646
 $darker: #282828
 
-
 *
   padding: 0
   margin: 0
@@ -51,17 +50,12 @@ a:hover
   font-family: 'cenbook-regular'
   text-align: right
   font-size: 0.75rem
-  color: $lighter
   text-decoration: underline
-
-
 .top-menu-head
   height: 4vh
   background: $darker
 
-
 .main-layout
-
   .top-menu
     .top-logo
       display: flex
@@ -133,7 +127,6 @@ a:hover
           right: -9px
           top: -6px
 
-
   .top-billboard
     margin-bottom: 30px
 
@@ -184,17 +177,12 @@ a:hover
             color: #fff
             text-decoration: underline
 
-
   .banners
     margin-bottom: 45px
-
     .banner-wrapper
-      margin-bottom: 25px
-
       .banner
         background: $dark
         position: relative
-
         .background
           width: 100%
         .banner-text
@@ -221,7 +209,7 @@ a:hover
 
           a
             margin-bottom: 25px
-
+            color: rgba(#000, 0.9)
 
   .product-header
     .text-wrapper
@@ -234,7 +222,6 @@ a:hover
       .normal
         color: $light
         font-weight: lighter
-
 
   .selectors
     align-items: baseline
@@ -277,125 +264,120 @@ a:hover
       background: $lighter
     .description
       font-size: 0.8rem
-
   .products
     margin-bottom: 40px
 
     .product-wrapper
       .product
         .face
-          height: 350px
-          background: $dark
           margin-bottom: 15px
-          display: flex
-          align-items: center
-          justify-content: center
-          position: relative
 
-          .label
-            font-family: "Open Sans", sans-serif
-            font-weight: lighter
-            padding: 6px 12px
-            border-radius: 5px
-            position: absolute
-            right: 5px
-            top: 5px
-            font-size: 0.84rem
+          figure
+            .image-wrapper
+              display: flex
+              align-items: center
+              justify-content: center
+              margin-bottom: 15px
 
-          .label.sale
-            background: #ffff04
-            color: #ff1845
+              img
+                width: 100%
 
-          .label.hot
-            background: #ff1845
-            color: #ffffff
+              .label
+                font-family: "Open Sans", sans-serif
+                font-weight: lighter
+                padding: 3px 11px
+                border-radius: 5px
+                position: absolute
+                right: 23px
+                top: 5px
+                font-size: 0.64rem
 
-          .label.new
-            background: #1cbbb4
-            color: #ffffff
+              .label.sale
+                background: #ffff04
+                color: #ff1845
 
-          .active
-            visibility: hidden
-            background: $highlight_darkest
-            border-radius: 5px
-            padding: 0 10px
+              .label.hot
+                background: #ff1845
+                color: #ffffff
+
+              .label.new
+                background: #1cbbb4
+                color: #ffffff
+              .active
+                position: absolute
+                visibility: hidden
+
+                ul
+                  background: $highlight_darkest
+                  border-radius: 5px
+                  padding: 0 10px
+
+                  li
+                    display: inline-block
+                    position: relative
+
+                    a
+                      display: block
+                      text-align: center
+                      vertical-align: middle
+                      padding: 6px 5px
+                      color: $highlight_lightest
+
+                    span
+                      display: none
+                      position: absolute
+                      bottom: -20px
+                      left: -20px
+                      font-size: 1rem
+                      font-family: "Open Sans", sans-serif
+                      font-weight: 300
+                      color: $highlight_darkest
+                      width: 150px
+
+                  li:hover
+                    span
+                      display: block
+
+                    a
+                      background: $highlight_darker
+
+                      i
+                        color: white
 
 
-            ul
-              li
-                display: inline-block
-                position: relative
+            figcaption
+              //margin-left: 10px
+              div
+                font-family: 'Open Sans', sans-serif
+                font-size: 1.25rem
+                font-weight: 300
 
                 a
-                  display: block
-                  text-align: center
-                  vertical-align: middle
-                  padding: 6px 5px
-                  color: $highlight_lightest
-                span
-                  display: none
-                  position: absolute
-                  bottom: -20px
-                  left: -20px
-                  font-size: 1rem
-                  font-family: "Open Sans", sans-serif
-                  font-weight: 300
-                  color: $highlight_darkest
-                  width: 150px
+                  color: $darker
+                  font-size: 1.25rem
 
-              li:hover
-                span
-                  display: block
+              .product-category a
+                font-size: 0.75rem
 
-                a
-                  background: $highlight_darker
-
-                  i
-                    color: white
+              .product-rating
+                position: absolute
+                bottom: 13px
+                right: 16px
 
         .face:hover
-          //display: none
-          //display: block
-          //height: 100%
-          //width: 100%
-          background: rgba(#999, 0.5)
-          border: 5px solid $highlight_lightest
-
-          .label
-            visibility: hidden
-
-          .active
-            visibility: visible
-
-        .info
-          margin-left: 10px
-          position: relative
-
-          div
-            font-family: 'Open Sans', sans-serif
-            font-size: 1.25rem
-            font-weight: 300
-
-            a
-              color: $darker
-
-          .product-title
-            margin-bottom: 5px
-
-          .product-category
-            font-size: 0.75rem
-            margin-bottom: 9px
-
-          .product-rating
-            position: absolute
-            bottom: 0
-            right: 0
+          figure
+            .image-wrapper
+              .active
+                visibility: visible
+              img
+                outline: 5px solid $highlight_darkest
+                opacity: 0.5
 
   .about-banners
     margin-bottom: 40px
-
     .banner-wrapper
       .banner
+        height: 140px
         border-radius: 5px
         display: flex
         justify-content: center
@@ -403,16 +385,15 @@ a:hover
         margin-bottom: 15px
 
         .image
-          padding: 30px 10px
+          padding: 0 0 0 15px
 
           i
             color: rgba(#000, 0.5)
 
         .text
-          padding: 30px 10px
+          padding: 0 15px
           font-family: "Open Sans", sans-serif
           color: rgba(#000, 0.5)
-
 
           .bigger
             font-size: 1.4rem
@@ -430,23 +411,34 @@ a:hover
 
       .banner.support
         background: #cd7dff
-
   .adv
     margin-bottom: 40px
+
     .adv-wrapper
       .adv-inner
-        height: 360px
         background: $dark
+        position: relative
+
+        img
+          width: 100%
+
         .text
-          margin-right: 45px
-          color: $lighter
+          display: flex
+          flex-direction: column
+          align-items: flex-end
+          justify-content: center
+          bottom: 0
+          right: 45px
+          height: 100%
+          position: absolute
+          //margin-right: 45px
+          color: #000000
           text-align: right
           font-family: 'cenbook-regular'
-          height: 100%
 
           .top
             font-size: 2.5rem
-            padding-top: 110px
+            padding-top: 4%
             line-height: 0.9
             letter-spacing: 0.2rem
 
@@ -459,8 +451,7 @@ a:hover
           .bottom
             font-size: 1.125rem
             letter-spacing: 0.25rem
-            margin-bottom: 20px
-
+            margin-bottom: 3%
 
   .blog-carousel
     margin-bottom: 45px
@@ -499,7 +490,6 @@ a:hover
 
           span ~ span
             padding-left: 10px
-
 
   .join-us
     margin-bottom: 45px
@@ -611,10 +601,64 @@ a:hover
           a:hover
             color: $highlight
 
-
-
 // Extra large devices (large desktops, 1200px and up)
 @media screen and (max-width: 1200px)
+  .main-layout
+    .top-billboard
+      margin-bottom: 2vw
+
+    .banners
+      margin-bottom: 2vw
+
+    .products
+      margin-bottom: 2vw
+
+    .about-banners
+      margin-bottom: 2vw
+
+      .banner-wrapper
+        .banner
+          height: 90px
+
+          .image
+            padding: 0 0 0 10px
+
+            i
+              font-size: 4rem
+          .text
+            padding: 0 10px
+
+            .bigger
+              font-size: 1.2rem
+            .smaller
+              font-size: 1rem
+
+    .adv
+      margin-bottom: 2vw
+
+      .adv-wrapper
+        .adv-inner
+          .text
+            .top
+              font-size: 1.75rem
+              padding-top: 8%
+
+            .middle
+              font-weight: bold
+              font-size: 4.55rem
+              line-height: 0.9
+              letter-spacing: 0.6rem
+
+            .bottom
+              font-size: 0.79rem
+              letter-spacing: 0.25rem
+              margin-bottom: 3%
+
+    .blog-carousel
+      margin-bottom: 2vw
+
+    .join-us
+      margin-bottom: 2vw
 
 // Large devices (desktops, 992px and up)
 @media screen and (max-width: 992px)
@@ -626,20 +670,40 @@ a:hover
       .menu-list ul li
         padding: 0 5px
         height: 5.5rem
-
-
-
+    .products
+      margin-bottom: 15px
+    .banners
+      .banner-wrapper
+        .banner
+          .banner-text
+            h1
+              margin-bottom: 1%
+            h2
+              margin-bottom: 4%
+            h3
+              margin-bottom: 3%
+    .about-banners
+      margin-bottom: 0
+      .banner-wrapper
+        .banner
+          height: 80px
+          .image
+            i
+              font-size: 3.7rem
+          .text
+            .bigger
+              font-size: 1.1rem
+            .smaller
+              font-size: 0.9rem
 
 // Medium devices (tablets, 768px and up)
 @media screen and (max-width: 767px)
   html
     font-size: 10px
-
   .main-layout
     .top-menu
       .menu-list ul li
         padding: 0 2px
-
 
       .icons
         .icons-inner
@@ -657,32 +721,46 @@ a:hover
         .banner
           .banner-text
             h1
-              font-size: 1.6rem
+              font-size: 1.4rem
+              margin-bottom: 0
             h2
-              font-size: 0.88rem
+              font-size: 0.7rem
+              margin-bottom: 0
             h3
-              font-size: 0.8rem
+              font-size: 0.65rem
+              margin-bottom: 0
+    .products
+      .product-wrapper
+        .product
+          .face
+            figure
+              .image-wrapper
+                .active
+                  ul
+                    padding: 0 15px
+                    li
+                      a
+                        padding: 10px 8px
+                        i
+                          font-size: 3rem
+
+
 
 
 // Small devices (landscape phones, 576px and up)
 @media screen and (max-width: 575px)
-
   .main-layout
     .top-menu
-
       .menu-list
         display: flex
         align-items: center
         justify-content: center
-
         ul li a
           font-size: 1.1rem
-
       .icons
         display: flex
         align-items: center
         justify-content: center
-
         .icons-inner
           margin-bottom: 15px
 
@@ -691,7 +769,6 @@ a:hover
 
           a
             line-height: 1
-
     .top-billboard
       .top-billboard-wrapper
         .top-billboard-inner
@@ -722,9 +799,30 @@ a:hover
               font-size: 1.4vw
               margin-bottom: 0
               line-height: normal
-
-
-
+    .products
+      .product-wrapper
+        .product
+          .face
+            figure
+              .image-wrapper
+                float: left
+                margin-right: 5vw
+                img
+                  width: inherit
+                  max-height: 95vh
+    .about-banners
+      margin-bottom: 0
+      .banner-wrapper
+        .banner
+          height: 80px
+          .image
+            i
+              font-size: 5.6rem
+          .text
+            .bigger
+              font-size: 2rem
+            .smaller
+              font-size: 1.6rem
 @media screen and (max-width: 475px)
   html
     font-size: 8px

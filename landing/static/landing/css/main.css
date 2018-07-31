@@ -24,7 +24,6 @@ a:hover {
   font-family: "cenbook-regular";
   text-align: right;
   font-size: 0.75rem;
-  color: #cecece;
   text-decoration: underline;
 }
 
@@ -156,9 +155,6 @@ a:hover {
 .main-layout .banners {
   margin-bottom: 45px;
 }
-.main-layout .banners .banner-wrapper {
-  margin-bottom: 25px;
-}
 .main-layout .banners .banner-wrapper .banner {
   background: #464646;
   position: relative;
@@ -190,6 +186,7 @@ a:hover {
 }
 .main-layout .banners .banner-wrapper .banner .banner-text a {
   margin-bottom: 25px;
+  color: rgba(0, 0, 0, 0.9);
 }
 .main-layout .product-header .text-wrapper {
   font-size: 2.3rem;
@@ -249,54 +246,60 @@ a:hover {
   margin-bottom: 40px;
 }
 .main-layout .products .product-wrapper .product .face {
-  height: 350px;
-  background: #464646;
   margin-bottom: 15px;
+}
+.main-layout .products .product-wrapper .product .face figure .image-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  margin-bottom: 15px;
 }
-.main-layout .products .product-wrapper .product .face .label {
+.main-layout .products .product-wrapper .product .face figure .image-wrapper img {
+  width: 100%;
+}
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .label {
   font-family: "Open Sans", sans-serif;
   font-weight: lighter;
-  padding: 6px 12px;
+  padding: 3px 11px;
   border-radius: 5px;
   position: absolute;
-  right: 5px;
+  right: 23px;
   top: 5px;
-  font-size: 0.84rem;
+  font-size: 0.64rem;
 }
-.main-layout .products .product-wrapper .product .face .label.sale {
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .label.sale {
   background: #ffff04;
   color: #ff1845;
 }
-.main-layout .products .product-wrapper .product .face .label.hot {
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .label.hot {
   background: #ff1845;
   color: #ffffff;
 }
-.main-layout .products .product-wrapper .product .face .label.new {
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .label.new {
   background: #1cbbb4;
   color: #ffffff;
 }
-.main-layout .products .product-wrapper .product .face .active {
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .active {
+  position: absolute;
   visibility: hidden;
+}
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .active ul {
   background: #e54833;
   border-radius: 5px;
   padding: 0 10px;
 }
-.main-layout .products .product-wrapper .product .face .active ul li {
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .active ul li {
   display: inline-block;
   position: relative;
 }
-.main-layout .products .product-wrapper .product .face .active ul li a {
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .active ul li a {
   display: block;
   text-align: center;
   vertical-align: middle;
   padding: 6px 5px;
   color: #f6b28f;
 }
-.main-layout .products .product-wrapper .product .face .active ul li span {
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .active ul li span {
   display: none;
   position: absolute;
   bottom: -20px;
@@ -307,53 +310,44 @@ a:hover {
   color: #e54833;
   width: 150px;
 }
-.main-layout .products .product-wrapper .product .face .active ul li:hover span {
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .active ul li:hover span {
   display: block;
 }
-.main-layout .products .product-wrapper .product .face .active ul li:hover a {
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .active ul li:hover a {
   background: #ea704c;
 }
-.main-layout .products .product-wrapper .product .face .active ul li:hover a i {
+.main-layout .products .product-wrapper .product .face figure .image-wrapper .active ul li:hover a i {
   color: white;
 }
-.main-layout .products .product-wrapper .product .face:hover {
-  background: rgba(153, 153, 153, 0.5);
-  border: 5px solid #f6b28f;
-}
-.main-layout .products .product-wrapper .product .face:hover .label {
-  visibility: hidden;
-}
-.main-layout .products .product-wrapper .product .face:hover .active {
-  visibility: visible;
-}
-.main-layout .products .product-wrapper .product .info {
-  margin-left: 10px;
-  position: relative;
-}
-.main-layout .products .product-wrapper .product .info div {
+.main-layout .products .product-wrapper .product .face figure figcaption div {
   font-family: "Open Sans", sans-serif;
   font-size: 1.25rem;
   font-weight: 300;
 }
-.main-layout .products .product-wrapper .product .info div a {
+.main-layout .products .product-wrapper .product .face figure figcaption div a {
   color: #282828;
+  font-size: 1.25rem;
 }
-.main-layout .products .product-wrapper .product .info .product-title {
-  margin-bottom: 5px;
-}
-.main-layout .products .product-wrapper .product .info .product-category {
+.main-layout .products .product-wrapper .product .face figure figcaption .product-category a {
   font-size: 0.75rem;
-  margin-bottom: 9px;
 }
-.main-layout .products .product-wrapper .product .info .product-rating {
+.main-layout .products .product-wrapper .product .face figure figcaption .product-rating {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 13px;
+  right: 16px;
+}
+.main-layout .products .product-wrapper .product .face:hover figure .image-wrapper .active {
+  visibility: visible;
+}
+.main-layout .products .product-wrapper .product .face:hover figure .image-wrapper img {
+  outline: 5px solid #e54833;
+  opacity: 0.5;
 }
 .main-layout .about-banners {
   margin-bottom: 40px;
 }
 .main-layout .about-banners .banner-wrapper .banner {
+  height: 140px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -361,13 +355,13 @@ a:hover {
   margin-bottom: 15px;
 }
 .main-layout .about-banners .banner-wrapper .banner .image {
-  padding: 30px 10px;
+  padding: 0 0 0 15px;
 }
 .main-layout .about-banners .banner-wrapper .banner .image i {
   color: rgba(0, 0, 0, 0.5);
 }
 .main-layout .about-banners .banner-wrapper .banner .text {
-  padding: 30px 10px;
+  padding: 0 15px;
   font-family: "Open Sans", sans-serif;
   color: rgba(0, 0, 0, 0.5);
 }
@@ -392,19 +386,28 @@ a:hover {
   margin-bottom: 40px;
 }
 .main-layout .adv .adv-wrapper .adv-inner {
-  height: 360px;
   background: #464646;
+  position: relative;
+}
+.main-layout .adv .adv-wrapper .adv-inner img {
+  width: 100%;
 }
 .main-layout .adv .adv-wrapper .adv-inner .text {
-  margin-right: 45px;
-  color: #cecece;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  bottom: 0;
+  right: 45px;
+  height: 100%;
+  position: absolute;
+  color: #000000;
   text-align: right;
   font-family: "cenbook-regular";
-  height: 100%;
 }
 .main-layout .adv .adv-wrapper .adv-inner .text .top {
   font-size: 2.5rem;
-  padding-top: 110px;
+  padding-top: 4%;
   line-height: 0.9;
   letter-spacing: 0.2rem;
 }
@@ -417,7 +420,7 @@ a:hover {
 .main-layout .adv .adv-wrapper .adv-inner .text .bottom {
   font-size: 1.125rem;
   letter-spacing: 0.25rem;
-  margin-bottom: 20px;
+  margin-bottom: 3%;
 }
 .main-layout .blog-carousel {
   margin-bottom: 45px;
@@ -562,6 +565,62 @@ a:hover {
   color: #df0024;
 }
 
+@media screen and (max-width: 1200px) {
+  .main-layout .top-billboard {
+    margin-bottom: 2vw;
+  }
+  .main-layout .banners {
+    margin-bottom: 2vw;
+  }
+  .main-layout .products {
+    margin-bottom: 2vw;
+  }
+  .main-layout .about-banners {
+    margin-bottom: 2vw;
+  }
+  .main-layout .about-banners .banner-wrapper .banner {
+    height: 90px;
+  }
+  .main-layout .about-banners .banner-wrapper .banner .image {
+    padding: 0 0 0 10px;
+  }
+  .main-layout .about-banners .banner-wrapper .banner .image i {
+    font-size: 4rem;
+  }
+  .main-layout .about-banners .banner-wrapper .banner .text {
+    padding: 0 10px;
+  }
+  .main-layout .about-banners .banner-wrapper .banner .text .bigger {
+    font-size: 1.2rem;
+  }
+  .main-layout .about-banners .banner-wrapper .banner .text .smaller {
+    font-size: 1rem;
+  }
+  .main-layout .adv {
+    margin-bottom: 2vw;
+  }
+  .main-layout .adv .adv-wrapper .adv-inner .text .top {
+    font-size: 1.75rem;
+    padding-top: 8%;
+  }
+  .main-layout .adv .adv-wrapper .adv-inner .text .middle {
+    font-weight: bold;
+    font-size: 4.55rem;
+    line-height: 0.9;
+    letter-spacing: 0.6rem;
+  }
+  .main-layout .adv .adv-wrapper .adv-inner .text .bottom {
+    font-size: 0.79rem;
+    letter-spacing: 0.25rem;
+    margin-bottom: 3%;
+  }
+  .main-layout .blog-carousel {
+    margin-bottom: 2vw;
+  }
+  .main-layout .join-us {
+    margin-bottom: 2vw;
+  }
+}
 @media screen and (max-width: 992px) {
   html {
     font-size: 12px;
@@ -570,6 +629,33 @@ a:hover {
   .main-layout .top-menu .menu-list ul li {
     padding: 0 5px;
     height: 5.5rem;
+  }
+  .main-layout .products {
+    margin-bottom: 15px;
+  }
+  .main-layout .banners .banner-wrapper .banner .banner-text h1 {
+    margin-bottom: 1%;
+  }
+  .main-layout .banners .banner-wrapper .banner .banner-text h2 {
+    margin-bottom: 4%;
+  }
+  .main-layout .banners .banner-wrapper .banner .banner-text h3 {
+    margin-bottom: 3%;
+  }
+  .main-layout .about-banners {
+    margin-bottom: 0;
+  }
+  .main-layout .about-banners .banner-wrapper .banner {
+    height: 80px;
+  }
+  .main-layout .about-banners .banner-wrapper .banner .image i {
+    font-size: 3.7rem;
+  }
+  .main-layout .about-banners .banner-wrapper .banner .text .bigger {
+    font-size: 1.1rem;
+  }
+  .main-layout .about-banners .banner-wrapper .banner .text .smaller {
+    font-size: 0.9rem;
   }
 }
 @media screen and (max-width: 767px) {
@@ -591,13 +677,25 @@ a:hover {
     content: "";
   }
   .main-layout .banners .banner-wrapper .banner .banner-text h1 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    margin-bottom: 0;
   }
   .main-layout .banners .banner-wrapper .banner .banner-text h2 {
-    font-size: 0.88rem;
+    font-size: 0.7rem;
+    margin-bottom: 0;
   }
   .main-layout .banners .banner-wrapper .banner .banner-text h3 {
-    font-size: 0.8rem;
+    font-size: 0.65rem;
+    margin-bottom: 0;
+  }
+  .main-layout .products .product-wrapper .product .face figure .image-wrapper .active ul {
+    padding: 0 15px;
+  }
+  .main-layout .products .product-wrapper .product .face figure .image-wrapper .active ul li a {
+    padding: 10px 8px;
+  }
+  .main-layout .products .product-wrapper .product .face figure .image-wrapper .active ul li a i {
+    font-size: 3rem;
   }
 }
 @media screen and (max-width: 575px) {
@@ -651,6 +749,29 @@ a:hover {
     font-size: 1.4vw;
     margin-bottom: 0;
     line-height: normal;
+  }
+  .main-layout .products .product-wrapper .product .face figure .image-wrapper {
+    float: left;
+    margin-right: 5vw;
+  }
+  .main-layout .products .product-wrapper .product .face figure .image-wrapper img {
+    width: inherit;
+    max-height: 95vh;
+  }
+  .main-layout .about-banners {
+    margin-bottom: 0;
+  }
+  .main-layout .about-banners .banner-wrapper .banner {
+    height: 80px;
+  }
+  .main-layout .about-banners .banner-wrapper .banner .image i {
+    font-size: 5.6rem;
+  }
+  .main-layout .about-banners .banner-wrapper .banner .text .bigger {
+    font-size: 2rem;
+  }
+  .main-layout .about-banners .banner-wrapper .banner .text .smaller {
+    font-size: 1.6rem;
   }
 }
 @media screen and (max-width: 475px) {
