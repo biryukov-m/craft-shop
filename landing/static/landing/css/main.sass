@@ -55,7 +55,7 @@ a:hover
   height: 4vh
   background: $darker
 
-.main-layout
+.top-menu-layout
   .top-menu
     .top-logo
       display: flex
@@ -127,6 +127,7 @@ a:hover
           right: -9px
           top: -6px
 
+.main-layout
   .top-billboard
     margin-bottom: 30px
 
@@ -240,6 +241,7 @@ a:hover
             font-size: 0.8rem
             display: inline-block
             text-align: center
+            vertical-align: middle
             text-transform: uppercase
 
           a.active, a:hover
@@ -262,8 +264,12 @@ a:hover
     .line
       height: 5px
       background: $lighter
+    .paginator
+      a
+        margin: 0 1px
     .description
       font-size: 0.8rem
+
   .products
     margin-bottom: 40px
 
@@ -278,6 +284,7 @@ a:hover
               align-items: center
               justify-content: center
               margin-bottom: 15px
+              position: relative
 
               img
                 width: 100%
@@ -288,7 +295,7 @@ a:hover
                 padding: 3px 11px
                 border-radius: 5px
                 position: absolute
-                right: 23px
+                right: 5px
                 top: 5px
                 font-size: 0.64rem
 
@@ -461,16 +468,17 @@ a:hover
 
       .blog-image
         background: $dark
-        height: 190px
         margin-bottom: 10px
+
+        img
+          width: 100%
 
       .blog-info
         font-family: "Open Sans"
         font-weight: lighter
-        color: $light
+        color: $dark
 
         .title
-          color: $dark
           font-size: 1.3rem
 
         .info
@@ -481,128 +489,136 @@ a:hover
           .datetime
             margin-bottom: 25px
 
-          .intro
-            font-size: 1rem
+        .intro
+          font-size: 1rem
+          color: $light
 
-          span
-            i
-              padding-right: 5px
+        span
+          i
+            padding-right: 5px
 
-          span ~ span
-            padding-left: 10px
+        span ~ span
+          padding-left: 10px
 
   .join-us
     margin-bottom: 45px
+
     .banner-wrapper
-      background: $dark
       .banner-inner
-        height: 360px
         display: flex
         justify-content: center
-        //text-align: center
-        .text
+
+        .image
+          position: relative
+
+          img
+            width: 100%
+
+          .text
+            top: 0
+            height: 100%
+            position: absolute
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: center
+            text-align: center
+            color: #fff
+            font-family: "Open Sans"
+
+            h2
+              font-size: 4rem
+              font-weight: 800
+
+            h3
+              font-size: 1.4rem
+              font-weight: lighter
+              margin-bottom: 45px
+
+            a
+              font-size: 1.17rem
+              color: $darker
+              padding: 5px 16px
+              border-radius: 5px
+              background: #ffffff
+              font-weight: lighter
+
+            a:hover
+              background: $darker
+              color: #ffffff
+
+footer
+  .footer-background
+    background: $darker
+
+    .footer-layout
+      .footer-wrapper
+        //padding: 50px 0
+        font-family: "Open Sans"
+        color: $lighter
+        padding: 50px 0 30px 0
+
+      .info
+        .logo
+          margin-bottom: 30px
+          height: 58px
+
+        .description
+          margin-bottom: 60px
+          font-weight: lighter
+          font-size: 0.9rem
+          line-height: 1.8
+
+      .contacts
+        h2
+          font-weight: bold
+          font-size: 1.1rem
+          height: 58px
+          margin-bottom: 30px
           display: flex
-          flex-direction: column
-          align-items: center
-          justify-content: center
-          text-align: center
-          color: #fff
-          font-family: "Open Sans"
-
-          h2
-            font-size: 4rem
-            font-weight: 800
-
-
-          h3
-            font-size: 1.4rem
-            font-weight: lighter
-            margin-bottom: 45px
-
-          a
-            //margin: 0 auto
-            margin-bottom: 30px
-            font-size: 1.17rem
-            color: $darker
-            padding: 5px 16px
-            border-radius: 5px
-            background: #ffffff
-            font-weight: lighter
-
-          a:hover
-            background: $darker
-            color: #ffffff
-
-.footer-background
-  background: $darker
-
-  .footer-layout
-    .footer-wrapper
-      //padding: 50px 0
-      font-family: "Open Sans"
-      color: $lighter
-      padding: 50px 0 30px 0
-
-    .info
-      .logo
-        margin-bottom: 30px
-        height: 58px
-
-      .description
-        margin-bottom: 60px
-        font-weight: lighter
-        font-size: 0.9rem
-        line-height: 1.8
-
-    .contacts
-      h2
-        font-weight: bold
-        font-size: 1.1rem
-        height: 58px
-        margin-bottom: 30px
-        display: flex
-        align-items: center
-
-      ul
-        font-size: 0.9rem
-        font-weight: lighter
-
-        li
-          margin-bottom: 15px
+          align-items: flex-end
 
         ul
+          font-size: 0.9rem
+          font-weight: lighter
+
           li
-            .days
+            margin-bottom: 15px
+
+          ul
+            li
+              .days
+                color: $highlight
+                text-transform: uppercase
+                font-weight: bold
+
+      .links
+        h2
+          font-weight: bold
+          font-size: 1.1rem
+          height: 58px
+          margin-bottom: 30px
+          display: flex
+          align-items: flex-end
+
+        ul
+          font-size: 0.9rem
+          font-weight: lighter
+          width: 50%
+          float: left
+
+          li
+            margin-bottom: 15px
+
+            a
+              color: $lighter
+
+            a:hover
               color: $highlight
-              text-transform: uppercase
-              font-weight: bold
 
-    .links
-      h2
-        font-weight: bold
-        font-size: 1.1rem
-        height: 58px
-        margin-bottom: 30px
-        display: flex
-        align-items: center
-
-      ul
-        font-size: 0.9rem
-        font-weight: lighter
-        width: 50%
-        float: left
-
-        li
-          margin-bottom: 15px
-
-          a
-            color: $lighter
-
-          a:hover
-            color: $highlight
 
 // Extra large devices (large desktops, 1200px and up)
-@media screen and (max-width: 1200px)
+@media screen and (max-width: 1199px)
   .main-layout
     .top-billboard
       margin-bottom: 2vw
@@ -660,16 +676,69 @@ a:hover
     .join-us
       margin-bottom: 2vw
 
+  .footer-background
+    .footer-layout
+      .footer-wrapper
+        .info
+          .logo
+            margin-bottom: 30px
+            height: 58px
+
+          .description
+            margin-bottom: 60px
+            font-size: 0.8rem
+            line-height: 1.8
+
+        .contacts
+          h2
+            font-size: 1.1rem
+            height: 58px
+            margin-bottom: 30px
+            display: flex
+            align-items: center
+
+          ul
+            font-size: 0.8rem
+            font-weight: lighter
+
+            li
+              margin-bottom: 15px
+
+            ul
+              li
+                .days
+                  color: $highlight
+                  text-transform: uppercase
+                  font-weight: bold
+
+        .links
+          h2
+            font-weight: bold
+            font-size: 1.1rem
+            height: 58px
+            margin-bottom: 30px
+            display: flex
+            align-items: center
+
+          ul
+            font-size: 0.8rem
+            font-weight: lighter
+
+            li
+              margin-bottom: 15px
+
 // Large devices (desktops, 992px and up)
-@media screen and (max-width: 992px)
+@media screen and (max-width: 991px)
   html
     font-size: 12px
 
-  .main-layout
+  .top-menu-layout
     .top-menu
       .menu-list ul li
         padding: 0 5px
         height: 5.5rem
+
+  .main-layout
     .products
       margin-bottom: 15px
     .banners
@@ -695,12 +764,53 @@ a:hover
               font-size: 1.1rem
             .smaller
               font-size: 0.9rem
+    .selectors
+      .description
+        font-size: 1rem
+        width: 100%
+
+  .footer-background
+    .footer-layout
+      .footer-wrapper
+        .info
+          margin-bottom: 3vw
+
+          .logo
+            float: left
+            padding-right: 2vw
+            height: 100px
+            margin-bottom: 0
+
+          .description
+            margin-bottom: 2vw
+            font-size: 1rem
+            line-height: 1.8
+
+        .contacts
+          h2
+            font-size: 1.1rem
+            height: auto
+            margin-bottom: 2.5vw
+
+          ul
+            font-size: 1rem
+
+        .links
+          h2
+            font-size: 1.1rem
+            height: auto
+            margin-bottom: 2.5vw
+
+
+          ul
+            font-size: 1rem
 
 // Medium devices (tablets, 768px and up)
 @media screen and (max-width: 767px)
   html
     font-size: 10px
-  .main-layout
+
+  .top-menu-layout
     .top-menu
       .menu-list ul li
         padding: 0 2px
@@ -716,6 +826,9 @@ a:hover
           a ~ a:before
             content: ""
 
+
+
+  .main-layout
     .banners
       .banner-wrapper
         .banner
@@ -735,6 +848,10 @@ a:hover
           .face
             figure
               .image-wrapper
+                .label
+                  padding: 3px 11px
+                  font-size: 1rem
+
                 .active
                   ul
                     padding: 0 15px
@@ -744,12 +861,57 @@ a:hover
                         i
                           font-size: 3rem
 
+    .blog-carousel
+      .blog-wrapper
+        .blog-image
+          display: flex
+          justify-content: center
+          align-items: center
 
+          img
+            width: auto
+            margin: 0 auto
 
+        .blog-info
+          .title
+            font-size: 1.4rem
+
+          .info
+            .datetime, .category, .author
+              font-size: 1rem
+
+          .intro
+            font-size: 1.25rem
+    .selectors
+      .col.line
+        display: none
+  .footer-background
+    .footer-layout
+      .footer-wrapper
+        .info
+          .logo
+            height: 100px
+
+          .description
+            font-size: 1.2rem
+
+        .contacts
+          h2
+            font-size: 1.4rem
+
+          ul
+            font-size: 1.2rem
+
+        .links
+          h2
+            font-size: 1.4rem
+
+          ul
+            font-size: 1.2rem
 
 // Small devices (landscape phones, 576px and up)
 @media screen and (max-width: 575px)
-  .main-layout
+  .top-menu-layout
     .top-menu
       .menu-list
         display: flex
@@ -769,6 +931,8 @@ a:hover
 
           a
             line-height: 1
+
+  .main-layout
     .top-billboard
       .top-billboard-wrapper
         .top-billboard-inner
@@ -823,6 +987,67 @@ a:hover
               font-size: 2rem
             .smaller
               font-size: 1.6rem
+    .join-us
+      .banner-wrapper
+        .banner-inner
+          .image
+            .text
+              h2
+                font-size: 3rem
+
+              h3
+                font-size: 1.1rem
+
+              a
+                font-size: 1rem
+  .footer-background
+    .footer-layout
+      .footer-wrapper
+        .info
+          .logo
+            float: none
+            height: auto
+            margin-bottom: 2vw
+
+          .description
+            font-size: 1rem
+
+        .contacts
+          h2
+            font-size: 1.2rem
+
+          ul
+            font-size: 1rem
+
+        .links
+          h2
+            font-size: 1.2rem
+
+          ul
+            font-size: 1rem
+
 @media screen and (max-width: 475px)
   html
     font-size: 8px
+
+  .footer-background
+    .footer-layout
+      .footer-wrapper
+        .info
+
+          .description
+            font-size: 1.2rem
+
+        .contacts
+          h2
+            font-size: 1.4rem
+
+          ul
+            font-size: 1.2rem
+
+        .links
+          h2
+            font-size: 1.4rem
+
+          ul
+            font-size: 1.2rem
