@@ -8,10 +8,21 @@ class Status(models.Model):
     name = models.CharField(null=True,
                             default=None,
                             max_length=64,
-                            verbose_name="Назва статуса")
+                            verbose_name="Програмна назва")
+
+    verbose_name = models.CharField(null=True,
+                                    default=None,
+                                    max_length=64,
+                                    verbose_name="Назва")
+
+    description = models.TextField(blank=True,
+                                   null=True,
+                                   default=None,
+                                   max_length=300,
+                                   verbose_name="Опис")
 
     def __str__(self):
-        return "{}".format(self.name)
+        return "{}".format(self.verbose_name)
 
     class Meta:
         verbose_name = "Статус замовлення"
@@ -26,6 +37,8 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True,
                                    auto_now_add=False,
                                    verbose_name="Оновлено")
+
+    code = models.PositiveSmallIntegerField(default=None, editable=False, verbose_name="Код")
 
     customer_name = models.CharField(max_length=64,
                                      verbose_name="Ім'я покупця")
@@ -60,8 +73,21 @@ class Order(models.Model):
                                       max_digits=10,
                                       verbose_name="Загальна ціна замовлення")
 
+    manager_comment = models.TextField(blank=True,
+                                       null=True,
+                                       default=None,
+                                       max_length=300,
+                                       verbose_name="Примітки")
+
+    is_new = models.BooleanField(default=True, editable=False, verbose_name="Нове")
+    is_opened = models.BooleanField(default=False, editable=False, verbose_name="Відкрито")
+    is_verified = models.BooleanField(default=False, editable=False, verbose_name="Перевірено")
+    is_sent = models.BooleanField(default=False, editable=False, verbose_name="Відправлено")
+    is_received = models.BooleanField(default=False, editable=False, verbose_name="Отримано")
+    is_paid = models.BooleanField(default=False, editable=False, verbose_name="Оплачено")
+
     def __str__(self):
-        return "{}. {}, {}. {}. {}".format(self.id,
+        return "{}. {}, {}. {}. {}".format(self.code,
                                            self.customer_name.capitalize(),
                                            self.customer_email.lower(),
                                            self.total_price,

@@ -16,7 +16,7 @@ class Gender(models.Model):
 
 class Brand(models.Model):
     name = models.CharField(verbose_name="виробник", max_length=30)
-    description = models.CharField(verbose_name="опис", max_length=3000)
+    description = models.TextField(verbose_name="опис", max_length=30000)
 
     class Meta:
         verbose_name = "виробник"
@@ -28,7 +28,7 @@ class Brand(models.Model):
 
 class Fabric(models.Model):
     name = models.CharField(verbose_name="назва", max_length=30)
-    description = models.CharField(verbose_name="опис", max_length=3000)
+    description = models.TextField(verbose_name="опис", max_length=30000)
 
     class Meta:
         verbose_name = "тканина"
