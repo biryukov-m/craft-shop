@@ -14,13 +14,46 @@ def get_upload_path(instance, filename):
     )
 
 
+class ShopDepartment(models.Model):
+    name = models.CharField(default=None, max_length=100, verbose_name="назва")
+    code_name = models.CharField(default=None, max_length=100, verbose_name="програмна назва")
+    notes = models.TextField(default=None, blank=True, max_length=2000, verbose_name="примітки")
+
+    class Meta:
+        verbose_name = "розділ магазину"
+        verbose_name_plural = "розділи магазину"
+
+
+class ShopSection(models.Model):
+    name = models.CharField(default=None, max_length=100, verbose_name="назва")
+    code_name = models.CharField(default=None, max_length=100, verbose_name="програмна назва")
+    notes = models.TextField(default=None, blank=True, max_length=2000, verbose_name="примітки")
+
+    class Meta:
+        verbose_name = "секція магазину"
+        verbose_name_plural = "секції магазину"
+
+
+class ItemType(models.Model):
+    name = models.CharField(default=None, max_length=100, verbose_name="назва типу товару")
+    name_plural = models.CharField(default=None, max_length=100, verbose_name="назва типу товару")
+    code_name = models.CharField(default=None, max_length=100, verbose_name="програмна назва")
+    notes = models.TextField(default=None, blank=True, max_length=2000, verbose_name="примітки")
+
+    class Meta:
+        verbose_name = "тип товару"
+        verbose_name_plural = "типи товару"
+
+
 # Абстрактный класс для единицы товара
 class Item(models.Model):
-    # code = models.PositiveIntegerField(default=None, blank=True, verbose_name="код", unique=True, editable=False)
+    code = models.PositiveIntegerField(default=None, blank=True, verbose_name="код", unique=True, editable=False)
     name = models.CharField(default=None,
                             blank=True,
                             verbose_name='найменування',
                             max_length=40)
+
+    item_type = models.ForeignKey(ItemType, verbose_name="тип товару", on_delete=models.DO_NOTHING)
 
     description = models.TextField(default=None,
                                    verbose_name='опис',
@@ -47,23 +80,14 @@ class Item(models.Model):
                                  blank=True,
                                  max_length=20)
 
-    class Meta:
-        abstract = True
-
-    def __str__(self):
-        return "{} - {}".format(self.name, self.price)
-
-
-# Абстрактный класс для элементов одежды
-class Clothes(Item):
     gender = models.ForeignKey(properties.Gender, on_delete=models.PROTECT, verbose_name="стать")
     brand = models.ForeignKey(properties.Brand, on_delete=models.PROTECT, verbose_name="виробник")
     fabric = models.ForeignKey(properties.Fabric, on_delete=models.PROTECT, verbose_name="тканина")
     color = models.ForeignKey(properties.Color, on_delete=models.PROTECT, verbose_name="колір")
     size = models.ForeignKey(properties.Size, on_delete=models.PROTECT, verbose_name="розмір")
 
-    class Meta:
-        abstract = True
+    def __str__(self):
+        return "{} - {}".format(self.name, self.price)
 
 
 # Абстрактный класс для заготовок
@@ -103,115 +127,3 @@ class ItemImage(models.Model):
     class Meta:
         verbose_name = "Зображення товару"
         verbose_name_plural = "Зображення товарів"
-
-
-# Сорочка
-class Shirt(Clothes):
-
-    class Meta:
-        verbose_name = "сорочка"
-        verbose_name_plural = "сорочки"
-
-
-# Заготовка сорочки
-class ShirtPattern(Clothes, Pattern):
-
-    class Meta:
-        verbose_name = "заготовка сорочки"
-        verbose_name_plural = "заготовки сорочок"
-
-
-# Футболка
-class TShirt(Clothes):
-
-    class Meta:
-        verbose_name = "футболка"
-        verbose_name_plural = "футболки"
-
-
-# Заготовка футболки
-class TShirtPattern(Clothes, Pattern):
-
-    class Meta:
-        verbose_name = "заготовка футболки"
-        verbose_name_plural = "заготовки футболок"
-
-
-# Сукня
-class Dress(Clothes):
-
-    class Meta:
-        verbose_name = "сукня"
-        verbose_name_plural = "сукні"
-
-
-# Заготовка сукні
-class DressPattern(Clothes, Pattern):
-
-    class Meta:
-        verbose_name = "заготовка сукні"
-        verbose_name_plural = "заготовки суконь"
-
-
-# Туніка
-class Tunic(Clothes):
-
-    class Meta:
-        verbose_name = "туніка"
-        verbose_name_plural = "туніки"
-
-
-# Заготовка туніки
-class TunicPattern(Clothes, Pattern):
-
-    class Meta:
-        verbose_name = "заготовка туніки"
-        verbose_name_plural = "заготовки тунік"
-
-
-# Спідниця
-class Skirt(Clothes):
-
-    class Meta:
-        verbose_name = "спідниця"
-        verbose_name_plural = "спідниці"
-
-
-# Заготовка спідниці
-class SkirtPattern(Clothes, Pattern):
-
-    class Meta:
-        verbose_name = "заготовка спідниці"
-        verbose_name_plural = "заготовки спідниць"
-
-
-# Сумка
-class Bag(Item):
-
-    class Meta:
-        verbose_name = "сумка"
-        verbose_name_plural = "сумки"
-
-
-# Косметичка
-class CosmeticBag(Item):
-
-    class Meta:
-        verbose_name = "косметичка"
-        verbose_name_plural = "косметички"
-
-
-# Чохол для мобільного
-class MobileCase(Item):
-
-    class Meta:
-        verbose_name = "чохол для мобільного телефону"
-        verbose_name_plural = "чохли для мобільних телефонів"
-
-
-# Скатертина
-class TableCloth(Item):
-
-    class Meta:
-        verbose_name = "скатертина"
-        verbose_name_plural = "скатертини"
