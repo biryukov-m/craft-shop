@@ -1,23 +1,11 @@
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 
-# from .models import Shirt
-# from .models import ShirtPattern
-# from .models import TShirt
-# from .models import TShirtPattern
-# from .models import Dress
-# from .models import DressPattern
-# from .models import Tunic
-# from .models import TunicPattern
-# from .models import Skirt
-# from .models import SkirtPattern
-# from .models import Bag
-# from .models import CosmeticBag
-# from .models import MobileCase
-# from .models import TableCloth
-from .models import ItemImage
-from .models import Item
+from .models import Department
+from .models import Section
 from .models import ItemType
+from .models import Item
+from .models import ItemImage
 
 
 class ImageInline(GenericTabularInline):
@@ -33,5 +21,7 @@ class ClothesAdmin(admin.ModelAdmin):
             ImageInline,
         ]
 
-admin.site.register(Item, ClothesAdmin)
+admin.site.register(Department)
+admin.site.register(Section)
 admin.site.register(ItemType)
+admin.site.register(Item, ClothesAdmin)

@@ -3,6 +3,7 @@ from django.db import models
 from properties import models as properties
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from eav.decorators import register_eav
 
 
 def get_upload_path(instance, filename):
@@ -14,38 +15,50 @@ def get_upload_path(instance, filename):
     )
 
 
-class ShopDepartment(models.Model):
-    name = models.CharField(default=None, max_length=100, verbose_name="назва")
+class Department(models.Model):
+    name = models.CharField(default=None, max_length=100, verbose_name="назва відділу")
     code_name = models.CharField(default=None, max_length=100, verbose_name="програмна назва")
     notes = models.TextField(default=None, blank=True, max_length=2000, verbose_name="примітки")
 
     class Meta:
-        verbose_name = "розділ магазину"
-        verbose_name_plural = "розділи магазину"
+        verbose_name = "відділ магазину"
+        verbose_name_plural = "відділи магазину"
+
+    def __str__(self):
+        return self.name
 
 
-class ShopSection(models.Model):
+class Section(models.Model):
     name = models.CharField(default=None, max_length=100, verbose_name="назва")
     code_name = models.CharField(default=None, max_length=100, verbose_name="програмна назва")
     notes = models.TextField(default=None, blank=True, max_length=2000, verbose_name="примітки")
+    department = models.ForeignKey(Department, on_delete=models.DO_NOTHING, default=None, verbose_name="відділ магазину")
 
     class Meta:
-        verbose_name = "секція магазину"
-        verbose_name_plural = "секції магазину"
+        verbose_name = "секція відділу магазину"
+        verbose_name_plural = "секції відділів магазину"
+
+    def __str__(self):
+        return self.name
 
 
 class ItemType(models.Model):
     name = models.CharField(default=None, max_length=100, verbose_name="назва типу товару")
-    name_plural = models.CharField(default=None, max_length=100, verbose_name="назва типу товару")
+    name_plural = models.CharField(default=None, max_length=100, verbose_name="назва типу товару у множині")
     code_name = models.CharField(default=None, max_length=100, verbose_name="програмна назва")
     notes = models.TextField(default=None, blank=True, max_length=2000, verbose_name="примітки")
+    section = models.ForeignKey(Section, on_delete=models.DO_NOTHING, default=None, verbose_name="секція магазину")
 
     class Meta:
         verbose_name = "тип товару"
-        verbose_name_plural = "типи товару"
+        verbose_name_plural = "типи товарів"
+
+    def __str__(self):
+        return "{} ({})".format(self.name, self.section)
 
 
 # Абстрактный класс для единицы товара
+@register_eav()
 class Item(models.Model):
     code = models.PositiveIntegerField(default=None, blank=True, verbose_name="код", unique=True, editable=False)
     name = models.CharField(default=None,
@@ -85,6 +98,10 @@ class Item(models.Model):
     fabric = models.ForeignKey(properties.Fabric, on_delete=models.PROTECT, verbose_name="тканина")
     color = models.ForeignKey(properties.Color, on_delete=models.PROTECT, verbose_name="колір")
     size = models.ForeignKey(properties.Size, on_delete=models.PROTECT, verbose_name="розмір")
+
+    class Meta:
+        verbose_name = "Товар"
+        verbose_name_plural = "Товари"
 
     def __str__(self):
         return "{} - {}".format(self.name, self.price)
