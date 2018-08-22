@@ -35,13 +35,15 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'main.apps.MainConfig',
     'landing',
     'product',
     'properties',
-    'orders'
+    'orders',
+    'eav'
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,5 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+SITE_ID = 1
