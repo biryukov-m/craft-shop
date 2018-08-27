@@ -7,21 +7,29 @@ from .models import ItemType
 from .models import Item
 from .models import ItemImage
 
+from eav.forms import BaseDynamicEntityForm
+from eav.admin import BaseEntityAdmin
+
+admin.site.register(Department)
+admin.site.register(Section)
+admin.site.register(ItemType)
+
 
 class ImageInline(GenericTabularInline):
     model = ItemImage
 
 
-#  Абстрактная (де-факто) админ-модель для вещей
-class ClothesAdmin(admin.ModelAdmin):
-    list_display = ["name", "brand", "price", "created"]
-    list_filter = ["brand", "gender", "fabric", "color", "created"]
+class ItemAdminForm(BaseDynamicEntityForm):
+    model = Item
+
+
+class ItemAdmin(BaseEntityAdmin):
+    form = ItemAdminForm
+    list_display = ["name", "item_type", "brand", "price", "created"]
+    list_filter = ["brand", "item_type", "gender", "fabric", "color", "created"]
     search_fields = ["name"]
     inlines = [
-            ImageInline,
-        ]
+        ImageInline,
+    ]
 
-admin.site.register(Department)
-admin.site.register(Section)
-admin.site.register(ItemType)
-admin.site.register(Item, ClothesAdmin)
+admin.site.register(Item, ItemAdmin)
