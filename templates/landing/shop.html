@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-4">
+            <div>
+                {% for dep in department_list %}
+                    <h1>{{ dep.name }}</h1>
+                    {% for sec in dep.section_set.all %}
+                        <h3>{{ sec.name }}</h3>
+                        {% for type in sec.itemtype_set.all %}
+                            {{ type.name_plural }}
+                            <br>
+                        {% endfor %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

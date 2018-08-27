@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div>
+                <h1>{{ dep.name }}</h1>
+                <hr>
+
+                {% for sec in section_list %}
+                    {% if sec.itemtype_set.first %}
+                        <h1>{{ sec.name }}</h1>
+
+                        {% for type in sec.itemtype_set.all %}
+                            {{ type.name_plural }}<br>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <hr>
+{% endblock %}

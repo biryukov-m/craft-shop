@@ -19,6 +19,7 @@ class Department(models.Model):
     name = models.CharField(default=None, max_length=100, verbose_name="назва відділу")
     code_name = models.CharField(default=None, max_length=100, verbose_name="програмна назва")
     notes = models.TextField(default=None, blank=True, max_length=2000, verbose_name="примітки")
+    slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
 
     class Meta:
         verbose_name = "відділ магазину"
@@ -27,12 +28,16 @@ class Department(models.Model):
     def __str__(self):
         return self.name
 
+    def get_sections(self):
+        return self.section_set.all()
+
 
 class Section(models.Model):
     name = models.CharField(default=None, max_length=100, verbose_name="назва")
     code_name = models.CharField(default=None, max_length=100, verbose_name="програмна назва")
     notes = models.TextField(default=None, blank=True, max_length=2000, verbose_name="примітки")
     department = models.ForeignKey(Department, on_delete=models.DO_NOTHING, default=None, verbose_name="відділ магазину")
+    slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
 
     class Meta:
         verbose_name = "секція відділу магазину"
@@ -48,13 +53,14 @@ class ItemType(models.Model):
     code_name = models.CharField(default=None, max_length=100, verbose_name="програмна назва")
     notes = models.TextField(default=None, blank=True, max_length=2000, verbose_name="примітки")
     section = models.ForeignKey(Section, on_delete=models.DO_NOTHING, default=None, verbose_name="секція магазину")
+    slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
 
     class Meta:
         verbose_name = "тип товару"
         verbose_name_plural = "типи товарів"
 
     def __str__(self):
-        return "{} ({})".format(self.name, self.section)
+        return "{}/{}".format(self.name_plural, self.section)
 
 
 # Абстрактный класс для единицы товара
@@ -98,27 +104,14 @@ class Item(models.Model):
     fabric = models.ForeignKey(properties.Fabric, on_delete=models.PROTECT, verbose_name="тканина")
     color = models.ForeignKey(properties.Color, on_delete=models.PROTECT, verbose_name="колір")
     size = models.ForeignKey(properties.Size, on_delete=models.PROTECT, verbose_name="розмір")
+    slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
 
     class Meta:
         verbose_name = "Товар"
         verbose_name_plural = "Товари"
 
     def __str__(self):
-        return "{} - {}".format(self.name, self.price)
-
-
-# Абстрактный класс для заготовок
-class Pattern(models.Model):
-    partial = models.BooleanField(default=False, verbose_name="з відрізами")
-    sleeve_length = models.IntegerField(default=None, blank=True, verbose_name="довжина рукава")
-    sleeve_width = models.IntegerField(default=None, blank=True, verbose_name="ширина рукава")
-    body_length = models.IntegerField(default=None, blank=True, verbose_name="довжина основи")
-    body_width = models.IntegerField(default=None, blank=True, verbose_name="ширина основи")
-
-    class Meta:
-        abstract = True
-        verbose_name = "заготовка"
-        verbose_name_plural = "заготовки"
+        return "{} - {} ({})".format(self.name, self.item_type, self.price)
 
 
 # Абстрактный класс для изображений товаров
