@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
+    <div class="row top-shop-banner">
+        <div class="col-md-12 wrapper">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>A.M TO P.M</h1>
+                    <h2>SEXY FROM</h2>
+                    <h3>BRALETTES 101</h3>
+                    <a id='shopping_now' href="#">SHOPPING NOW!</a>
+                </div>
+                <img class="background">
+            </div>
+        </div>
+    </div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-3">
             <div>
                 <h1>{{ dep.name }}</h1>
                 <hr>
@@ -17,6 +30,7 @@
                 {% endfor %}
             </div>
         </div>
+        <div class="col-md-9">CONTENT</div>
     </div>
 
     <hr>
