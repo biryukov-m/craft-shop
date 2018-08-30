@@ -514,6 +514,49 @@ a:hover {
   background: #282828;
   color: #ffffff;
 }
+.main-layout .top-shop-banner {
+  margin-bottom: 12px;
+}
+.main-layout .top-shop-banner .wrapper .banner {
+  position: relative;
+}
+.main-layout .top-shop-banner .wrapper .banner .banner-text {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  left: 4%;
+  font-family: "cenbook-regular";
+}
+.main-layout .top-shop-banner .wrapper .banner .background {
+  width: 100%;
+}
+.main-layout .top-shop-banner .wrapper .banner .watermark {
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  width: 100px;
+  opacity: 1;
+}
+.main-layout .breadcrumbs {
+  margin-bottom: 55px;
+}
+.main-layout .breadcrumbs .wrapper .inner a {
+  color: #464646;
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  font-size: 0.9rem;
+}
+.main-layout .breadcrumbs .wrapper .inner a:hover {
+  color: #df0024;
+}
+.main-layout .breadcrumbs .wrapper .inner a ~ a:before {
+  display: inline;
+  content: "/";
+  margin-right: 5px;
+}
 
 footer .footer-background {
   background: #282828;

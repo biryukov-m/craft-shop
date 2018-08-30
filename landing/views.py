@@ -22,7 +22,6 @@ def department(request, slug):
     return render(request, 'landing/department.html', locals())
 
 
-
 def section(request):
     return render(request, 'landing/section.html')
 

@@ -9,29 +9,37 @@
                     <h3>BRALETTES 101</h3>
                     <a id='shopping_now' href="#">SHOPPING NOW!</a>
                 </div>
-                <img class="background">
+                <img class="background" src="">
+                <img class="watermark" src="/static/landing/img/logo_watermark.png">
+                <img class="background" src="/static/landing/img/department_slide.png">
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-3">
-            <div>
-                <h1>{{ dep.name }}</h1>
-                <hr>
-
+    <div class="row breadcrumbs">
+        <div class="wrapper col-md-12">
+            <div class="inner">
+                <a href="#">Home</a>
+                <a href="#">Lingeries</a>
+                <a href="#">All Size AA-DDDD</a>
+            </div>
+        </div>
+    </div>
+    <div class="row shop-catalogue">
+        <div class="col-md-auto sidebar">
+            <div class="attribute categories">
+                <div class="attribute-header">Categories</div>
                 {% for sec in section_list %}
                     {% if sec.itemtype_set.first %}
-                        <h1>{{ sec.name }}</h1>
-
-                        {% for type in sec.itemtype_set.all %}
-                            {{ type.name_plural }}<br>
-                        {% endfor %}
+                        <span class="header">{{ sec.name }}</span>
+                        <ul>
+                            {% for type in sec.itemtype_set.all %}
+                                <li><a href="#">{{ type.name_plural }}</a></li>
+                            {% endfor %}
+                        </ul>
                     {% endif %}
                 {% endfor %}
             </div>
         </div>
-        <div class="col-md-9">CONTENT</div>
+        <div class="col"> </div>
     </div>
-
-    <hr>
 {% endblock %}
