@@ -557,6 +557,78 @@ a:hover {
   content: "/";
   margin-right: 5px;
 }
+.main-layout .shop-catalogue .sidebar .attribute {
+  margin-bottom: 50px;
+}
+.main-layout .shop-catalogue .sidebar .attribute .header-wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.main-layout .shop-catalogue .sidebar .attribute .header-wrapper .header {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: black;
+}
+.main-layout .shop-catalogue .sidebar .attribute .header-wrapper .header .thin {
+  color: #939393;
+  font-weight: lighter;
+}
+.main-layout .shop-catalogue .sidebar .attribute .header-wrapper .line {
+  margin-left: 10px;
+  background-color: #cecece;
+  height: 3px;
+  padding: 1px;
+  flex-grow: 1;
+}
+.main-layout .shop-catalogue .sidebar .attribute .category-header {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-size: 1rem;
+  color: #282828;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  display: block;
+}
+.main-layout .shop-catalogue .sidebar .attribute .category-header:hover {
+  color: #e54833;
+}
+.main-layout .shop-catalogue .sidebar .attribute ul li {
+  margin-bottom: 15px;
+}
+.main-layout .shop-catalogue .sidebar .attribute ul li a {
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  font-size: 0.9rem;
+  color: #464646;
+  margin-left: 10px;
+}
+.main-layout .shop-catalogue .sidebar .attribute ul li a:hover {
+  color: #df0024;
+}
+.main-layout .shop-catalogue .sidebar .attribute .color {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
+.main-layout .shop-catalogue .sidebar .attribute .color .color-inner {
+  height: 20px;
+  width: 32px;
+  border: 1px rgba(0, 0, 0, 0.4) solid;
+}
+.main-layout .shop-catalogue .sidebar .attribute .red .color-inner {
+  background: red;
+}
+.main-layout .shop-catalogue .sidebar .attribute .blue .color-inner {
+  background: aqua;
+}
+.main-layout .shop-catalogue .sidebar .attribute .green .color-inner {
+  background: green;
+}
 
 footer .footer-background {
   background: #282828;

@@ -589,6 +589,84 @@ a:hover
           display: inline
           content: "/"
           margin-right: 5px
+  .shop-catalogue
+    .sidebar
+      .attribute
+        margin-bottom: 50px
+
+        .header-wrapper
+          display: flex
+          width: 100%
+          flex-direction: row
+          align-items: center
+          margin-bottom: 20px
+
+          .header
+            font-family: "Open Sans", sans-serif
+            font-weight: bold
+            font-size: 1.1rem
+            color: black
+
+            .thin
+              color: $light
+              font-weight: lighter
+
+          .line
+            margin-left: 10px
+            background-color: $lighter
+            height: 3px
+            padding: 1px
+            flex-grow: 1
+
+        .category-header
+          font-family: "Open Sans", sans-serif
+          font-weight: normal
+          font-size: 1rem
+          color: $darker
+          margin-left: 10px
+          margin-bottom: 10px
+          display: block
+
+        .category-header:hover
+          color: $highlight_darkest
+
+        ul
+          li
+            margin-bottom: 15px
+
+            a
+              font-family: "Open Sans", sans-serif
+              font-weight: lighter
+              font-size: 0.9rem
+              color: $dark
+              margin-left: 10px
+
+            a:hover
+              color: $highlight
+
+        .color
+          display: inline-flex
+          flex-direction: row
+          align-items: center
+          align-content: center
+
+          .color-inner
+            height: 20px
+            width: 32px
+            border: 1px rgba(0, 0, 0, 0.4) solid
+
+        .red
+          .color-inner
+            background: red
+
+        .blue
+          .color-inner
+            background: aqua
+
+        .green
+          .color-inner
+            background: green
+
 
 footer
   .footer-background

@@ -25,12 +25,15 @@
         </div>
     </div>
     <div class="row shop-catalogue">
-        <div class="col-md-auto sidebar">
+        <div class="col-sm-3 sidebar">
             <div class="attribute categories">
-                <div class="attribute-header">Categories</div>
+                <div class="header-wrapper">
+                    <div class="header">Categories</div>
+                    <div class="line"></div>
+                </div>
                 {% for sec in section_list %}
                     {% if sec.itemtype_set.first %}
-                        <span class="header">{{ sec.name }}</span>
+                        <a href="#" class="category-header">{{ sec.name }}</a>
                         <ul>
                             {% for type in sec.itemtype_set.all %}
                                 <li><a href="#">{{ type.name_plural }}</a></li>
@@ -39,7 +42,23 @@
                     {% endif %}
                 {% endfor %}
             </div>
+            <div class="attribute color">
+                <div class="header-wrapper">
+                    <div class="header"><span class="bold">Search </span><span class="thin">by color</span></div>
+                    <div class="line"></div>
+                </div>
+                <div class="color red">
+                    <a href="#" class="color-inner"></a>
+                </div>
+                <div class="color blue">
+                    <a href="#" class="color-inner"></a>
+                </div>
+                <div class="color green">
+                    <a href="#" class="color-inner"></a>
+                </div>
+            </div>
         </div>
-        <div class="col"> </div>
+    </div>
+    <div class="col"> </div>
     </div>
 {% endblock %}
