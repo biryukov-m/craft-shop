@@ -15,6 +15,14 @@ def get_upload_path(instance, filename):
     )
 
 
+def get_section_upload_path(instance, filename):
+    return os.path.join(
+        'sections_images',
+        "{}".format(instance.slug),
+        filename
+    )
+
+
 class Department(models.Model):
     name = models.CharField(default=None, max_length=100, verbose_name="назва відділу")
     code_name = models.CharField(default=None, max_length=100, verbose_name="програмна назва")
@@ -31,6 +39,19 @@ class Department(models.Model):
     def get_sections(self):
         return self.section_set.all()
 
+    def get_brands(self):
+        secs = self.section_set.all()
+        all_brands = properties.Brand.objects.count()
+        brands = []
+        for sec in secs:
+            for item_type in sec.itemtype_set.all():
+                for item in item_type.item_set.all():
+                    if item.brand not in brands and brands.count != all_brands:
+                        brands.append(item.brand)
+                    else:
+                        break
+        return brands
+
 
 class Section(models.Model):
     name = models.CharField(default=None, max_length=100, verbose_name="назва")
@@ -38,6 +59,7 @@ class Section(models.Model):
     notes = models.TextField(default=None, blank=True, max_length=2000, verbose_name="примітки")
     department = models.ForeignKey(Department, on_delete=models.DO_NOTHING, default=None, verbose_name="відділ магазину")
     slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
+    image = models.ImageField(default=None, blank=True, null=True, verbose_name="зображення секції", upload_to=get_section_upload_path)
 
     class Meta:
         verbose_name = "секція відділу магазину"

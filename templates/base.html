@@ -19,6 +19,9 @@
           integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
           crossorigin="anonymous">
 
+    <link rel="stylesheet" href="{% static "landing/jquery-ui-1.12/jquery-ui.min.css" %}">
+    {% include 'base__scripts.html' %}
+
     <title>Лавка гоблина</title>
 </head>
 <body>
@@ -28,7 +31,6 @@
 <div class="container main-layout">{% block content %}{% endblock %}</div>
 
 {% include 'base__footer.html' %}
-{% include 'base__scripts.html' %}
 
 </body>
 </html>

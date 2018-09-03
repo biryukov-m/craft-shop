@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+    {% load static %}
     <div class="row top-shop-banner">
         <div class="col-md-12 wrapper">
             <div class="banner">
@@ -25,7 +26,7 @@
         </div>
     </div>
     <div class="row shop-catalogue">
-        <div class="col-sm-3 sidebar">
+        <div class="col-3 sidebar">
             <div class="attribute categories">
                 <div class="header-wrapper">
                     <div class="header">Categories</div>
@@ -33,10 +34,10 @@
                 </div>
                 {% for sec in section_list %}
                     {% if sec.itemtype_set.first %}
-                        <a href="#" class="category-header">{{ sec.name }}</a>
+                        <a href="#" class="category-header">{{ sec.name | capfirst }}</a>
                         <ul>
                             {% for type in sec.itemtype_set.all %}
-                                <li><a href="#">{{ type.name_plural }}</a></li>
+                                <li><a href="#">{{ type.name_plural | capfirst }}</a></li>
                             {% endfor %}
                         </ul>
                     {% endif %}
@@ -57,8 +58,52 @@
                     <a href="#" class="color-inner"></a>
                 </div>
             </div>
+            <div class="attribute price-range">
+                <div class="header-wrapper">
+                    <div class="header"><span class="bold">Search </span><span class="thin">by size</span></div>
+                    <div class="line"></div>
+                </div>
+                <div class="slider">
+                    <script src="{% static "landing/js/department_price_slider.js" %}"></script>
+                    <p>
+                        <input type="text" id="price-amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    </p>
+                    <div id="slider-price-range"></div>
+                </div>
+            </div>
+            <div class="attribute size-range">
+                <div class="header-wrapper">
+                    <div class="header"><span class="bold">Search </span><span class="thin">by price</span></div>
+                    <div class="line"></div>
+                </div>
+                <div class="slider">
+                    <script src="{% static "landing/js/department_size_slider.js" %}"></script>
+                    <p>
+                        <input type="text" id="size-amount" readonly style="border:0; color:#f63e29; font-weight:bold;">
+                    </p>
+                    <div id="slider-size-range"></div>
+                </div>
+            </div>
+            <div class="attribute brands">
+                <div class="header-wrapper">
+                    <div class="header"><span class="bold">Search </span><span class="thin">by brand</span></div>
+                    <div class="line"></div>
+                </div>
+                <ul>
+                    {% for brand in brands_list %}
+                        <li><a href="#">{{ brand.name | capfirst }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="col"> </div>
+        <div class="col-8 content">
+            {% for section in section_list %}
+                {{ section.name }}
+                {% if section.image %}
+                    <img src="{{ section.image.url }}">
+                {% endif %}
+                <br>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

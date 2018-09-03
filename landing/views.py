@@ -3,6 +3,7 @@ from django.shortcuts import HttpResponse
 from django.shortcuts import get_object_or_404
 
 from product.models import Department
+from properties.models import Brand
 
 # Create your views here.
 
@@ -19,6 +20,7 @@ def shop(request):
 def department(request, slug):
     dep = get_object_or_404(Department, slug=slug)
     section_list = dep.get_sections()
+    brands_list = dep.get_brands()
     return render(request, 'landing/department.html', locals())
 
 
