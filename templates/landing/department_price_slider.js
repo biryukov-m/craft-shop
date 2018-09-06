@@ -1,4 +1,3 @@
-
 $( function() {
     $( "#slider-price-range" ).slider({
         range: true,

@@ -273,113 +273,6 @@ a:hover
   .products
     margin-bottom: 40px
 
-    .product-wrapper
-      .product
-        .face
-          margin-bottom: 15px
-
-          figure
-            .image-wrapper
-              display: flex
-              align-items: center
-              justify-content: center
-              margin-bottom: 15px
-              position: relative
-
-              img
-                width: 100%
-
-              .label
-                font-family: "Open Sans", sans-serif
-                font-weight: lighter
-                padding: 3px 11px
-                border-radius: 5px
-                position: absolute
-                right: 5px
-                top: 5px
-                font-size: 0.64rem
-
-              .label.sale
-                background: #ffff04
-                color: #ff1845
-
-              .label.hot
-                background: #ff1845
-                color: #ffffff
-
-              .label.new
-                background: #1cbbb4
-                color: #ffffff
-              .active
-                position: absolute
-                visibility: hidden
-
-                ul
-                  background: $highlight_darkest
-                  border-radius: 5px
-                  padding: 0 10px
-
-                  li
-                    display: inline-block
-                    position: relative
-
-                    a
-                      display: block
-                      text-align: center
-                      vertical-align: middle
-                      padding: 6px 5px
-                      color: $highlight_lightest
-
-                    span
-                      display: none
-                      position: absolute
-                      bottom: -20px
-                      left: -20px
-                      font-size: 1rem
-                      font-family: "Open Sans", sans-serif
-                      font-weight: 300
-                      color: $highlight_darkest
-                      width: 150px
-
-                  li:hover
-                    span
-                      display: block
-
-                    a
-                      background: $highlight_darker
-
-                      i
-                        color: white
-
-
-            figcaption
-              //margin-left: 10px
-              div
-                font-family: 'Open Sans', sans-serif
-                font-size: 1.25rem
-                font-weight: 300
-
-                a
-                  color: $darker
-                  font-size: 1.25rem
-
-              .product-category a
-                font-size: 0.75rem
-
-              .product-rating
-                position: absolute
-                bottom: 13px
-                right: 16px
-
-        .face:hover
-          figure
-            .image-wrapper
-              .active
-                visibility: visible
-              img
-                outline: 5px solid $highlight_darkest
-                opacity: 0.5
-
   .about-banners
     margin-bottom: 40px
     .banner-wrapper
@@ -615,7 +508,6 @@ a:hover
             margin-left: 10px
             background-color: $lighter
             height: 3px
-            padding: 1px
             flex-grow: 1
 
         .category-header
@@ -666,6 +558,195 @@ a:hover
         .green
           .color-inner
             background: green
+    .content
+      .header-wrapper
+        display: flex
+        width: 100%
+        flex-direction: row
+        align-items: baseline
+        margin-bottom: 20px
+
+        .header
+          display: flex
+
+          .option
+            display: flex
+            align-items: center
+
+            .name
+              font-family: "Open Sans", sans-serif
+              font-size: 0.85rem
+              font-weight: lighter
+              color: $darker
+              margin-right: 6px
+
+            .controlgroup
+              font-size: 0.85rem
+
+              .ui-button
+                width: inherit
+                padding: 1px 1px 1px 7px
+                background: none
+                border: $light dashed 1px
+                margin-right: 25px
+
+                .ui-icon
+                  background-image: url("/static/landing/img/arrow_select.png")
+                  background-position: 2px 4px
+
+                .ui-selectmenu-text
+                  margin-right: 10px
+                  font-family: "Open Sans", sans-serif
+                  font-weight: 500
+                  color: $light
+                  font-size: 0.9rem
+
+        .line
+          margin-left: 10px
+          background-color: $lighter
+          height: 3px
+          flex-grow: 1
+          align-self: center
+
+        .view-icons
+          margin-left: 23px
+
+          .icon
+            display: inline-block
+
+            a
+              color: $highlight
+              padding: 2px 4px
+              border: 1px white solid
+
+            a ~ a
+              margin-right: 20px
+
+            a:hover
+              border: 1px $highlight solid
+
+#sort-by-menu
+  .ui-menu-item-wrapper
+    font-family: "Open Sans", sans-serif
+    font-weight: 500
+    color: $light
+    font-size: 0.9rem
+    //padding: 3px 1em 3px 7px
+    padding: 1px 1px 1px 7px
+    border: none
+
+  .ui-menu-item-wrapper.ui-state-active
+    color: $highlight_darkest
+    font-weight: 500
+    background: none
+    border: none
+
+#product-preview
+  .product
+    .face
+      margin-bottom: 15px
+
+      figure
+        .image-wrapper
+          display: flex
+          align-items: center
+          justify-content: center
+          margin-bottom: 15px
+          position: relative
+
+          img
+            width: 100%
+
+          .label
+            font-family: "Open Sans", sans-serif
+            font-weight: lighter
+            padding: 3px 11px
+            border-radius: 5px
+            position: absolute
+            right: 5px
+            top: 5px
+            font-size: 0.64rem
+
+          .label.sale
+            background: #ffff04
+            color: #ff1845
+
+          .label.hot
+            background: #ff1845
+            color: #ffffff
+
+          .label.new
+            background: #1cbbb4
+            color: #ffffff
+          .active
+            position: absolute
+            visibility: hidden
+
+            ul
+              background: $highlight_darkest
+              border-radius: 5px
+              padding: 0 10px
+
+              li
+                display: inline-block
+                position: relative
+
+                a
+                  display: block
+                  text-align: center
+                  vertical-align: middle
+                  padding: 6px 5px
+                  color: $highlight_lightest
+
+                span
+                  display: none
+                  position: absolute
+                  bottom: -20px
+                  left: -20px
+                  font-size: 1rem
+                  font-family: "Open Sans", sans-serif
+                  font-weight: 300
+                  color: $highlight_darkest
+                  width: 150px
+
+              li:hover
+                span
+                  display: block
+
+                a
+                  background: $highlight_darker
+
+                  i
+                    color: white
+
+
+        figcaption
+          //margin-left: 10px
+          div
+            font-family: 'Open Sans', sans-serif
+            font-size: 1.25rem
+            font-weight: 300
+
+            a
+              color: $darker
+              font-size: 1.25rem
+
+          .product-category a
+            font-size: 0.75rem
+
+          .product-rating
+            position: absolute
+            bottom: 13px
+            right: 16px
+
+    .face:hover
+      figure
+        .image-wrapper
+          .active
+            visibility: visible
+          img
+            outline: 5px solid $highlight_darkest
+            opacity: 0.5
 
 
 footer
@@ -963,25 +1044,6 @@ footer
             h3
               font-size: 0.65rem
               margin-bottom: 0
-    .products
-      .product-wrapper
-        .product
-          .face
-            figure
-              .image-wrapper
-                .label
-                  padding: 3px 11px
-                  font-size: 1rem
-
-                .active
-                  ul
-                    padding: 0 15px
-                    li
-                      a
-                        padding: 10px 8px
-                        i
-                          font-size: 3rem
-
     .blog-carousel
       .blog-wrapper
         .blog-image
@@ -1084,17 +1146,6 @@ footer
               font-size: 1.4vw
               margin-bottom: 0
               line-height: normal
-    .products
-      .product-wrapper
-        .product
-          .face
-            figure
-              .image-wrapper
-                float: left
-                margin-right: 5vw
-                img
-                  width: inherit
-                  max-height: 95vh
     .about-banners
       margin-bottom: 0
       .banner-wrapper
