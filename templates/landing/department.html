@@ -34,10 +34,10 @@
                 </div>
                 {% for sec in section_list %}
                     {% if sec.itemtype_set.first %}
-                        <a href="#" class="category-header">{{ sec.name | capfirst }}</a>
+                        <a href="{{ sec.get_absolute_url }}" class="category-header">{{ sec.name | capfirst }}</a>
                         <ul>
                             {% for type in sec.itemtype_set.all %}
-                                <li><a href="#">{{ type.name_plural | capfirst }}</a></li>
+                                <li><a href="{{ type.get_absolute_url }}">{{ type.name_plural | capfirst }}</a></li>
                             {% endfor %}
                         </ul>
                     {% endif %}
@@ -132,21 +132,34 @@
                 </div>
             </div>
 
-            <div class="row">
-                {% for i in 'abcd' %}
-                    <div id="product-preview" class="col-6 col-md-4 product-wrapper">
-                        {% include 'landing/home__product.html' %}
-                    </div>
-                {% endfor %}
+{#            <div class="row">#}
+{#                {% for i in 'abcd' %}#}
+{#                    <div id="product-preview" class="col-6 col-md-6 product-wrapper">#}
+{#                        {% include 'landing/home__product.html' %}#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{##}
+{#            </div>#}
 
+            <div class="row">
+                {% for sec in section_list %}
+
+                    <div class="col-6 section-wrapper">
+
+                        <div class="banner">
+                            <div class="banner-text">
+                                <a href="{{ sec.get_absolute_url }}">{{ sec.name }}</a>
+                            </div>
+                            <img class="background" src="{{ sec.image.url }}">
+                        </div>
+
+                    </div>
+
+                {% endfor %}
             </div>
 
         </div>
     </div>
-
-
-
-
 
     {#                        {% for section in section_list %}#}
     {#                            {{ section.name }}#}

@@ -3,6 +3,7 @@ from django.db import models
 from properties import models as properties
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from django.shortcuts import reverse
 from eav.decorators import register_eav
 
 
@@ -52,6 +53,9 @@ class Department(models.Model):
                         break
         return brands
 
+    def get_absolute_url(self):
+        return reverse('landing:department', kwargs={"department_slug": self.slug})
+
 
 class Section(models.Model):
     name = models.CharField(default=None, max_length=100, verbose_name="назва")
@@ -68,6 +72,15 @@ class Section(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse(
+            'landing:section',
+            kwargs={
+                "department_slug": self.department.slug,
+                "section_slug": self.slug
+            }
+        )
+
 
 class ItemType(models.Model):
     name = models.CharField(default=None, max_length=100, verbose_name="назва типу товару")
@@ -83,6 +96,16 @@ class ItemType(models.Model):
 
     def __str__(self):
         return "{}/{}".format(self.name_plural, self.section)
+
+    def get_absolute_url(self):
+        return reverse(
+            'landing:item_type',
+            kwargs={
+                "department_slug": self.section.department.slug,
+                "section_slug": self.section.slug,
+                "item_type_slug": self.slug
+            }
+        )
 
 
 # Абстрактный класс для единицы товара
@@ -134,6 +157,17 @@ class Item(models.Model):
 
     def __str__(self):
         return "{} - {} ({})".format(self.name, self.item_type, self.price)
+
+    def get_absolute_url(self):
+        return reverse(
+            'landing:item',
+            kwargs={
+                "department_slug": self.item_type.section.department.slug,
+                "section_slug": self.item_type.section.slug,
+                "item_type_slug": self.item_type.slug,
+                "item_slug": self.slug
+            }
+        )
 
 
 # Абстрактный класс для изображений товаров

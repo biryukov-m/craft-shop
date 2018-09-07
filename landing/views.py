@@ -17,20 +17,20 @@ def shop(request):
     return render(request, 'landing/shop.html', locals())
 
 
-def department(request, slug):
-    dep = get_object_or_404(Department, slug=slug)
+def department(request, department_slug):
+    dep = get_object_or_404(Department, slug=department_slug)
     section_list = dep.get_sections()
     brands_list = dep.get_brands()
     return render(request, 'landing/department.html', locals())
 
 
-def section(request):
+def section(request, department_slug, section_slug):
     return render(request, 'landing/section.html')
 
 
-def item_type(request):
+def item_type(request, department_slug, section_slug, item_type_slug):
     return render(request, 'landing/item_type.html')
 
 
-def item(request):
+def item(request, department_slug, section_slug, item_type_slug, item_slug):
     return render(request, 'landing/item.html')

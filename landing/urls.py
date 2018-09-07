@@ -10,9 +10,11 @@ from django.contrib import admin
 urlpatterns = [
     # path('', index, name='Index')
     path('shop/', shop, name='shop'),
-    path('shop/<slug:slug>', department, name='department'),
-    # path('shop/<slug:slug>/<slug:slug>', section, name='department'),
-    # path('shop/<slug:slug>/<slug:slug>/<slug:slug>', item_type, name='department'),
-    # path('shop/<slug:slug>/<slug:slug>/<slug:slug>/<slug:slug>', item, name='department'),
+    path('shop/<slug:department_slug>', department, name='department'),
+    path('shop/<slug:department_slug>/<slug:section_slug>', section, name='section'),
+    path('shop/<slug:department_slug>/<slug:section_slug>/<slug:item_type_slug>', item_type, name='item_type'),
+    path('shop/<slug:department_slug>/<slug:section_slug>/<slug:item_type_slug>/<slug:item_slug>', item, name='item'),
     path('', home)
 ]
+
+app_name = 'landing'

@@ -595,6 +595,32 @@ a:hover {
 .main-layout .shop-catalogue .content .header-wrapper .view-icons .icon a:hover {
   border: 1px #df0024 solid;
 }
+.main-layout .section-wrapper .banner {
+  background: #464646;
+  position: relative;
+}
+.main-layout .section-wrapper .banner .background {
+  width: 100%;
+}
+.main-layout .section-wrapper .banner .banner-text {
+  position: relative;
+  font-family: "cenbook-regular";
+}
+.main-layout .section-wrapper .banner .banner-text h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.main-layout .section-wrapper .banner .banner-text h3 {
+  font-size: 1rem;
+  line-height: 20px;
+}
+.main-layout .section-wrapper .banner .banner-text a {
+  color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 #sort-by-menu .ui-menu-item-wrapper {
   font-family: "Open Sans", sans-serif;
