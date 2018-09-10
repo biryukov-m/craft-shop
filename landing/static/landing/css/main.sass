@@ -272,7 +272,6 @@ a:hover
 
   .products
     margin-bottom: 40px
-
   .about-banners
     margin-bottom: 40px
     .banner-wrapper
@@ -568,6 +567,14 @@ a:hover
 
         .header
           display: flex
+          font-family: "Open Sans", sans-serif
+          font-weight: bold
+          font-size: 1.1rem
+          color: black
+
+          .thin
+            color: $light
+            font-weight: lighter
 
           .option
             display: flex
@@ -624,7 +631,6 @@ a:hover
 
             a:hover
               border: 1px $highlight solid
-
   .section-wrapper
     .banner
       background: $dark
@@ -656,7 +662,6 @@ a:hover
           display: flex
           align-items: center
           justify-content: center
-
 
 #sort-by-menu
   .ui-menu-item-wrapper
@@ -781,6 +786,99 @@ a:hover
             outline: 5px solid $highlight_darkest
             opacity: 0.5
 
+#sections
+  .section
+    .face
+      margin-bottom: 50px
+      position: relative
+
+      .image-wrapper
+        display: flex
+        align-items: center
+        justify-content: center
+        margin-bottom: 15px
+        position: relative
+
+        img
+          width: 100%
+          background: $lighter
+
+        .active
+          position: absolute
+          visibility: hidden
+
+          ul
+            background: $highlight_darkest
+            border-radius: 5px
+            padding: 0 10px
+
+            li
+              display: inline-block
+              position: relative
+
+              a
+                display: block
+                text-align: center
+                vertical-align: middle
+                padding: 6px 5px
+                color: $highlight_lightest
+
+              span
+                display: none
+                position: absolute
+                bottom: -20px
+                left: -20px
+                font-size: 1rem
+                font-family: "Open Sans", sans-serif
+                font-weight: 300
+                color: $highlight_darkest
+                width: 150px
+
+            li:hover
+              span
+                display: block
+
+              a
+                background: $highlight_darker
+
+                i
+                  color: white
+
+      .text
+        position: absolute
+        left: 0
+        right: 0
+        margin-left: auto
+        margin-right: auto
+        text-align: center
+        padding: 18px 0
+        bottom: -4%
+        width: 85%
+        background: rgba(255, 255, 255, 0.7)
+        outline: 2px $highlight_darkest solid
+
+        a
+          display: block
+          color: $darker
+          font-size: 1.25rem
+          font-family: 'Open Sans', sans-serif
+          font-weight: 600
+
+        .product-category a
+          font-size: 0.75rem
+
+        .product-rating
+          position: absolute
+          bottom: 13px
+          right: 16px
+
+      .image-wrapper:hover
+        .active
+          visibility: visible
+
+        img
+          outline: 5px solid $highlight_darkest
+          opacity: 0.5
 
 footer
   .footer-background

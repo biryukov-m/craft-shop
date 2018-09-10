@@ -13,15 +13,14 @@ def home(request):
 
 
 def shop(request):
-    department_list = Department.objects.all()
+    sections_in_departments = {}
+    for dep in Department.objects.all():
+        for sec in dep.get_sections():
+            if dep not in sections_in_departments:
+                sections_in_departments[dep] = [sec]
+            else:
+                sections_in_departments[dep].append(sec)
     return render(request, 'landing/shop.html', locals())
-
-
-def department(request, department_slug):
-    dep = get_object_or_404(Department, slug=department_slug)
-    section_list = dep.get_sections()
-    brands_list = dep.get_brands()
-    return render(request, 'landing/department.html', locals())
 
 
 def section(request, department_slug, section_slug):
