@@ -24,6 +24,14 @@ def get_section_upload_path(instance, filename):
     )
 
 
+def get_item_upload_path(instance, filename):
+    return os.path.join(
+        'item_images',
+        "{}".format(instance.slug),
+        filename
+    )
+
+
 class Department(models.Model):
     name = models.CharField(default=None, max_length=100, verbose_name="назва відділу")
     code_name = models.CharField(default=None, max_length=100, verbose_name="програмна назва")
@@ -89,6 +97,8 @@ class ItemType(models.Model):
     notes = models.TextField(default=None, blank=True, max_length=2000, verbose_name="примітки")
     section = models.ForeignKey(Section, on_delete=models.DO_NOTHING, default=None, verbose_name="секція магазину")
     slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
+    image = models.ImageField(default=None, blank=True, null=True, verbose_name="зображення секції", upload_to=get_item_upload_path)
+    icon = models.ImageField(default=None, blank=True, null=True, verbose_name="іконка секції", upload_to=get_item_upload_path)
 
     class Meta:
         verbose_name = "тип товару"

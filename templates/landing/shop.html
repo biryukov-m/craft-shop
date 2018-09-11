@@ -174,26 +174,36 @@
                                     <div class="image-wrapper">
                                         <img class="background" src="{{ sec.image.url }}">
                                         <div class="active">
-
-
-                                            <ul>
-                                                <li class="add-to-cart">
-                                                    <a href="#"><i class="fas fa-cart-plus fa-lg"></i></a>
-                                                    <span>ADD TO CART</span>
-                                                </li>
-                                                <li class="add-to-wish">
-                                                    <a href="#"><i class="fas fa-heart fa-lg"></i></a>
-                                                    <span>LIKE</span>
-                                                </li>
-                                                <li class="view">
-                                                    <a href="#"><i class="far fa-eye fa-lg"></i></a>
-                                                    <span>DETAIL</span>
-                                                </li>
-                                                <li class="big">
-                                                    <a href="#"><i class="fas fa-sign-out-alt fa-lg"></i></a>
-                                                    <span>FAST BUY</span>
-                                                </li>
-                                            </ul>
+                                            <div class="menu-wrapper">
+                                                <div class="menu">
+                                                    {% for item_type in sec.itemtype_set.all %}
+                                                        <div class="item">
+                                                            <a href="{{ item_type.get_absolute_url }}">
+{#                                                                <img src="{{ item_type.icon.url }}">#}
+                                                            </a>
+                                                            {#                                                        <span>{{ item_type.name }}</span>#}
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                            {#                                            <ul>#}
+                                            {#                                                <li class="add-to-cart">#}
+                                            {#                                                    <a href="#"><i class="fas fa-cart-plus fa-lg"></i></a>#}
+                                            {#                                                    <span>ADD TO CART</span>#}
+                                            {#                                                </li>#}
+                                            {#                                                <li class="add-to-wish">#}
+                                            {#                                                    <a href="#"><i class="fas fa-heart fa-lg"></i></a>#}
+                                            {#                                                    <span>LIKE</span>#}
+                                            {#                                                </li>#}
+                                            {#                                                <li class="view">#}
+                                            {#                                                    <a href="#"><i class="far fa-eye fa-lg"></i></a>#}
+                                            {#                                                    <span>DETAIL</span>#}
+                                            {#                                                </li>#}
+                                            {#                                                <li class="big">#}
+                                            {#                                                    <a href="#"><i class="fas fa-sign-out-alt fa-lg"></i></a>#}
+                                            {#                                                    <span>FAST BUY</span>#}
+                                            {#                                                </li>#}
+                                            {#                                            </ul>#}
                                         </div>
                                     </div>
                                     <div class="text">

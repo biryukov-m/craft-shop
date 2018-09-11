@@ -800,46 +800,50 @@ a:hover
       position: relative
 
       .image-wrapper
-        display: flex
-        align-items: center
-        justify-content: center
         margin-bottom: 15px
-        position: relative
 
         img
           width: 100%
-          background: $lighter
 
         .active
           position: absolute
-          visibility: hidden
+          //visibility: hidden
+          left: 0
+          right: 0
+          top: 0
+          bottom: 0
 
-          ul
-            background: $highlight_darkest
-            border-radius: 5px
-            padding: 0 10px
+          .menu-wrapper
+            width: 100%
 
-            li
-              display: inline-block
-              position: relative
+            .menu
+              //border-radius: 5px
+              width: 100%
 
-              a
-                display: block
-                text-align: center
-                vertical-align: middle
-                padding: 6px 5px
-                color: $highlight_lightest
+              .item
+                background: $highlight_darkest
+                width: 50%
+                display: inline-block
 
-              span
-                display: none
-                position: absolute
-                bottom: -20px
-                left: -20px
-                font-size: 1rem
-                font-family: "Open Sans", sans-serif
-                font-weight: 300
-                color: $highlight_darkest
-                width: 150px
+                a
+                  color: $highlight_lightest
+                  background: #1bbc9b
+                  border: 1px solid #cc3300
+
+                  //img
+                    width: inherit
+                    height: inherit
+
+                span
+                  display: none
+                  position: absolute
+                  bottom: -20px
+                  left: -20px
+                  font-size: 1rem
+                  font-family: "Open Sans", sans-serif
+                  font-weight: 300
+                  color: $highlight_darkest
+                  width: 150px
 
             li:hover
               span
