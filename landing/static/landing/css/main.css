@@ -579,10 +579,14 @@ a:hover {
   color: #939393;
   font-size: 0.9rem;
 }
+.main-layout .shop-catalogue .content .header-wrapper .header.department {
+  font-size: 1.25rem;
+}
 .main-layout .shop-catalogue .content .header-wrapper .line {
   margin-left: 10px;
   background-color: #cecece;
   height: 3px;
+  margin-top: 3px;
   flex-grow: 1;
   align-self: center;
 }
@@ -809,24 +813,16 @@ a:hover {
   text-align: center;
   padding: 18px 0;
   bottom: -4%;
-  width: 85%;
+  width: 95%;
   background: rgba(255, 255, 255, 0.7);
   outline: 2px #e54833 solid;
 }
 #sections .section .face .text a {
   display: block;
   color: #282828;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-}
-#sections .section .face .text .product-category a {
-  font-size: 0.75rem;
-}
-#sections .section .face .text .product-rating {
-  position: absolute;
-  bottom: 13px;
-  right: 16px;
 }
 #sections .section .face .image-wrapper:hover .active {
   visibility: visible;

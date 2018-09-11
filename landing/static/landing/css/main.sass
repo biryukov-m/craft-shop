@@ -557,6 +557,7 @@ a:hover
         .green
           .color-inner
             background: green
+
     .content
       .header-wrapper
         display: flex
@@ -608,10 +609,14 @@ a:hover
                   color: $light
                   font-size: 0.9rem
 
+        .header.department
+          font-size: 1.25rem
+
         .line
           margin-left: 10px
           background-color: $lighter
           height: 3px
+          margin-top: 3px
           flex-grow: 1
           align-self: center
 
@@ -786,6 +791,8 @@ a:hover
             outline: 5px solid $highlight_darkest
             opacity: 0.5
 
+
+// Отображение секций в shop.html
 #sections
   .section
     .face
@@ -853,25 +860,16 @@ a:hover
         text-align: center
         padding: 18px 0
         bottom: -4%
-        width: 85%
+        width: 95%
         background: rgba(255, 255, 255, 0.7)
         outline: 2px $highlight_darkest solid
 
         a
           display: block
           color: $darker
-          font-size: 1.25rem
+          font-size: 1rem
           font-family: 'Open Sans', sans-serif
           font-weight: 600
-
-        .product-category a
-          font-size: 0.75rem
-
-        .product-rating
-          position: absolute
-          bottom: 13px
-          right: 16px
-
       .image-wrapper:hover
         .active
           visibility: visible
