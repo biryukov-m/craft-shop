@@ -29,6 +29,7 @@ $highlight_lightest: #f6b28f
 $highlight_lighter: #f1936c
 $highlight_darker: #ea704c
 $highlight_darkest: #e54833
+$highlight_opaque: rgba(229, 72, 51, 0.8)
 $highlight: #df0024
 
 $lighter: #cecece
@@ -802,37 +803,88 @@ a:hover
       .image-wrapper
         margin-bottom: 15px
 
-        img
+        > img
           width: 100%
 
         .active
           position: absolute
-          //visibility: hidden
+          visibility: hidden
           left: 0
           right: 0
           top: 0
           bottom: 0
 
           .menu-wrapper
-            width: 100%
+            display: flex
+            align-items: center
+            justify-content: center
+            height: 100%
 
             .menu
               //border-radius: 5px
-              width: 100%
+              width: 90%
+              margin-left: auto
+              margin-right: auto
+              display: flex
+              flex-wrap: wrap
+              align-items: center
+              justify-content: center
+              background: $highlight_opaque
+              border-radius: 15px
+              //padding: 5px 15px
+              box-shadow: 0 0 2px 0 black
+              padding-top: 35px
 
               .item
-                background: $highlight_darkest
-                width: 50%
-                display: inline-block
+                padding-right: 7px
+                padding-left: 7px
+                padding-bottom: 35px
+                //padding-top: 10px
+                position: relative
 
                 a
                   color: $highlight_lightest
-                  background: #1bbc9b
-                  border: 1px solid #cc3300
+                  height: 54px
+                  width: 54px
+                  display: flex
+                  align-items: center
+                  justify-content: center
 
-                  //img
-                    width: inherit
-                    height: inherit
+                  :hover
+                    -webkit-transform: scale(1.2)
+                    -moz-transform: scale(1.2)
+                    -ms-transform: scale(1.2)
+                    -o-transform: scale(1.2)
+                    transform: scale(1.2)
+                    //outline: 2px solid rgba(255, 255, 255, 0.8)
+
+                  img
+                    display: block
+                    max-height: 100%
+                    max-width: 100%
+                    opacity: 0.85
+
+                .item-description
+                  visibility: hidden
+                  position: absolute
+                  left: -60px
+                  right: -60px
+                  text-align: center
+                  color: black
+                  top: 57px
+                  display: flex
+                  justify-content: center
+                  font-family: "Open Sans"
+                  font-weight: 400
+                  //background: rgba(255, 255, 255, 0.8)
+
+              .item:hover .item-description
+                visibility: visible
+
+              .item:nth-child(3n)
+                //margin-right: 0
+                //padding-right: 0
+                //padding-left: 0
 
                 span
                   display: none
@@ -844,16 +896,6 @@ a:hover
                   font-weight: 300
                   color: $highlight_darkest
                   width: 150px
-
-            li:hover
-              span
-                display: block
-
-              a
-                background: $highlight_darker
-
-                i
-                  color: white
 
       .text
         position: absolute
@@ -874,13 +916,14 @@ a:hover
           font-size: 1rem
           font-family: 'Open Sans', sans-serif
           font-weight: 600
+
       .image-wrapper:hover
         .active
           visibility: visible
 
         img
-          outline: 5px solid $highlight_darkest
-          opacity: 0.5
+          //outline: 5px solid $highlight_darkest
+          //opacity: 0.5
 
 footer
   .footer-background

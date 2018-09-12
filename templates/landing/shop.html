@@ -17,8 +17,6 @@
         </div>
     </div>
 
-
-
     {#  Хлебные крохи  #}
     {#    <div class="row breadcrumbs">#}
     {#        <div class="wrapper col-md-12">#}
@@ -30,7 +28,6 @@
     {#  Хлебные крохи  #}
 
     <div class="row shop-catalogue">
-
 
         {#   Сайдбарчик #}
 
@@ -104,7 +101,6 @@
         {#        </div>#}
         {#   Сайдбарчик #}
 
-
         <div class="col-12 content">
 
             {#  Опции вывода товаров #}
@@ -143,8 +139,6 @@
             {#            </div>#}
             {#  Опции вывода товаров #}
 
-
-
             {#            <div class="row">#}
             {#                {% for i in 'abcd' %}#}
             {#                    <div id="product-preview" class="col-6 col-md-6 product-wrapper">#}
@@ -153,7 +147,6 @@
             {#                {% endfor %}#}
             {##}
             {#            </div>#}
-
 
             {% for department, section_list in sections_in_departments.items %}
                 <div class="row">
@@ -179,10 +172,14 @@
                                                     {% for item_type in sec.itemtype_set.all %}
                                                         <div class="item">
                                                             <a href="{{ item_type.get_absolute_url }}">
-{#                                                                <img src="{{ item_type.icon.url }}">#}
+                                                                <img class="background" src="{{ item_type.icon.url }}">
                                                             </a>
-                                                            {#                                                        <span>{{ item_type.name }}</span>#}
+                                                            <div class="item-description">
+                                                                <span>{{ item_type.name|upper }}</span>
+                                                            </div>
                                                         </div>
+
+                                                        {#                                                        <span>{{ item_type.name }}</span>#}
                                                     {% endfor %}
                                                 </div>
                                             </div>
