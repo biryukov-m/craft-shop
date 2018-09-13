@@ -774,6 +774,7 @@ a:hover {
   height: 100%;
 }
 #sections .section .face .image-wrapper .active .menu-wrapper .menu {
+  z-index: 2;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -816,6 +817,7 @@ a:hover {
 #sections .section .face .image-wrapper .active .menu-wrapper .menu .item .item-description {
   visibility: hidden;
   position: absolute;
+  z-index: 1;
   left: -60px;
   right: -60px;
   text-align: center;
@@ -829,16 +831,12 @@ a:hover {
 #sections .section .face .image-wrapper .active .menu-wrapper .menu .item:hover .item-description {
   visibility: visible;
 }
-#sections .section .face .image-wrapper .active .menu-wrapper .menu .item:nth-child(3n) span {
-  display: none;
-  position: absolute;
-  bottom: -20px;
-  left: -20px;
-  font-size: 1rem;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 300;
-  color: #e54833;
-  width: 150px;
+#sections .section .face .image-wrapper:hover .active {
+  visibility: visible;
+}
+#sections .section .face .image-wrapper:hover > img {
+  outline: 5px solid #e54833;
+  opacity: 0.5;
 }
 #sections .section .face .text {
   position: absolute;
@@ -847,7 +845,10 @@ a:hover {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  padding: 18px 0;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   bottom: -4%;
   width: 95%;
   background: rgba(255, 255, 255, 0.7);
@@ -860,9 +861,7 @@ a:hover {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
-#sections .section .face .image-wrapper:hover .active {
-  visibility: visible;
-}
+
 footer .footer-background {
   background: #282828;
 }
@@ -1024,6 +1023,35 @@ footer .footer-background .footer-layout .links ul li a:hover {
   .footer-background .footer-layout .footer-wrapper .links ul li {
     margin-bottom: 15px;
   }
+
+  #sections .section .face {
+    margin-bottom: 50px;
+  }
+  #sections .section .face .image-wrapper {
+    margin-bottom: 15px;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu {
+    padding-top: 25px;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu .item {
+    padding-right: 11px;
+    padding-left: 11px;
+    padding-bottom: 25px;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu .item a {
+    height: 40px;
+    width: 40px;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu .item .item-description {
+    top: 45px;
+    font-size: 0.75rem;
+  }
+  #sections .section .face .text {
+    min-height: 45px;
+  }
+  #sections .section .face .text a {
+    font-size: 0.9rem;
+  }
 }
 @media screen and (max-width: 991px) {
   html {
@@ -1096,6 +1124,57 @@ footer .footer-background .footer-layout .links ul li a:hover {
   }
   .footer-background .footer-layout .footer-wrapper .links ul {
     font-size: 1rem;
+  }
+
+  #sections .section .face {
+    margin-bottom: 50px;
+  }
+  #sections .section .face .image-wrapper {
+    margin-bottom: 15px;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper {
+    height: 100%;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu {
+    width: 100%;
+    height: 100%;
+    padding-top: 5px;
+    border-radius: 0;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu .item {
+    padding-right: 11px;
+    padding-left: 11px;
+    padding-bottom: 25px;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu .item a {
+    height: 55px;
+    width: 55px;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu .item .item-description {
+    top: 56px;
+    left: -17px;
+    right: -17px;
+    font-size: 1rem;
+  }
+  #sections .section .face .image-wrapper:hover {
+    opacity: 1;
+  }
+  #sections .section .face .image-wrapper:hover .active .menu-wrapper {
+    height: 100%;
+  }
+  #sections .section .face .image-wrapper:hover .active .menu .item .item-description {
+    visibility: visible;
+  }
+  #sections .section .face .image-wrapper:hover ~ .text {
+    bottom: -17%;
+    outline: none;
+    background: none;
+  }
+  #sections .section .face .text {
+    min-height: 45px;
+  }
+  #sections .section .face .text a {
+    font-size: 1.1rem;
   }
 }
 @media screen and (max-width: 767px) {

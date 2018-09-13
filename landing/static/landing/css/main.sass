@@ -799,13 +799,10 @@ a:hover
     .face
       margin-bottom: 50px
       position: relative
-
       .image-wrapper
         margin-bottom: 15px
-
         > img
           width: 100%
-
         .active
           position: absolute
           visibility: hidden
@@ -813,15 +810,13 @@ a:hover
           right: 0
           top: 0
           bottom: 0
-
           .menu-wrapper
             display: flex
             align-items: center
             justify-content: center
             height: 100%
-
             .menu
-              //border-radius: 5px
+              z-index: 2
               width: 90%
               margin-left: auto
               margin-right: auto
@@ -831,7 +826,6 @@ a:hover
               justify-content: center
               background: $highlight_opaque
               border-radius: 15px
-              //padding: 5px 15px
               box-shadow: 0 0 2px 0 black
               padding-top: 35px
 
@@ -839,7 +833,6 @@ a:hover
                 padding-right: 7px
                 padding-left: 7px
                 padding-bottom: 35px
-                //padding-top: 10px
                 position: relative
 
                 a
@@ -867,6 +860,7 @@ a:hover
                 .item-description
                   visibility: hidden
                   position: absolute
+                  z-index: 1
                   left: -60px
                   right: -60px
                   text-align: center
@@ -876,26 +870,17 @@ a:hover
                   justify-content: center
                   font-family: "Open Sans"
                   font-weight: 400
-                  //background: rgba(255, 255, 255, 0.8)
+
 
               .item:hover .item-description
                 visibility: visible
 
-              .item:nth-child(3n)
-                //margin-right: 0
-                //padding-right: 0
-                //padding-left: 0
-
-                span
-                  display: none
-                  position: absolute
-                  bottom: -20px
-                  left: -20px
-                  font-size: 1rem
-                  font-family: "Open Sans", sans-serif
-                  font-weight: 300
-                  color: $highlight_darkest
-                  width: 150px
+      .image-wrapper:hover
+        .active
+          visibility: visible
+        > img
+          outline: 5px solid $highlight_darkest
+          opacity: 0.5
 
       .text
         position: absolute
@@ -904,7 +889,11 @@ a:hover
         margin-left: auto
         margin-right: auto
         text-align: center
-        padding: 18px 0
+        //padding: 18px 0
+        min-height: 60px
+        display: flex
+        align-items: center
+        justify-content: center
         bottom: -4%
         width: 95%
         background: rgba(255, 255, 255, 0.7)
@@ -917,13 +906,6 @@ a:hover
           font-family: 'Open Sans', sans-serif
           font-weight: 600
 
-      .image-wrapper:hover
-        .active
-          visibility: visible
-
-        img
-          //outline: 5px solid $highlight_darkest
-          //opacity: 0.5
 
 footer
   .footer-background
@@ -1104,6 +1086,32 @@ footer
 
             li
               margin-bottom: 15px
+  #sections
+    .section
+      .face
+        margin-bottom: 50px
+        .image-wrapper
+          margin-bottom: 15px
+          .active
+            .menu-wrapper
+              .menu
+                padding-top: 25px
+                .item
+                  padding-right: 11px
+                  padding-left: 11px
+                  padding-bottom: 25px
+                  a
+                    height: 40px
+                    width: 40px
+                  .item-description
+                    top: 45px
+                    font-size: 0.75rem
+        .text
+          min-height: 45px
+
+          a
+            font-size: 0.9rem
+
 
 // Large devices (desktops, 992px and up)
 @media screen and (max-width: 991px)
@@ -1182,6 +1190,52 @@ footer
 
           ul
             font-size: 1rem
+  #sections
+    .section
+      .face
+        margin-bottom: 50px
+        .image-wrapper
+          margin-bottom: 15px
+          .active
+            .menu-wrapper
+              height: 100%
+              .menu
+                width: 100%
+                height: 100%
+                padding-top: 5px
+                border-radius: 0
+                .item
+                  padding-right: 11px
+                  padding-left: 11px
+                  padding-bottom: 25px
+                  a
+                    height: 55px
+                    width: 55px
+                  .item-description
+                    top: 56px
+                    left: -17px
+                    right: -17px
+                    font-size: 1rem
+        .image-wrapper:hover
+          opacity: 1
+          .active
+            .menu-wrapper
+              height: 100%
+            .menu
+              .item
+                .item-description
+                  visibility: visible
+
+        .image-wrapper:hover ~ .text
+          bottom: -17%
+          outline: none
+          background: none
+
+        .text
+          min-height: 45px
+
+          a
+            font-size: 1.1rem
 
 // Medium devices (tablets, 768px and up)
 @media screen and (max-width: 767px)
