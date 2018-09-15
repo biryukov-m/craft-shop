@@ -827,12 +827,12 @@ a:hover
               background: $highlight_opaque
               border-radius: 15px
               box-shadow: 0 0 2px 0 black
-              padding-top: 35px
+              padding-top: 45px
 
               .item
                 padding-right: 7px
                 padding-left: 7px
-                padding-bottom: 35px
+                padding-bottom: 45px
                 position: relative
 
                 a
@@ -861,8 +861,8 @@ a:hover
                   visibility: hidden
                   position: absolute
                   z-index: 1
-                  left: -60px
-                  right: -60px
+                  left: -7px
+                  right: -7px
                   text-align: center
                   color: black
                   top: 57px
@@ -870,6 +870,7 @@ a:hover
                   justify-content: center
                   font-family: "Open Sans"
                   font-weight: 400
+                  font-size: 0.85rem
 
 
               .item:hover .item-description
@@ -1095,11 +1096,9 @@ footer
           .active
             .menu-wrapper
               .menu
-                padding-top: 25px
                 .item
                   padding-right: 11px
                   padding-left: 11px
-                  padding-bottom: 25px
                   a
                     height: 40px
                     width: 40px
@@ -1123,6 +1122,10 @@ footer
       .menu-list ul li
         padding: 0 5px
         height: 5.5rem
+        a
+          font-size: 1.1rem
+
+
 
   .main-layout
     .products
@@ -1202,20 +1205,20 @@ footer
               .menu
                 width: 100%
                 height: 100%
-                padding-top: 5px
+                padding-top: 15px
                 border-radius: 0
                 .item
                   padding-right: 11px
                   padding-left: 11px
-                  padding-bottom: 25px
+                  padding-bottom: 40px
                   a
-                    height: 55px
-                    width: 55px
+                    height: 50px
+                    width: 50px
                   .item-description
-                    top: 56px
-                    left: -17px
-                    right: -17px
-                    font-size: 1rem
+                    top: 53px
+                    left: -14px
+                    right: -14px
+                    font-size: 0.9rem
         .image-wrapper:hover
           opacity: 1
           .active
@@ -1258,8 +1261,6 @@ footer
           a ~ a:before
             content: ""
 
-
-
   .main-layout
     .banners
       .banner-wrapper
@@ -1298,6 +1299,40 @@ footer
     .selectors
       .col.line
         display: none
+
+
+  .shop-catalogue
+    .content
+      .header-wrapper
+        .header.department
+          font-size: 1.5rem
+
+        .line
+          margin-left: 10px
+          background-color: $lighter
+          height: 3px
+          margin-top: 3px
+          flex-grow: 1
+          align-self: center
+
+        .view-icons
+          margin-left: 23px
+
+          .icon
+            display: inline-block
+
+            a
+              color: $highlight
+              padding: 2px 4px
+              border: 1px white solid
+
+            a ~ a
+              margin-right: 20px
+
+            a:hover
+              border: 1px $highlight solid
+
+
   .footer-background
     .footer-layout
       .footer-wrapper
@@ -1321,6 +1356,52 @@ footer
 
           ul
             font-size: 1.2rem
+  #sections
+    .section
+      .face
+        margin-bottom: 50px
+        .image-wrapper
+          margin-bottom: 15px
+          .active
+            .menu-wrapper
+              height: 100%
+              .menu
+                width: 100%
+                height: 100%
+                padding-top: 15px
+                border-radius: 0
+                .item
+                  padding-right: 15px
+                  padding-left: 15px
+                  padding-bottom: 30px
+                  a
+                    height: 50px
+                    width: 50px
+                  .item-description
+                    top: 55px
+                    left: -10px
+                    right: -10px
+                    font-size: 1.2rem
+        .image-wrapper:hover
+          opacity: 1
+          .active
+            .menu-wrapper
+              height: 100%
+            .menu
+              .item
+                .item-description
+                  visibility: visible
+
+        .image-wrapper:hover ~ .text
+          bottom: -17%
+          outline: none
+          background: none
+
+        .text
+          min-height: 45px
+
+          a
+            font-size: 1.4rem
 
 // Small devices (landscape phones, 576px and up)
 @media screen and (max-width: 575px)
@@ -1412,21 +1493,21 @@ footer
             margin-bottom: 2vw
 
           .description
-            font-size: 1rem
+            font-size: 1.2rem
 
         .contacts
           h2
             font-size: 1.2rem
 
           ul
-            font-size: 1rem
+            font-size: 1.2rem
 
         .links
           h2
             font-size: 1.2rem
 
           ul
-            font-size: 1rem
+            font-size: 1.2rem
 
 @media screen and (max-width: 475px)
   html

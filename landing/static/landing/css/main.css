@@ -785,12 +785,12 @@ a:hover {
   background: rgba(229, 72, 51, 0.8);
   border-radius: 15px;
   box-shadow: 0 0 2px 0 black;
-  padding-top: 35px;
+  padding-top: 45px;
 }
 #sections .section .face .image-wrapper .active .menu-wrapper .menu .item {
   padding-right: 7px;
   padding-left: 7px;
-  padding-bottom: 35px;
+  padding-bottom: 45px;
   position: relative;
 }
 #sections .section .face .image-wrapper .active .menu-wrapper .menu .item a {
@@ -818,8 +818,8 @@ a:hover {
   visibility: hidden;
   position: absolute;
   z-index: 1;
-  left: -60px;
-  right: -60px;
+  left: -7px;
+  right: -7px;
   text-align: center;
   color: black;
   top: 57px;
@@ -827,6 +827,7 @@ a:hover {
   justify-content: center;
   font-family: "Open Sans";
   font-weight: 400;
+  font-size: 0.85rem;
 }
 #sections .section .face .image-wrapper .active .menu-wrapper .menu .item:hover .item-description {
   visibility: visible;
@@ -1030,13 +1031,9 @@ footer .footer-background .footer-layout .links ul li a:hover {
   #sections .section .face .image-wrapper {
     margin-bottom: 15px;
   }
-  #sections .section .face .image-wrapper .active .menu-wrapper .menu {
-    padding-top: 25px;
-  }
   #sections .section .face .image-wrapper .active .menu-wrapper .menu .item {
     padding-right: 11px;
     padding-left: 11px;
-    padding-bottom: 25px;
   }
   #sections .section .face .image-wrapper .active .menu-wrapper .menu .item a {
     height: 40px;
@@ -1061,6 +1058,9 @@ footer .footer-background .footer-layout .links ul li a:hover {
   .top-menu-layout .top-menu .menu-list ul li {
     padding: 0 5px;
     height: 5.5rem;
+  }
+  .top-menu-layout .top-menu .menu-list ul li a {
+    font-size: 1.1rem;
   }
 
   .main-layout .products {
@@ -1138,23 +1138,23 @@ footer .footer-background .footer-layout .links ul li a:hover {
   #sections .section .face .image-wrapper .active .menu-wrapper .menu {
     width: 100%;
     height: 100%;
-    padding-top: 5px;
+    padding-top: 15px;
     border-radius: 0;
   }
   #sections .section .face .image-wrapper .active .menu-wrapper .menu .item {
     padding-right: 11px;
     padding-left: 11px;
-    padding-bottom: 25px;
+    padding-bottom: 40px;
   }
   #sections .section .face .image-wrapper .active .menu-wrapper .menu .item a {
-    height: 55px;
-    width: 55px;
+    height: 50px;
+    width: 50px;
   }
   #sections .section .face .image-wrapper .active .menu-wrapper .menu .item .item-description {
-    top: 56px;
-    left: -17px;
-    right: -17px;
-    font-size: 1rem;
+    top: 53px;
+    left: -14px;
+    right: -14px;
+    font-size: 0.9rem;
   }
   #sections .section .face .image-wrapper:hover {
     opacity: 1;
@@ -1230,6 +1230,35 @@ footer .footer-background .footer-layout .links ul li a:hover {
     display: none;
   }
 
+  .shop-catalogue .content .header-wrapper .header.department {
+    font-size: 1.5rem;
+  }
+  .shop-catalogue .content .header-wrapper .line {
+    margin-left: 10px;
+    background-color: #cecece;
+    height: 3px;
+    margin-top: 3px;
+    flex-grow: 1;
+    align-self: center;
+  }
+  .shop-catalogue .content .header-wrapper .view-icons {
+    margin-left: 23px;
+  }
+  .shop-catalogue .content .header-wrapper .view-icons .icon {
+    display: inline-block;
+  }
+  .shop-catalogue .content .header-wrapper .view-icons .icon a {
+    color: #df0024;
+    padding: 2px 4px;
+    border: 1px white solid;
+  }
+  .shop-catalogue .content .header-wrapper .view-icons .icon a ~ a {
+    margin-right: 20px;
+  }
+  .shop-catalogue .content .header-wrapper .view-icons .icon a:hover {
+    border: 1px #df0024 solid;
+  }
+
   .footer-background .footer-layout .footer-wrapper .info .logo {
     height: 100px;
   }
@@ -1247,6 +1276,57 @@ footer .footer-background .footer-layout .links ul li a:hover {
   }
   .footer-background .footer-layout .footer-wrapper .links ul {
     font-size: 1.2rem;
+  }
+
+  #sections .section .face {
+    margin-bottom: 50px;
+  }
+  #sections .section .face .image-wrapper {
+    margin-bottom: 15px;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper {
+    height: 100%;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu {
+    width: 100%;
+    height: 100%;
+    padding-top: 15px;
+    border-radius: 0;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu .item {
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 30px;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu .item a {
+    height: 50px;
+    width: 50px;
+  }
+  #sections .section .face .image-wrapper .active .menu-wrapper .menu .item .item-description {
+    top: 55px;
+    left: -10px;
+    right: -10px;
+    font-size: 1.2rem;
+  }
+  #sections .section .face .image-wrapper:hover {
+    opacity: 1;
+  }
+  #sections .section .face .image-wrapper:hover .active .menu-wrapper {
+    height: 100%;
+  }
+  #sections .section .face .image-wrapper:hover .active .menu .item .item-description {
+    visibility: visible;
+  }
+  #sections .section .face .image-wrapper:hover ~ .text {
+    bottom: -17%;
+    outline: none;
+    background: none;
+  }
+  #sections .section .face .text {
+    min-height: 45px;
+  }
+  #sections .section .face .text a {
+    font-size: 1.4rem;
   }
 }
 @media screen and (max-width: 575px) {
@@ -1333,19 +1413,19 @@ footer .footer-background .footer-layout .links ul li a:hover {
     margin-bottom: 2vw;
   }
   .footer-background .footer-layout .footer-wrapper .info .description {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .footer-background .footer-layout .footer-wrapper .contacts h2 {
     font-size: 1.2rem;
   }
   .footer-background .footer-layout .footer-wrapper .contacts ul {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .footer-background .footer-layout .footer-wrapper .links h2 {
     font-size: 1.2rem;
   }
   .footer-background .footer-layout .footer-wrapper .links ul {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }
 @media screen and (max-width: 475px) {
