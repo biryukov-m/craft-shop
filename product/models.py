@@ -89,6 +89,9 @@ class Section(models.Model):
             }
         )
 
+    def get_item_types(self):
+        return self.itemtype_set.all()
+
 
 class ItemType(models.Model):
     name = models.CharField(default=None, max_length=100, verbose_name="назва типу товару")
@@ -116,6 +119,9 @@ class ItemType(models.Model):
                 "item_type_slug": self.slug
             }
         )
+
+    def get_items(self):
+        return self.item_set.all().order_by('created')
 
 
 # Абстрактный класс для единицы товара

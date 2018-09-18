@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% include 'landing/shop__top_banner.html' %}
+{#  Хлебные крохи  #}
+<div class="row breadcrumbs">
+    <div class="wrapper col-md-12">
+        <div class="inner">
+            <a href="{% url 'landing:home' %}">Магазин</a>
+        </div>
+    </div>
+</div>
+{#  Хлебные крохи  #}
+<div class="row shop-catalogue">
+    {#   Сайдбарчик #}
+    <div class="col-4 col-sm-3 sidebar">
+        <div class="attribute categories">
+            <div class="header-wrapper">
+                <div class="header">Categories</div>
+                <div class="line"></div>
+            </div>
+            {% for sec in section_list %}
+                {% if sec.itemtype_set.first %}
+                    <a href="{{ sec.get_absolute_url }}" class="category-header">{{ sec.name | capfirst }}</a>
+                    <ul>
+                        {% for type in sec.itemtype_set.all %}
+                            <li><a href="{{ type.get_absolute_url }}">{{ type.name_plural | capfirst }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="attribute color">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold">Search </span><span class="thin">by color</span></div>
+                <div class="line"></div>
+            </div>
+            <div class="color red">
+                <a href="#" class="color-inner"></a>
+            </div>
+            <div class="color blue">
+                <a href="#" class="color-inner"></a>
+            </div>
+            <div class="color green">
+                <a href="#" class="color-inner"></a>
+            </div>
+        </div>
+        <div class="attribute price-range">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold">Search </span><span class="thin">by size</span></div>
+                <div class="line"></div>
+            </div>
+            <div class="slider">
+                <p>
+                    <input type="text" id="price-amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                </p>
+                <div id="slider-price-range"></div>
+            </div>
+        </div>
+        <div class="attribute size-range">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold">Search </span><span class="thin">by price</span></div>
+                <div class="line"></div>
+            </div>
+            <div class="slider">
+                <p>
+                    <input type="text" id="size-amount" readonly style="border:0; color:#f63e29; font-weight:bold;">
+                </p>
+                <div id="slider-size-range"></div>
+            </div>
+        </div>
+        <div class="attribute brands">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold">Search </span><span class="thin">by brand</span></div>
+                <div class="line"></div>
+            </div>
+            <ul>
+                {% for brand in brands_list %}
+                    <li><a href="#">{{ brand.name | capfirst }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {#   Сайдбарчик #}
+    <div class="col-8 col-sm-9 content">
+        {#  Опции вывода товаров #}
+        <div class="header-wrapper">
+            <div class="header">
+                <div class="option show">
+                    <div class="name">SHOW</div>
+                    <div class="controlgroup show">
+                        <select id="sort-by">
+                            <option>8</option>
+                            <option>16</option>
+                            <option>32</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="option sort-by">
+                    <div class="name">SORT BY</div>
+                    <div class="controlgroup show">
+                        <select id="sort-by">
+                            <option>Recommended</option>
+                            <option>New</option>
+                            <option>Name</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="view-icons">
+                <div class="icon">
+                    <a class="list-view" href="#"><i class="fas fa-list-ul"></i></a>
+                </div>
+                <div class="icon">
+                    <a class="grid-view" href="#"><i class="fas fa-th"></i></a>
+                </div>
+            </div>
+        </div>
+        {#  Опции вывода товаров #}
+        <div class="row">
+        {% for item in items_list %}
+            <div id="product-preview" class="col-12 col-sm-6 col-lg-4 product-wrapper">
+                {% include 'landing/home__product.html' %}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ block.super }}
+    <script>
+        {% include "landing/department_price_slider.js" %}
+    </script>
+    <script>
+        {% include "landing/department_size_slider.js" %}
+    </script>
+    <script>
+        $( function() {
+            $( ".controlgroup.show" ).controlgroup();
+        } );
+        $( function() {
+            $( ".controlgroup.search-by" ).controlgroup();
+        } );
+    </script>
+{% endblock %}

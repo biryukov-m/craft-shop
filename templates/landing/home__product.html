@@ -2,7 +2,7 @@
     <div class="face">
         <figure>
             <div class="image-wrapper">
-                <img src="/static/landing/img/product_1.png">
+                <img src="{{ item.image.url }}">
                 <div class="active">
                     <ul>
                         <li class="add-to-cart">
@@ -25,9 +25,9 @@
                 </div>
             </div>
             <figcaption>
-                <div class="product-title"><a href="#">Product title 01</a></div>
-                <div class="product-category"><a href="#">BRAS & PANTIES</a></div>
-                <div class="product-price">$ 19.00</div>
+                <div class="product-title"><a href="#">{{ item.name }}</a></div>
+                <div class="product-category"><a href="#">{{ item.item_type.name_plural }}</a></div>
+                <div class="product-price">{{ item.price }}</div>
                 <div class="product-rating">*****</div>
             </figcaption>
         </figure>
