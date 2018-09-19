@@ -16,18 +16,16 @@
     <div class="col-4 col-sm-3 sidebar">
         <div class="attribute categories">
             <div class="header-wrapper">
-                <div class="header">Categories</div>
+                <div class="header">Типи товару</div>
                 <div class="line"></div>
             </div>
-            {% for sec in section_list %}
-                {% if sec.itemtype_set.first %}
+            {% for sec, it_types in sections_and_item_types.items %}
                     <a href="{{ sec.get_absolute_url }}" class="category-header">{{ sec.name | capfirst }}</a>
                     <ul>
-                        {% for type in sec.itemtype_set.all %}
-                            <li><a href="{{ type.get_absolute_url }}">{{ type.name_plural | capfirst }}</a></li>
+                        {% for it_type in it_types %}
+                            <li><a href="{{ it_type.get_absolute_url }}">{{ it_type.name_plural | capfirst }}</a></li>
                         {% endfor %}
                     </ul>
-                {% endif %}
             {% endfor %}
         </div>
         <div class="attribute color">

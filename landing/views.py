@@ -12,7 +12,7 @@ from properties.models import Fabric
 from properties.models import Color
 from properties.models import Size
 
-# Create your views here.
+from django.db.models import Max, Min
 
 
 def home(request):
@@ -41,7 +41,7 @@ def item_type(request, department_slug, section_slug, item_type_slug):
     sections_and_item_types = {}
     for sec in sections:
         for it in sec.get_item_types():
-            if it in sections_and_item_types:
+            if sec in sections_and_item_types:
                 sections_and_item_types[sec].append(it)
             else:
                 sections_and_item_types[sec] = [it]
@@ -53,6 +53,8 @@ def item_type(request, department_slug, section_slug, item_type_slug):
 
     item_type_obj = get_object_or_404(ItemType, slug=item_type_slug)
     items_list = item_type_obj.get_items()
+    min_price = items_list.aggregate(Min('price'))
+    max_price = items_list.aggregate(Max('price'))
     return render(request, 'landing/item_type.html', locals())
 
 
