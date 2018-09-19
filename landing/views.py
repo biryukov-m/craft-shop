@@ -54,7 +54,9 @@ def item_type(request, department_slug, section_slug, item_type_slug):
     item_type_obj = get_object_or_404(ItemType, slug=item_type_slug)
     items_list = item_type_obj.get_items()
     min_price = items_list.aggregate(Min('price'))
+    min_price = int(min_price['price__min'])
     max_price = items_list.aggregate(Max('price'))
+    max_price = int(max_price['price__max'])
     return render(request, 'landing/item_type.html', locals())
 
 

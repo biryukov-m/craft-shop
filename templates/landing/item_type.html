@@ -64,6 +64,11 @@
                 <p>
                     <input type="text" id="size-amount" readonly style="border:0; color:#f63e29; font-weight:bold;">
                 </p>
+                {{ min_price }}
+                {{ min_price }}
+                {{ min_price }}
+                {{ min_price }}
+                {{ min_price }}
                 <div id="slider-size-range"></div>
             </div>
         </div>
@@ -128,12 +133,8 @@
 {% endblock %}
 {% block javascripts %}
     {{ block.super }}
-    <script>
-        {% include "landing/department_price_slider.js" %}
-    </script>
-    <script>
-        {% include "landing/department_size_slider.js" %}
-    </script>
+        {% include "landing/department_price_slider.html" %}
+        {% include "landing/department_size_slider.html" %}
     <script>
         $( function() {
             $( ".controlgroup.show" ).controlgroup();
