@@ -2,7 +2,7 @@
     <div class="face">
         <figure>
             <div class="image-wrapper">
-                <img src="{{ item.image.url }}">
+                <img src="{{ item.itemimage }}">
                 <div class="active">
                     <ul>
                         <li class="add-to-cart">
@@ -27,7 +27,7 @@
             <figcaption>
                 <div class="product-title"><a href="#">{{ item.name }}</a></div>
                 <div class="product-category"><a href="#">{{ item.item_type.name_plural }}</a></div>
-                <div class="product-price">{{ item.price }}</div>
+                <div class="product-price">₴ {{ item.price }}</div>
                 <div class="product-rating">*****</div>
             </figcaption>
         </figure>

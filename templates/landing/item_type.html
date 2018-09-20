@@ -30,7 +30,7 @@
         </div>
         <div class="attribute color">
             <div class="header-wrapper">
-                <div class="header"><span class="bold">Search </span><span class="thin">by color</span></div>
+                <div class="header"><span class="bold">Знайти </span><span class="thin">за кольором</span></div>
                 <div class="line"></div>
             </div>
             <div class="color red">
@@ -45,7 +45,7 @@
         </div>
         <div class="attribute price-range">
             <div class="header-wrapper">
-                <div class="header"><span class="bold">Search </span><span class="thin">by size</span></div>
+                <div class="header"><span class="bold">Знайти </span><span class="thin">за ціною</span></div>
                 <div class="line"></div>
             </div>
             <div class="slider">
@@ -57,28 +57,23 @@
         </div>
         <div class="attribute size-range">
             <div class="header-wrapper">
-                <div class="header"><span class="bold">Search </span><span class="thin">by price</span></div>
+                <div class="header"><span class="bold">Знайти </span><span class="thin">за розміром</span></div>
                 <div class="line"></div>
             </div>
             <div class="slider">
                 <p>
                     <input type="text" id="size-amount" readonly style="border:0; color:#f63e29; font-weight:bold;">
                 </p>
-                {{ min_price }}
-                {{ min_price }}
-                {{ min_price }}
-                {{ min_price }}
-                {{ min_price }}
                 <div id="slider-size-range"></div>
             </div>
         </div>
         <div class="attribute brands">
             <div class="header-wrapper">
-                <div class="header"><span class="bold">Search </span><span class="thin">by brand</span></div>
+                <div class="header"><span class="bold">Знайти </span><span class="thin">за виробником</span></div>
                 <div class="line"></div>
             </div>
             <ul>
-                {% for brand in brands_list %}
+                {% for brand in brands %}
                     <li><a href="#">{{ brand.name | capfirst }}</a></li>
                 {% endfor %}
             </ul>

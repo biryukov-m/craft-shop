@@ -8,10 +8,10 @@ $( function() {
         max: max,
         values: [ min, max ],
         slide: function( event, ui ) {
-            $( "#price-amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            $( "#price-amount" ).val( "₴" + ui.values[ 0 ] + " - ₴" + ui.values[ 1 ] );
         }
     });
-    $( "#price-amount" ).val( "$" + $( "#slider-price-range" ).slider( "values", 0 ) +
-        " - $" + $( "#slider-price-range" ).slider( "values", 1 ) );
+    $( "#price-amount" ).val( "₴" + $( "#slider-price-range" ).slider( "values", 0 ) +
+        " - ₴" + $( "#slider-price-range" ).slider( "values", 1 ) );
 } );
     </script>

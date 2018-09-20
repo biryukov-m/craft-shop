@@ -2,6 +2,7 @@ import os
 from django.db import models
 from properties import models as properties
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import reverse
 from eav.decorators import register_eav
@@ -124,6 +125,32 @@ class ItemType(models.Model):
         return self.item_set.all().order_by('created')
 
 
+
+# Абстрактный класс для изображений товаров
+class ItemImage(models.Model):
+    created = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='додано')
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='редаговано')
+
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    product_object = GenericForeignKey('content_type', 'object_id')
+
+    is_active = models.BooleanField(default=True, verbose_name='показувати')
+    is_basic = models.BooleanField(default=False, verbose_name='основне фото')
+
+    image = models.ImageField(default=None,
+                              blank=True,
+                              verbose_name='фото товару',
+                              upload_to=get_upload_path)
+
+    def __str__(self):
+        return "Изображение для {}".format(self.content_type.model)
+
+    class Meta:
+        verbose_name = "Зображення товару"
+        verbose_name_plural = "Зображення товарів"
+
+
 # Абстрактный класс для единицы товара
 @register_eav()
 class Item(models.Model):
@@ -166,6 +193,7 @@ class Item(models.Model):
     color = models.ForeignKey(properties.Color, on_delete=models.PROTECT, verbose_name="колір")
     size = models.ForeignKey(properties.Size, on_delete=models.PROTECT, verbose_name="розмір")
     slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
+    images = GenericRelation(ItemImage)
 
     class Meta:
         verbose_name = "Товар"
@@ -185,27 +213,17 @@ class Item(models.Model):
             }
         )
 
+    def get_images_urls(self):
+        images = self.images.all()
+        urls = []
+        try:
+            for obj in images:
+                urls.append(obj.image.url)
+        except:
+            return None
 
-# Абстрактный класс для изображений товаров
-class ItemImage(models.Model):
-    created = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='додано')
-    updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='редаговано')
+        return urls
 
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    product_object = GenericForeignKey('content_type', 'object_id')
-
-    is_active = models.BooleanField(default=True, verbose_name='показувати')
-    is_basic = models.BooleanField(default=False, verbose_name='основне фото')
-
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to=get_upload_path)
-
-    def __str__(self):
-        return "Изображение для {}".format(self.content_type.model)
-
-    class Meta:
-        verbose_name = "Зображення товару"
-        verbose_name_plural = "Зображення товарів"
+    #
+    # def get_image_basic(self):
+    #     return self.
