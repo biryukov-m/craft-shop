@@ -61,8 +61,6 @@ def item_type(request, department_slug, section_slug, item_type_slug):
     except TypeError:
         min_price, max_price = 0, 0
 
-    images =
-
     return render(request, 'landing/item_type.html', locals())
 
 

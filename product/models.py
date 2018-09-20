@@ -125,7 +125,6 @@ class ItemType(models.Model):
         return self.item_set.all().order_by('created')
 
 
-
 # Абстрактный класс для изображений товаров
 class ItemImage(models.Model):
     created = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='додано')
@@ -213,7 +212,10 @@ class Item(models.Model):
             }
         )
 
-    def get_images_urls(self):
+    def get_images_extra(self):
+        return self.images.all()
+
+    def get_images_extra_urls(self):
         images = self.images.all()
         urls = []
         try:
@@ -224,6 +226,12 @@ class Item(models.Model):
 
         return urls
 
-    #
-    # def get_image_basic(self):
-    #     return self.
+    def get_image_basic(self):
+        return self.images.filter(is_basic=True).first().image
+
+    def get_image_basic_url(self):
+        basic_image = self.images.filter(is_basic=True).first()
+
+        if not basic_image:
+            return None
+        return basic_image.image.url
