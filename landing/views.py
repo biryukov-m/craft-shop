@@ -45,14 +45,27 @@ def item_type(request, department_slug, section_slug, item_type_slug):
                 sections_and_item_types[sec].append(it)
             else:
                 sections_and_item_types[sec] = [it]
-    fabrics = Fabric.objects.all()
-    genders = Gender.objects.all()
-    colors = Color.objects.all()
     brands = Brand.objects.all()
+    colors = Color.objects.all()
+    fabrics = Fabric.objects.all()
     sizes = Size.objects.all()
 
     item_type_obj = get_object_or_404(ItemType, slug=item_type_slug)
     items_list = item_type_obj.get_items()
+
+    if 'brand' in request.GET:
+        items_list = items_list.filter(brand__slug=request.GET['brand'])
+    if 'color' in request.GET:
+        items_list = items_list.filter(color__slug=request.GET['color'])
+    if 'fabric' in request.GET:
+        items_list = items_list.filter(fabric__slug=request.GET['fabric'])
+    if 'size' in request.GET:
+        items_list = items_list.filter(size__slug=request.GET['size'])
+    if 'price_min' in request.GET:
+        items_list = items_list.filter(price__gte=request.GET['price_min'])
+    if 'price_max' in request.GET:
+        items_list = items_list.filter(price__lte=request.GET['price_min'])
+
     min_price = items_list.aggregate(Min('price'))
     max_price = items_list.aggregate(Max('price'))
     try:

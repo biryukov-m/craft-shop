@@ -5,6 +5,7 @@ from django.db import models
 
 class Gender(models.Model):
     name = models.CharField(verbose_name="назва", max_length=30)
+    slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
 
     class Meta:
         verbose_name = "стать"
@@ -17,6 +18,7 @@ class Gender(models.Model):
 class Brand(models.Model):
     name = models.CharField(verbose_name="виробник", max_length=30)
     description = models.TextField(verbose_name="опис", max_length=30000)
+    slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
 
     class Meta:
         verbose_name = "виробник"
@@ -29,6 +31,7 @@ class Brand(models.Model):
 class Fabric(models.Model):
     name = models.CharField(verbose_name="назва", max_length=30)
     description = models.TextField(verbose_name="опис", max_length=30000)
+    slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
 
     class Meta:
         verbose_name = "тканина"
@@ -40,6 +43,7 @@ class Fabric(models.Model):
 
 class Color(models.Model):
     name = models.CharField(verbose_name="колір", max_length=30)
+    slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
 
     class Meta:
         verbose_name = "колір"
@@ -51,6 +55,7 @@ class Color(models.Model):
 
 class Size(models.Model):
     name = models.CharField(verbose_name="розмір", max_length=20)
+    slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
 
     class Meta:
         verbose_name = "розмір"
