@@ -78,6 +78,17 @@
                 {% endfor %}
             </ul>
         </div>
+        <div class="attribute fabric">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold">Знайти </span><span class="thin">за тканиною</span></div>
+                <div class="line"></div>
+            </div>
+            <ul>
+                {% for fabric in fabrics %}
+                    <li><a href="#">{{ fabric.name | capfirst }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
     {#   Сайдбарчик #}
     <div class="col-8 col-sm-9 content">
