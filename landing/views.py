@@ -15,6 +15,7 @@ from properties.models import Size
 from django.db.models import Max, Min
 
 
+
 def home(request):
     return render(request, 'landing/home.html')
 

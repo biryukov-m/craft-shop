@@ -1,5 +1,6 @@
 from django.db import models
 
+from urllib.parse import urlencode
 # Create your models here.
 
 
@@ -39,6 +40,10 @@ class Fabric(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_search_param(self):
+        params = {'fabric': self.slug}
+        return params
 
 
 class Color(models.Model):
