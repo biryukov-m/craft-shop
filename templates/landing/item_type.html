@@ -74,7 +74,8 @@
             </div>
             <ul>
                 {% for brand in brands %}
-                    <li><a href="#">{{ brand.name | capfirst }}</a></li>
+                    <li>
+                        <a href="{{ brand.get_search_param }}">{{ brand.name | capfirst }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -85,7 +86,7 @@
             </div>
             <ul>
                 {% for fabric in fabrics %}
-                    <li><a href="#">{{ fabric.name | capfirst }}</a></li>
+                    <li><a href="{{ fabric.get_search_param }}">{{ fabric.name | capfirst }}</a></li>
                 {% endfor %}
             </ul>
         </div>

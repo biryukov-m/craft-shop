@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'product',
     'properties',
     'orders',
-    'eav'
+    'eav',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

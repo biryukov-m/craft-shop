@@ -15,6 +15,10 @@ class Gender(models.Model):
     def __str__(self):
         return self.name
 
+    def get_search_param(self):
+        params = '?gender={}'.format(self.slug)
+        return params
+
 
 class Brand(models.Model):
     name = models.CharField(verbose_name="виробник", max_length=30)
@@ -27,6 +31,10 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_search_param(self):
+        params = '?brand={}'.format(self.slug)
+        return params
 
 
 class Fabric(models.Model):
@@ -42,7 +50,7 @@ class Fabric(models.Model):
         return self.name
 
     def get_search_param(self):
-        params = {'fabric': self.slug}
+        params = '?fabric={}'.format(self.slug)
         return params
 
 
@@ -57,6 +65,10 @@ class Color(models.Model):
     def __str__(self):
         return self.name
 
+    def get_search_param(self):
+        params = '?color={}'.format(self.slug)
+        return params
+
 
 class Size(models.Model):
     name = models.CharField(verbose_name="розмір", max_length=20)
@@ -68,4 +80,6 @@ class Size(models.Model):
 
     def __str__(self):
         return self.name
+
+
 

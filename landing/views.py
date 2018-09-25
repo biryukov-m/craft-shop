@@ -14,6 +14,7 @@ from properties.models import Size
 
 from django.db.models import Max, Min
 
+from product.forms import ProductFilter
 
 
 def home(request):
@@ -80,3 +81,9 @@ def item_type(request, department_slug, section_slug, item_type_slug):
 
 def item(request, department_slug, section_slug, item_type_slug, item_slug):
     return render(request, 'landing/item.html')
+
+
+def product_list(request):
+    filter = ProductFilter(request.GET, queryset=Item.objects.all())
+    filter.filter_for_field()
+    return render(request, 'landing/filter.html', {'filter': filter})
