@@ -85,5 +85,4 @@ def item(request, department_slug, section_slug, item_type_slug, item_slug):
 
 def product_list(request):
     filter = ProductFilter(request.GET, queryset=Item.objects.all())
-    filter.filter_for_field()
     return render(request, 'landing/filter.html', {'filter': filter})
