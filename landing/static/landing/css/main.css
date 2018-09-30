@@ -484,6 +484,29 @@ a:hover {
   height: 3px;
   flex-grow: 1;
 }
+.main-layout .shop-catalogue .sidebar .attribute .select-wrapper {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+}
+.main-layout .shop-catalogue .sidebar .attribute .select-wrapper ul li label {
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  font-size: 0.9rem;
+  color: #464646;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+.main-layout .shop-catalogue .sidebar .attribute .select-wrapper ul li input {
+  display: none;
+}
+.main-layout .shop-catalogue .sidebar .attribute .select-wrapper ul li label:hover {
+  color: #df0024;
+}
+.main-layout .shop-catalogue .sidebar .attribute .select-wrapper ul li label:first-letter {
+  text-transform: capitalize;
+}
 .main-layout .shop-catalogue .sidebar .attribute .category-header {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;

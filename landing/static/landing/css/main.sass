@@ -510,6 +510,35 @@ a:hover
             height: 3px
             flex-grow: 1
 
+        .select-wrapper
+          display: inline-block
+          vertical-align: top
+          overflow: hidden
+
+          ul
+            li
+              label
+                cursor: pointer
+                font-family: "Open Sans", sans-serif
+                font-weight: lighter
+                font-size: 0.9rem
+                color: $dark
+                margin-left: 10px
+                margin-bottom: 15px
+              
+              input
+                display: none
+
+              label:hover
+                color: $highlight
+
+
+
+              label:first-letter
+                text-transform: capitalize
+                
+
+
         .category-header
           font-family: "Open Sans", sans-serif
           font-weight: normal

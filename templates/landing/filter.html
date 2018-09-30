@@ -6,11 +6,63 @@
 </head>
 <body>
 <form action="" method="get">
-        {{ filter.form.as_ul }}
-        <input type="submit" />
-    </form>
-    {% for obj in filter.qs %}
-        {{ obj.name }} - ${{ obj.price }}<br />
-    {% endfor %}
+    {#    {{ filter.form.brand.label_tag }}#}
+    {#    {{ filter.form.brand }}#}
+
+{#        {{ filter.form }}#}
+    <br>
+{#    <br>#}
+{#    {% for field in filter.form %}#}
+{#        {{ field.label }}#}
+{#        <br>#}
+{#        {{ field }}#}
+{#        <br>#}
+{#    {% endfor %}#}
+    <br>
+
+    {{ filter.form.name.label }}
+    <br>
+
+    {{ filter.form.name }}
+    <br>
+
+    {{ filter.form.price.label }}
+    <br>
+
+    {{ filter.form.price}}
+    <br>
+
+{{ filter.form.size.label }}
+    <br>
+
+    {{ filter.form.size }}
+
+{{ filter.form.fabric.label }}
+    <br>
+
+    {{ filter.form.fabric }}
+
+{{ filter.form.color.label }}
+    <br>
+
+    {{ filter.form.color }}
+
+{{ filter.form.brand.label }}
+    <br>
+
+    {{ filter.form.brand }}
+    <br>
+
+{{ filter.form.gender.label }}
+    <br>
+    {{ filter.form.gender }}
+    <br>
+
+    <input type="submit" />
+</form>
+    <br>
+{% for obj in filter.qs %}
+    {{ obj.name }} - ${{ obj.price }}<br />
+{% endfor %}
 </body>
 </html>
