@@ -73,6 +73,10 @@
                 <div class="line"></div>
             </div>
 
+
+
+
+
             <form action="" method="get">
                 <div class="select-wrapper">    
                     {{ form.brand }}
@@ -159,5 +163,17 @@
         $( function() {
             $( ".controlgroup.search-by" ).controlgroup();
         } );
+    </script>
+    <script type="text/javascript">
+        var label = $("ul#id_brand > li > label");
+        var input = $("ul#id_brand > li > label > input");
+        var checked = $("ul#id_brand > li > label > input:checked");
+        $(document).ready(function(){
+            input.change(
+                function(){
+                  label.css('color', 'red');
+                });
+        }
+        )
     </script>
 {% endblock %}
