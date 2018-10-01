@@ -497,6 +497,7 @@ a:hover {
   color: #464646;
   margin-left: 10px;
   margin-bottom: 15px;
+  text-transform: capitalize;
 }
 .main-layout .shop-catalogue .sidebar .attribute .select-wrapper ul li input {
   display: none;
@@ -504,8 +505,9 @@ a:hover {
 .main-layout .shop-catalogue .sidebar .attribute .select-wrapper ul li label:hover {
   color: #df0024;
 }
-.main-layout .shop-catalogue .sidebar .attribute .select-wrapper ul li label:first-letter {
-  text-transform: capitalize;
+.main-layout .shop-catalogue .sidebar .attribute .select-wrapper ul li label[checked=checked] {
+  color: #df0024;
+  font-weight: 600;
 }
 .main-layout .shop-catalogue .sidebar .attribute .category-header {
   font-family: "Open Sans", sans-serif;

@@ -1,17 +1,22 @@
-    <script>
-var min = {{ min_price }};
-var max = {{ max_price }};
-$( function() {
-    $( "#slider-price-range" ).slider({
-        range: true,
-        min: min,
-        max: max,
-        values: [ min, max ],
-        slide: function( event, ui ) {
-            $( "#price-amount" ).val( "₴" + ui.values[ 0 ] + " - ₴" + ui.values[ 1 ] );
-        }
-    });
-    $( "#price-amount" ).val( "₴" + $( "#slider-price-range" ).slider( "values", 0 ) +
-        " - ₴" + $( "#slider-price-range" ).slider( "values", 1 ) );
-} );
-    </script>
+<script>
+    var min = {{ min_price }};
+    var max = {{ max_price }};
+    $( function() {
+        $( "#slider-price-range" ).slider({
+            range: true,
+            min: min,
+            max: max,
+            values: [ min, max ],
+            slide: function( event, ui ) {
+                //Поле минимального значения
+                $( "#id_price_0" ).val(ui.values[ 0 ]);
+                //Поле максимального значения
+                $("#id_price_1").val(ui.values[1]);
+            }
+        });
+
+        $( "#price-amount" ).val( "₴" + $( "#slider-price-range" ).slider( "values", 0 ) +
+            " - ₴" + $( "#slider-price-range" ).slider( "values", 1 ) );
+
+    } );
+</script>

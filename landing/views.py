@@ -46,24 +46,24 @@ def item_type(request, department_slug, section_slug, item_type_slug):
                 sections_and_item_types[sec].append(it)
             else:
                 sections_and_item_types[sec] = [it]
-    brands = Brand.objects.all()
-    colors = Color.objects.all()
-    fabrics = Fabric.objects.all()
-    sizes = Size.objects.all()
+
     item_type_obj = get_object_or_404(ItemType, slug=item_type_slug)
     items_list = item_type_obj.get_items()
+
+    # Аггрегация макс и мин цены из всего списка товаров
     min_price = items_list.aggregate(Min('price'))
     max_price = items_list.aggregate(Max('price'))
+
+    # Достать из аггрегации конкретные значения цен
     try:
         min_price = int(min_price['price__min'])
         max_price = int(max_price['price__max'])
     except TypeError:
         min_price, max_price = 0, 0
 
-    filter = ProductFilter(request.GET, queryset=Item.objects.all())
+    filter = ProductFilter(request.GET, queryset=items_list)
 
     form = filter.form
-    brand_field = form['brand']
     return render(request, 'landing/item_type.html', locals())
 
 

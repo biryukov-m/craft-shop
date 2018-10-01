@@ -525,19 +525,16 @@ a:hover
                 color: $dark
                 margin-left: 10px
                 margin-bottom: 15px
-              
+                text-transform: capitalize
+
               input
                 display: none
 
               label:hover
                 color: $highlight
-
-
-
-              label:first-letter
-                text-transform: capitalize
-                
-
+              label[checked="checked"]
+                color: $highlight
+                font-weight: 600
 
         .category-header
           font-family: "Open Sans", sans-serif
@@ -878,7 +875,7 @@ a:hover
                     -ms-transform: scale(1.2)
                     -o-transform: scale(1.2)
                     transform: scale(1.2)
-                    //outline: 2px solid rgba(255, 255, 255, 0.8)
+                  //outline: 2px solid rgba(255, 255, 255, 0.8)
 
                   img
                     display: block
