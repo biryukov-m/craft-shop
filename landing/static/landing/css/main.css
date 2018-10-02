@@ -554,6 +554,29 @@ a:hover {
 .main-layout .shop-catalogue .sidebar .attribute .green .color-inner {
   background: green;
 }
+.main-layout .shop-catalogue .sidebar .price-range .slider p {
+  color: white;
+  font-size: 0;
+  display: block;
+  height: 25px;
+}
+.main-layout .shop-catalogue .sidebar .price-range .slider p input {
+  border: none;
+  font-weight: bold;
+  color: #df0024;
+  font-size: 1rem;
+  width: 60px;
+  position: relative;
+}
+.main-layout .shop-catalogue .sidebar .price-range .slider p #id_price_0 {
+  float: left;
+  left: -10px;
+}
+.main-layout .shop-catalogue .sidebar .price-range .slider p #id_price_1 {
+  float: right;
+  right: -10px;
+  text-align: right;
+}
 .main-layout .shop-catalogue .content .header-wrapper {
   display: flex;
   width: 100%;
