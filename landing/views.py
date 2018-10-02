@@ -50,6 +50,10 @@ def item_type(request, department_slug, section_slug, item_type_slug):
     item_type_obj = get_object_or_404(ItemType, slug=item_type_slug)
     items_list = item_type_obj.get_items()
 
+    filter = ProductFilter(request.GET, queryset=items_list)
+
+    form = filter.form
+      
     # Аггрегация макс и мин цены из всего списка товаров
     min_price = items_list.aggregate(Min('price'))
     max_price = items_list.aggregate(Max('price'))
@@ -61,9 +65,16 @@ def item_type(request, department_slug, section_slug, item_type_slug):
     except TypeError:
         min_price, max_price = 0, 0
 
-    filter = ProductFilter(request.GET, queryset=items_list)
+    if 'price_min' in request.GET:
+        current_min_price = request.GET.get('price_min')
+    else:
+        current_min_price = min_price
 
-    form = filter.form
+    if 'price_max' in request.GET:
+        current_max_price = request.GET.get('price_max')
+    else:
+        current_max_price = max_price
+
     return render(request, 'landing/item_type.html', locals())
 
 

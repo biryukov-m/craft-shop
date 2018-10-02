@@ -1,12 +1,15 @@
 <script>
     var min = {{ min_price }};
     var max = {{ max_price }};
+    var current_min = {{ current_min_price }};
+    var current_max = {{ current_max_price }};
+
     $( function() {
         $( "#slider-price-range" ).slider({
             range: true,
             min: min,
             max: max,
-            values: [ min, max ],
+            values: [ current_min, current_max ],
             slide: function( event, ui ) {
                 //Поле минимального значения
                 $( "#id_price_0" ).val(ui.values[0]);
@@ -15,7 +18,7 @@
             }
         });
 
-        $( "#id_price_0" ).val("₴ " + $( "#slider-price-range" ).slider( "values", 0 ));
-        $( "#id_price_1" ).val("₴ " + $( "#slider-price-range" ).slider( "values", 1 )); 
+        $( "#id_price_0" ).val($( "#slider-price-range" ).slider( "values", 0 ));
+        $( "#id_price_1" ).val($( "#slider-price-range" ).slider( "values", 1 )); 
     } );
 </script>

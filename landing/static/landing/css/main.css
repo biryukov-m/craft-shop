@@ -13,7 +13,7 @@
 
 ul {
   list-style: none;
-  margin: 0 !important;
+  margin: 0;
 }
 
 a:hover {
@@ -416,6 +416,9 @@ a:hover {
   color: #ffffff;
 }
 .main-layout .top-shop-banner {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
   margin-bottom: 12px;
 }
 .main-layout .top-shop-banner .wrapper .banner {
@@ -442,6 +445,9 @@ a:hover {
   opacity: 1;
 }
 .main-layout .breadcrumbs {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
   margin-bottom: 55px;
 }
 .main-layout .breadcrumbs .wrapper .inner a {
@@ -458,8 +464,13 @@ a:hover {
   content: "/";
   margin-right: 5px;
 }
+.main-layout .shop-catalogue .sidebar {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
 .main-layout .shop-catalogue .sidebar .attribute {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 .main-layout .shop-catalogue .sidebar .attribute .header-wrapper {
   display: flex;
@@ -496,7 +507,6 @@ a:hover {
   font-size: 0.9rem;
   color: #464646;
   margin-left: 10px;
-  margin-bottom: 15px;
   text-transform: capitalize;
 }
 .main-layout .shop-catalogue .sidebar .attribute .select-wrapper ul li input {
@@ -521,7 +531,7 @@ a:hover {
 .main-layout .shop-catalogue .sidebar .attribute .category-header:hover {
   color: #e54833;
 }
-.main-layout .shop-catalogue .sidebar .attribute ul li {
+.main-layout .shop-catalogue .sidebar .attribute ul {
   margin-bottom: 15px;
 }
 .main-layout .shop-catalogue .sidebar .attribute ul li a {
@@ -533,6 +543,15 @@ a:hover {
 }
 .main-layout .shop-catalogue .sidebar .attribute ul li a:hover {
   color: #df0024;
+}
+.main-layout .shop-catalogue .sidebar .attribute ul li:not(:last-child) {
+  margin-bottom: 15px;
+}
+.main-layout .shop-catalogue .sidebar .attribute ul:last-child {
+  margin-bottom: 0;
+}
+.main-layout .shop-catalogue .sidebar .attribute ul:last-child label {
+  margin-bottom: 0;
 }
 .main-layout .shop-catalogue .sidebar .attribute .color {
   display: inline-flex;
@@ -583,6 +602,9 @@ a:hover {
   flex-direction: row;
   align-items: baseline;
   margin-bottom: 20px;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 }
 .main-layout .shop-catalogue .content .header-wrapper .header {
   display: flex;

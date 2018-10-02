@@ -28,7 +28,6 @@
                     </ul>
                 {% endfor %}
             </div>
-
             {# Форма с фильтрами начало #}
             <form class="filters" action="" method="get">
                 <div class="attribute color">
@@ -64,11 +63,9 @@
                         <div class="line"></div>
                     </div>
                     <div class="slider">
-                        <p>
+                        <div class="select-wrapper">
                             {{ form.size }}
-                            <input type="text" id="size-amount" readonly style="border:0; color:#f63e29; font-weight:bold;">
-                        </p>
-                        <div id="slider-size-range"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="attribute brands">
@@ -76,11 +73,9 @@
                         <div class="header"><span class="bold">Знайти </span><span class="thin">за виробником</span></div>
                         <div class="line"></div>
                     </div>
-
                     <div class="select-wrapper">
                         {{ form.brand }}
                     </div>
-
                 </div>
                 <div class="attribute fabric">
                     <div class="header-wrapper">

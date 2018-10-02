@@ -43,7 +43,7 @@ $darker: #282828
 
 ul
   list-style: none
-  margin: 0 !important
+  margin: 0
 
 a:hover
   text-decoration: none
@@ -440,6 +440,9 @@ a:hover
               background: $darker
               color: #ffffff
   .top-shop-banner
+    -moz-user-select: none
+    -khtml-user-select: none
+    user-select: none
     margin-bottom: 12px
     .wrapper
       .banner
@@ -467,6 +470,9 @@ a:hover
           width: 100px
           opacity: 1
   .breadcrumbs
+    -moz-user-select: none
+    -khtml-user-select: none
+    user-select: none
     margin-bottom: 55px
 
     .wrapper
@@ -484,8 +490,11 @@ a:hover
           margin-right: 5px
   .shop-catalogue
     .sidebar
+      -moz-user-select: none
+      -khtml-user-select: none
+      user-select: none
       .attribute
-        margin-bottom: 50px
+        margin-bottom: 40px
 
         .header-wrapper
           display: flex
@@ -524,7 +533,6 @@ a:hover
                 font-size: 0.9rem
                 color: $dark
                 margin-left: 10px
-                margin-bottom: 15px
                 text-transform: capitalize
 
               input
@@ -532,9 +540,11 @@ a:hover
 
               label:hover
                 color: $highlight
+
               label[checked="checked"]
                 color: $highlight
                 font-weight: 600
+
 
         .category-header
           font-family: "Open Sans", sans-serif
@@ -549,18 +559,25 @@ a:hover
           color: $highlight_darkest
 
         ul
+          margin-bottom: 15px
           li
-            margin-bottom: 15px
-
             a
               font-family: "Open Sans", sans-serif
               font-weight: lighter
               font-size: 0.9rem
               color: $dark
               margin-left: 10px
-
             a:hover
               color: $highlight
+
+          li:not(:last-child)
+            margin-bottom: 15px
+
+        ul:last-child
+          margin-bottom: 0
+
+          label
+            margin-bottom: 0
 
         .color
           display: inline-flex
@@ -605,7 +622,8 @@ a:hover
             #id_price_1
               float: right
               right: -10px
-              text-align: right    
+              text-align: right
+
     .content
       .header-wrapper
         display: flex
@@ -613,6 +631,9 @@ a:hover
         flex-direction: row
         align-items: baseline
         margin-bottom: 20px
+        -moz-user-select: none
+        -khtml-user-select: none
+        user-select: none
 
         .header
           display: flex
@@ -838,8 +859,6 @@ a:hover
           img
             outline: 5px solid $highlight_darkest
             opacity: 0.5
-
-
 // Отображение секций в shop.html
 #sections
   .section
@@ -953,8 +972,6 @@ a:hover
           font-size: 1rem
           font-family: 'Open Sans', sans-serif
           font-weight: 600
-
-
 footer
   .footer-background
     background: $darker
@@ -1023,8 +1040,6 @@ footer
 
             a:hover
               color: $highlight
-
-
 // Extra large devices (large desktops, 1200px and up)
 @media screen and (max-width: 1199px)
   .main-layout
@@ -1157,8 +1172,6 @@ footer
 
           a
             font-size: 0.9rem
-
-
 // Large devices (desktops, 992px and up)
 @media screen and (max-width: 991px)
   html
@@ -1286,7 +1299,6 @@ footer
 
           a
             font-size: 1.1rem
-
 // Medium devices (tablets, 768px and up)
 @media screen and (max-width: 767px)
   html
@@ -1449,7 +1461,6 @@ footer
 
           a
             font-size: 1.4rem
-
 // Small devices (landscape phones, 576px and up)
 @media screen and (max-width: 575px)
   .top-menu-layout
