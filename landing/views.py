@@ -3,6 +3,7 @@ from django.shortcuts import HttpResponse
 from django.shortcuts import get_object_or_404
 
 from product.models import Department
+from product.models import Section
 from product.models import Item
 from product.models import ItemType
 
@@ -36,8 +37,13 @@ def section(request, department_slug, section_slug):
     return render(request, 'landing/section.html')
 
 
+def department(request, department_slug, section_slug):
+    return render(request, 'landing/department.html')
+
+
 def item_type(request, department_slug, section_slug, item_type_slug):
     department_obj = get_object_or_404(Department, slug=department_slug)
+    section_obj = get_object_or_404(Section, slug=section_slug)
     sections = department_obj.get_sections()
     sections_and_item_types = {}
     for sec in sections:
