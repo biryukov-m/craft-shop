@@ -44,26 +44,14 @@ def department(request, department_slug, section_slug):
 def item_type(request, department_slug, section_slug, item_type_slug):
     department_obj = get_object_or_404(Department, slug=department_slug)
     section_obj = get_object_or_404(Section, slug=section_slug)
-    sections = department_obj.get_sections()
-    sections_and_item_types = {}
-    for sec in sections:
-        for it in sec.get_item_types():
-            if sec in sections_and_item_types:
-                sections_and_item_types[sec].append(it)
-            else:
-                sections_and_item_types[sec] = [it]
-
     item_type_obj = get_object_or_404(ItemType, slug=item_type_slug)
+    sidebar = item_type_obj.get_sidebar()
     items_list = item_type_obj.get_items()
-
     filter = ProductFilter(request.GET, queryset=items_list)
-
     form = filter.form
-      
     # Аггрегация макс и мин цены из всего списка товаров
     min_price = items_list.aggregate(Min('price'))
     max_price = items_list.aggregate(Max('price'))
-
     # Достать из аггрегации конкретные значения цен
     try:
         min_price = int(min_price['price__min'])
@@ -85,6 +73,7 @@ def item_type(request, department_slug, section_slug, item_type_slug):
 
 
 def item(request, department_slug, section_slug, item_type_slug, item_slug):
+
     return render(request, 'landing/item.html', {'filter': filter})
 
 

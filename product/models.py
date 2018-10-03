@@ -124,6 +124,18 @@ class ItemType(models.Model):
     def get_items(self):
         return self.item_set.all().order_by('created')
 
+    def get_sidebar(self):
+        department_obj = self.section.department
+        related_sections = department_obj.get_sections()
+        sections_and_item_types = {}
+        for section in related_sections:
+            for item_type in section.get_item_types():
+                if section in sections_and_item_types:
+                    sections_and_item_types[section].append(item_type)
+                else:
+                    sections_and_item_types[section] = [item_type]
+        return sections_and_item_types
+
 
 # Абстрактный класс для изображений товаров
 class ItemImage(models.Model):

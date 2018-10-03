@@ -6,7 +6,7 @@
     <div class="row breadcrumbs">
         <div class="wrapper col-md-12">
             <div class="inner">
-                <a href="{% url 'landing:home' %}">Магазин</a>
+                <a href="{% url 'landing:shop' %}">Магазин</a>
                 <a href="{{ department_obj.get_absolute_url }}">{{ department_obj.name }}</a>                
                 <a href="{{ section_obj.get_absolute_url }}">{{ section_obj.name }}</a>
                 <a href="{{ item_type_obj.get_absolute_url }}">{{ item_type_obj.name }}</a>
@@ -22,7 +22,7 @@
                     <div class="header">Типи товару</div>
                     <div class="line"></div>
                 </div>
-                {% for sec, it_types in sections_and_item_types.items %}
+                {% for sec, it_types in sidebar.items %}
                     <a href="{{ sec.get_absolute_url }}" class="category-header">{{ sec.name | capfirst }}</a>
                     <ul>
                         {% for it_type in it_types %}
@@ -66,12 +66,8 @@
                         <div class="header"><span class="bold">Знайти </span><span class="thin">за розміром</span></div>
                         <div class="line"></div>
                     </div>
-                    <div class="slider">
-                        <p>
-                            {{ form.size }}
-                            <input type="text" id="size-amount" readonly style="border:0; color:#f63e29; font-weight:bold;">
-                        </p>
-                        <div id="slider-size-range"></div>
+                    <div class="select-wrapper">
+                        {{ form.size }}
                     </div>
                 </div>
                 <div class="attribute brands">
@@ -136,9 +132,6 @@
             </div>
             {#  Опции вывода товаров #}
             <div class="row">
-{#                            {% for obj in filter.qs %}#}
-{#                    {{ obj.name }} - UAH {{ obj.price }}<br />#}
-{#                {% endfor %}#}
                 {% for item in filter.qs %}
                     <div id="product-preview" class="col-12 col-sm-6 col-lg-4 product-wrapper">
                         {% include 'landing/home__product.html' %}
@@ -151,11 +144,12 @@
 {% block javascripts %}
     {{ block.super }}
     {% include "landing/department_price_slider.html" %}
-    {% include "landing/department_size_slider.html" %}
     <script>
+    // Выпадающий селект вверху списка товаров для смена количества выводимых товаров
         $( function() {
             $( ".controlgroup.show" ).controlgroup();
         } );
+    // Селект рядом, для выбора типа сортировки
         $( function() {
             $( ".controlgroup.search-by" ).controlgroup();
         } );
