@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    {% include 'landing/shop__top_banner.html' %}
+    {#  Хлебные крохи  #}
+    <div class="row breadcrumbs">
+        <div class="wrapper col-md-12">
+            <div class="inner">
+                {% block breadcrumbs %}
+                    <a href="{% url 'landing:shop' %}">Магазин</a>
+                    <a href="{{ department_obj.get_absolute_url }}">{{ department_obj.name }}</a>
+                    <a href="{{ section_obj.get_absolute_url }}">{{ section_obj.name }}</a>
+                    <a href="{{ item_type_obj.get_absolute_url }}">{{ item_type_obj.name_plural }}</a>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    {#  Хлебные крохи  #}
+    <div class="row shop-catalogue">
+        {#   Сайдбарчик #}
+        <div class="col-4 col-sm-3 sidebar">
+            {% block sidebar %}
+                {# Типы товаров #}
+                <div class="attribute categories">
+                    <div class="header-wrapper">
+                        <div class="header">Типи товару</div>
+                        <div class="line"></div>
+                    </div>
+                    {% for sec, it_types in sidebar.items %}
+                        <a href="{{ sec.get_absolute_url }}" class="category-header">{{ sec.name | capfirst }}</a>
+                        <ul>
+                            {% for it_type in it_types %}
+                                <li><a href="{{ it_type.get_absolute_url }}">{{ it_type.name_plural | capfirst }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </div>
+                {# Типы товаров #}
+
+                {# Форма с фильтрами начало #}
+                <form class="filters" action="">
+                    <div class="attribute color">
+                        <div class="header-wrapper">
+                            <div class="header"><span class="bold">Знайти </span><span class="thin">за кольором</span></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="color red">
+                            <a href="#" class="color-inner"></a>
+                        </div>
+                        <div class="color blue">
+                            <a href="#" class="color-inner"></a>
+                        </div>
+                        <div class="color green">
+                            <a href="#" class="color-inner"></a>
+                        </div>
+                    </div>
+                    <div class="attribute price-range">
+                        <div class="header-wrapper">
+                            <div class="header"><span class="bold">Знайти </span><span class="thin">за ціною</span></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="slider">
+                            <p>
+                                {{ form.price }}
+                            </p>
+                            <div id="slider-price-range"></div>
+                        </div>
+                    </div>
+                    <div class="attribute size-range">
+                        <div class="header-wrapper">
+                            <div class="header"><span class="bold">Знайти </span><span class="thin">за розміром</span></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="select-wrapper">
+                            {{ form.size }}
+                        </div>
+                    </div>
+                    <div class="attribute brands">
+                        <div class="header-wrapper">
+                            <div class="header"><span class="bold">Знайти </span><span class="thin">за виробником</span></div>
+                            <div class="line"></div>
+                        </div>
+
+                        <div class="select-wrapper">
+                            {{ form.brand }}
+                        </div>
+
+                    </div>
+                    <div class="attribute fabric">
+                        <div class="header-wrapper">
+                            <div class="header"><span class="bold">Знайти </span><span class="thin">за тканиною</span></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="select-wrapper">
+                            {{ form.fabric }}
+                        </div>
+                    </div>
+                    <input type="submit" />
+                </form>
+            {% endblock %}
+        </div>
+        {#   Сайдбарчик #}
+        <div class="col-8 col-sm-9 content">
+            {% block catalogue_content %}
+
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ block.super }}
+    {% include "landing/department_price_slider.html" %}
+    <script>
+        // Выпадающий селект вверху списка товаров для смена количества выводимых товаров
+        $( function() {
+            $( ".controlgroup.show" ).controlgroup();
+        } );
+        // Селект рядом, для выбора типа сортировки
+        $( function() {
+            $( ".controlgroup.search-by" ).controlgroup();
+        } );
+    </script>
+
+    <script type="text/javascript">
+        {#  При клике на лейбл фильтров в сайдбаре добавляет/убирает лейблу аттрибут checked для стилизации его через CSS #}
+        var label = $(".select-wrapper ul > li > label");
+        var input_checked = $(".select-wrapper ul > li > label > input:checked");
+        $(document).ready(function(){
+            input_checked.parent().attr({"checked" : ""});
+
+            label.mousedown(
+                function () {
+                    var this_ = $(this);
+
+                    if (!this_[0].hasAttribute("checked")) {
+                        this_.attr({"checked" : ""});
+                    } else {
+                        this_.removeAttr( "checked" );
+                    }
+                }
+            );
+
+        })
+    </script>
+{% endblock %}

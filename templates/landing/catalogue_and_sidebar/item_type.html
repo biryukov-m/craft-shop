@@ -1,0 +1,46 @@
+{% extends 'landing/catalogue_and_sidebar/catalogue_and_sidebar_skelet.html' %}
+
+{% block catalogue_content %}
+    {#  Опции вывода товаров #}
+    <div class="header-wrapper">
+        <div class="header">
+            <div class="option show">
+                <div class="name">SHOW</div>
+                <div class="controlgroup show">
+                    <select id="sort-by">
+                        <option>8</option>
+                        <option>16</option>
+                        <option>32</option>
+                    </select>
+                </div>
+            </div>
+            <div class="option sort-by">
+                <div class="name">SORT BY</div>
+                <div class="controlgroup show">
+                    <select id="sort-by">
+                        <option>Recommended</option>
+                        <option>New</option>
+                        <option>Name</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="view-icons">
+            <div class="icon">
+                <a class="list-view" href="#"><i class="fas fa-list-ul"></i></a>
+            </div>
+            <div class="icon">
+                <a class="grid-view" href="#"><i class="fas fa-th"></i></a>
+            </div>
+        </div>
+    </div>
+    {#  Опции вывода товаров #}
+    <div class="row">
+        {% for item in product_filter.qs %}
+            <div id="product-preview" class="col-12 col-sm-6 col-lg-4 product-wrapper">
+                {% include 'landing/item_preview.html' %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

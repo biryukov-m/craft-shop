@@ -1,20 +1,14 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from django.shortcuts import get_object_or_404
-
+from django.views import View
+from django.views.generic import ListView
+from django.views.generic import DetailView
 from product.models import Department
 from product.models import Section
 from product.models import Item
 from product.models import ItemType
-
-from properties.models import Gender
-from properties.models import Brand
-from properties.models import Fabric
-from properties.models import Color
-from properties.models import Size
-
 from django.db.models import Max, Min
-
 from product.forms import ProductFilter
 
 
@@ -41,42 +35,51 @@ def department(request, department_slug, section_slug):
     return render(request, 'landing/department.html')
 
 
-def item_type(request, department_slug, section_slug, item_type_slug):
-    department_obj = get_object_or_404(Department, slug=department_slug)
-    section_obj = get_object_or_404(Section, slug=section_slug)
-    item_type_obj = get_object_or_404(ItemType, slug=item_type_slug)
-    sidebar = item_type_obj.get_sidebar()
-    items_list = item_type_obj.get_items()
-    filter = ProductFilter(request.GET, queryset=items_list)
-    form = filter.form
-    # Аггрегация макс и мин цены из всего списка товаров
-    min_price = items_list.aggregate(Min('price'))
-    max_price = items_list.aggregate(Max('price'))
-    # Достать из аггрегации конкретные значения цен
-    try:
-        min_price = int(min_price['price__min'])
-        max_price = int(max_price['price__max'])
-    except TypeError:
-        min_price, max_price = 0, 0
+class ViewByItemType(View):
+    template_name = 'landing/catalogue_and_sidebar/item_type.html'
 
-    if 'price_min' in request.GET:
-        current_min_price = request.GET.get('price_min')
-    else:
-        current_min_price = min_price
+    def get_context_data(self, request, department_slug, section_slug, item_type_slug, *args, **kwargs):
+        department_obj = get_object_or_404(Department, slug=department_slug)
+        section_obj = get_object_or_404(Section, slug=section_slug)
+        item_type_obj = get_object_or_404(ItemType, slug=item_type_slug)
+        sidebar = item_type_obj.get_sidebar()
 
-    if 'price_max' in request.GET:
-        current_max_price = request.GET.get('price_max')
-    else:
-        current_max_price = max_price
+        items_list = item_type_obj.get_items()
+        product_filter = ProductFilter(request.GET, queryset=items_list)
+        form = product_filter.form
+        # Аггрегация макс и мин цены из всего списка товаров
+        min_price = items_list.aggregate(Min('price'))
+        max_price = items_list.aggregate(Max('price'))
+        # Достать из аггрегации конкретные значения цен
+        try:
+            min_price = int(min_price['price__min'])
+            max_price = int(max_price['price__max'])
+        except TypeError:
+            min_price, max_price = 0, 0
 
-    return render(request, 'landing/item_type.html', locals())
+        if 'price_min' in request.GET:
+            current_min_price = request.GET.get('price_min')
+        else:
+            current_min_price = min_price
+
+        if 'price_max' in request.GET:
+            current_max_price = request.GET.get('price_max')
+        else:
+            current_max_price = max_price
+
+        context = locals()
+
+        return context
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(request, *args, **kwargs)
+        return render(request, self.template_name, context=context)
 
 
-def item(request, department_slug, section_slug, item_type_slug, item_slug):
+class ViewSingleItem(ViewByItemType):
+    template_name = 'landing/catalogue_and_sidebar/item_single.html'
 
-    return render(request, 'landing/item.html', {'filter': filter})
-
-
-def product_list(request):
-    filter = ProductFilter(request.GET, queryset=Item.objects.all())
-    return render(request, 'landing/filter.html', {'filter': filter})
+    def get_context_data(self, *args, **kwargs):
+        context = super(ViewSingleItem, self).get_context_data(*args, **kwargs)
+        context['item_obj'] = get_object_or_404(Item, slug=self.kwargs['item_slug'])
+        return context

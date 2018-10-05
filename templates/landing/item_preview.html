@@ -14,7 +14,7 @@
                             <span>LIKE</span>
                         </li>
                         <li class="view">
-                            <a href="#"><i class="far fa-eye fa-lg"></i></a>
+                            <a href="{{ item.get_absolute_url }}"><i class="far fa-eye fa-lg"></i></a>
                             <span>DETAIL</span>
                         </li>
                         <li class="big">
@@ -25,8 +25,8 @@
                 </div>
             </div>
             <figcaption>
-                <div class="product-title"><a href="#">{{ item.name }}</a></div>
-                <div class="product-category"><a href="#">{{ item.item_type.name_plural }}</a></div>
+                <div class="product-title"><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></div>
+                <div class="product-category"><a href="{{ item.item_type.get_absolute_url }}">{{ item.item_type.name_plural }}</a></div>
                 <div class="product-price">₴ {{ item.price }}</div>
                 <div class="product-rating">*****</div>
             </figcaption>
