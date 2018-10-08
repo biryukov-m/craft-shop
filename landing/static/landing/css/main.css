@@ -677,6 +677,12 @@ a:hover {
 .main-layout .shop-catalogue .content .header-wrapper .view-icons .icon a:hover {
   border: 1px #df0024 solid;
 }
+.main-layout .shop-catalogue .content .single-item-view {
+  min-height: 560px;
+}
+.main-layout .shop-catalogue .content .single-item-view .main-image-wrapper img {
+  height: 100%;
+}
 .main-layout .section-wrapper .banner {
   background: #464646;
   position: relative;
