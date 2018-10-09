@@ -3,13 +3,14 @@
 {% block catalogue_content %}
     <div class="single-item-page">
         <div class="single-item-view row">
-            <div class="main-image-wrapper col-sm-5">
+            <div class="main-image-wrapper col-sm-7">
                 <img src="{{ item.get_image_basic.url }}">
             </div>
-            <div class="product-info col-sm-4">
-                <div class="title">{{ item.title }}</div>
+            <div class="product-info col-sm-5">
+                <div class="title">{{ item.name }}</div>
                 <div class="code">
-                    <span class="name">Код: </span>
+                    <span class="name">Код:</span>
+
                     <span class="value">B&P-D01584</span>
                 </div>
                 <div class="rating">*****</div>
@@ -22,7 +23,7 @@
                     <div class="gplus"><img></div>
                 </div>
                 <div class="description">
-
+                    {{ item.description }}
                 </div>
                 <div class="stock">
                     <span class="name">Кількість на складі: </span>
