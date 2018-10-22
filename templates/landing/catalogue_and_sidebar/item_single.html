@@ -13,8 +13,9 @@
 
                     <span class="value">B&P-D01584</span>
                 </div>
+
                 <div class="rating">*****</div>
-                <div class="price">{{ item.price }}</div>
+                <div class="price">{{ item.price }} ₴</div>
                 <div class="share-section">
                     <div class="name">Поділитись: </div>
                     <div class="facebook"><img></div>
@@ -25,12 +26,19 @@
                 <div class="description">
                     {{ item.description }}
                 </div>
-                <div class="stock">
-                    <span class="name">Кількість на складі: </span>
-                    <span class="value">99 штук</span>
-                </div>
                 <div class="user-interface">
-                    <div class="colors-line"></div>
+                    <div class="brand attribute">
+                    <span class="name">Виробник:</span>
+                    <span class="value">{{ item.brand.name }}</span>
+                </div>
+                    <div class="fabric attribute">
+                    <span class="name">Тканина: </span>
+                    <span class="value">{{ item.fabric.name }}</span>
+                </div>
+                    <div class="colors-line attribute">
+                        <span class="name">Колір: </span>
+                        <span class="value">{{ item.color.name }}</span>
+                    </div>
                     <div class="quantity-selector"></div>
                     <div class="size-selector"></div>
                     <div class="add-to-cart"></div>
