@@ -703,24 +703,6 @@ a:hover {
 .main-layout .shop-catalogue .content .single-item-view .product-info .code .value {
   font-weight: 100;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface {
-  border-bottom: #cecece dashed 1px;
-  padding-bottom: 7px;
-}
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .attribute {
-  color: #464646;
-  margin-bottom: 13px;
-}
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .attribute .name {
-  font-size: 11pt;
-  font-weight: 500;
-  color: #df0024;
-}
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .attribute .value {
-  font-size: 11pt;
-  font-weight: 100;
-  color: #282828;
-}
 .main-layout .shop-catalogue .content .single-item-view .product-info .rating {
   margin-bottom: 20px;
 }
@@ -745,6 +727,100 @@ a:hover {
   padding-bottom: 20px;
   border-bottom: #cecece dashed 1px;
   font-size: 11pt;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .attribute {
+  color: #464646;
+  margin-bottom: 13px;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .attribute .name {
+  font-size: 11pt;
+  font-weight: 500;
+  color: #df0024;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .attribute .value {
+  font-size: 11pt;
+  font-weight: 100;
+  color: #282828;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .colors-line {
+  border-bottom: #cecece dashed 1px;
+  padding-bottom: 7px;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface {
+  border-bottom: #cecece dashed 1px;
+  padding-bottom: 7px;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row label[for=quantity-selector],
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row label[for=size-selector] {
+  font-family: "Open Sans", sans-serif;
+  font-size: 11pt;
+  color: #464646;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector {
+  width: 86px;
+  height: 26px;
+  border: 1px dashed #464646;
+  border-radius: 8px;
+  display: inline-flex;
+  justify-content: space-around;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector .number {
+  padding: 4px 0;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  text-align: center;
+  border: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 11pt;
+  color: #464646;
+  min-width: 18px;
+  max-width: 44px;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector .number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector .number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector button {
+  background: none;
+  border: none;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #464646;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector button:hover {
+  color: #e54833;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector .left {
+  padding-left: 6px;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector .right {
+  padding-right: 6px;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .add-to-cart input[type=submit] {
+  width: 130px;
+  height: 33px;
+  text-align: center;
+  vertical-align: middle;
+  background: #df0024;
+  opacity: 0.75;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: "Open Sans";
+  font-weight: 100;
+  font-size: 10pt;
+  cursor: pointer;
+}
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .add-to-cart input[type=submit]:hover {
+  opacity: 1;
 }
 .main-layout .section-wrapper .banner {
   background: #464646;

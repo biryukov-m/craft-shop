@@ -13,7 +13,6 @@
 
                     <span class="value">B&P-D01584</span>
                 </div>
-
                 <div class="rating">*****</div>
                 <div class="price">{{ item.price }} ₴</div>
                 <div class="share-section">
@@ -26,37 +25,63 @@
                 <div class="description">
                     {{ item.description }}
                 </div>
-                <div class="user-interface">
-                    <div class="brand attribute">
+                <div class="brand attribute">
                     <span class="name">Виробник:</span>
                     <span class="value">{{ item.brand.name }}</span>
                 </div>
-                    <div class="fabric attribute">
+                <div class="fabric attribute">
                     <span class="name">Тканина: </span>
                     <span class="value">{{ item.fabric.name }}</span>
                 </div>
-                    <div class="colors-line attribute">
-                        <span class="name">Колір: </span>
-                        <span class="value">{{ item.color.name }}</span>
+                <div class="colors-line attribute">
+                    <span class="name">Колір: </span>
+                    <span class="value">{{ item.color.name }}</span>
+                </div>
+                <form class="user-interface">
+                    <div class="selectors-row">
+                        <div class="quantity-selector-wrapper">
+                            <label for="quantity-selector">Кількість: </label>
+                            <div class="spinner-selector quantity">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="left">
+                                    <i class="far fa-arrow-alt-circle-left"></i>
+                                </button>
+                                <input type="number" class="number" id="quantity-selector" value=1>
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="right">
+                                    <i class="far fa-arrow-alt-circle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="size-selector-wrapper">
+                            <label for="size-selector">Розмір:</label>
+                            <div class="spinner-selector size">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="left">
+                                    <i class="far fa-arrow-alt-circle-left"></i>
+                                </button>
+                                <input type="number" id="size-selector" class="number" value=1>
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="right">
+                                    <i class="far fa-arrow-alt-circle-right"></i>
+                                </button>
+                            </div>
+                            <div class="size-selector"></div>
+                        </div>
                     </div>
-                    <div class="quantity-selector"></div>
-                    <div class="size-selector"></div>
-                    <div class="add-to-cart"></div>
+                    <div class="add-to-cart">
+{#                        <input type="submit" id="add-to-cart" value="Додати до кошику">#}
+                    </div>
+                </form>
+            </div>
+            <div class="extra-images row">
+                <div class="image-wrapper col-1">
                 </div>
             </div>
         </div>
-        <div class="extra-images row">
-            <div class="image-wrapper col-1">
-            </div>
-        </div>
-    </div>
-    {{ item_obj.name }}
-    {{ item_obj.name }}
-    {{ item_obj.name }}
-    {{ item_obj.name }}
-    {{ item_obj.name }}
-    {{ item_obj.name }}
-    {{ item_obj.name }}
-    {{ item_obj.name }}
-    {{ item_obj.name }}
+        {{ item_obj.name }}
+        {{ item_obj.name }}
+        {{ item_obj.name }}
+        {{ item_obj.name }}
+        {{ item_obj.name }}
+        {{ item_obj.name }}
+        {{ item_obj.name }}
+        {{ item_obj.name }}
+        {{ item_obj.name }}
 {% endblock %}

@@ -727,31 +727,6 @@ a:hover
             .value
               font-weight: 100
 
-          .user-interface
-            border-bottom: #cecece dashed 1px
-            padding-bottom: 7px
-
-            .attribute
-              color: $dark
-              margin-bottom: 13px
-              .name
-                font-size: 11pt
-                font-weight: 500
-                color: $highlight
-                //text-decoration: underline
-              .value
-                font-size: 11pt
-                font-weight: 100
-                color: $darker
-
-              .colors-line
-
-              .quantity-selector
-
-              .size-selector
-
-              .add-to-cart
-
           .rating
             margin-bottom: 20px
 
@@ -777,10 +752,99 @@ a:hover
             border-bottom: $lighter dashed 1px
             font-size: 11pt
 
-        .extra-images
-          .image-wrapper
-            img
+          .attribute
+            color: $dark
+            margin-bottom: 13px
+            .name
+              font-size: 11pt
+              font-weight: 500
+              color: $highlight
+              //text-decoration: underline
+            .value
+              font-size: 11pt
+              font-weight: 100
+              color: $darker
 
+          .colors-line
+            border-bottom: #cecece dashed 1px
+            padding-bottom: 7px
+
+          .user-interface
+            border-bottom: #cecece dashed 1px
+            padding-bottom: 7px
+
+            .selectors-row
+              margin-bottom: 30px
+              display: flex
+              justify-content: space-between
+
+              label[for="quantity-selector"],
+              label[for="size-selector"]
+                font-family: "Open Sans", sans-serif
+                font-size: 11pt
+                color: $dark
+
+              .spinner-selector
+                width: 86px
+                height: 26px
+                border: 1px dashed $dark
+                border-radius: 8px
+                display: inline-flex
+                justify-content: space-around
+
+                .number
+                  padding: 4px 0
+                  -webkit-appearance: textfield
+                  -moz-appearance: textfield
+                  appearance: textfield
+                  text-align: center
+                  border: none
+                  font-family: "Open Sans", sans-serif
+                  font-size: 11pt
+                  color: $dark
+                  min-width: 18px
+                  max-width: 44px
+
+
+                .number::-webkit-inner-spin-button
+                  -webkit-appearance: none
+                .number::-webkit-outer-spin-button
+                  -webkit-appearance: none
+
+                button
+                  background: none
+                  border: none
+                  vertical-align: middle
+                  cursor: pointer
+                  color: $dark
+
+                button:hover
+                  color: $highlight_darkest
+
+                .left
+                  padding-left: 6px
+
+                .right
+                  padding-right: 6px
+
+            .add-to-cart
+              input[type=submit]
+                width: 130px
+                height: 33px
+                text-align: center
+                vertical-align: middle
+                background: $highlight
+                opacity: 0.75
+                border: none
+                border-radius: 8px
+                color: #fff
+                font-family: "Open Sans"
+                font-weight: 100
+                font-size: 10pt
+                cursor: pointer
+
+              input[type=submit]:hover
+                opacity: 1
 
   .section-wrapper
     .banner
