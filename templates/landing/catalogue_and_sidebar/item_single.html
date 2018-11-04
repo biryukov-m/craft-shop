@@ -37,16 +37,17 @@
                     <span class="name">Колір: </span>
                     <span class="value">{{ item.color.name }}</span>
                 </div>
-                <form class="user-interface">
+                <form method="post" action="" class="user-interface">
+                    {% csrf_token %}
                     <div class="selectors-row">
                         <div class="quantity-selector-wrapper">
                             <label for="quantity-selector">Кількість: </label>
                             <div class="spinner-selector quantity">
-                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="left">
+                                <button  type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="left">
                                     <i class="far fa-arrow-alt-circle-left"></i>
                                 </button>
-                                <input type="number" class="number" id="quantity-selector" value=1>
-                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="right">
+                                <input type="number" class="number" id="quantity-selector" value=1 min="1" max="100">
+                                <button  type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="right">
                                     <i class="far fa-arrow-alt-circle-right"></i>
                                 </button>
                             </div>
@@ -54,11 +55,11 @@
                         <div class="size-selector-wrapper">
                             <label for="size-selector">Розмір:</label>
                             <div class="spinner-selector size">
-                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="left">
+                                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="left">
                                     <i class="far fa-arrow-alt-circle-left"></i>
                                 </button>
                                 <input type="number" id="size-selector" class="number" value=1>
-                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="right">
+                                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="right">
                                     <i class="far fa-arrow-alt-circle-right"></i>
                                 </button>
                             </div>
@@ -66,7 +67,7 @@
                         </div>
                     </div>
                     <div class="add-to-cart">
-{#                        <input type="submit" id="add-to-cart" value="Додати до кошику">#}
+                        <input type="submit" id="add-to-cart" value="Додати до кошику">
                     </div>
                 </form>
             </div>
