@@ -681,10 +681,11 @@ a:hover {
   min-height: 560px;
 }
 .main-layout .shop-catalogue .content .single-item-view .main-image-wrapper img {
-  height: 100%;
+  width: 100%;
 }
 .main-layout .shop-catalogue .content .single-item-view .product-info {
   font-family: "Open Sans";
+  margin-bottom: 15px;
 }
 .main-layout .shop-catalogue .content .single-item-view .product-info .title {
   font-weight: 100;
@@ -821,6 +822,18 @@ a:hover {
 }
 .main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .add-to-cart input[type=submit]:hover {
   opacity: 1;
+}
+.main-layout .shop-catalogue .content .single-item-view .extra-images {
+  margin-bottom: 30px;
+}
+.main-layout .shop-catalogue .content .single-item-view .extra-images .image-wrapper img {
+  width: 100%;
+  opacity: 0.65;
+  border-radius: 6px;
+}
+.main-layout .shop-catalogue .content .single-item-view .extra-images .image-wrapper :hover {
+  opacity: 1;
+  border: 3px #df0024 solid;
 }
 .main-layout .section-wrapper .banner {
   background: #464646;
