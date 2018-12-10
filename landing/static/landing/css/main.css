@@ -823,17 +823,69 @@ a:hover {
 .main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .add-to-cart input[type=submit]:hover {
   opacity: 1;
 }
-.main-layout .shop-catalogue .content .single-item-view .extra-images {
+.main-layout .shop-catalogue .content .extra-images {
   margin-bottom: 30px;
 }
-.main-layout .shop-catalogue .content .single-item-view .extra-images .image-wrapper img {
+.main-layout .shop-catalogue .content .extra-images .image-wrapper img {
   width: 100%;
   opacity: 0.65;
   border-radius: 6px;
 }
-.main-layout .shop-catalogue .content .single-item-view .extra-images .image-wrapper :hover {
+.main-layout .shop-catalogue .content .extra-images .image-wrapper :hover {
   opacity: 1;
   border: 3px #df0024 solid;
+}
+.main-layout .shop-catalogue .content .detail-info .wrapper .tabs {
+  position: relative;
+}
+.main-layout .shop-catalogue .content .detail-info .wrapper .tabs ul {
+  margin-bottom: 28px;
+}
+.main-layout .shop-catalogue .content .detail-info .wrapper .tabs ul li {
+  display: inline-block;
+  position: relative;
+  margin: 0 30px;
+}
+.main-layout .shop-catalogue .content .detail-info .wrapper .tabs ul li a {
+  display: block;
+  padding: 14px 0 21px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+  font-size: 14pt;
+  color: #282828;
+}
+.main-layout .shop-catalogue .content .detail-info .wrapper .tabs ul li a span {
+  font-weight: 600;
+}
+.main-layout .shop-catalogue .content .detail-info .wrapper .tabs ul li a:hover:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 5px;
+  bottom: 5px;
+  left: 0;
+  background: #df0024;
+  z-index: 200;
+}
+.main-layout .shop-catalogue .content .detail-info .wrapper .tabs ul li:first-of-type {
+  margin-left: 0;
+}
+.main-layout .shop-catalogue .content .detail-info .wrapper .tabs ul:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 5px;
+  bottom: 5px;
+  left: 0;
+  background: #cecece;
+  z-index: 100;
+}
+.main-layout .shop-catalogue .content .detail-info .wrapper .text-body {
+  color: #282828;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
 }
 .main-layout .section-wrapper .banner {
   background: #464646;
