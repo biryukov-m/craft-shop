@@ -59,7 +59,7 @@ a:hover {
   padding: 0 1px;
 }
 .top-menu-layout .top-menu .menu-list ul li a:hover {
-  color: #df0024;
+  color: #ff4081;
   font-weight: bold;
 }
 .top-menu-layout .top-menu .menu-list ul li a:hover:after {
@@ -70,7 +70,7 @@ a:hover {
   height: 5px;
   bottom: 5px;
   left: 0;
-  background: #df0024;
+  background: #ff4081;
 }
 .top-menu-layout .top-menu .icons .icons-inner {
   float: right;
@@ -94,7 +94,7 @@ a:hover {
   width: 1.2rem;
   line-height: 1.2rem;
   border-radius: 50%;
-  background: #df0024;
+  background: #ff4081;
   text-align: center;
   font-size: 0.6rem;
   color: white;
@@ -190,7 +190,8 @@ a:hover {
   color: rgba(0, 0, 0, 0.9);
 }
 .main-layout .product-header .text-wrapper {
-  font-size: 2.3rem;
+  font-size: 1.9rem;
+  font-family: "Open Sans", sans-serif;
 }
 .main-layout .product-header .text-wrapper .bold {
   font-weight: bold;
@@ -221,7 +222,7 @@ a:hover {
   text-transform: uppercase;
 }
 .main-layout .selectors .categories ul li a.active, .main-layout .selectors .categories ul li a:hover {
-  color: #df0024;
+  color: #ff4081;
   font-weight: bold;
 }
 .main-layout .selectors .categories ul li a:before {
@@ -457,7 +458,7 @@ a:hover {
   font-size: 0.9rem;
 }
 .main-layout .breadcrumbs .wrapper .inner a:hover {
-  color: #df0024;
+  color: #ff4081;
 }
 .main-layout .breadcrumbs .wrapper .inner a ~ a:before {
   display: inline;
@@ -513,10 +514,10 @@ a:hover {
   display: none;
 }
 .main-layout .shop-catalogue .sidebar .attribute .select-wrapper ul li label:hover {
-  color: #df0024;
+  color: #ff4081;
 }
 .main-layout .shop-catalogue .sidebar .attribute .select-wrapper ul li label[checked=checked] {
-  color: #df0024;
+  color: #ff4081;
   font-weight: 600;
 }
 .main-layout .shop-catalogue .sidebar .attribute .category-header {
@@ -542,7 +543,7 @@ a:hover {
   margin-left: 10px;
 }
 .main-layout .shop-catalogue .sidebar .attribute ul li a:hover {
-  color: #df0024;
+  color: #ff4081;
 }
 .main-layout .shop-catalogue .sidebar .attribute ul li:not(:last-child) {
   margin-bottom: 15px;
@@ -582,7 +583,7 @@ a:hover {
 .main-layout .shop-catalogue .sidebar .price-range .slider p input {
   border: none;
   font-weight: bold;
-  color: #df0024;
+  color: #ff4081;
   font-size: 1rem;
   width: 60px;
   position: relative;
@@ -667,7 +668,7 @@ a:hover {
   display: inline-block;
 }
 .main-layout .shop-catalogue .content .header-wrapper .view-icons .icon a {
-  color: #df0024;
+  color: #ff4081;
   padding: 2px 4px;
   border: 1px white solid;
 }
@@ -675,7 +676,7 @@ a:hover {
   margin-right: 20px;
 }
 .main-layout .shop-catalogue .content .header-wrapper .view-icons .icon a:hover {
-  border: 1px #df0024 solid;
+  border: 1px #ff4081 solid;
 }
 .main-layout .shop-catalogue .content .single-item-view {
   min-height: 560px;
@@ -708,7 +709,7 @@ a:hover {
   margin-bottom: 20px;
 }
 .main-layout .shop-catalogue .content .single-item-view .product-info .price {
-  color: #df0024;
+  color: #ff4081;
   font-weight: 100;
   font-size: 26pt;
   padding-bottom: 20px;
@@ -736,7 +737,7 @@ a:hover {
 .main-layout .shop-catalogue .content .single-item-view .product-info .attribute .name {
   font-size: 11pt;
   font-weight: 500;
-  color: #df0024;
+  color: #ff4081;
 }
 .main-layout .shop-catalogue .content .single-item-view .product-info .attribute .value {
   font-size: 11pt;
@@ -810,18 +811,14 @@ a:hover {
   height: 33px;
   text-align: center;
   vertical-align: middle;
-  background: #df0024;
-  opacity: 0.75;
+  background: #ff4081;
   border: none;
   border-radius: 8px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
   color: #fff;
-  font-family: "Open Sans";
-  font-weight: 100;
-  font-size: 10pt;
   cursor: pointer;
-}
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .add-to-cart input[type=submit]:hover {
-  opacity: 1;
 }
 .main-layout .shop-catalogue .content .extra-images {
   margin-bottom: 30px;
@@ -833,7 +830,7 @@ a:hover {
 }
 .main-layout .shop-catalogue .content .extra-images .image-wrapper :hover {
   opacity: 1;
-  border: 3px #df0024 solid;
+  border: 3px #ff4081 solid;
 }
 .main-layout .shop-catalogue .content .detail-info .wrapper .tabs {
   position: relative;
@@ -865,7 +862,7 @@ a:hover {
   height: 5px;
   bottom: 5px;
   left: 0;
-  background: #df0024;
+  background: #ff4081;
   z-index: 200;
 }
 .main-layout .shop-catalogue .content .detail-info .wrapper .tabs ul li:first-of-type {
@@ -886,6 +883,36 @@ a:hover {
   color: #282828;
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
+}
+.main-layout .shop-catalogue .content .single-item-banner .banner-inner {
+  font-family: "Open Sans", sans-serif;
+  color: #000;
+  border-top: solid black 4px;
+  border-bottom: solid black 4px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.main-layout .shop-catalogue .content .single-item-banner .banner-inner h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 6px;
+  padding-top: 20px;
+  margin-bottom: 11px;
+}
+.main-layout .shop-catalogue .content .single-item-banner .banner-inner h5 {
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 7px;
+  margin-bottom: 19px;
+}
+.main-layout .shop-catalogue .content .single-item-banner .banner-inner a {
+  display: block;
+  color: black;
+  font-weight: 300;
+  font-size: 0.9rem;
+  letter-spacing: 1.2px;
+  text-decoration: underline;
+  padding-bottom: 12px;
 }
 .main-layout .section-wrapper .banner {
   background: #464646;
@@ -1177,7 +1204,7 @@ footer .footer-background .footer-layout .contacts ul li {
   margin-bottom: 15px;
 }
 footer .footer-background .footer-layout .contacts ul ul li .days {
-  color: #df0024;
+  color: #ff4081;
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -1202,7 +1229,7 @@ footer .footer-background .footer-layout .links ul li a {
   color: #cecece;
 }
 footer .footer-background .footer-layout .links ul li a:hover {
-  color: #df0024;
+  color: #ff4081;
 }
 
 @media screen and (max-width: 1199px) {
@@ -1285,7 +1312,7 @@ footer .footer-background .footer-layout .links ul li a:hover {
     margin-bottom: 15px;
   }
   .footer-background .footer-layout .footer-wrapper .contacts ul ul li .days {
-    color: #df0024;
+    color: #ff4081;
     text-transform: uppercase;
     font-weight: bold;
   }
@@ -1528,7 +1555,7 @@ footer .footer-background .footer-layout .links ul li a:hover {
     display: inline-block;
   }
   .shop-catalogue .content .header-wrapper .view-icons .icon a {
-    color: #df0024;
+    color: #ff4081;
     padding: 2px 4px;
     border: 1px white solid;
   }
@@ -1536,7 +1563,7 @@ footer .footer-background .footer-layout .links ul li a:hover {
     margin-right: 20px;
   }
   .shop-catalogue .content .header-wrapper .view-icons .icon a:hover {
-    border: 1px #df0024 solid;
+    border: 1px #ff4081 solid;
   }
 
   .footer-background .footer-layout .footer-wrapper .info .logo {

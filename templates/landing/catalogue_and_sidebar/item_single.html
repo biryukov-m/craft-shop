@@ -104,6 +104,34 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="related-products">
+            <div class="align-items-center justify-content-between selectors row">
+                <div class="product-header categories">
+                    <div class="col text-wrapper">
+                        <span class="bold">Схожі</span>
+                        <span class="normal">Товари</span>
+                    </div>
+                </div>
+                <div class="col line"></div>
+                <div class="col-auto ml-auto paginator">
+                    <a class="prev" href="#"><img src="/static/landing/img/arrow_left.png"></a>
+                    <a class="next" href="#"><img src="/static/landing/img/arrow_right.png"></a>
+                </div>
+            </div>
+            <div class="products row">
+                {% for i in 'abcd' %}
+                    <div id="product-preview" class="col-6 col-md-3 product-wrapper">
+                        {% include 'landing/item_preview.html' %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="single-item-banner row">
+            <div class="banner-inner col-sm-12">
+                <h1>Отримай знижку 10% з кожної покупки</h1>
+                <h5>та безкоштовна доставка при покупці від 500 гривень</h5>
+                <a href="#">Деталі</a>
+            </div>
+        </div>
     </div>
 {% endblock %}
