@@ -752,18 +752,18 @@ a:hover {
   border-bottom: #cecece dashed 1px;
   padding-bottom: 7px;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row {
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors {
   margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row label[for=quantity-selector],
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row label[for=size-selector] {
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors label[for=quantity-selector],
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors label[for=size-selector] {
   font-family: "Open Sans", sans-serif;
   font-size: 11pt;
   color: #464646;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector {
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors .spinner-selector {
   width: 86px;
   height: 26px;
   border: 1px dashed #464646;
@@ -771,7 +771,7 @@ a:hover {
   display: inline-flex;
   justify-content: space-around;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector .number {
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors .spinner-selector .number {
   padding: 4px 0;
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
@@ -784,29 +784,29 @@ a:hover {
   min-width: 18px;
   max-width: 44px;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector .number::-webkit-inner-spin-button {
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors .spinner-selector .number::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector .number::-webkit-outer-spin-button {
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors .spinner-selector .number::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector button {
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors .spinner-selector button {
   background: none;
   border: none;
   vertical-align: middle;
   cursor: pointer;
   color: #464646;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector button:hover {
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors .spinner-selector button:hover {
   color: #e54833;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector .left {
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors .spinner-selector .left {
   padding-left: 6px;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors-row .spinner-selector .right {
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors .spinner-selector .right {
   padding-right: 6px;
 }
-.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .add-to-cart input[type=submit] {
+.main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .add-to-cart button[type=submit] {
   width: 130px;
   height: 33px;
   text-align: center;
