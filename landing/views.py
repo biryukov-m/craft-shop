@@ -1,15 +1,17 @@
 from django.shortcuts import render
-from django.shortcuts import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
-from django.views.generic import ListView
-from django.views.generic import DetailView
 from product.models import Department
 from product.models import Section
 from product.models import Item
 from product.models import ItemType
+from orders.models import ProductInBasket
 from django.db.models import Max, Min
 from product.forms import ProductFilter
+
+
+def show_basket(session_id):
+    return ProductInBasket.objects.filter(session_key=session_id, is_inactive=False)
 
 
 def home(request):
@@ -80,6 +82,15 @@ class ViewSingleItem(ViewByItemType):
     template_name = 'landing/catalogue_and_sidebar/item_single.html'
 
     def get_context_data(self, *args, **kwargs):
+        session_key = self.request.session.session_key
+        if not session_key:
+            self.request.session.cycle_key()
         context = super(ViewSingleItem, self).get_context_data(*args, **kwargs)
         context['item'] = get_object_or_404(Item, slug=self.kwargs['item_slug'])
+        context['session_key'] = session_key
+        context['basket'] = show_basket(session_key)
+        basket_total_price = 0
+        for i in show_basket(session_key):
+            basket_total_price += i.total_price
+        context['basket_total_price'] = basket_total_price
         return context

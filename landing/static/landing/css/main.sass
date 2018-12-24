@@ -67,7 +67,7 @@ a:hover
       display: inline-flex
       height: 5.5rem
       align-items: center
-      padding: 0 8px
+      padding: 0 5px
       position: relative
 
       a
@@ -99,34 +99,149 @@ a:hover
         background: $highlight
 
     .icons
+      display: flex
+      align-items: end
+      justify-content: end
+      position: relative
+
       .icons-inner
-        float: right
+        li ~ li
+          margin-left: 20px
 
-        a
-          line-height: 5.5rem
-          vertical-align: middle
-          position: relative
-
-        a ~ a:before
+        li ~ li:before
           content: "/"
           display: inline
-          margin: 0 9px 0 6px
+          margin: 0 15px 0 0
           color: $lighter
-          img
-            vertical-align: baseline
 
-        .circle-counter
-          height: 1.2rem
-          width: 1.2rem
-          line-height: 1.2rem
-          border-radius: 50%
-          background: $highlight
-          text-align: center
-          font-size: 0.6rem
-          color: white
-          position: absolute
-          right: -9px
-          top: -6px
+        li
+          display: inline-block
+
+          a
+            line-height: 5.5rem
+            vertical-align: middle
+            position: relative
+
+            img
+              vertical-align: baseline
+
+
+          .circle-counter
+            height: 1.1rem
+            width: 1.1rem
+            line-height: 1.1rem
+            border-radius: 50%
+            background: $highlight
+            text-align: center
+            font-size: 0.6rem
+            color: white
+            position: absolute
+            right: -9px
+            top: -6px
+
+      .hidden
+        visibility: hidden
+
+      .basket-container
+        position: absolute
+        z-index: 200
+        top: 55px
+        border: solid $lighter 2px
+        background: #f1ebed
+
+        .basket-list
+          display: block
+          background: white
+          max-height: 40vh
+          overflow-y: auto
+          margin-bottom: 20px
+
+          .item
+            display: flex
+            padding: 4px 3px
+
+            .image-container
+              flex-basis: 80px
+
+              img
+                display: block
+                width: 100%
+
+            .text-container
+              display: flex
+              align-items: flex-start
+              justify-content: center
+              flex-direction: column
+              font-family: "Open Sans", sans-serif
+              padding: 0 4px
+              color: $darker
+              font-weight: 400
+              flex-grow: 1
+
+
+              .name
+                font-size: 0.8rem
+
+              .size
+                font-size: 0.7rem
+
+              .price
+                color: $dark
+                font-size: 0.65rem
+                font-weight: 600
+
+            .horizontal-text-container
+              display: flex
+              align-items: center
+              justify-content: baseline
+              flex-direction: row
+              font-family: "Open Sans", sans-serif
+              color: $darker
+              flex-basis: 100px
+
+              .count
+                padding: 0 4px
+                font-size: 0.8rem
+
+              .total-price
+                padding: 0 4px
+                font-size: 0.8rem
+
+              .remove
+                padding: 0
+                font-size: 0.8rem
+                background: none
+                border: none
+                color: $highlight_darker
+                margin: 0
+
+        .overall-cart-price
+          text-align: right
+          padding-right: 15px
+          font-family: "Open Sans", sans-serif
+          font-weight: bold
+          color: #000000
+          font-size: 0.9rem
+          margin-bottom: 10px
+
+        button
+          float: right
+          margin-right: 15px
+          margin-bottom: 5px
+          border: solid 2px $lighter
+          cursor: pointer
+          background: none
+          color: #ffffff
+          padding: 3px 5px
+          border-radius: 6px
+          font-family: "Open Sans", sans-serif
+          font-size: 0.8rem
+
+        .view-cart
+          background: $highlight_darker
+
+        .checkout
+          background: $highlight_darkest
 
 .main-layout
   .top-billboard

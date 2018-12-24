@@ -21,9 +21,7 @@
                     <div class="twitter"><img></div>
                     <div class="gplus"><img></div>
                 </div>
-                <div class="description">
-                    {{ item.description }}
-                </div>
+                <div class="description">{{ item.description }}</div>
                 <div class="brand attribute">
                     <span class="name">Виробник:</span>
                     <span class="value">{{ item.brand.name }}</span>
@@ -36,7 +34,12 @@
                     <span class="name">Колір: </span>
                     <span class="value">{{ item.color.name }}</span>
                 </div>
-                <form method="post" action="" class="user-interface" id="buying-product">
+                <form
+                        method="post"
+                        id="buying-product"
+                        class="user-interface"
+                        action="{% url 'orders:basket_add' %}"
+                >
                     {% csrf_token %}
                     <div class="selectors">
                         <div class="quantity-selector-wrapper">
@@ -70,8 +73,9 @@
                                 type="submit"
                                 id="add-to-cart"
                                 data-item_id = "{{ item.id }}"
-                                data-name = "{{ item.name }}"
-
+                                data-item_name = "{{ item.name }}"
+                                data-item_price = "{{ item.price }}"
+                                data-item_image = "{{ item.get_image_basic.url }}"
                         >Додати до кошику</button>
                     </div>
                 </form>

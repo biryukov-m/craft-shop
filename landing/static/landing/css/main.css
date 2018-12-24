@@ -41,7 +41,7 @@ a:hover {
   display: inline-flex;
   height: 5.5rem;
   align-items: center;
-  padding: 0 8px;
+  padding: 0 5px;
   position: relative;
 }
 .top-menu-layout .top-menu .menu-list ul li a {
@@ -72,27 +72,36 @@ a:hover {
   left: 0;
   background: #ff4081;
 }
-.top-menu-layout .top-menu .icons .icons-inner {
-  float: right;
+.top-menu-layout .top-menu .icons {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  position: relative;
 }
-.top-menu-layout .top-menu .icons .icons-inner a {
+.top-menu-layout .top-menu .icons .icons-inner li ~ li {
+  margin-left: 20px;
+}
+.top-menu-layout .top-menu .icons .icons-inner li ~ li:before {
+  content: "/";
+  display: inline;
+  margin: 0 15px 0 0;
+  color: #cecece;
+}
+.top-menu-layout .top-menu .icons .icons-inner li {
+  display: inline-block;
+}
+.top-menu-layout .top-menu .icons .icons-inner li a {
   line-height: 5.5rem;
   vertical-align: middle;
   position: relative;
 }
-.top-menu-layout .top-menu .icons .icons-inner a ~ a:before {
-  content: "/";
-  display: inline;
-  margin: 0 9px 0 6px;
-  color: #cecece;
-}
-.top-menu-layout .top-menu .icons .icons-inner a ~ a:before img {
+.top-menu-layout .top-menu .icons .icons-inner li a img {
   vertical-align: baseline;
 }
-.top-menu-layout .top-menu .icons .icons-inner .circle-counter {
-  height: 1.2rem;
-  width: 1.2rem;
-  line-height: 1.2rem;
+.top-menu-layout .top-menu .icons .icons-inner li .circle-counter {
+  height: 1.1rem;
+  width: 1.1rem;
+  line-height: 1.1rem;
   border-radius: 50%;
   background: #ff4081;
   text-align: center;
@@ -101,6 +110,109 @@ a:hover {
   position: absolute;
   right: -9px;
   top: -6px;
+}
+.top-menu-layout .top-menu .icons .hidden {
+  visibility: hidden;
+}
+.top-menu-layout .top-menu .icons .basket-container {
+  position: absolute;
+  z-index: 200;
+  top: 55px;
+  border: solid #cecece 2px;
+  background: #f1ebed;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list {
+  display: block;
+  background: white;
+  max-height: 40vh;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item {
+  display: flex;
+  padding: 4px 3px;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item .image-container {
+  flex-basis: 80px;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item .image-container img {
+  display: block;
+  width: 100%;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item .text-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Open Sans", sans-serif;
+  padding: 0 4px;
+  color: #282828;
+  font-weight: 400;
+  flex-grow: 1;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item .text-container .name {
+  font-size: 0.8rem;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item .text-container .size {
+  font-size: 0.7rem;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item .text-container .price {
+  color: #464646;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item .horizontal-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  flex-direction: row;
+  font-family: "Open Sans", sans-serif;
+  color: #282828;
+  flex-basis: 100px;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item .horizontal-text-container .count {
+  padding: 0 4px;
+  font-size: 0.8rem;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item .horizontal-text-container .total-price {
+  padding: 0 4px;
+  font-size: 0.8rem;
+}
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item .horizontal-text-container .remove {
+  padding: 0;
+  font-size: 0.8rem;
+  background: none;
+  border: none;
+  color: #ea704c;
+  margin: 0;
+}
+.top-menu-layout .top-menu .icons .basket-container .overall-cart-price {
+  text-align: right;
+  padding-right: 15px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  color: #000000;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.top-menu-layout .top-menu .icons .basket-container button {
+  float: right;
+  margin-right: 15px;
+  margin-bottom: 5px;
+  border: solid 2px #cecece;
+  cursor: pointer;
+  background: none;
+  color: #ffffff;
+  padding: 3px 5px;
+  border-radius: 6px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8rem;
+}
+.top-menu-layout .top-menu .icons .basket-container .view-cart {
+  background: #ea704c;
+}
+.top-menu-layout .top-menu .icons .basket-container .checkout {
+  background: #e54833;
 }
 
 .main-layout .top-billboard {

@@ -4,7 +4,7 @@
         <div class="col-12 col-sm-2 top-logo">
             <img src="/static/landing/img/logo.png">
         </div>
-        <div class="col-sm-7 menu-list">
+        <div class="col-sm-6 menu-list">
             <ul>
                 <li>
                     <a href="#" title="Домівка"><span>Домівка</span></a>
@@ -26,21 +26,64 @@
                 </li>
             </ul>
         </div>
-        <div class="col-sm-3 icons">
-            <div class="icons-inner">
-                <a href="#" class="search">
-                    <img src="/static/landing/img/search.png">
-                </a>
-                <a href="#" class="user">
-                    <img src="/static/landing/img/user.png">
-                </a>
-                <a href="#" class="basket">
-                    <img src="/static/landing/img/shopping_cart.png">
-                    <span class="circle-counter">12</span>
-                </a>
-                <a href="#" class="settings">
-                    <img src="/static/landing/img/config.png">
-                </a>
+        <div class="col-sm-4 icons">
+            <ul class="icons-inner">
+                <li>
+                    <a href="#" class="search">
+                        <img src="/static/landing/img/search.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="user">
+                        <img src="/static/landing/img/user.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="basket-icon" class="basket">
+                        <img src="/static/landing/img/shopping_cart.png">
+                        <span class="circle-counter">12</span>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="#" class="settings">
+                        <img src="/static/landing/img/config.png">
+                    </a>
+                </li>
+            </ul>
+            <div class="basket-container hidden" id="basket-container">
+                <ul class="basket-list" id="basket-list">
+                    {% csrf_token %}
+                    {% for item_in_basket in basket %}
+                        <li class="item">
+                            <div class="image-container">
+                                <img class=""  src="{{ item_in_basket.product.get_image_basic.url }}">
+                            </div>
+                            <div class="text-container">
+                                <div class="name">{{ item_in_basket.product.name }}</div>
+                                <div class="size">{{ item_in_basket.product.size }}</div>
+                                <div class="price">{{ item_in_basket.product.price }}</div>
+                            </div>
+                            <div class="horizontal-text-container" id="token-holder">
+                                <span class="count">x {{ item_in_basket.quantity }}</span>
+                                <span class="total-price">{{ item_in_basket.total_price }}</span>
+                                <button
+                                        id="item_remove"
+                                        class="item_remove remove"
+                                        data-item_id = "{{ item_in_basket.id }}"
+                                        data-url = "{% url 'orders:basket_remove' %}"
+                                        value="X">X</button>
+
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="overall-cart-price">
+                    Сума замовлення:
+                    <span id="basket-total-price">{{ basket_total_price }}</span>
+                </div>
+                <button class="checkout">Сплатити</button>
+                <button class="view-cart">До корзини</button>
             </div>
         </div>
     </header>

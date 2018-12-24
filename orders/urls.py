@@ -1,9 +1,10 @@
 from django.urls import path
-from product.views import index
-from django.contrib import admin
-
-
+from orders.views import basket_add
+from orders.views import basket_remove
 
 urlpatterns = [
-    # path('', index, name='Index')
+    path('basket_add/', basket_add, name='basket_add'),
+    path('basket_remove/', basket_remove, name='basket_remove'),
 ]
+
+app_name = 'orders'

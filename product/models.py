@@ -162,7 +162,7 @@ class ItemImage(models.Model):
         verbose_name_plural = "Зображення товарів"
 
 
-# Абстрактный класс для единицы товара
+# Класс для единицы товара
 @register_eav()
 class Item(models.Model):
     # code = models.PositiveIntegerField(default=None, blank=True, verbose_name="код", unique=True, editable=False)
