@@ -10,13 +10,23 @@ $(document).ready(function () {
         $('#basket-total-price').text(basket_price.toFixed(2));
     }
 
+    function recalculate_basket_items_count(){
+        var count = 0;
+        var counter = $('#circle-counter');
+        $('.total-price').each(function() {
+            count += 1;
+        });
+        counter.text(count);
+        if (count < 1) { counter.addClass('hidden');}
+        else {counter.removeClass('hidden');}
+    }
+
     var form = $('#buying-product');
     var container = $('#basket-container');
 
     form.on('submit', function (e) {
         e.preventDefault();
         // Обработка нажатия submit на форме - отдача ajax с данными товара бэкэнду
-
         // Считываем все данные, что висят на кнопке
         var button = $('#add-to-cart');
         var item_quantity = Number($('#quantity-selector').val());
@@ -24,7 +34,6 @@ $(document).ready(function () {
         var item_name = button.data('item_name');
         var item_price = button.data('item_price');
         var item_image = button.data('item_image');
-
 
         // Сначала отдача на бэкэнд желаемого товара в корзину
         // Считываем url, что генерится в шаблоне для ajax
@@ -47,12 +56,9 @@ $(document).ready(function () {
                 console.log('Error ajax');
             }
         });
-
         // Далее мгновенная отрисовка в корзине этого товара
-
         // Топорный хак для убрания нулей из Decimal числа Django, чтобы получить целое число
         item_price = Number(item_price.split(',', 1));
-
         $('#basket-container ul').append
         ("<li class=\"item\">\n" +
             "                        <div class=\"image-container\">\n" +
@@ -74,29 +80,12 @@ $(document).ready(function () {
             "                            <span class=\"total-price\">"+ item_price*item_quantity + ',00' +"</span>\n" +
             "                        </div>\n" +
             '                    </li>');
-
         recalculate_basket_price();
-
+        recalculate_basket_items_count();
+        toggle_basket();
     });
-
-
-
-
-
-    // Показать/скрыть корзину по клику
-    $('#basket-icon').on('click', function (e) {
-        e.preventDefault();
-        container.toggleClass('hidden');
-    });
-
-    // Скрыть корзину, если курсор мыши сьехал
-    // container.on('mouseleave', function (e) {
-    //     e.preventDefault();
-    //     container.addClass('hidden');
-    // });
 
     // Обработка ajax запроса на удаление товара из корзины
-
     var button_remove = $('.item_remove');
     button_remove.on('click', function () {
         var item_id = $(this).data('item_id');
@@ -122,7 +111,22 @@ $(document).ready(function () {
         $(this).closest('li.item').remove();
 
         recalculate_basket_price();
-
+        recalculate_basket_items_count();
     });
+
+    function toggle_basket () {
+        if ($('#circle-counter').hasClass('hidden')) {
+            console.log("count is 0");
+            container.addClass('hidden');
+        } else {
+            console.log("count is > 0");
+            container.toggleClass('hidden');
+        }
+    }
+    // Показать/скрыть корзину по клику
+    $('#basket-icon').on('click', toggle_basket);
+
+    // Скрыть корзину, если курсор мыши сьехал
+    container.on('mouseleave', toggle_basket);
 
 });

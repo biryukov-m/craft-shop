@@ -16,6 +16,10 @@ ul {
   margin: 0;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -110,9 +114,6 @@ a:hover {
   position: absolute;
   right: -9px;
   top: -6px;
-}
-.top-menu-layout .top-menu .icons .hidden {
-  visibility: hidden;
 }
 .top-menu-layout .top-menu .icons .basket-container {
   position: absolute;

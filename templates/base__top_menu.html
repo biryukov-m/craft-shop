@@ -41,7 +41,11 @@
                 <li>
                     <a href="#" id="basket-icon" class="basket">
                         <img src="/static/landing/img/shopping_cart.png">
-                        <span class="circle-counter">12</span>
+                        {% if get_basket.items_count > 0 %}
+                            <span id="circle-counter" class="circle-counter">{{ get_basket.items_count }}</span>
+                        {% else %}
+                            <span id="circle-counter" class="circle-counter hidden">{{ get_basket.items_count }}</span>
+                        {% endif %}
                     </a>
 
                 </li>
@@ -54,23 +58,23 @@
             <div class="basket-container hidden" id="basket-container">
                 <ul class="basket-list" id="basket-list">
                     {% csrf_token %}
-                    {% for item_in_basket in basket %}
+                    {% for item in get_basket.items %}
                         <li class="item">
                             <div class="image-container">
-                                <img class=""  src="{{ item_in_basket.product.get_image_basic.url }}">
+                                <img class=""  src="{{ item.product.get_image_basic.url }}">
                             </div>
                             <div class="text-container">
-                                <div class="name">{{ item_in_basket.product.name }}</div>
-                                <div class="size">{{ item_in_basket.product.size }}</div>
-                                <div class="price">{{ item_in_basket.product.price }}</div>
+                                <div class="name">{{ item.product.name }}</div>
+                                <div class="size">{{ item.product.size }}</div>
+                                <div class="price">{{ item.product.price }}</div>
                             </div>
                             <div class="horizontal-text-container" id="token-holder">
-                                <span class="count">x {{ item_in_basket.quantity }}</span>
-                                <span class="total-price">{{ item_in_basket.total_price }}</span>
+                                <span class="count">x {{ item.quantity }}</span>
+                                <span class="total-price">{{ item.total_price }}</span>
                                 <button
                                         id="item_remove"
                                         class="item_remove remove"
-                                        data-item_id = "{{ item_in_basket.id }}"
+                                        data-item_id = "{{ item.id }}"
                                         data-url = "{% url 'orders:basket_remove' %}"
                                         value="X">X</button>
 
@@ -80,7 +84,7 @@
                 </ul>
                 <div class="overall-cart-price">
                     Сума замовлення:
-                    <span id="basket-total-price">{{ basket_total_price }}</span>
+                    <span id="basket-total-price">{{ get_basket.basket_total_price }}</span>
                 </div>
                 <button class="checkout">Сплатити</button>
                 <button class="view-cart">До корзини</button>

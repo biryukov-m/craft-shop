@@ -30,7 +30,9 @@ def basket_remove(request):
     session_key = request.session.session_key
     data = request.POST
     item_id = data.get('item_id')
-    ProductInBasket.objects.get(session_key=session_key, id=item_id).delete()
+    item = ProductInBasket.objects.get(session_key=session_key, id=item_id)
+    item.is_inactive = True
+    item.save()
     items_total_number = ProductInBasket.objects.filter(session_key=session_key, is_inactive=False).count()
     return_dict["items_total_number"] = items_total_number
     return JsonResponse(return_dict)
