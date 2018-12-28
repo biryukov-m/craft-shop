@@ -51,38 +51,39 @@ $(document).ready(function () {
             cache: true,
             success: function (data) {
                 console.log('OK ajax');
+                // Далее мгновенная отрисовка в корзине этого товара
+                // Топорный хак для убрания нулей из Decimal числа Django, чтобы получить целое число
+                item_price = Number(item_price.split(',', 1));
+                $('#basket-container ul').append
+                ("<li class=\"item\">\n" +
+                    "                        <div class=\"image-container\">\n" +
+                    "                            <img class=\"\"  src=\"" +
+                    item_image +
+                    "\">\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"text-container\">\n" +
+                    "                            <div class=\"name\">" +
+                    item_name +
+                    "</div>\n" +
+                    "                            <div class=\"size\">XL</div>\n" +
+                    "                            <div class=\"price\">" +
+                    item_price +
+                    "</div>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"horizontal-text-container\">\n" +
+                    "                            <span class=\"count\">x "+ item_quantity +"</span>\n" +
+                    "                            <span class=\"total-price\">"+ item_price*item_quantity + ',00' +"</span>\n" +
+                    "                        </div>\n" +
+                    '                    </li>');
+                recalculate_basket_price();
+                recalculate_basket_items_count();
+                toggle_basket();
             },
             error: function () {
                 console.log('Error ajax');
             }
         });
-        // Далее мгновенная отрисовка в корзине этого товара
-        // Топорный хак для убрания нулей из Decimal числа Django, чтобы получить целое число
-        item_price = Number(item_price.split(',', 1));
-        $('#basket-container ul').append
-        ("<li class=\"item\">\n" +
-            "                        <div class=\"image-container\">\n" +
-            "                            <img class=\"\"  src=\"" +
-            item_image +
-            "\">\n" +
-            "                        </div>\n" +
-            "                        <div class=\"text-container\">\n" +
-            "                            <div class=\"name\">" +
-            item_name +
-            "</div>\n" +
-            "                            <div class=\"size\">XL</div>\n" +
-            "                            <div class=\"price\">" +
-            item_price +
-            "</div>\n" +
-            "                        </div>\n" +
-            "                        <div class=\"horizontal-text-container\">\n" +
-            "                            <span class=\"count\">x "+ item_quantity +"</span>\n" +
-            "                            <span class=\"total-price\">"+ item_price*item_quantity + ',00' +"</span>\n" +
-            "                        </div>\n" +
-            '                    </li>');
-        recalculate_basket_price();
-        recalculate_basket_items_count();
-        toggle_basket();
+
     });
 
     // Обработка ajax запроса на удаление товара из корзины
@@ -102,16 +103,15 @@ $(document).ready(function () {
             cache: true,
             success: function (data) {
                 console.log('OK remove item ajax');
+                recalculate_basket_price();
+                recalculate_basket_items_count();
+                $(this).closest('li.item').remove();
             },
             error: function () {
                 console.log('Error remove item ajax');
             }
         });
 
-        $(this).closest('li.item').remove();
-
-        recalculate_basket_price();
-        recalculate_basket_items_count();
     });
 
     function toggle_basket () {
