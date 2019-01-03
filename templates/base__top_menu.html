@@ -59,13 +59,13 @@
                 <ul class="basket-list" id="basket-list">
                     {% csrf_token %}
                     {% for item in get_basket.items %}
-                        <li class="item">
+                        <li class="item {{ forloop.counter }}">
                             <div class="image-container">
-                                <img class=""  src="{{ item.product.get_image_basic.url }}">
+                                <img class="" src="{{ item.product.get_image_basic.url }}">
                             </div>
                             <div class="text-container">
                                 <div class="name">{{ item.product.name }}</div>
-                                <div class="size">{{ item.product.size }}</div>
+                                <div class="size">{{ item.size.name }}</div>
                                 <div class="price">{{ item.product.price }}</div>
                             </div>
                             <div class="horizontal-text-container" id="token-holder">
@@ -75,9 +75,10 @@
                                         id="item_remove"
                                         class="item_remove remove"
                                         data-item_id = "{{ item.id }}"
+                                        data-item_size = "{{ item.size.name }}"
                                         data-url = "{% url 'orders:basket_remove' %}"
+                                        data-counter = "{{ forloop.counter }}"
                                         value="X">X</button>
-
                             </div>
                         </li>
                     {% endfor %}

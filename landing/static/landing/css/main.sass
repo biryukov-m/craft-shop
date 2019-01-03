@@ -36,7 +36,6 @@ $lighter: #cecece
 $light: #939393
 $dark: #464646
 $darker: #282828
-
 *
   padding: 0
   margin: 0
@@ -47,7 +46,6 @@ ul
 
 .hidden
   visibility: hidden
-
 a:hover
   text-decoration: none
 #shopping_now
@@ -216,7 +214,8 @@ a:hover
                 border: none
                 color: $highlight_darker
                 margin: 0
-
+          .item.new
+            background-color: $highlight_lightest
         .overall-cart-price
           text-align: right
           padding-right: 15px
@@ -910,7 +909,7 @@ a:hover
                 border: 1px dashed $dark
                 border-radius: 8px
                 display: inline-flex
-                justify-content: space-around
+                justify-content: center
 
                 .number
                   padding: 4px 0
@@ -923,7 +922,22 @@ a:hover
                   font-size: 11pt
                   color: $dark
                   min-width: 18px
-                  max-width: 44px
+                  max-width: 50px
+
+                .size-selector
+                  //-webkit-appearance: textfield
+                  //-moz-appearance: textfield
+                  //appearance: textfield
+                  margin: 0
+                  padding: 0
+                  color: $dark
+                  text-align: center
+                  border: none
+                  font-family: "Open Sans", sans-serif
+                  font-size: 11pt
+                  color: $dark
+                  background: none
+
 
 
                 .number::-webkit-inner-spin-button
@@ -1082,6 +1096,61 @@ a:hover
           display: flex
           align-items: center
           justify-content: center
+  .checkout-container
+    .order-form
+    .basket
+      border: solid $lighter 2px
+      background: #f1ebed
+      .basket-list
+        ul
+          display: block
+          .item
+            display: flex
+            padding: 4px 3px
+            .image-container
+              flex-basis: 100px
+              img
+                display: block
+                width: 100%
+            .text-container
+              display: flex
+              align-items: flex-start
+              justify-content: center
+              flex-direction: column
+              font-family: "Open Sans", sans-serif
+              padding: 0 4px
+              color: $darker
+              font-weight: 400
+              flex-grow: 1
+              .name
+                font-size: 0.8rem
+              .size
+                font-size: 0.7rem
+              .price
+                color: $dark
+                font-size: 0.65rem
+                font-weight: 600
+            .horizontal-text-container
+              display: flex
+              align-items: center
+              justify-content: baseline
+              flex-direction: row
+              font-family: "Open Sans", sans-serif
+              color: $darker
+              flex-basis: 100px
+              .count
+                padding: 0 4px
+                font-size: 0.8rem
+              .total-price
+                padding: 0 4px
+                font-size: 0.8rem
+              .remove
+                padding: 0
+                font-size: 0.8rem
+                background: none
+                border: none
+                color: $highlight_darker
+                margin: 0
 
 #sort-by-menu
   .ui-menu-item-wrapper

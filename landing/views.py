@@ -79,6 +79,8 @@ class ViewSingleItem(ViewByItemType):
     def get_context_data(self, *args, **kwargs):
 
         context = super(ViewSingleItem, self).get_context_data(*args, **kwargs)
-        context['item'] = get_object_or_404(Item, slug=self.kwargs['item_slug'])
-
+        item = get_object_or_404(Item, slug=self.kwargs['item_slug'])
+        context['item'] = item
+        sizes = get_object_or_404(Item, slug=self.kwargs['item_slug']).available_sizes.all()
+        context['sizes'] = sizes
         return context

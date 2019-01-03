@@ -141,14 +141,11 @@ class ItemType(models.Model):
 class ItemImage(models.Model):
     created = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='додано')
     updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='редаговано')
-
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     product_object = GenericForeignKey('content_type', 'object_id')
-
     is_active = models.BooleanField(default=True, verbose_name='показувати')
     is_basic = models.BooleanField(default=False, verbose_name='основне фото')
-
     image = models.ImageField(default=None,
                               blank=True,
                               verbose_name='фото товару',
@@ -170,39 +167,31 @@ class Item(models.Model):
                             blank=True,
                             verbose_name='найменування',
                             max_length=40)
-
     item_type = models.ForeignKey(ItemType, verbose_name="тип товару", on_delete=models.DO_NOTHING)
-
     description = models.TextField(default=None,
                                    verbose_name='опис',
                                    max_length=3000)
-
     price = models.DecimalField(default=None,
                                 blank=True,
                                 decimal_places=2,
                                 max_digits=10,
                                 verbose_name='ціна')
-
     available = models.BooleanField(default=False,
                                     verbose_name='у продажі')
-
     created = models.DateTimeField(auto_now_add=True,
                                    auto_now=False,
                                    verbose_name='додано')
-
     updated = models.DateTimeField(auto_now=True,
                                    auto_now_add=False,
                                    verbose_name='редаговано')
-
     # item_code = models.CharField(default=None,
     #                              blank=True,
     #                              max_length=20)
-
     gender = models.ForeignKey(properties.Gender, on_delete=models.PROTECT, verbose_name="стать")
     brand = models.ForeignKey(properties.Brand, on_delete=models.PROTECT, verbose_name="виробник")
     fabric = models.ForeignKey(properties.Fabric, on_delete=models.PROTECT, verbose_name="тканина")
     color = models.ForeignKey(properties.Color, on_delete=models.PROTECT, verbose_name="колір")
-    size = models.ForeignKey(properties.Size, on_delete=models.PROTECT, verbose_name="розмір")
+    available_sizes = models.ManyToManyField(properties.Size, verbose_name="доступні розміри")
     slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
     images = GenericRelation(ItemImage)
 
@@ -247,3 +236,6 @@ class Item(models.Model):
         if not basic_image:
             return None
         return basic_image.image.url
+
+    def get_sizes(self):
+        return self.available_sizes.all()

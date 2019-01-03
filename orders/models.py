@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save, post_delete
 
 from product.models import Item
+from properties import models as properties
 
 
 class Status(models.Model):
@@ -158,6 +159,7 @@ class ProductInBasket(models.Model):
                                 default=None,
                                 verbose_name="Товар")
     quantity = models.PositiveSmallIntegerField(default=1, verbose_name="Одиниць")
+    size = models.ForeignKey(properties.Size, on_delete=models.CASCADE, default=None, blank=True, null=True, verbose_name="Розмір")
     one_product_price = models.DecimalField(blank=True,
                                             null=True,
                                             default=None,
@@ -172,7 +174,7 @@ class ProductInBasket(models.Model):
                                       decimal_places=2,
                                       max_digits=10,
                                       verbose_name="Загальна ціна по товару")
-    is_inactive = models.BooleanField(default=False, verbose_name="Товар відмінено")
+    # is_inactive = models.BooleanField(default=False, verbose_name="Товар відмінено")
     created = models.DateTimeField(auto_now=False,
                                    auto_now_add=True,
                                    verbose_name="Створено")

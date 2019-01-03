@@ -57,13 +57,20 @@
                         <div class="size-selector-wrapper">
                             <label for="size-selector">Розмір:</label>
                             <div class="spinner-selector size">
-                                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="left">
-                                    <i class="far fa-arrow-alt-circle-left"></i>
-                                </button>
-                                <input type="number" id="size-selector" class="number" name="size-selector" value=1 min="1" max="100">
-                                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="right">
-                                    <i class="far fa-arrow-alt-circle-right"></i>
-                                </button>
+{#                                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="left">#}
+{#                                    <i class="far fa-arrow-alt-circle-left"></i>#}
+{#                                </button>#}
+{#                                <input type="number" id="size-selector" class="number" name="size-selector" value=1 min="1" max="100">#}
+                                <select id="size-selector" class="size-selector" name="size-selector">
+                                    {% for size in sizes %}
+                                        <option value="{{ size.name }}">
+                                            {{ size.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+{#                                <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="right">#}
+{#                                    <i class="far fa-arrow-alt-circle-right"></i>#}
+{#                                </button>#}
                             </div>
                             <div class="size-selector"></div>
                         </div>
