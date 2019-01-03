@@ -109,7 +109,7 @@ class ItemType(models.Model):
         verbose_name_plural = "типи товарів"
 
     def __str__(self):
-        return "{}/{}".format(self.name_plural, self.section)
+        return "{}".format(self.name_plural)
 
     def get_absolute_url(self):
         return reverse(
@@ -200,7 +200,7 @@ class Item(models.Model):
         verbose_name_plural = "Товари"
 
     def __str__(self):
-        return "{} - {} ({})".format(self.name, self.item_type, self.price)
+        return "{} - {} ({})".format(self.item_type, self.brand.name, self.name)
 
     def get_absolute_url(self):
         return reverse(

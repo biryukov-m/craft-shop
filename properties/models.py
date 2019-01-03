@@ -13,7 +13,7 @@ class Gender(models.Model):
         verbose_name_plural = "стать"
 
     def __str__(self):
-        return self.name
+        return self.name.upper()
 
     def get_search_param(self):
         params = '?gender={}'.format(self.slug)
@@ -30,7 +30,7 @@ class Brand(models.Model):
         verbose_name_plural = "виробники"
 
     def __str__(self):
-        return self.name
+        return self.name.upper()
 
     def get_search_param(self):
         params = '?brand={}'.format(self.slug)
@@ -47,7 +47,7 @@ class Fabric(models.Model):
         verbose_name_plural = "тканини"
 
     def __str__(self):
-        return self.name
+        return self.name.upper()
 
     def get_search_param(self):
         params = '?fabric={}'.format(self.slug)
@@ -63,7 +63,7 @@ class Color(models.Model):
         verbose_name_plural = "кольори"
 
     def __str__(self):
-        return self.name
+        return self.name.upper()
 
     def get_search_param(self):
         params = '?color={}'.format(self.slug)

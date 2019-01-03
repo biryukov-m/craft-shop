@@ -1068,69 +1068,94 @@ a:hover {
   justify-content: center;
 }
 .main-layout .checkout-container .basket {
-  border: solid #cecece 2px;
-  background: #f1ebed;
+  border: solid #939393 2px;
+  background: #f8f8f8;
 }
-.main-layout .checkout-container .basket .basket-list ul {
-  display: block;
-}
-.main-layout .checkout-container .basket .basket-list ul .item {
-  display: flex;
-  padding: 4px 3px;
-}
-.main-layout .checkout-container .basket .basket-list ul .item .image-container {
-  flex-basis: 100px;
-}
-.main-layout .checkout-container .basket .basket-list ul .item .image-container img {
-  display: block;
-  width: 100%;
-}
-.main-layout .checkout-container .basket .basket-list ul .item .text-container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
+.main-layout .checkout-container .basket .basket-list table {
   font-family: "Open Sans", sans-serif;
-  padding: 0 4px;
-  color: #282828;
-  font-weight: 400;
-  flex-grow: 1;
+  color: black;
+  font-size: 0.9rem;
 }
-.main-layout .checkout-container .basket .basket-list ul .item .text-container .name {
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td {
+  border-bottom: 15px solid transparent;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.image-container {
+  width: 12%;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.image-container img {
+  max-width: 95%;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.text-container {
+  max-width: 66%;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.text-container .brand {
+  font-size: 0.85rem;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.text-container .name {
   font-size: 0.8rem;
 }
-.main-layout .checkout-container .basket .basket-list ul .item .text-container .size {
-  font-size: 0.7rem;
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.text-container .price {
+  font-size: 0.75rem;
 }
-.main-layout .checkout-container .basket .basket-list ul .item .text-container .price {
-  color: #464646;
-  font-size: 0.65rem;
-  font-weight: 600;
-}
-.main-layout .checkout-container .basket .basket-list ul .item .horizontal-text-container {
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector {
   display: flex;
-  align-items: center;
-  justify-content: baseline;
-  flex-direction: row;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector .number {
+  display: inline-block;
+  max-width: 25px;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  border: none;
+  background: none;
   font-family: "Open Sans", sans-serif;
-  color: #282828;
-  flex-basis: 100px;
+  font-size: 0.9rem;
+  text-align: center;
+  color: black;
 }
-.main-layout .checkout-container .basket .basket-list ul .item .horizontal-text-container .count {
-  padding: 0 4px;
-  font-size: 0.8rem;
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector .number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
-.main-layout .checkout-container .basket .basket-list ul .item .horizontal-text-container .total-price {
-  padding: 0 4px;
-  font-size: 0.8rem;
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector .number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
-.main-layout .checkout-container .basket .basket-list ul .item .horizontal-text-container .remove {
-  padding: 0;
-  font-size: 0.8rem;
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector button {
   background: none;
   border: none;
-  color: #ea704c;
-  margin: 0;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #282828;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector button i {
+  font-size: 1rem;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector button:hover {
+  color: #e54833;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector .left {
+  display: inline-block;
+  padding-left: 6px;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector .right {
+  display: inline-block;
+  padding-right: 6px;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.total {
+  max-width: 30%;
+  text-align: right;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.total button {
+  background: none;
+  border: none;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #282828;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.total button i {
+  font-size: 1rem;
+}
+.main-layout .checkout-container .basket .basket-list table tbody tr.item td.total button:hover {
+  color: #ff0000;
 }
 
 #sort-by-menu .ui-menu-item-wrapper {

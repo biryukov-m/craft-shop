@@ -925,9 +925,6 @@ a:hover
                   max-width: 50px
 
                 .size-selector
-                  //-webkit-appearance: textfield
-                  //-moz-appearance: textfield
-                  //appearance: textfield
                   margin: 0
                   padding: 0
                   color: $dark
@@ -937,8 +934,6 @@ a:hover
                   font-size: 11pt
                   color: $dark
                   background: none
-
-
 
                 .number::-webkit-inner-spin-button
                   -webkit-appearance: none
@@ -1099,58 +1094,84 @@ a:hover
   .checkout-container
     .order-form
     .basket
-      border: solid $lighter 2px
-      background: #f1ebed
+      border: solid $light 2px
+      background: #f8f8f8
       .basket-list
-        ul
-          display: block
-          .item
-            display: flex
-            padding: 4px 3px
-            .image-container
-              flex-basis: 100px
-              img
-                display: block
-                width: 100%
-            .text-container
-              display: flex
-              align-items: flex-start
-              justify-content: center
-              flex-direction: column
-              font-family: "Open Sans", sans-serif
-              padding: 0 4px
-              color: $darker
-              font-weight: 400
-              flex-grow: 1
-              .name
-                font-size: 0.8rem
-              .size
-                font-size: 0.7rem
-              .price
-                color: $dark
-                font-size: 0.65rem
-                font-weight: 600
-            .horizontal-text-container
-              display: flex
-              align-items: center
-              justify-content: baseline
-              flex-direction: row
-              font-family: "Open Sans", sans-serif
-              color: $darker
-              flex-basis: 100px
-              .count
-                padding: 0 4px
-                font-size: 0.8rem
-              .total-price
-                padding: 0 4px
-                font-size: 0.8rem
-              .remove
-                padding: 0
-                font-size: 0.8rem
-                background: none
-                border: none
-                color: $highlight_darker
-                margin: 0
+        table
+          font-family: "Open Sans", sans-serif
+          color: black
+          font-size: 0.9rem
+          tbody
+            tr.item
+              td
+                border-bottom: 15px solid transparent
+              td.image-container
+                width: 12%
+                img
+                  max-width: 95%
+              td.text-container
+                max-width: 66%
+                .brand
+                  font-size: 0.85rem
+                .name
+                  font-size: 0.8rem
+                .price
+                  font-size: 0.75rem
+              td.count
+                .spinner-selector
+                  display: flex
+                  .number
+                    display: inline-block
+                    max-width: 25px
+                    -webkit-appearance: textfield
+                    -moz-appearance: textfield
+                    appearance: textfield
+                    border: none
+                    background: none
+                    font-family: "Open Sans", sans-serif
+                    font-size: 0.9rem
+                    text-align: center
+                    color: black
+                  .number::-webkit-inner-spin-button
+                    -webkit-appearance: none
+                  .number::-webkit-outer-spin-button
+                    -webkit-appearance: none
+                  button
+                    background: none
+                    border: none
+                    vertical-align: middle
+                    cursor: pointer
+                    color: $darker
+                    i
+                      font-size: 1rem
+                  button:hover
+                    color: $highlight_darkest
+                  .left
+                    display: inline-block
+                    padding-left: 6px
+                  .right
+                    display: inline-block
+                    padding-right: 6px
+
+
+              td.total
+                max-width: 30%
+                text-align: right
+                .total-price
+
+                button
+                  background: none
+                  border: none
+                  vertical-align: middle
+                  cursor: pointer
+                  color: $darker
+                  i
+                    font-size: 1rem
+                button:hover
+                  color: #ff0000
+
+
+
 
 #sort-by-menu
   .ui-menu-item-wrapper
