@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block inclusive_basket %}{% endblock %}
 {% block content %}
     <div class="checkout-container row">
         <div class="col-md-6 order-form">
@@ -23,17 +24,17 @@
                         </td>
                         <td class="count">
                             <div class="spinner-selector quantity">
-                                <button  type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="left">
+                                <button type="button" class="left decrease_item_quantity">
                                     <i class="far fa-arrow-alt-circle-left"></i>
                                 </button>
-                                <input type="number" class="number" id="quantity-selector" name="quantity-selector" value={{ item.quantity }} min="1" max="100">
-                                <button  type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="right">
+                                <input type="number" class="number" name="quantity-selector" value={{ item.quantity }} min="1" max="100">
+                                <button type="button" class="right increase_item_quantity">
                                     <i class="far fa-arrow-alt-circle-right"></i>
                                 </button>
                             </div>
                         </td>
                         <td class="total">
-                            <span class="total-price">{{ item.total_price }} грн</span>
+                            <span class="item-total-price">{{ item.total_price }} грн</span>
                             <button id="item_remove"
                                     class="item_remove remove"
                                     data-item_id = "{{ item.id }}"
@@ -48,6 +49,10 @@
                 {% endfor %}
                 </tbody>
             </table>
+            </div>
+            <div class="overall-price">
+                <span class="caption">Сума замовлення: </span>
+                <span class="basket-total-price">{{ get_basket.basket_total_price }} грн</span>
             </div>
         </div>
     </div>

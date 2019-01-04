@@ -141,8 +141,6 @@ a:hover
             top: -6px
 
 
-
-
       .basket-container
         position: absolute
         z-index: 200
@@ -225,7 +223,7 @@ a:hover
           font-size: 0.9rem
           margin-bottom: 10px
 
-        button
+        a
           float: right
           margin-right: 15px
           margin-bottom: 5px
@@ -1092,10 +1090,19 @@ a:hover
           align-items: center
           justify-content: center
   .checkout-container
+    margin-bottom: 40px
     .order-form
     .basket
-      border: solid $light 2px
+      border: solid $light 1px
       background: #f8f8f8
+      h2
+        border-bottom: 2px $lighter solid
+        font-family: "Open Sans", sans-serif
+        font-weight: 100
+        color: #000
+        padding: 5px 4px
+        margin-bottom: 15px
+        font-size: 2rem
       .basket-list
         table
           font-family: "Open Sans", sans-serif
@@ -1169,9 +1176,18 @@ a:hover
                     font-size: 1rem
                 button:hover
                   color: #ff0000
-
-
-
+      .overall-price
+        display: flex
+        justify-content: space-between
+        border-bottom: 2px $lighter solid
+        font-family: "Open Sans", sans-serif
+        font-weight: 300
+        color: #000
+        padding: 5px 4px
+        margin-bottom: 15px
+        font-size: 1.6rem
+        .caption
+        .sum
 
 #sort-by-menu
   .ui-menu-item-wrapper

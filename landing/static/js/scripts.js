@@ -1,25 +1,35 @@
 $(document).ready(function () {
+    var form = $('#buying-product');
+    var container = $('#basket-container');
+    var button_remove = $('.item_remove');
+    var decrease_item_quantity = $('.decrease_item_quantity');
+    var increase_item_quantity = $('.increase_item_quantity');
     // Функция для пересчета общей цены корзины на клиентской стороне после аякса
     function recalculate_basket_price(){
         var basket_price = 0;
-        $('.total-price').each(function(i,elem) {
+        $('.item-total-price').each(function(i,elem) {
             // Топорный хак для убрания нулей из Decimal числа Django, чтобы получить целое число
             basket_price += Number($(elem).text().split(',', 1));
         });
-        $('#basket-total-price').text(basket_price.toFixed(2));
+        $('.basket-total-price').text(basket_price.toFixed(2));
     }
     function recalculate_basket_items_count(){
         var count = 0;
         var counter = $('#circle-counter');
-        $('.total-price').each(function() {
+        $('.item-total-price').each(function() {
             count += 1;
         });
         counter.text(count);
         if (count < 1) { counter.addClass('hidden');}
         else {counter.removeClass('hidden');}
     }
-    var form = $('#buying-product');
-    var container = $('#basket-container');
+    function toggle_basket () {
+        if ($('#circle-counter').hasClass('hidden')) {
+            container.addClass('hidden');
+        } else {
+            container.toggleClass('hidden');
+        }
+    }
     form.on('submit', function (e) {
         e.preventDefault();
         // Обработка нажатия submit на форме - отдача ajax с данными товара бэкэнду
@@ -35,7 +45,7 @@ $(document).ready(function () {
         // Сначала отдача на бэкэнд желаемого товара в корзину
         // Считываем url, что генерится в шаблоне для ajax
         var url = form.attr('action');
-        var csrf_token = $('#buying-product [name="csrfmiddlewaretoken"]').val();
+        var csrf_token = $('#csrf-token [name="csrfmiddlewaretoken"]').val();
         // Подготовка словаря дата для передачи в ajax
         var data = {};
         data.item_id = item_id;
@@ -70,7 +80,7 @@ $(document).ready(function () {
                     "                        </div>\n" +
                     "                        <div class=\"horizontal-text-container\">\n" +
                     "                            <span class=\"count\">x "+ item_quantity +"</span>\n" +
-                    "                            <span class=\"total-price\">"+ (item_price*item_quantity).toFixed(2) +"</span>\n" +
+                    "                            <span class=\"item-total-price\">"+ (item_price*item_quantity).toFixed(2) +"</span>\n" +
                     "                        </div>\n" +
                     '                    </li>');
                 recalculate_basket_price();
@@ -84,13 +94,11 @@ $(document).ready(function () {
 
     });
     // Обработка ajax запроса на удаление товара из корзины
-    var button_remove = $('.item_remove');
     button_remove.on('click', function (e) {
         var item_id = $(this).data('item_id');
         var item_size = $(this).data('item_size');
         var url = $(this).data('url');
-        var csrf_token = $('#basket-list [name="csrfmiddlewaretoken"]').val();
-        var position_in_list = $(this).data('counter');
+        var csrf_token = $('#csrf-token [name="csrfmiddlewaretoken"]').val();
         // Подготовка словаря дата для передачи в ajax
         var data = {};
         var target = e.target;
@@ -104,8 +112,8 @@ $(document).ready(function () {
             cache: true,
             success: function (data) {
                 console.log('OK remove item ajax');
-                // button_remove.closest('li.item.'+position_in_list).remove();
-                target.closest('li.item').remove();
+                // remove сработает и для встроенной корзины в топ меню и для корзины на странице чекаута
+                target.closest('.item').remove();
                 recalculate_basket_price();
                 recalculate_basket_items_count();
             },
@@ -115,15 +123,25 @@ $(document).ready(function () {
         });
 
     });
-    function toggle_basket () {
-        if ($('#circle-counter').hasClass('hidden')) {
-            container.addClass('hidden');
-        } else {
-            container.toggleClass('hidden');
-        }
-    }
     // Показать/скрыть корзину по клику
     $('#basket-icon').on('click', toggle_basket);
     // Скрыть корзину, если курсор мыши сьехал
     container.on('mouseleave', toggle_basket);
+
+    decrease_item_quantity.on('click', function (e) {
+        var target = $(e.target);
+        var item_price = target.closest('.item').find("td.text-container div.price").text();
+        var quantity = target.parent().find('.number').val();
+        var quantity_sel = target.parent().find('.number');
+        var item_total_price_sel = target.closest('.item').find('td.total span.item-total-price');
+
+        var new_quantity = quantity - 1;
+        var new_total_price = item_price*new_quantity;
+
+        // quantity.stepDown();
+        // item_total_price_sel.text(new_total_price);
+        // recalculate_basket_price();
+    })
+
+
 });

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-
+{% block inclusive_basket %}{{ block.super }}{% endblock %}
+{% block csrf_token %}{{ block.super }}{% endblock %}
 {% block content %}
-
     <div class="row top-billboard">
         <div class="col-sm-12 top-billboard-wrapper">
             <div class="top-billboard-inner">
@@ -89,7 +89,6 @@
                 {% include 'landing/item_preview.html' %}
             </div>
         {% endfor %}
-
     </div>
     <div class="row about-banners">
         <div class="col-sm-4 banner-wrapper">
@@ -392,5 +391,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

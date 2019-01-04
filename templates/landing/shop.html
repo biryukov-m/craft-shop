@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-
+{% block inclusive_basket %}{{ block.super }}{% endblock %}
+{% block csrf_token %}{{ block.super }}{% endblock %}
 {% block content %}
 
 {% load static %}
