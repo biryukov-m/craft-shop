@@ -8,10 +8,11 @@ $(document).ready(function () {
     function recalculate_basket_price(){
         var basket_price = 0;
         $('.item-total-price').each(function(i,elem) {
-            // Топорный хак для убрания нулей из Decimal числа Django, чтобы получить целое число
-            basket_price += Number($(elem).text().split(',', 1));
+            var price = $(elem).text().replace(',','.');
+            basket_price += parseFloat(price);
         });
-        $('.basket-total-price').text(basket_price.toFixed(2));
+        basket_price = basket_price.toFixed(2).replace('.', ',');
+        $('.basket-total-price').text(basket_price);
     }
     function recalculate_basket_items_count(){
         var count = 0;
@@ -41,7 +42,6 @@ $(document).ready(function () {
         var item_name = button.data('item_name');
         var item_price = button.data('item_price');
         var item_image = button.data('item_image');
-
         // Сначала отдача на бэкэнд желаемого товара в корзину
         // Считываем url, что генерится в шаблоне для ajax
         var url = form.attr('action');
@@ -61,7 +61,7 @@ $(document).ready(function () {
                 console.log('OK ajax');
                 // Далее мгновенная отрисовка в корзине этого товара
                 // Топорный хак для убрания нулей из Decimal числа Django, чтобы получить целое число
-                item_price = Number(item_price.split(',', 1));
+                item_price = Number(item_price.replace(',', '.'));
                 $('#basket-container ul').append
                 ("<li class=\"item new\">\n" +
                     "                        <div class=\"image-container\">\n" +
@@ -75,7 +75,7 @@ $(document).ready(function () {
                     "</div>\n" +
                     "                            <div class=\"size\">"+ item_size +"</div>\n" +
                     "                            <div class=\"price\">" +
-                    item_price.toFixed(2) +
+                    item_price.toFixed(2).replace('.', ',') +
                     "</div>\n" +
                     "                        </div>\n" +
                     "                        <div class=\"horizontal-text-container\">\n" +
@@ -127,21 +127,47 @@ $(document).ready(function () {
     $('#basket-icon').on('click', toggle_basket);
     // Скрыть корзину, если курсор мыши сьехал
     container.on('mouseleave', toggle_basket);
-
     decrease_item_quantity.on('click', function (e) {
+        e.preventDefault();
         var target = $(e.target);
-        var item_price = target.closest('.item').find("td.text-container div.price").text();
         var quantity = target.parent().find('.number').val();
+        if (quantity < 2) {
+            console.log('Quantity =', quantity);
+            return
+        }
+        var item_price = target.closest('.item').find("td.text-container div.price").text();
+        // item_price = Number(item_price.split(',', '.')[0]);
+        item_price = parseFloat(item_price.replace(',','.'));
+        // item_price = item_price.toFixed(2);
+        console.log(item_price, "Item_price");
+        console.log(quantity, "quantity");
         var quantity_sel = target.parent().find('.number');
         var item_total_price_sel = target.closest('.item').find('td.total span.item-total-price');
-
         var new_quantity = quantity - 1;
-        var new_total_price = item_price*new_quantity;
-
-        // quantity.stepDown();
-        // item_total_price_sel.text(new_total_price);
-        // recalculate_basket_price();
+        console.log(new_quantity);
+        var new_total_price = (item_price*new_quantity).toFixed(2);
+        console.log(new_total_price);
+        quantity_sel.val(new_quantity);
+        item_total_price_sel.text(new_total_price.replace('.',','));
+        recalculate_basket_price();
+    });
+    increase_item_quantity.on('click', function (e) {
+        e.preventDefault();
+        var target = $(e.target);
+        var quantity = Number(target.parent().find('.number').val());
+        var item_price = target.closest('.item').find("td.text-container div.price").text();
+        item_price = parseFloat(item_price.replace(',','.'));
+        // item_price = item_price.toFixed(2);
+        console.log(item_price, "Item_price");
+        console.log(quantity, "quantity");
+        var quantity_sel = target.parent().find('.number');
+        var item_total_price_sel = target.closest('.item').find('td.total span.item-total-price');
+        var new_quantity = quantity + 1;
+        console.log(new_quantity);
+        var new_total_price = (item_price*new_quantity).toFixed(2);
+        console.log(new_total_price);
+        quantity_sel.val(new_quantity);
+        item_total_price_sel.text(new_total_price.replace('.',','));
+        recalculate_basket_price();
     })
-
-
 });
