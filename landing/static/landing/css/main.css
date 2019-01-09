@@ -119,6 +119,7 @@ a:hover {
   position: absolute;
   z-index: 200;
   top: 55px;
+  left: -8vw;
   border: solid #cecece 2px;
   background: #f1ebed;
 }
@@ -175,7 +176,7 @@ a:hover {
   padding: 0 4px;
   font-size: 0.8rem;
 }
-.top-menu-layout .top-menu .icons .basket-container .basket-list .item .horizontal-text-container .total-price {
+.top-menu-layout .top-menu .icons .basket-container .basket-list .item .horizontal-text-container .item-total-price {
   padding: 0 4px;
   font-size: 0.8rem;
 }
