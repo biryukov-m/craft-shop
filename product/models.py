@@ -214,10 +214,10 @@ class Item(models.Model):
         )
 
     def get_images_extra(self):
-        return self.images.all()
+        return self.images.filter(is_basic=False)
 
     def get_images_extra_urls(self):
-        images = self.images.all()
+        images = self.images.filter(is_basic=False)
         urls = []
         try:
             for obj in images:
