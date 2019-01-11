@@ -196,6 +196,19 @@ class ProductInBasket(models.Model):
             raise ValueError
         super(ProductInBasket, self).save(*args, **kwargs)
 
+    def increase_quantity(self):
+        self.quantity += 1
+        self.save()
+        return self.quantity
+
+    def decrease_quantity(self):
+        if self.quantity > 1:
+            self.quantity -= 1
+            self.save()
+            return self.quantity
+        else:
+            return '''Не можливо зменшити кількість. Кількість = {}'''.format(self.quantity)
+
     class Meta:
         verbose_name = "Замовлений товар у корзині"
         verbose_name_plural = "Замовлені товари у корзині"
