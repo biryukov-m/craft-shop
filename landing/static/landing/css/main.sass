@@ -5,6 +5,7 @@
 // cenbook-regular
 @import "_fonts.sass"
 
+
 //$highlight_lightest: #e18cad
 //$highlight_lighter: #fe8cb9
 //$highlight : #cf2027
@@ -61,8 +62,24 @@ a:hover
   .top-menu
     .top-logo
       display: flex
-      align-items: center
+      align-items: flex-start
       justify-content: center
+      flex-direction: column
+
+      span
+        font-family: "logo1", sans-serif
+        color: #000
+        font-weight: normal
+        display: block
+        line-height: 0.8
+
+      .bigger
+        font-size: 2.7rem
+
+      .smaller
+        font-size: 1.7rem
+        font-weight: 100
+        color: #f10
 
     .menu-list ul li
       display: inline-flex
