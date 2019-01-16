@@ -127,7 +127,6 @@ $(document).ready(function () {
     $('#basket-icon').on('click', toggle_basket);
     // Скрыть корзину, если курсор мыши сьехал
     container.on('mouseleave', toggle_basket);
-
     // Кнопка уменьшения количества
     decrease_item_quantity_button.on('click', function (e) {
         function decrease_item_quantity(target) {
@@ -188,8 +187,6 @@ $(document).ready(function () {
             }
         });
     });
-
-
     // Кнопка увеличения количества
     increase_item_quantity_button.on('click', function (e) {
         function increase_item_quantity(target) {
