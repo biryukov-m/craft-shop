@@ -34,30 +34,43 @@ def basket_change_quantity(request):
     session_key = request.session.session_key
     data = request.POST
     item_id = data.get('item_id')
-    print(item_id, 'item_id')
-    print(item_id, 'item_id')
+    print('Got from AJAX item_id - ', item_id)
     item_quantity = int(data.get('item_quantity'))
-    print(item_quantity, 'item_quantity')
+    print('Got from AJAX item_quantity - ', item_quantity)
     item_size = data.get('item_size')
-    print(item_size, 'item_size')
+    print('Got from AJAX item_size - ', item_size)
     item_size = Size.objects.get(name=item_size)
-    print(item_size, 'in BD item_size')
+    print('Found in BD item_size - ', item_size)
     item = Item.objects.get(id=item_id)
-    print(item, 'item')
+    print('Found in BD item', item)
     method = data.get('method')
-    print(method, 'method')
+    print('Got from AJAX method - ', method)
     print('Trying to find product')
-    product = ProductInBasket.objects.get(session_key=session_key, product=item, size=item_size, quantity=item_quantity)
-    print(product, 'Product')
+    try:
+        product = ProductInBasket.objects.get(session_key=session_key, product=item, size=item_size, quantity=item_quantity)
+        print('Found product', product)
+    except:
+        print('''
+        Can't find product with this query: 
+        ProductInBasket.objects.get(session_key={}, product={}, size={}, quantity={})
+        '''.format(session_key, item, item_size, item_quantity))
+        product = None
     if product:
-        print("if product - OK")
+        print('''
+        Found product with this query: 
+        ProductInBasket.objects.get(session_key={}, product={}, size={}, quantity={})
+        '''.format(session_key, item, item_size, item_quantity))
         if method == 'increase':
+            print('Increasing quantity...')
             product.quantity += 1
             product.save()
+            print('New quantity =', product.quantity)
         elif method == 'decrease':
             if product.quantity > 1:
+                print('Decreasing quantity...')
                 product.quantity -= 1
                 product.save()
+                print('New quantity =', product.quantity)
             else:
                 return_dict["response"] = ''''Wrong item quantity, can't decrease, because quantity <= 1'''
         else:
@@ -79,13 +92,13 @@ def basket_remove(request):
     print('Delete. Found in BD item size - ', item_size)
     item = ProductInBasket.objects.get(session_key=session_key, id=item_id, size=item_size)
     item.delete()
+    print('{} - item deleted'. format(item))
     items_total_number = ProductInBasket.objects.filter(session_key=session_key).count()
     return_dict["items_total_number"] = items_total_number
     return JsonResponse(return_dict)
 
 
 def checkout(request):
-    session_key = request.session.session_key
     template_name = 'orders/checkout.html'
     if request.method == 'POST':
         return render(request, template_name)

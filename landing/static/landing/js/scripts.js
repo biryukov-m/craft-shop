@@ -2,8 +2,8 @@ $(document).ready(function () {
     var form = $('#buying-product');
     var container = $('#basket-container');
     var button_remove = $('.item_remove');
-    var decrease_item_quantity = $('.decrease_item_quantity');
-    var increase_item_quantity = $('.increase_item_quantity');
+    var decrease_item_quantity_button = $('.decrease_item_quantity');
+    var increase_item_quantity_button = $('.increase_item_quantity');
     // Функция для пересчета общей цены корзины на клиентской стороне после аякса
     function recalculate_basket_price(){
         var basket_price = 0;
@@ -129,40 +129,43 @@ $(document).ready(function () {
     container.on('mouseleave', toggle_basket);
 
     // Кнопка уменьшения количества
-    decrease_item_quantity.on('click', function (e) {
-        e.preventDefault();
-        var target = $(e.target);
-        var quantity = target.parent().find('.number').val();
-        if (quantity < 2) {
-            console.log('Quantity =', quantity);
-            return
+    decrease_item_quantity_button.on('click', function (e) {
+        function decrease_item_quantity(target) {
+            var quantity = target.parent().find('.number').val();
+            console.log('quantity is - ', quantity);
+            if (quantity < 2) {
+                console.log('Error because quantity is less than 2, cant decrease more', quantity);
+                return
+            }
+            var item_price = target.closest('.item').find("td.text-container div.price").text();
+            item_price = parseFloat(item_price.replace(',','.'));
+            console.log("Item_price is - ", item_price);
+            var quantity_sel = target.parent().find('.number');
+            var item_total_price_sel = target.closest('.item').find('td.total span.item-total-price');
+            var new_quantity = quantity - 1;
+            console.log("New quantity is- ", new_quantity);
+            var new_total_price = (item_price*new_quantity).toFixed(2);
+            console.log("New total price is - ", new_total_price);
+            quantity_sel.val(new_quantity);
+            item_total_price_sel.text(new_total_price.replace('.',','));
+            recalculate_basket_price();
         }
-        var item_price = target.closest('.item').find("td.text-container div.price").text();
-        item_price = parseFloat(item_price.replace(',','.'));
-        console.log(item_price, "Item_price");
-        console.log(quantity, "quantity");
-        var quantity_sel = target.parent().find('.number');
-        var item_total_price_sel = target.closest('.item').find('td.total span.item-total-price');
-        var new_quantity = quantity - 1;
-        console.log(new_quantity);
-        var new_total_price = (item_price*new_quantity).toFixed(2);
-        console.log(new_total_price);
-        quantity_sel.val(new_quantity);
-        item_total_price_sel.text(new_total_price.replace('.',','));
-        recalculate_basket_price();
+        var target = $(e.target);
+        e.preventDefault();
 
         // AJAX Handling
         var data_holder = $(this).closest('tr.item');
         var item_id = data_holder.data('item_id');
-        console.log('item_id', item_id);
+        console.log('AJAX item_id is - ', item_id);
         var item_size = data_holder.data('item_size');
-        console.log('item_size', item_size);
-        var item_quantity = data_holder.data('item_quantity');
-        console.log('item_quantity', item_quantity);
+        console.log('AJAX item_size is - ', item_size);
+        // var item_quantity = data_holder.data('item_quantity');
+        var item_quantity = target.parent().find('.number').val();
+        console.log('AJAX item_quantity is - ', item_quantity);
         var method = $(this).data('method');
-        console.log('method', method);
+        console.log('AJAX method is - ', method);
         var url = data_holder.data('url');
-        console.log('url', url);
+        console.log('AJAX url is - ', url);
         var csrf_token = $('#csrf-token [name="csrfmiddlewaretoken"]').val();
         // Подготовка словаря дата для передачи в ajax
         var data = {};
@@ -178,30 +181,69 @@ $(document).ready(function () {
             cache: true,
             success: function (data) {
                 console.log('OK decrease quantity in checkout ajax');
+                decrease_item_quantity(target);
+            },
+            error: function () {
+                console.log('Error decrease quantity in checkout ajax');
+            }
+        });
+    });
+
+
+    // Кнопка увеличения количества
+    increase_item_quantity_button.on('click', function (e) {
+        function increase_item_quantity(target) {
+            var quantity = Number(target.parent().find('.number').val());
+            var item_price = target.closest('.item').find("td.text-container div.price").text();
+            item_price = parseFloat(item_price.replace(',','.'));
+            console.log(item_price, "Item_price");
+            console.log(quantity, "quantity");
+            var quantity_sel = target.parent().find('.number');
+            var item_total_price_sel = target.closest('.item').find('td.total span.item-total-price');
+            var new_quantity = quantity + 1;
+            console.log(new_quantity);
+            var new_total_price = (item_price*new_quantity).toFixed(2);
+            console.log(new_total_price);
+            quantity_sel.val(new_quantity);
+            item_total_price_sel.text(new_total_price.replace('.',','));
+            recalculate_basket_price();
+        }
+        e.preventDefault();
+        var target = $(e.target);
+
+        // AJAX Handling
+        var data_holder = $(this).closest('tr.item');
+        var item_id = data_holder.data('item_id');
+        console.log('AJAX item_id is - ', item_id);
+        var item_size = data_holder.data('item_size');
+        console.log('AJAX item_size is - ', item_size);
+        var item_quantity = target.parent().find('.number').val();
+        console.log('AJAX item_quantity is - ', item_quantity);
+        var method = $(this).data('method');
+        console.log('AJAX method is - ', method);
+        var url = data_holder.data('url');
+        console.log('AJAX url is - ', url);
+        var csrf_token = $('#csrf-token [name="csrfmiddlewaretoken"]').val();
+        // Подготовка словаря дата для передачи в ajax
+        var data = {};
+        data.item_id = item_id;
+        data.item_size = item_size;
+        data.item_quantity = item_quantity;
+        data.method = method;
+        data['csrfmiddlewaretoken']=csrf_token;
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            cache: true,
+            success: function (data) {
+                console.log('OK decrease quantity in checkout ajax');
+                increase_item_quantity(target);
             },
             error: function () {
                 console.log('Error decrease quantity in checkout ajax');
             }
         });
 
-    });
-    // Кнопка увеличения количества
-    increase_item_quantity.on('click', function (e) {
-        e.preventDefault();
-        var target = $(e.target);
-        var quantity = Number(target.parent().find('.number').val());
-        var item_price = target.closest('.item').find("td.text-container div.price").text();
-        item_price = parseFloat(item_price.replace(',','.'));
-        console.log(item_price, "Item_price");
-        console.log(quantity, "quantity");
-        var quantity_sel = target.parent().find('.number');
-        var item_total_price_sel = target.closest('.item').find('td.total span.item-total-price');
-        var new_quantity = quantity + 1;
-        console.log(new_quantity);
-        var new_total_price = (item_price*new_quantity).toFixed(2);
-        console.log(new_total_price);
-        quantity_sel.val(new_quantity);
-        item_total_price_sel.text(new_total_price.replace('.',','));
-        recalculate_basket_price();
     })
 });
