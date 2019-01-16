@@ -1,0 +1,1230 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&subset=cyrillic')
+// cenbook-bolditalic
+// cenbook-bold
+// cenbook-italic
+// cenbook-regular
+@import "_fonts.sass"
+
+//$highlight_lightest: #e18cad
+//$highlight_lighter: #fe8cb9
+//$highlight : #cf2027
+
+//$highlight : #ff4081
+//$highlight_lightest: #e18cad
+//$highlight_lighter: #fe8cb9
+//$highlight_darker: #fe4080
+//$highlight_darkest: #c1185b
+
+
+//Блекло красный
+//$highlight_lightest: #ffb8c5
+//$highlight_lighter: #ff8192
+//$highlight_darker: #ff6777
+//$highlight_darkest: #cf545c
+//$highlight: #f95461
+
+
+// Морковный
+$highlight_lightest: #f6b28f
+$highlight_lighter: #f1936c
+$highlight_darker: #ea704c
+$highlight_darkest: #e54833
+$highlight: #df0024
+
+$lighter: #cecece
+$light: #939393
+$dark: #464646
+$darker: #282828
+
+*
+  padding: 0
+  margin: 0
+
+ul
+  list-style: none
+  margin: 0 !important
+
+a:hover
+  text-decoration: none
+#shopping_now
+  font-family: 'cenbook-regular'
+  text-align: right
+  font-size: 0.75rem
+  text-decoration: underline
+.top-menu-head
+  height: 4vh
+  background: $darker
+
+.top-menu-layout
+  .top-menu
+    .top-logo
+      display: flex
+      align-items: center
+      justify-content: center
+
+    .menu-list ul li
+      display: inline-flex
+      height: 5.5rem
+      align-items: center
+      padding: 0 8px
+      position: relative
+
+      a
+        font-family: 'Open Sans', sans-serif
+        color: $dark
+        font-size: 0.9rem
+      // Хак, чтобы когда шрифт толстел - элементы не смещались. Место для жирного шрифта заранее резервировано
+      a:before
+        display: block
+        content: attr(title)
+        font-weight: bold
+        height: 0
+        overflow: hidden
+        visibility: hidden
+        padding: 0 1px
+
+      a:hover
+        color: $highlight
+        font-weight: bold
+
+      a:hover:after
+        display: inline-block
+        position: absolute
+        content: ""
+        width: 100%
+        height: 5px
+        bottom: 5px
+        left: 0
+        background: $highlight
+
+    .icons
+      .icons-inner
+        float: right
+
+        a
+          line-height: 5.5rem
+          vertical-align: middle
+          position: relative
+
+        a ~ a:before
+          content: "/"
+          display: inline
+          margin: 0 9px 0 6px
+          color: $lighter
+          img
+            vertical-align: baseline
+
+        .circle-counter
+          height: 1.2rem
+          width: 1.2rem
+          line-height: 1.2rem
+          border-radius: 50%
+          background: $highlight
+          text-align: center
+          font-size: 0.6rem
+          color: white
+          position: absolute
+          right: -9px
+          top: -6px
+
+.main-layout
+  .top-billboard
+    margin-bottom: 30px
+
+    .top-billboard-wrapper
+      .top-billboard-inner
+        height: 100%
+        background: $dark
+        position: relative
+
+        .background
+          width: 100%
+
+        .watermark
+          position: absolute
+          bottom: 12px
+          left: 20px
+          width: 100px
+          opacity: 0.3
+
+        .billboard-text
+          height: 100%
+          position: absolute
+          display: flex
+          flex-direction: column
+          align-items: center
+          justify-content: center
+          right: 4%
+          font-family: 'cenbook-regular'
+
+          h2
+            color: #fff
+            font-size: 2.25rem
+            font-style: italic
+            font-weight: bold
+
+          h1
+            font-size: 4.5rem
+            color: #fff
+            font-weight: bold
+
+          h3
+            font-size: 2.25rem
+            color: $lighter
+          a
+            margin: 5% auto 0 auto
+            font-family: 'cenbook-regular'
+            font-size: 1rem
+            color: #fff
+            text-decoration: underline
+
+  .banners
+    margin-bottom: 45px
+    .banner-wrapper
+      .banner
+        background: $dark
+        position: relative
+        .background
+          width: 100%
+        .banner-text
+          height: 100%
+          position: absolute
+          right: 4%
+          color: rgba(#000, 0.6)
+          font-family: 'cenbook-regular'
+          text-align: right
+
+          h1
+            font-size: 2rem
+            font-weight: bold
+            padding-top: 0.6rem
+            margin-bottom: 0.3rem
+
+          h2
+            font-size: 1.1rem
+            margin-bottom: 1rem
+
+          h3
+            font-size: 1rem
+            line-height: 20px
+
+          a
+            margin-bottom: 25px
+            color: rgba(#000, 0.9)
+
+  .product-header
+    .text-wrapper
+      font-size: 2.3rem
+
+      .bold
+        font-weight: bold
+        color: $darker
+
+      .normal
+        color: $light
+        font-weight: lighter
+
+  .selectors
+    align-items: baseline
+    margin-bottom: 30px
+
+    .categories
+      ul
+        margin: 0
+        padding: 0
+        li
+          display: inline
+          vertical-align: middle
+
+          a
+            color: $dark
+            font-size: 0.8rem
+            display: inline-block
+            text-align: center
+            vertical-align: middle
+            text-transform: uppercase
+
+          a.active, a:hover
+            color: $highlight
+            font-weight: bold
+
+          a:before
+            display: block
+            content: attr(title)
+            font-weight: bold
+            height: 0
+            overflow: hidden
+            visibility: hidden
+
+        li ~ li:before
+          content: "/"
+          display: inline
+          color: $lighter
+
+    .line
+      height: 5px
+      background: $lighter
+    .paginator
+      a
+        margin: 0 1px
+    .description
+      font-size: 0.8rem
+
+  .products
+    margin-bottom: 40px
+
+    .product-wrapper
+      .product
+        .face
+          margin-bottom: 15px
+
+          figure
+            .image-wrapper
+              display: flex
+              align-items: center
+              justify-content: center
+              margin-bottom: 15px
+              position: relative
+
+              img
+                width: 100%
+
+              .label
+                font-family: "Open Sans", sans-serif
+                font-weight: lighter
+                padding: 3px 11px
+                border-radius: 5px
+                position: absolute
+                right: 5px
+                top: 5px
+                font-size: 0.64rem
+
+              .label.sale
+                background: #ffff04
+                color: #ff1845
+
+              .label.hot
+                background: #ff1845
+                color: #ffffff
+
+              .label.new
+                background: #1cbbb4
+                color: #ffffff
+              .active
+                position: absolute
+                visibility: hidden
+
+                ul
+                  background: $highlight_darkest
+                  border-radius: 5px
+                  padding: 0 10px
+
+                  li
+                    display: inline-block
+                    position: relative
+
+                    a
+                      display: block
+                      text-align: center
+                      vertical-align: middle
+                      padding: 6px 5px
+                      color: $highlight_lightest
+
+                    span
+                      display: none
+                      position: absolute
+                      bottom: -20px
+                      left: -20px
+                      font-size: 1rem
+                      font-family: "Open Sans", sans-serif
+                      font-weight: 300
+                      color: $highlight_darkest
+                      width: 150px
+
+                  li:hover
+                    span
+                      display: block
+
+                    a
+                      background: $highlight_darker
+
+                      i
+                        color: white
+
+
+            figcaption
+              //margin-left: 10px
+              div
+                font-family: 'Open Sans', sans-serif
+                font-size: 1.25rem
+                font-weight: 300
+
+                a
+                  color: $darker
+                  font-size: 1.25rem
+
+              .product-category a
+                font-size: 0.75rem
+
+              .product-rating
+                position: absolute
+                bottom: 13px
+                right: 16px
+
+        .face:hover
+          figure
+            .image-wrapper
+              .active
+                visibility: visible
+              img
+                outline: 5px solid $highlight_darkest
+                opacity: 0.5
+
+  .about-banners
+    margin-bottom: 40px
+    .banner-wrapper
+      .banner
+        height: 140px
+        border-radius: 5px
+        display: flex
+        justify-content: center
+        align-items: center
+        margin-bottom: 15px
+
+        .image
+          padding: 0 0 0 15px
+
+          i
+            color: rgba(#000, 0.5)
+
+        .text
+          padding: 0 15px
+          font-family: "Open Sans", sans-serif
+          color: rgba(#000, 0.5)
+
+          .bigger
+            font-size: 1.4rem
+            font-weight: bold
+
+          .smaller
+            font-size: 1rem
+            font-weight: lighter
+
+      .banner.shipping
+        background: #1bbc9b
+
+      .banner.returns
+        background: #fa5c5b
+
+      .banner.support
+        background: #cd7dff
+  .adv
+    margin-bottom: 40px
+
+    .adv-wrapper
+      .adv-inner
+        background: $dark
+        position: relative
+
+        img
+          width: 100%
+
+        .text
+          display: flex
+          flex-direction: column
+          align-items: flex-end
+          justify-content: center
+          bottom: 0
+          right: 45px
+          height: 100%
+          position: absolute
+          //margin-right: 45px
+          color: #000000
+          text-align: right
+          font-family: 'cenbook-regular'
+
+          .top
+            font-size: 2.5rem
+            padding-top: 4%
+            line-height: 0.9
+            letter-spacing: 0.2rem
+
+          .middle
+            font-weight: bold
+            font-size: 6.5rem
+            line-height: 0.9
+            letter-spacing: 0.6rem
+
+          .bottom
+            font-size: 1.125rem
+            letter-spacing: 0.25rem
+            margin-bottom: 3%
+
+  .blog-carousel
+    margin-bottom: 45px
+
+    .blog-wrapper
+      margin-bottom: 25px
+
+      .blog-image
+        background: $dark
+        margin-bottom: 10px
+
+        img
+          width: 100%
+
+      .blog-info
+        font-family: "Open Sans"
+        font-weight: lighter
+        color: $dark
+
+        .title
+          font-size: 1.3rem
+
+        .info
+          margin-bottom: 15px
+
+          .datetime, .category, .author
+            font-size: 0.75rem
+          .datetime
+            margin-bottom: 25px
+
+        .intro
+          font-size: 1rem
+          color: $light
+
+        span
+          i
+            padding-right: 5px
+
+        span ~ span
+          padding-left: 10px
+
+  .join-us
+    margin-bottom: 45px
+
+    .banner-wrapper
+      .banner-inner
+        display: flex
+        justify-content: center
+
+        .image
+          position: relative
+
+          img
+            width: 100%
+
+          .text
+            top: 0
+            height: 100%
+            position: absolute
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: center
+            text-align: center
+            color: #fff
+            font-family: "Open Sans"
+
+            h2
+              font-size: 4rem
+              font-weight: 800
+
+            h3
+              font-size: 1.4rem
+              font-weight: lighter
+              margin-bottom: 45px
+
+            a
+              font-size: 1.17rem
+              color: $darker
+              padding: 5px 16px
+              border-radius: 5px
+              background: #ffffff
+              font-weight: lighter
+
+            a:hover
+              background: $darker
+              color: #ffffff
+  .top-shop-banner
+    margin-bottom: 12px
+    .wrapper
+      .banner
+        position: relative
+        .banner-text
+          position: absolute
+          height: 100%
+          display: flex
+          flex-direction: column
+          align-items: center
+          justify-content: center
+          left: 4%
+          font-family: 'cenbook-regular'
+
+          h1
+          h2
+          h3
+          a
+        .background
+          width: 100%
+        .watermark
+          position: absolute
+          bottom: 12px
+          left: 20px
+          width: 100px
+          opacity: 1
+  .breadcrumbs
+    margin-bottom: 55px
+
+    .wrapper
+      .inner
+        a
+          color: $dark
+          font-family: 'Open Sans', sans-serif
+          font-weight: lighter
+          font-size: 0.9rem
+        a:hover
+          color: $highlight
+        a ~ a:before
+          display: inline
+          content: "/"
+          margin-right: 5px
+  .shop-catalogue
+    .sidebar
+      .attribute
+        margin-bottom: 50px
+
+        .header-wrapper
+          display: flex
+          width: 100%
+          flex-direction: row
+          align-items: center
+          margin-bottom: 20px
+
+          .header
+            font-family: "Open Sans", sans-serif
+            font-weight: bold
+            font-size: 1.1rem
+            color: black
+
+            .thin
+              color: $light
+              font-weight: lighter
+
+          .line
+            margin-left: 10px
+            background-color: $lighter
+            height: 3px
+            padding: 1px
+            flex-grow: 1
+
+        .category-header
+          font-family: "Open Sans", sans-serif
+          font-weight: normal
+          font-size: 1rem
+          color: $darker
+          margin-left: 10px
+          margin-bottom: 10px
+          display: block
+
+        .category-header:hover
+          color: $highlight_darkest
+
+        ul
+          li
+            margin-bottom: 15px
+
+            a
+              font-family: "Open Sans", sans-serif
+              font-weight: lighter
+              font-size: 0.9rem
+              color: $dark
+              margin-left: 10px
+
+            a:hover
+              color: $highlight
+
+        .color
+          display: inline-flex
+          flex-direction: row
+          align-items: center
+          align-content: center
+
+          .color-inner
+            height: 20px
+            width: 32px
+            border: 1px rgba(0, 0, 0, 0.4) solid
+
+        .red
+          .color-inner
+            background: red
+
+        .blue
+          .color-inner
+            background: aqua
+
+        .green
+          .color-inner
+            background: green
+    .content
+      .header-wrapper
+        display: flex
+        width: 100%
+        flex-direction: row
+        align-items: baseline
+        margin-bottom: 20px
+
+        .header
+          font-family: "Open Sans", sans-serif
+          font-weight: bold
+          font-size: 1.1rem
+          color: black
+          display: flex
+
+          .options
+            display: flex
+            align-items: baseline
+
+            .controlgroup
+              font-size: 0.85rem
+
+              .ui-button
+                width: inherit
+                padding: 5px 5px 5px 10px
+                min-width: 38px
+
+              .ui-icon
+                background-image: url("/static/landing/img/arrow-select.png")
+
+
+            .name
+              font-family: "Open Sans"
+              font-weight: lighter
+              color: $dark
+              font-size: 0.9rem
+
+            .value
+              a
+                font-family: "Open Sans"
+                font-weight: lighter
+                color: $lighter
+                font-size: 0.9rem
+                border-radius: 10px
+                border: $lighter dashed 2px
+
+          .thin
+            color: $light
+            font-weight: lighter
+
+        .line
+          margin-left: 10px
+          background-color: $lighter
+          height: 3px
+          padding: 1px
+          flex-grow: 1
+
+
+footer
+  .footer-background
+    background: $darker
+
+    .footer-layout
+      .footer-wrapper
+        //padding: 50px 0
+        font-family: "Open Sans"
+        color: $lighter
+        padding: 50px 0 30px 0
+
+      .info
+        .logo
+          margin-bottom: 30px
+          height: 58px
+
+        .description
+          margin-bottom: 60px
+          font-weight: lighter
+          font-size: 0.9rem
+          line-height: 1.8
+
+      .contacts
+        h2
+          font-weight: bold
+          font-size: 1.1rem
+          height: 58px
+          margin-bottom: 30px
+          display: flex
+          align-items: flex-end
+
+        ul
+          font-size: 0.9rem
+          font-weight: lighter
+
+          li
+            margin-bottom: 15px
+
+          ul
+            li
+              .days
+                color: $highlight
+                text-transform: uppercase
+                font-weight: bold
+
+      .links
+        h2
+          font-weight: bold
+          font-size: 1.1rem
+          height: 58px
+          margin-bottom: 30px
+          display: flex
+          align-items: flex-end
+
+        ul
+          font-size: 0.9rem
+          font-weight: lighter
+          width: 50%
+          float: left
+
+          li
+            margin-bottom: 15px
+
+            a
+              color: $lighter
+
+            a:hover
+              color: $highlight
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media screen and (max-width: 1199px)
+  .main-layout
+    .top-billboard
+      margin-bottom: 2vw
+
+    .banners
+      margin-bottom: 2vw
+
+    .products
+      margin-bottom: 2vw
+
+    .about-banners
+      margin-bottom: 2vw
+
+      .banner-wrapper
+        .banner
+          height: 90px
+
+          .image
+            padding: 0 0 0 10px
+
+            i
+              font-size: 4rem
+          .text
+            padding: 0 10px
+
+            .bigger
+              font-size: 1.2rem
+            .smaller
+              font-size: 1rem
+
+    .adv
+      margin-bottom: 2vw
+
+      .adv-wrapper
+        .adv-inner
+          .text
+            .top
+              font-size: 1.75rem
+              padding-top: 8%
+
+            .middle
+              font-weight: bold
+              font-size: 4.55rem
+              line-height: 0.9
+              letter-spacing: 0.6rem
+
+            .bottom
+              font-size: 0.79rem
+              letter-spacing: 0.25rem
+              margin-bottom: 3%
+
+    .blog-carousel
+      margin-bottom: 2vw
+
+    .join-us
+      margin-bottom: 2vw
+
+  .footer-background
+    .footer-layout
+      .footer-wrapper
+        .info
+          .logo
+            margin-bottom: 30px
+            height: 58px
+
+          .description
+            margin-bottom: 60px
+            font-size: 0.8rem
+            line-height: 1.8
+
+        .contacts
+          h2
+            font-size: 1.1rem
+            height: 58px
+            margin-bottom: 30px
+            display: flex
+            align-items: center
+
+          ul
+            font-size: 0.8rem
+            font-weight: lighter
+
+            li
+              margin-bottom: 15px
+
+            ul
+              li
+                .days
+                  color: $highlight
+                  text-transform: uppercase
+                  font-weight: bold
+
+        .links
+          h2
+            font-weight: bold
+            font-size: 1.1rem
+            height: 58px
+            margin-bottom: 30px
+            display: flex
+            align-items: center
+
+          ul
+            font-size: 0.8rem
+            font-weight: lighter
+
+            li
+              margin-bottom: 15px
+
+// Large devices (desktops, 992px and up)
+@media screen and (max-width: 991px)
+  html
+    font-size: 12px
+
+  .top-menu-layout
+    .top-menu
+      .menu-list ul li
+        padding: 0 5px
+        height: 5.5rem
+
+  .main-layout
+    .products
+      margin-bottom: 15px
+    .banners
+      .banner-wrapper
+        .banner
+          .banner-text
+            h1
+              margin-bottom: 1%
+            h2
+              margin-bottom: 4%
+            h3
+              margin-bottom: 3%
+    .about-banners
+      margin-bottom: 0
+      .banner-wrapper
+        .banner
+          height: 80px
+          .image
+            i
+              font-size: 3.7rem
+          .text
+            .bigger
+              font-size: 1.1rem
+            .smaller
+              font-size: 0.9rem
+    .selectors
+      .description
+        font-size: 1rem
+        width: 100%
+
+  .footer-background
+    .footer-layout
+      .footer-wrapper
+        .info
+          margin-bottom: 3vw
+
+          .logo
+            float: left
+            padding-right: 2vw
+            height: 100px
+            margin-bottom: 0
+
+          .description
+            margin-bottom: 2vw
+            font-size: 1rem
+            line-height: 1.8
+
+        .contacts
+          h2
+            font-size: 1.1rem
+            height: auto
+            margin-bottom: 2.5vw
+
+          ul
+            font-size: 1rem
+
+        .links
+          h2
+            font-size: 1.1rem
+            height: auto
+            margin-bottom: 2.5vw
+
+
+          ul
+            font-size: 1rem
+
+// Medium devices (tablets, 768px and up)
+@media screen and (max-width: 767px)
+  html
+    font-size: 10px
+
+  .top-menu-layout
+    .top-menu
+      .menu-list ul li
+        padding: 0 2px
+
+      .icons
+        .icons-inner
+          display: flex
+          justify-content: space-between
+
+          .circle-counter
+            top: 20px
+
+          a ~ a:before
+            content: ""
+
+
+
+  .main-layout
+    .banners
+      .banner-wrapper
+        .banner
+          .banner-text
+            h1
+              font-size: 1.4rem
+              margin-bottom: 0
+            h2
+              font-size: 0.7rem
+              margin-bottom: 0
+            h3
+              font-size: 0.65rem
+              margin-bottom: 0
+    .products
+      .product-wrapper
+        .product
+          .face
+            figure
+              .image-wrapper
+                .label
+                  padding: 3px 11px
+                  font-size: 1rem
+
+                .active
+                  ul
+                    padding: 0 15px
+                    li
+                      a
+                        padding: 10px 8px
+                        i
+                          font-size: 3rem
+
+    .blog-carousel
+      .blog-wrapper
+        .blog-image
+          display: flex
+          justify-content: center
+          align-items: center
+
+          img
+            width: auto
+            margin: 0 auto
+
+        .blog-info
+          .title
+            font-size: 1.4rem
+
+          .info
+            .datetime, .category, .author
+              font-size: 1rem
+
+          .intro
+            font-size: 1.25rem
+    .selectors
+      .col.line
+        display: none
+  .footer-background
+    .footer-layout
+      .footer-wrapper
+        .info
+          .logo
+            height: 100px
+
+          .description
+            font-size: 1.2rem
+
+        .contacts
+          h2
+            font-size: 1.4rem
+
+          ul
+            font-size: 1.2rem
+
+        .links
+          h2
+            font-size: 1.4rem
+
+          ul
+            font-size: 1.2rem
+
+// Small devices (landscape phones, 576px and up)
+@media screen and (max-width: 575px)
+  .top-menu-layout
+    .top-menu
+      .menu-list
+        display: flex
+        align-items: center
+        justify-content: center
+        ul li a
+          font-size: 1.1rem
+      .icons
+        display: flex
+        align-items: center
+        justify-content: center
+        .icons-inner
+          margin-bottom: 15px
+
+          .circle-counter
+            top: -6px
+
+          a
+            line-height: 1
+
+  .main-layout
+    .top-billboard
+      .top-billboard-wrapper
+        .top-billboard-inner
+          .billboard-text
+            h2
+              font-size: 4vw
+            h1
+              font-size: 5vw
+            h3
+              font-size: 3vw
+            a
+              font-size: 2.6vw
+
+    .banners
+      .banner-wrapper
+        .banner
+          .background
+            max-width: 360px
+          .banner-text
+            h1
+              font-size: 2vw
+              line-height: normal
+            h2
+              font-size: 1.5vw
+              margin-bottom: 0
+              line-height: normal
+            h3
+              font-size: 1.4vw
+              margin-bottom: 0
+              line-height: normal
+    .products
+      .product-wrapper
+        .product
+          .face
+            figure
+              .image-wrapper
+                float: left
+                margin-right: 5vw
+                img
+                  width: inherit
+                  max-height: 95vh
+    .about-banners
+      margin-bottom: 0
+      .banner-wrapper
+        .banner
+          height: 80px
+          .image
+            i
+              font-size: 5.6rem
+          .text
+            .bigger
+              font-size: 2rem
+            .smaller
+              font-size: 1.6rem
+    .join-us
+      .banner-wrapper
+        .banner-inner
+          .image
+            .text
+              h2
+                font-size: 3rem
+
+              h3
+                font-size: 1.1rem
+
+              a
+                font-size: 1rem
+  .footer-background
+    .footer-layout
+      .footer-wrapper
+        .info
+          .logo
+            float: none
+            height: auto
+            margin-bottom: 2vw
+
+          .description
+            font-size: 1rem
+
+        .contacts
+          h2
+            font-size: 1.2rem
+
+          ul
+            font-size: 1rem
+
+        .links
+          h2
+            font-size: 1.2rem
+
+          ul
+            font-size: 1rem
+
+@media screen and (max-width: 475px)
+  html
+    font-size: 8px
+
+  .footer-background
+    .footer-layout
+      .footer-wrapper
+        .info
+
+          .description
+            font-size: 1.2rem
+
+        .contacts
+          h2
+            font-size: 1.4rem
+
+          ul
+            font-size: 1.2rem
+
+        .links
+          h2
+            font-size: 1.4rem
+
+          ul
+            font-size: 1.2rem
