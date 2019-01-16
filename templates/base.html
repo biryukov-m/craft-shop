@@ -21,10 +21,12 @@
 <div class="container-fluid top-menu-head"></div>
 <div class="container top-menu-layout">
     <header class="row top-menu">
-        <div class="col-12 col-sm-2 top-logo">
-            <img src="/static/landing/img/logo.png">
+        <div class="col-12 col-sm-3 top-logo">
+{#            <img src="/static/landing/img/logo.png">#}
+            <span class="bigger">Майстерня</span>
+            <span class="smaller">вишиванок</span>
         </div>
-        <div class="col-sm-7 menu-list">
+        <div class="col-sm-6 menu-list">
             <ul>
                 <li>
                     <a href="#" title="Домівка"><span>Домівка</span></a>
@@ -33,10 +35,7 @@
                     <a href="{% url 'landing:shop' %}" title="Магазин"><span>Магазин</span></a>
                 </li>
                 <li>
-                    <a href="#" title="Наша Майстерня"><span>Наша Майстерня</span></a>
-                </li>
-                <li>
-                    <a href="#" title="Новини"><span>Новини</span></a>
+                    <a href="#" title="Майстерня"><span>Наша Майстерня</span></a>
                 </li>
                 <li>
                     <a href="#" title="Про нас"><span>Про нас</span></a>
