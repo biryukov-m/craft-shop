@@ -1093,11 +1093,55 @@ a:hover {
 .main-layout .checkout-container {
   margin-bottom: 40px;
 }
-.main-layout .checkout-container .basket {
+.main-layout .checkout-container .order-form h2 {
+  margin-bottom: 30px;
+  margin-top: 8px;
+  font-family: "Open Sans", sans-serif;
+  border-bottom: 2px #cecece solid;
+}
+.main-layout .checkout-container .order-form .form-container {
+  display: flex;
+  flex-direction: column;
+  padding-right: 15px;
+}
+.main-layout .checkout-container .order-form .form-container .field {
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+}
+.main-layout .checkout-container .order-form .form-container .field label {
+  width: 150px;
+  flex-shrink: 0;
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.85rem;
+  color: black;
+}
+.main-layout .checkout-container .order-form .form-container .field label.required::after {
+  display: inline;
+  position: relative;
+  right: -4px;
+  top: -3px;
+  content: "*";
+  color: red;
+  font-size: 0.8rem;
+}
+.main-layout .checkout-container .order-form .form-container .field input {
+  width: 100%;
+  height: 32px;
+  border: solid #939393 1px;
+  box-shadow: none;
+  padding: 0 8px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.85rem;
+  color: black;
+}
+.main-layout .checkout-container .basket .basket-container {
   border: solid #939393 1px;
   background: #f8f8f8;
+  padding: 5px 15px;
 }
-.main-layout .checkout-container .basket h2 {
+.main-layout .checkout-container .basket .basket-container h2 {
   border-bottom: 2px #cecece solid;
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
@@ -1106,36 +1150,36 @@ a:hover {
   margin-bottom: 15px;
   font-size: 2rem;
 }
-.main-layout .checkout-container .basket .basket-list table {
+.main-layout .checkout-container .basket .basket-container .basket-list table {
   font-family: "Open Sans", sans-serif;
   color: black;
   font-size: 0.9rem;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td {
   border-bottom: 15px solid transparent;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.image-container {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.image-container {
   width: 12%;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.image-container img {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.image-container img {
   max-width: 95%;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.text-container {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.text-container {
   max-width: 66%;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.text-container .brand {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.text-container .brand {
   font-size: 0.85rem;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.text-container .name {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.text-container .name {
   font-size: 0.8rem;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.text-container .price {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.text-container .price {
   font-size: 0.75rem;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.count .spinner-selector {
   display: flex;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector .number {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.count .spinner-selector .number {
   display: inline-block;
   max-width: 25px;
   -webkit-appearance: textfield;
@@ -1148,55 +1192,55 @@ a:hover {
   text-align: center;
   color: black;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector .number::-webkit-inner-spin-button {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.count .spinner-selector .number::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector .number::-webkit-outer-spin-button {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.count .spinner-selector .number::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector button {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.count .spinner-selector button {
   background: none;
   border: none;
   vertical-align: middle;
   cursor: pointer;
   color: #282828;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector button i {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.count .spinner-selector button i {
   font-size: 1rem;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector button:hover {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.count .spinner-selector button:hover {
   color: #e54833;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector .left {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.count .spinner-selector .left {
   display: inline-block;
   padding-left: 6px;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.count .spinner-selector .right {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.count .spinner-selector .right {
   display: inline-block;
   padding-right: 6px;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.total {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.total {
   max-width: 30%;
   text-align: right;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.total button {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.total button {
   background: none;
   border: none;
   vertical-align: middle;
   cursor: pointer;
   color: #282828;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.total button i {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.total button i {
   font-size: 1rem;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item td.total button:hover {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item td.total button:hover {
   color: #ff0000;
 }
-.main-layout .checkout-container .basket .basket-list table tbody tr.item:last-of-type td {
+.main-layout .checkout-container .basket .basket-container .basket-list table tbody tr.item:last-of-type td {
   padding-bottom: 15px;
   border-bottom: 2px #cecece solid;
 }
-.main-layout .checkout-container .basket .overall-price {
+.main-layout .checkout-container .basket .basket-container .overall-price {
   display: flex;
   justify-content: space-between;
   font-family: "Open Sans", sans-serif;

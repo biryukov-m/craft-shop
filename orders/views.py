@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from .models import ProductInBasket
 from product.models import Item
 from properties.models import Size
+from .forms import OrderForm
 
 
 def basket_add(request):
@@ -72,9 +73,9 @@ def basket_change_quantity(request):
                 product.save()
                 print('New quantity =', product.quantity)
             else:
-                return_dict["response"] = ''''Wrong item quantity, can't decrease, because quantity <= 1'''
+                return_dict["response"] = '''Wrong item quantity, can't decrease, because quantity <= 1'''
         else:
-            return_dict["response"] = ''''Wrong method. Must be "decrease" or "increase"'''
+            return_dict["response"] = '''Wrong method. Must be "decrease" or "increase"'''
 
     items_total_number = ProductInBasket.objects.filter(session_key=session_key).count()
     return_dict["items_total_number"] = items_total_number
@@ -100,7 +101,9 @@ def basket_remove(request):
 
 def checkout(request):
     template_name = 'orders/checkout.html'
+    context = {}
+    context['form'] = OrderForm
     if request.method == 'POST':
-        return render(request, template_name)
+        return render(request, template_name, context=context)
     else:
-        return render(request, template_name)
+        return render(request, template_name, context=context)
