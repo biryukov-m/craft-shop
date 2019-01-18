@@ -99,67 +99,67 @@ class Order(models.Model):
         verbose_name_plural = "Замовлення"
 
 
-class ProductInOrder(models.Model):
-    order = models.ForeignKey(Order,
-                              on_delete=models.CASCADE,
-                              default=None, verbose_name="Замовлення")
-    product = models.ForeignKey(Item,
-                                on_delete=models.CASCADE,
-                                default=None,
-                                verbose_name="Товар")
-    quantity = models.PositiveSmallIntegerField(default=1, verbose_name="Одиниць")
-    one_product_price = models.DecimalField(blank=True,
-                                            null=True,
-                                            default=None,
-                                            editable=False,
-                                            decimal_places=2,
-                                            max_digits=10,
-                                            verbose_name="Ціна за одну одиницю")
-    total_price = models.DecimalField(blank=True,
-                                      null=True,
-                                      default=None,
-                                      editable=False,
-                                      decimal_places=2,
-                                      max_digits=10,
-                                      verbose_name="Загальна ціна по товару")
-    is_inactive = models.BooleanField(default=False, verbose_name="Товар відмінено")
+class Basket(models.Model):
     created = models.DateTimeField(auto_now=False,
                                    auto_now_add=True,
                                    verbose_name="Створено")
+
     updated = models.DateTimeField(auto_now=True,
                                    auto_now_add=False,
                                    verbose_name="Оновлено")
 
-    def __str__(self):
-        return '''{} - {}'''.format(self.product.name, self.product.price)
+    session_key = models.CharField(max_length=128,
+                                   blank=True,
+                                   default=None,
+                                   null=True,
+                                   verbose_name='Ключ сесії покупця')
 
-    def save(self, *args, **kwargs):
-        try:
-            self.one_product_price = self.product.price
-            self.total_price = self.quantity*self.one_product_price
-        except:
-            print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой/количеством")
-            raise ValueError
-        super(ProductInOrder, self).save(*args, **kwargs)
-
-    class Meta:
-        verbose_name = "Замовлений товар"
-        verbose_name_plural = "Замовлені товари"
-
-
-class ProductInBasket(models.Model):
     order = models.ForeignKey(Order,
-                              on_delete=models.CASCADE,
+                              on_delete=models.DO_NOTHING,
                               blank=True,
                               null=True,
                               default=None,
-                              verbose_name="Замовлення")
+                              editable=False,
+                              verbose_name='Належність до замовлення')
+
+    total_basket_price = models.DecimalField(blank=True,
+                                             null=True,
+                                             default=None,
+                                             editable=False,
+                                             decimal_places=2,
+                                             max_digits=10,
+                                             verbose_name="Загальна ціна корзини")
+
+    is_closed = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'Корзина'
+        verbose_name_plural = 'Список корзин'
+
+    def __str__(self):
+        if not self.is_closed:
+            return 'Корзина анонімна {}'.format(self.session_key)
+        else:
+            return 'Корзина для замовлення {}'.format(self.order)
+
+
+class ProductInBasket(models.Model):
+    basket = models.ForeignKey(Basket,
+                               on_delete=models.CASCADE,
+                               blank=True,
+                               null=True,
+                               default=None,
+                               verbose_name="Корзина")
+
     product = models.ForeignKey(Item,
                                 on_delete=models.CASCADE,
                                 default=None,
                                 verbose_name="Товар")
     quantity = models.PositiveSmallIntegerField(default=1, verbose_name="Одиниць")
-    size = models.ForeignKey(properties.Size, on_delete=models.CASCADE, default=None, blank=True, null=True, verbose_name="Розмір")
+    size = models.ForeignKey(properties.Size,
+                             on_delete=models.CASCADE,
+                             default=None, blank=True,
+                             null=True, verbose_name="Розмір")
     one_product_price = models.DecimalField(blank=True,
                                             null=True,
                                             default=None,
@@ -174,7 +174,6 @@ class ProductInBasket(models.Model):
                                       decimal_places=2,
                                       max_digits=10,
                                       verbose_name="Загальна ціна по товару")
-    # is_inactive = models.BooleanField(default=False, verbose_name="Товар відмінено")
     created = models.DateTimeField(auto_now=False,
                                    auto_now_add=True,
                                    verbose_name="Створено")
@@ -213,15 +212,62 @@ class ProductInBasket(models.Model):
         verbose_name = "Замовлений товар у корзині"
         verbose_name_plural = "Замовлені товари у корзині"
 
+    # class ProductInOrder(models.Model):
+    #     order = models.ForeignKey(Order,
+    #                               on_delete=models.CASCADE,
+    #                               default=None, verbose_name="Замовлення")
+    #     product = models.ForeignKey(Item,
+    #                                 on_delete=models.CASCADE,
+    #                                 default=None,
+    #                                 verbose_name="Товар")
+    #     quantity = models.PositiveSmallIntegerField(default=1, verbose_name="Одиниць")
+    #     one_product_price = models.DecimalField(blank=True,
+    #                                             null=True,
+    #                                             default=None,
+    #                                             editable=False,
+    #                                             decimal_places=2,
+    #                                             max_digits=10,
+    #                                             verbose_name="Ціна за одну одиницю")
+    #     total_price = models.DecimalField(blank=True,
+    #                                       null=True,
+    #                                       default=None,
+    #                                       editable=False,
+    #                                       decimal_places=2,
+    #                                       max_digits=10,
+    #                                       verbose_name="Загальна ціна по товару")
+    #     is_inactive = models.BooleanField(default=False, verbose_name="Товар відмінено")
+    #     created = models.DateTimeField(auto_now=False,
+    #                                    auto_now_add=True,
+    #                                    verbose_name="Створено")
+    #     updated = models.DateTimeField(auto_now=True,
+    #                                    auto_now_add=False,
+    #                                    verbose_name="Оновлено")
+    #
+    #     def __str__(self):
+    #         return '''{} - {}'''.format(self.product.name, self.product.price)
+    #
+    #     def save(self, *args, **kwargs):
+    #         try:
+    #             self.one_product_price = self.product.price
+    #             self.total_price = self.quantity*self.one_product_price
+    #         except:
+    #             print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой/количеством")
+    #             raise ValueError
+    #         super(ProductInOrder, self).save(*args, **kwargs)
+    #
+    #     class Meta:
+    #         verbose_name = "Замовлений товар"
+    #         verbose_name_plural = "Замовлені товари"
+    #
 
-def count_order_total_price(instance, **kwargs):
-    all_products_in_order = ProductInOrder.objects.filter(order=instance.order, is_inactive=False)
-    order_total_price = 0
-    for product in all_products_in_order:
-        order_total_price += product.total_price
-    instance.order.total_price = order_total_price
-    instance.order.save(force_update=True)
 
+# def count_order_total_price(instance, **kwargs):
+#     all_products_in_order = ProductInOrder.objects.filter(order=instance.order, is_inactive=False)
+#     order_total_price = 0
+#     for product in all_products_in_order:
+#         order_total_price += product.total_price
+#     instance.order.total_price = order_total_price
+#     instance.order.save(force_update=True)
 
-post_save.connect(count_order_total_price, sender=ProductInOrder)
-post_delete.connect(count_order_total_price, sender=ProductInOrder)
+# post_save.connect(count_order_total_price, sender=ProductInOrder)
+# post_delete.connect(count_order_total_price, sender=ProductInOrder)

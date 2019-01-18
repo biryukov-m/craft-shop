@@ -77,6 +77,7 @@
 {% block inclusive_basket %}
             <div class="basket-container hidden" id="basket-container">
                 <ul class="basket-list" id="basket-list">
+                {% if get_basket.items %}
                     {% for item in get_basket.items %}
                         <li class="item {{ forloop.counter }}">
                             <div class="image-container">
@@ -101,6 +102,7 @@
                             </div>
                         </li>
                     {% endfor %}
+                {% endif %}
                 </ul>
                 <div class="overall-cart-price">
                     Сума замовлення:
