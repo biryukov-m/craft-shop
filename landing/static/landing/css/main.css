@@ -731,6 +731,7 @@ a:hover {
   font-size: 1rem;
   width: 60px;
   position: relative;
+  background: white;
 }
 .main-layout .shop-catalogue .sidebar .price-range .slider p #id_price_0 {
   float: left;
@@ -921,6 +922,7 @@ a:hover {
   color: #464646;
   min-width: 18px;
   max-width: 50px;
+  background: white;
 }
 .main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors .spinner-selector .size-selector {
   margin: 0;
@@ -1094,10 +1096,14 @@ a:hover {
   margin-bottom: 40px;
 }
 .main-layout .checkout-container .order-form h2 {
-  margin-bottom: 30px;
-  margin-top: 8px;
-  font-family: "Open Sans", sans-serif;
+  margin-top: 6px;
   border-bottom: 2px #cecece solid;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+  color: #000;
+  padding: 5px 4px;
+  margin-bottom: 15px;
+  font-size: 2rem;
 }
 .main-layout .checkout-container .order-form .form-container {
   display: flex;
@@ -1135,6 +1141,29 @@ a:hover {
   font-family: "Open Sans", sans-serif;
   font-size: 0.85rem;
   color: black;
+  background-color: #fff;
+}
+.main-layout .checkout-container .order-form .form-container .field.customer-comment {
+  display: block;
+}
+.main-layout .checkout-container .order-form .form-container .field.customer-comment label[for=id_customer_comment] {
+  color: #004cff;
+  border-bottom: 1px dashed #004cff;
+  width: auto;
+  cursor: pointer;
+}
+.main-layout .checkout-container .order-form .form-container .field.customer-comment textarea {
+  display: none;
+  width: 100%;
+  height: 95px;
+  padding: 5px 8px;
+  border: solid #939393 1px;
+  box-shadow: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.85rem;
+  color: black;
+  background-color: #fff;
+  resize: vertical;
 }
 .main-layout .checkout-container .basket .basket-container {
   border: solid #939393 1px;

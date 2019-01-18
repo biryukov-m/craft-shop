@@ -5,29 +5,31 @@
         <div class="col-md-6 order-form">
             <h2>Оформлення замовлення</h2>
             <div class="form-container">
-                {% csrf_token %}
                 {{ form.non_field_errors }}
-                <div class="field customer-name">
-                    {{ form.customer_name.errors }}
-                    <label class="required" for="{{ form.customer_name.id_for_label }}">Ваше ім'я</label>
-                    {{ form.customer_name }}
-                </div>
-                <div class="field customer-email">
-                    {{ form.customer_email.errors }}
-                    <label class="required" for="{{ form.customer_email.id_for_label }}">Ваша електронна скринька</label>
-                    {{ form.customer_email }}
-                </div>
-                <div class="field customer-phone">
-                    {{ form.customer_phone.errors }}
-                    <label class="required" for="{{ form.customer_phone.id_for_label }}">Ваш телефон</label>
-                    {{ form.customer_phone }}
-                </div>
-                <div class="field customer-comment">
-                    {{ form.customer_comment.errors }}
-                    <label for="{{ form.customer_comment.id_for_label }}">Додати коментар</label>
-                    {{ form.customer_comment }}
-                </div>
-                {#                {{ form }}#}
+                <form method="post">
+                {% csrf_token %}
+                    <div class="field customer-name">
+                        {{ form.customer_name.errors }}
+                        <label class="required" for="{{ form.customer_name.id_for_label }}">Ваше ім'я</label>
+                        {{ form.customer_name }}
+                    </div>
+                    <div class="field customer-email">
+                        {{ form.customer_email.errors }}
+                        <label class="required" for="{{ form.customer_email.id_for_label }}">Ваша електронна скринька</label>
+                        {{ form.customer_email }}
+                    </div>
+                    <div class="field customer-phone">
+                        {{ form.customer_phone.errors }}
+                        <label class="required" for="{{ form.customer_phone.id_for_label }}">Ваш телефон</label>
+                        {{ form.customer_phone }}
+                    </div>
+                    <div class="field customer-comment">
+                        {{ form.customer_comment.errors }}
+                        <label id='add-comment' for="{{ form.customer_comment.id_for_label }}">Додати коментар</label>
+                        {{ form.customer_comment }}
+                    </div>
+                    <input type="submit" value="Оформити">
+                </form>
             </div>
         </div>
         <div class="col-md-6 basket">
@@ -91,4 +93,9 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% load static %}
+{% block javascripts %}
+    {{ block.super }}
+    <script src="{% static 'landing/js/checkout.js' %}"></script>
 {% endblock %}
