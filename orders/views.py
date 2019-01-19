@@ -121,12 +121,12 @@ def basket_remove(request):
     except:
         print("Can't find item with that query: ProductInBasket.objects.get(basket={}, id={}, size={})".format(basket, item_id, item_size))
         return
-    if not basket.item_set.all():
+    if not basket.productinbasket_set.all():
         print('No items in basket left. Deleting basket...')
         basket.delete()
         print('Basket deleted')
     else:
-        items_total_number = basket.item_set.all().count()
+        items_total_number = basket.productinbasket_set.all().count()
         print('Total number of items: {}'.format(items_total_number))
         return_dict["items_total_number"] = items_total_number
     return JsonResponse(return_dict)

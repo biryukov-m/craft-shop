@@ -18,7 +18,7 @@ def get_basket(request):
     if basket.productinbasket_set.all().exists():
         items = basket.productinbasket_set.all()
         print('Item set is {}'.format(items))
-        items_count = items.count
+        items_count = items.count()
         print('Item count is {}'.format(items_count))
         print('Trying to count total price...')
         basket_total_price = 0
