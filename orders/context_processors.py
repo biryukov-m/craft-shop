@@ -8,8 +8,8 @@ def get_basket(request):
         request.session.cycle_key()
     print('Session key is {}'.format(session_key))
     print('Trying to find basket with this session key...')
-    if Basket.objects.filter(session_key=session_key).exists():
-        basket = Basket.objects.get(session_key=session_key)
+    if Basket.objects.filter(session_key=session_key, is_closed=False).exists():
+        basket = Basket.objects.get(session_key=session_key, is_closed=False)
         print('Found basket, which is {}'.format(basket))
     else:
         print('Basket does not exist.')

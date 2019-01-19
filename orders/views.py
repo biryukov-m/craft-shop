@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .models import ProductInBasket
 from .models import Basket
+from .models import Order
 from product.models import Item
 from properties.models import Size
 from .forms import OrderForm
@@ -22,7 +23,7 @@ def basket_add(request):
     item = Item.objects.get(id=item_id)
     print('Item is {}'.format(item))
     print('Searching for session key associate basket...')
-    basket, basket_created = Basket.objects.get_or_create(session_key=session_key)
+    basket, basket_created = Basket.objects.get_or_create(session_key=session_key, is_closed=False)
     print('Variable basket_created is {}'.format(basket_created))
     print('Basket is {}'.format(basket))
     print('Searching for instance of item in basket...')
@@ -30,6 +31,7 @@ def basket_add(request):
                                                                  product=item,
                                                                  size=item_size,
                                                                  basket=basket,
+                                                                 is_closed=False,
                                                                  defaults={"quantity": item_quantity})
     if not created:
         new_product.quantity += item_quantity
@@ -61,7 +63,12 @@ def basket_change_quantity(request):
     print('Got from AJAX method - ', method)
     print('Trying to find product')
     try:
-        product = ProductInBasket.objects.get(session_key=session_key, product=item, size=item_size, quantity=item_quantity)
+        product = ProductInBasket.objects.get(
+            session_key=session_key,
+            product=item,
+            size=item_size,
+            quantity=item_quantity,
+            basket__is_closed=False)
         print('Found product', product)
     except:
         print('''
@@ -90,7 +97,7 @@ def basket_change_quantity(request):
         else:
             return_dict["response"] = '''Wrong method. Must be "decrease" or "increase"'''
 
-    items_total_number = ProductInBasket.objects.filter(session_key=session_key).count()
+    items_total_number = ProductInBasket.objects.filter(session_key=session_key, basket__is_closed=False).count()
     return_dict["items_total_number"] = items_total_number
     return JsonResponse(return_dict)
 
@@ -109,7 +116,7 @@ def basket_remove(request):
         print("Error. Can't find item size in BD ", item_size)
         return
     try:
-        basket = Basket.objects.get(session_key=session_key)
+        basket = Basket.objects.get(session_key=session_key, is_closed=False)
     except:
         print("Internal error. Didn't find basket with session key {}".format(session_key))
         return
@@ -133,10 +140,43 @@ def basket_remove(request):
 
 
 def checkout(request):
+    print('Executing checkout view...')
     template_name = 'orders/checkout.html'
     context = {}
-    context['form'] = OrderForm
+    form = OrderForm(request.POST)
+    context['form'] = form
     if request.method == 'POST':
+        print("Request method is POST, checking if form is valid...")
+        if form.is_valid:
+            print("Form is valid.")
+            print("Got POST with parameters {}".format(request.POST))
+            data = request.POST
+            session_key = request.session.session_key
+            try:
+                basket = Basket.objects.get(session_key=session_key, is_closed=False)
+            except:
+                print("Can't get basket from checkout with parameters: "
+                      "Basket.objects.get(session_key={}, is_closed=False)".format(session_key))
+                return render(request, template_name, context=context)
+            customer_name = data.get('customer_name')
+            customer_email = data.get('customer_email')
+            customer_phone = data.get('customer_phone')
+            customer_comment = data.get('customer_comment')
+            if customer_comment:
+                new_order = Order.objects.create(
+                    customer_name=customer_name,
+                    customer_email=customer_email,
+                    customer_phone=customer_phone,
+                    customer_comment=customer_comment)
+            else:
+                new_order = Order.objects.create(
+                    customer_name=customer_name,
+                    customer_email=customer_email,
+                    customer_phone=customer_phone)
+            new_order.save()
+            basket.order = new_order
+            basket.is_closed = True
+            basket.save()
         return render(request, template_name, context=context)
     else:
         return render(request, template_name, context=context)

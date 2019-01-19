@@ -4,30 +4,30 @@ from django.db.models.signals import post_save, post_delete
 from product.models import Item
 from properties import models as properties
 
-
-class Status(models.Model):
-    name = models.CharField(null=True,
-                            default=None,
-                            max_length=64,
-                            verbose_name="Програмна назва")
-
-    verbose_name = models.CharField(null=True,
-                                    default=None,
-                                    max_length=64,
-                                    verbose_name="Назва")
-
-    description = models.TextField(blank=True,
-                                   null=True,
-                                   default=None,
-                                   max_length=300,
-                                   verbose_name="Опис")
-
-    def __str__(self):
-        return "{}".format(self.verbose_name)
-
-    class Meta:
-        verbose_name = "Статус замовлення"
-        verbose_name_plural = "Статуси замовлень"
+#
+# class Status(models.Model):
+#     name = models.CharField(null=True,
+#                             default=None,
+#                             max_length=64,
+#                             verbose_name="Програмна назва")
+#
+#     verbose_name = models.CharField(null=True,
+#                                     default=None,
+#                                     max_length=64,
+#                                     verbose_name="Назва")
+#
+#     description = models.TextField(blank=True,
+#                                    null=True,
+#                                    default=None,
+#                                    max_length=300,
+#                                    verbose_name="Опис")
+#
+#     def __str__(self):
+#         return "{}".format(self.verbose_name)
+#
+#     class Meta:
+#         verbose_name = "Статус замовлення"
+#         verbose_name_plural = "Статуси замовлень"
 
 
 class Order(models.Model):
@@ -39,7 +39,7 @@ class Order(models.Model):
                                    auto_now_add=False,
                                    verbose_name="Оновлено")
 
-    code = models.PositiveSmallIntegerField(default=None, editable=False, verbose_name="Код")
+    code = models.PositiveSmallIntegerField(default=None, blank=True, null=True, editable=False, verbose_name="Код")
 
     customer_name = models.CharField(max_length=64,
                                      verbose_name="Ім'я покупця")
@@ -61,10 +61,12 @@ class Order(models.Model):
                                         max_length=300,
                                         verbose_name="Комментар до замовлення")
 
-    status = models.ForeignKey(Status,
-                               on_delete=models.CASCADE,
-                               default=None,
-                               verbose_name="Статус замовлення")
+    # status = models.ForeignKey(Status,
+    #                            on_delete=models.CASCADE,
+    #                            default=None,
+    #                            blank=True,
+    #                            null=True,
+    #                            verbose_name="Статус замовлення")
 
     total_price = models.DecimalField(blank=True,
                                       null=True,
@@ -88,11 +90,10 @@ class Order(models.Model):
     is_paid = models.BooleanField(default=False, editable=False, verbose_name="Оплачено")
 
     def __str__(self):
-        return "{}. {}, {}. {}. {}".format(self.code,
-                                           self.customer_name.capitalize(),
-                                           self.customer_email.lower(),
-                                           self.total_price,
-                                           self.status.name)
+        return "{}. {}, {}. {}.".format(self.code,
+                                        self.customer_name.capitalize(),
+                                        self.customer_email.lower(),
+                                        self.total_price)
 
     class Meta:
         verbose_name = "Замовлення"
@@ -190,10 +191,9 @@ class ProductInBasket(models.Model):
         try:
             self.one_product_price = self.product.price
             self.total_price = self.quantity*self.one_product_price
+            super(ProductInBasket, self).save(*args, **kwargs)
         except:
             print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой/количеством")
-            raise ValueError
-        super(ProductInBasket, self).save(*args, **kwargs)
 
     def increase_quantity(self):
         self.quantity += 1
