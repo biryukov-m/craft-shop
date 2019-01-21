@@ -30,6 +30,25 @@ from properties import models as properties
 #         verbose_name_plural = "Статуси замовлень"
 
 
+class DeliveryMethod(models.Model):
+    name = models.CharField(max_length=50, null=True, verbose_name="Назва")
+    description = models.TextField(max_length=300, null=True, verbose_name="Опис")
+    created = models.DateTimeField(auto_now=False,
+                                   auto_now_add=True,
+                                   verbose_name="Створено")
+    updated = models.DateTimeField(auto_now=True,
+                                   auto_now_add=False,
+                                   verbose_name="Оновлено")
+    is_available = models.BooleanField(default=True, verbose_name="Доступність")
+
+    class Meta:
+        verbose_name = "Спосіб доставки"
+        verbose_name_plural = "Способи доставки"
+
+    def __str__(self):
+        return 'Спосіб доставки - {}'.format(self.name)
+
+
 class Order(models.Model):
     created = models.DateTimeField(auto_now=False,
                                    auto_now_add=True,
@@ -44,7 +63,8 @@ class Order(models.Model):
     customer_name = models.CharField(max_length=64,
                                      verbose_name="Ім'я покупця")
 
-    customer_email = models.EmailField(blank=True,
+    customer_email = models.EmailField(max_length=30,
+                                       blank=True,
                                        null=True,
                                        default=None,
                                        verbose_name="Електронна пошта покупця")
@@ -60,6 +80,22 @@ class Order(models.Model):
                                         default=None,
                                         max_length=300,
                                         verbose_name="Комментар до замовлення")
+
+    customer_city = models.CharField(max_length=20,
+                                     blank=True,
+                                     null=True,
+                                     default=None,
+                                     verbose_name='Місто покупця')
+
+    customer_address = models.CharField(max_length=20,
+                                        blank=True,
+                                        null=True,
+                                        default=None,
+                                        verbose_name='Адреса (вулиця, будинок) покупця')
+
+    postal_code = models.PositiveSmallIntegerField(verbose_name='Поштовий код', blank=True, null=True, default=None)
+
+    delivery_method = models.ForeignKey(DeliveryMethod, blank=True, null=True, default=None, verbose_name='Спосіб доставки', on_delete=models.DO_NOTHING)
 
     # status = models.ForeignKey(Status,
     #                            on_delete=models.CASCADE,
@@ -83,11 +119,11 @@ class Order(models.Model):
                                        verbose_name="Примітки")
 
     is_new = models.BooleanField(default=True, editable=False, verbose_name="Нове")
-    is_opened = models.BooleanField(default=False, editable=False, verbose_name="Відкрито")
-    is_verified = models.BooleanField(default=False, editable=False, verbose_name="Перевірено")
-    is_sent = models.BooleanField(default=False, editable=False, verbose_name="Відправлено")
-    is_received = models.BooleanField(default=False, editable=False, verbose_name="Отримано")
-    is_paid = models.BooleanField(default=False, editable=False, verbose_name="Оплачено")
+    is_opened = models.BooleanField(default=False, editable=False, verbose_name="Прочитано менеджером")
+    is_verified = models.BooleanField(default=False, verbose_name="Інформацію перевірено та підтверджено менеджером")
+    is_sent = models.BooleanField(default=False, verbose_name="Відправлено до замовника")
+    is_received = models.BooleanField(default=False, verbose_name="Отримано замовником")
+    is_paid = models.BooleanField(default=False, verbose_name="Оплачено замовником")
 
     def __str__(self):
         return "{}. {}, {}. {}.".format(self.code,
@@ -259,6 +295,8 @@ class ProductInBasket(models.Model):
     #         verbose_name = "Замовлений товар"
     #         verbose_name_plural = "Замовлені товари"
     #
+
+
 
 
 # def count_order_total_price(instance, **kwargs):
