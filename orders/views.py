@@ -6,6 +6,7 @@ from .models import Order
 from product.models import Item
 from properties.models import Size
 from .forms import OrderForm
+from django.http import Http404
 
 
 def basket_add(request):
@@ -31,7 +32,6 @@ def basket_add(request):
                                                                  product=item,
                                                                  size=item_size,
                                                                  basket=basket,
-                                                                 is_closed=False,
                                                                  defaults={"quantity": item_quantity})
     if not created:
         new_product.quantity += item_quantity
@@ -143,8 +143,12 @@ def checkout(request):
     print('Executing checkout view...')
     template_name = 'orders/checkout.html'
     context = {}
+    session_key = request.session.session_key
     form = OrderForm(request.POST)
     context['form'] = form
+    if not Basket.objects.filter(session_key=session_key, is_closed=False).exists():
+        print('User has no opened basket, so he cant use checkout, returning 404')
+        raise Http404
     if request.method == 'POST':
         print("Request method is POST, checking if form is valid...")
         if form.is_valid:
@@ -177,6 +181,7 @@ def checkout(request):
             basket.order = new_order
             basket.is_closed = True
             basket.save()
+
         return render(request, template_name, context=context)
     else:
         return render(request, template_name, context=context)
