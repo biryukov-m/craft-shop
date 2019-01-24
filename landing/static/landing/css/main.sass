@@ -1120,36 +1120,48 @@ a:hover
       .form-container
         display: flex
         flex-direction: column
-        padding-right: 15px
+        padding: 0 10px
         .field
           display: flex
           margin-bottom: 30px
           align-items: center
           label
-            width: 150px
+            width: 120px
             flex-shrink: 0
             position: relative
             font-family: "Open Sans", sans-serif
-            font-size: 0.85rem
+            font-size: 0.95rem
             color: black
+            margin-bottom: 0
           label.required::after
             display: inline
-            position: relative
-            right: -4px
-            top: -3px
             content: '*'
-            color: red
-            font-size: 0.8rem
+            color: #ff0000
+            padding-left: 3px
           input
-            width: 100%
+            //width: 100%
+            flex-grow: 1
+            height: 32px
+            border: solid $light 1px
+            box-shadow: none
+            font-family: "Open Sans", sans-serif
+            font-size: 0.95rem
+            color: black
+            background-color: #fff
+            padding: 0 8px
+          select
+            flex-grow: 1
             height: 32px
             border: solid $light 1px
             box-shadow: none
             padding: 0 8px
             font-family: "Open Sans", sans-serif
-            font-size: 0.85rem
+            font-size: 0.95rem
             color: black
             background-color: #fff
+          i
+            padding: 0 7px 0 10px
+            color: $dark
         .field.customer-comment
           display: block
           label[for='id_customer_comment']
@@ -1169,6 +1181,8 @@ a:hover
             color: black
             background-color: #fff
             resize: vertical
+        .field.customer-email
+          align-items: center
     .basket
       .basket-container
         border: solid $light 1px
