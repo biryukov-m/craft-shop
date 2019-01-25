@@ -85,7 +85,7 @@ $(document).ready(function () {
                     '                    </li>');
                 recalculate_basket_price();
                 recalculate_basket_items_count();
-                toggle_basket();
+                container.removeClass('hidden');
             },
             error: function () {
                 console.log('Error ajax');

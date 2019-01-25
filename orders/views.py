@@ -1,12 +1,12 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.http import JsonResponse
+from django.http import Http404
 from .models import ProductInBasket
 from .models import Basket
-from .models import Order
 from product.models import Item
 from properties.models import Size
 from .forms import OrderForm
-from django.http import Http404
 
 
 def basket_add(request):
@@ -154,7 +154,6 @@ def checkout(request):
         if form.is_valid:
             print("Form is valid.")
             print("Got POST with parameters {}".format(request.POST))
-            data = request.POST
             session_key = request.session.session_key
             try:
                 basket = Basket.objects.get(session_key=session_key, is_closed=False)
@@ -162,26 +161,21 @@ def checkout(request):
                 print("Can't get basket from checkout with parameters: "
                       "Basket.objects.get(session_key={}, is_closed=False)".format(session_key))
                 return render(request, template_name, context=context)
-            customer_name = data.get('customer_name')
-            customer_email = data.get('customer_email')
-            customer_phone = data.get('customer_phone')
-            customer_comment = data.get('customer_comment')
-            if customer_comment:
-                new_order = Order.objects.create(
-                    customer_name=customer_name,
-                    customer_email=customer_email,
-                    customer_phone=customer_phone,
-                    customer_comment=customer_comment)
-            else:
-                new_order = Order.objects.create(
-                    customer_name=customer_name,
-                    customer_email=customer_email,
-                    customer_phone=customer_phone)
-            new_order.save()
-            basket.order = new_order
-            basket.is_closed = True
-            basket.save()
+            if basket:
+                new_order = form.save(commit=False)
+                # new_order.customer_comment=('Здарова')
+                new_order.save()
+                basket.order = new_order
+                basket.is_closed = True
+                basket.save()
 
-        return render(request, template_name, context=context)
+        return redirect('orders:checkout_success')
     else:
         return render(request, template_name, context=context)
+
+
+def checkout_success(request):
+    template_name = 'orders/checkout_success.html'
+    context = {}
+    # session_key = request.session.session_key
+    return render(request, template_name, context=context)

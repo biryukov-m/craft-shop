@@ -95,7 +95,7 @@ class Order(models.Model):
 
     postal_code = models.PositiveSmallIntegerField(verbose_name='Поштовий код', blank=True, null=True, default=None)
 
-    delivery_method = models.ForeignKey(DeliveryMethod, blank=True, null=True, default=None, verbose_name='Спосіб доставки', on_delete=models.DO_NOTHING)
+    delivery_method = models.ForeignKey(DeliveryMethod, blank=True, null=True, default=None, verbose_name='Спосіб доставки', on_delete=models.CASCADE)
 
     # status = models.ForeignKey(Status,
     #                            on_delete=models.CASCADE,
@@ -103,14 +103,6 @@ class Order(models.Model):
     #                            blank=True,
     #                            null=True,
     #                            verbose_name="Статус замовлення")
-
-    total_price = models.DecimalField(blank=True,
-                                      null=True,
-                                      default=None,
-                                      editable=False,
-                                      decimal_places=2,
-                                      max_digits=10,
-                                      verbose_name="Загальна ціна замовлення")
 
     manager_comment = models.TextField(blank=True,
                                        null=True,
@@ -126,10 +118,9 @@ class Order(models.Model):
     is_paid = models.BooleanField(default=False, verbose_name="Оплачено замовником")
 
     def __str__(self):
-        return "{}. {}, {}. {}.".format(self.code,
-                                        self.customer_name.capitalize(),
-                                        self.customer_email.lower(),
-                                        self.total_price)
+        return "{}. {}, {}.".format(self.code,
+                                    self.customer_name.capitalize(),
+                                    self.customer_email.lower())
 
     class Meta:
         verbose_name = "Замовлення"
@@ -152,7 +143,7 @@ class Basket(models.Model):
                                    verbose_name='Ключ сесії покупця')
 
     order = models.ForeignKey(Order,
-                              on_delete=models.DO_NOTHING,
+                              on_delete=models.CASCADE,
                               blank=True,
                               null=True,
                               default=None,
@@ -297,8 +288,6 @@ class ProductInBasket(models.Model):
     #
 
 
-
-
 # def count_order_total_price(instance, **kwargs):
 #     all_products_in_order = ProductInOrder.objects.filter(order=instance.order, is_inactive=False)
 #     order_total_price = 0
@@ -306,6 +295,14 @@ class ProductInBasket(models.Model):
 #         order_total_price += product.total_price
 #     instance.order.total_price = order_total_price
 #     instance.order.save(force_update=True)
-
 # post_save.connect(count_order_total_price, sender=ProductInOrder)
 # post_delete.connect(count_order_total_price, sender=ProductInOrder)
+
+def post_save_for_order(instance, **kwargs):
+    if not instance.code:
+        code = instance.pk + 100
+        instance.code = code
+        instance.save()
+
+
+post_save.connect(post_save_for_order, sender=Order)
