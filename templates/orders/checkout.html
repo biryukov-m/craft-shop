@@ -41,7 +41,7 @@
                     </div>
                     <div class="field customer-address">
                         {{ form.customer_address.errors }}
-                        <label for="{{ form.customer_address.id_for_label }}">Адреса</label>
+                        <label for="{{ form.customer_address.id_for_label }}">Адреса доставки</label>
                         <i class="fas fa-angle-right fa-lg"></i>{{ form.customer_address }}
                     </div>
                     <div class="field customer-comment">
@@ -49,7 +49,7 @@
                         <label id='add-comment' for="{{ form.customer_comment.id_for_label }}">Додати коментар</label>
                         {{ form.customer_comment }}
                     </div>
-                    <input type="submit" value="Оформити">
+                    <button><i class="fas fa-shopping-cart"></i>  Оформити замовлення</button>
                 </form>
             </div>
         </div>

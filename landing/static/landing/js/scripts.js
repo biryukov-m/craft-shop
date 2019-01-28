@@ -130,7 +130,7 @@ $(document).ready(function () {
     // Кнопка уменьшения количества
     decrease_item_quantity_button.on('click', function (e) {
         function decrease_item_quantity(target) {
-            var quantity = target.parent().find('.number').val();
+            var quantity = Number($('.spinner-selector .number').val());
             console.log('quantity is - ', quantity);
             if (quantity < 2) {
                 console.log('Error because quantity is less than 2, cant decrease more', quantity);
@@ -139,7 +139,7 @@ $(document).ready(function () {
             var item_price = target.closest('.item').find("td.text-container div.price").text();
             item_price = parseFloat(item_price.replace(',','.'));
             console.log("Item_price is - ", item_price);
-            var quantity_sel = target.parent().find('.number');
+            var quantity_sel = $('.spinner-selector .number');
             var item_total_price_sel = target.closest('.item').find('td.total span.item-total-price');
             var new_quantity = quantity - 1;
             console.log("New quantity is- ", new_quantity);
@@ -149,9 +149,8 @@ $(document).ready(function () {
             item_total_price_sel.text(new_total_price.replace('.',','));
             recalculate_basket_price();
         }
-        var target = $(e.target);
         e.preventDefault();
-
+        var target = $(e.target);
         // AJAX Handling
         var data_holder = $(this).closest('tr.item');
         var item_id = data_holder.data('item_id');
@@ -159,7 +158,7 @@ $(document).ready(function () {
         var item_size = data_holder.data('item_size');
         console.log('AJAX item_size is - ', item_size);
         // var item_quantity = data_holder.data('item_quantity');
-        var item_quantity = target.parent().find('.number').val();
+        var item_quantity = Number($('.spinner-selector .number').val());
         console.log('AJAX item_quantity is - ', item_quantity);
         var method = $(this).data('method');
         console.log('AJAX method is - ', method);
@@ -190,12 +189,12 @@ $(document).ready(function () {
     // Кнопка увеличения количества
     increase_item_quantity_button.on('click', function (e) {
         function increase_item_quantity(target) {
-            var quantity = Number(target.parent().find('.number').val());
+            var quantity = Number($('.spinner-selector .number').val());
             var item_price = target.closest('.item').find("td.text-container div.price").text();
             item_price = parseFloat(item_price.replace(',','.'));
             console.log(item_price, "Item_price");
             console.log(quantity, "quantity");
-            var quantity_sel = target.parent().find('.number');
+            var quantity_sel = $('.spinner-selector .number');
             var item_total_price_sel = target.closest('.item').find('td.total span.item-total-price');
             var new_quantity = quantity + 1;
             console.log(new_quantity);
@@ -214,7 +213,10 @@ $(document).ready(function () {
         console.log('AJAX item_id is - ', item_id);
         var item_size = data_holder.data('item_size');
         console.log('AJAX item_size is - ', item_size);
-        var item_quantity = target.parent().find('.number').val();
+        console.log('target is ', target);
+        console.log('Trying to find from parent value of class .number', target);
+
+        var item_quantity = Number($('.spinner-selector .number').val());
         console.log('AJAX item_quantity is - ', item_quantity);
         var method = $(this).data('method');
         console.log('AJAX method is - ', method);
@@ -234,11 +236,11 @@ $(document).ready(function () {
             data: data,
             cache: true,
             success: function (data) {
-                console.log('OK decrease quantity in checkout ajax');
+                console.log('OK increase quantity in checkout ajax');
                 increase_item_quantity(target);
             },
             error: function () {
-                console.log('Error decrease quantity in checkout ajax');
+                console.log('Error increase quantity in checkout ajax');
             }
         });
 

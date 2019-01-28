@@ -1164,6 +1164,7 @@ a:hover {
   border-bottom: 1px dashed #004cff;
   width: auto;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 .main-layout .checkout-container .order-form .form-container .field.customer-comment textarea {
   display: none;
@@ -1180,6 +1181,25 @@ a:hover {
 }
 .main-layout .checkout-container .order-form .form-container .field.customer-email {
   align-items: center;
+}
+.main-layout .checkout-container .order-form .form-container button {
+  padding: 10px 15px;
+  border-radius: 9px;
+  background: #ff4081;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+}
+.main-layout .checkout-container .order-form .form-container button:hover {
+  box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+  position: relative;
+  top: -3px;
+}
+.main-layout .checkout-container .order-form .form-container button i {
+  font-size: 1.3rem;
+  padding-right: 5px;
 }
 .main-layout .checkout-container .basket .basket-container {
   border: solid #939393 1px;

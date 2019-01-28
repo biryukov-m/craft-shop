@@ -46,7 +46,7 @@ class DeliveryMethod(models.Model):
         verbose_name_plural = "Способи доставки"
 
     def __str__(self):
-        return 'Спосіб доставки - {}'.format(self.name)
+        return '{}'.format(self.name)
 
 
 class Order(models.Model):
@@ -95,7 +95,7 @@ class Order(models.Model):
 
     postal_code = models.PositiveSmallIntegerField(verbose_name='Поштовий код', blank=True, null=True, default=None)
 
-    delivery_method = models.ForeignKey(DeliveryMethod, blank=True, null=True, default=None, verbose_name='Спосіб доставки', on_delete=models.CASCADE)
+    delivery_method = models.ForeignKey(DeliveryMethod, verbose_name='Спосіб доставки', null=True, on_delete=models.SET_NULL)
 
     # status = models.ForeignKey(Status,
     #                            on_delete=models.CASCADE,
@@ -185,7 +185,7 @@ class ProductInBasket(models.Model):
                                 verbose_name="Товар")
     quantity = models.PositiveSmallIntegerField(default=1, verbose_name="Одиниць")
     size = models.ForeignKey(properties.Size,
-                             on_delete=models.CASCADE,
+                             on_delete=models.SET_NULL,
                              default=None, blank=True,
                              null=True, verbose_name="Розмір")
     one_product_price = models.DecimalField(blank=True,

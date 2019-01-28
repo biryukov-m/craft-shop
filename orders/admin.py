@@ -3,6 +3,7 @@ from django.contrib.contenttypes.admin import GenericTabularInline
 
 from .models import Order
 # from .models import Status
+from .models import Basket
 from .models import ProductInBasket
 from .models import DeliveryMethod
 
@@ -17,5 +18,6 @@ class OrderAdmin(admin.ModelAdmin):
 
 admin.site.register(Order, OrderAdmin)
 # admin.site.register(Status)
+admin.site.register(Basket)
 admin.site.register(ProductInBasket)
 admin.site.register(DeliveryMethod)
