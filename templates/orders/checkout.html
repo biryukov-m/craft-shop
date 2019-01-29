@@ -14,42 +14,41 @@
                         <i class="fas fa-angle-right fa-lg"></i>{{ form.customer_name }}
                     </div>
                     <div class="field customer-phone">
-                        {{ form.customer_phone.errors }}
+{#                        {{ form.customer_phone.errors }}#}
                         <label class="required" for="{{ form.customer_phone.id_for_label }}">Телефон</label>
                         <i class="fas fa-angle-right fa-lg"></i>{{ form.customer_phone }}
                     </div>
                     <div class="field customer-email">
-                        {{ form.customer_email.errors }}
+{#                        {{ form.customer_email.errors }}#}
                         <label class="required" for="{{ form.customer_email.id_for_label }}">Електронна скринька</label>
                         <i class="fas fa-angle-right fa-lg"></i>{{ form.customer_email }}
                     </div>
                     <div class="field delivery-method">
-                        {{ form.delivery_method.errors }}
+{#                        {{ form.delivery_method.errors }}#}
                         <label class="required" for="{{ form.delivery_method.id_for_label }}">Спосіб доставки</label>
                         <i class="fas fa-angle-right fa-lg"></i>{{ form.delivery_method }}
                     </div>
                     <div class="field postal-code">
-                        {{ form.postal_code.errors }}
+{#                        {{ form.postal_code.errors }}#}
                         <label for="{{ form.postal_code.id_for_label }}">Поштовий індекс</label>
                         <i class="fas fa-angle-right fa-lg"></i>{{ form.postal_code }}
                     </div>
-
                     <div class="field customer-city">
-                        {{ form.customer_city.errors }}
+{#                        {{ form.customer_city.errors }}#}
                         <label for="{{ form.customer_city.id_for_label }}">Місто</label>
                         <i class="fas fa-angle-right fa-lg"></i>{{ form.customer_city }}
                     </div>
                     <div class="field customer-address">
-                        {{ form.customer_address.errors }}
+{#                        {{ form.customer_address.errors }}#}
                         <label for="{{ form.customer_address.id_for_label }}">Адреса доставки</label>
                         <i class="fas fa-angle-right fa-lg"></i>{{ form.customer_address }}
                     </div>
                     <div class="field customer-comment">
-                        {{ form.customer_comment.errors }}
+{#                        {{ form.customer_comment.errors }}#}
                         <label id='add-comment' for="{{ form.customer_comment.id_for_label }}">Додати коментар</label>
                         {{ form.customer_comment }}
                     </div>
-                    <button><i class="fas fa-shopping-cart"></i>  Оформити замовлення</button>
+                    <button><i class="fas fa-shopping-cart"></i>Оформити замовлення</button>
                 </form>
             </div>
         </div>

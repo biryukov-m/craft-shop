@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.http import Http404
 from .models import ProductInBasket
 from .models import Basket
+from .models import Order
 from product.models import Item
 from properties.models import Size
 from .forms import OrderForm
@@ -163,7 +164,7 @@ def checkout(request):
                 return render(request, template_name, context=context)
             if basket:
                 new_order = form.save(commit=False)
-                # new_order.customer_comment=('Здарова')
+                new_order.session_key = session_key
                 new_order.save()
                 basket.order = new_order
                 basket.is_closed = True
@@ -177,5 +178,11 @@ def checkout(request):
 def checkout_success(request):
     template_name = 'orders/checkout_success.html'
     context = {}
-    # session_key = request.session.session_key
-    return render(request, template_name, context=context)
+    session_key = request.session.session_key
+    order = Order.objects.filter(session_key=session_key)
+    if order and session_key:
+        order = order.latest(field_name="created")
+        context['order'] = order
+        return render(request, template_name, context=context)
+    else:
+        raise Http404

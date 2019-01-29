@@ -936,6 +936,7 @@ a:hover
                   min-width: 18px
                   max-width: 50px
                   background: white
+                  cursor: default
 
                 .size-selector
                   margin: 0
@@ -947,6 +948,8 @@ a:hover
                   font-size: 11pt
                   color: $dark
                   background: none
+                  cursor: pointer
+
 
                 .number::-webkit-inner-spin-button
                   -webkit-appearance: none
@@ -1202,7 +1205,35 @@ a:hover
             font-size: 1.3rem
             padding-right: 5px
 
+    .checkout-success
+      font-family: "Open Sans", sans-serif
+      color: black
+      .text-body
+        h1
+          font-size: 2.1rem
+        p
+          font-size: 1.1rem
 
+    .opened-order
+      .container
+        h2
+        .basket-list
+          table
+            tbody
+              tr.item
+                border-bottom: solid rgba(255, 255, 255, 0) 40px
+                td.image-container
+                  width: 75px
+                  img
+                    height: 100%
+                    width: 100%
+
+                td.text-container
+                  .brand
+                  .name
+                  .price
+                td.total
+                  .item-total-price
 
     .basket
       .basket-container

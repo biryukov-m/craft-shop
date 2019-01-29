@@ -923,6 +923,7 @@ a:hover {
   min-width: 18px;
   max-width: 50px;
   background: white;
+  cursor: default;
 }
 .main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors .spinner-selector .size-selector {
   margin: 0;
@@ -934,6 +935,7 @@ a:hover {
   font-size: 11pt;
   color: #464646;
   background: none;
+  cursor: pointer;
 }
 .main-layout .shop-catalogue .content .single-item-view .product-info .user-interface .selectors .spinner-selector .number::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -1200,6 +1202,26 @@ a:hover {
 .main-layout .checkout-container .order-form .form-container button i {
   font-size: 1.3rem;
   padding-right: 5px;
+}
+.main-layout .checkout-container .checkout-success {
+  font-family: "Open Sans", sans-serif;
+  color: black;
+}
+.main-layout .checkout-container .checkout-success .text-body h1 {
+  font-size: 2.1rem;
+}
+.main-layout .checkout-container .checkout-success .text-body p {
+  font-size: 1.1rem;
+}
+.main-layout .checkout-container .opened-order .container .basket-list table tbody tr.item {
+  border-bottom: solid rgba(255, 255, 255, 0) 40px;
+}
+.main-layout .checkout-container .opened-order .container .basket-list table tbody tr.item td.image-container {
+  width: 75px;
+}
+.main-layout .checkout-container .opened-order .container .basket-list table tbody tr.item td.image-container img {
+  height: 100%;
+  width: 100%;
 }
 .main-layout .checkout-container .basket .basket-container {
   border: solid #939393 1px;

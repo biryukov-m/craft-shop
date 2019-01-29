@@ -60,6 +60,12 @@ class Order(models.Model):
 
     code = models.PositiveSmallIntegerField(default=None, blank=True, null=True, editable=False, verbose_name="Код")
 
+    session_key = models.CharField(max_length=128,
+                                   blank=True,
+                                   default=None,
+                                   null=True,
+                                   verbose_name='Ключ сесії покупця')
+
     customer_name = models.CharField(max_length=64,
                                      verbose_name="Ім'я покупця")
 
@@ -118,9 +124,12 @@ class Order(models.Model):
     is_paid = models.BooleanField(default=False, verbose_name="Оплачено замовником")
 
     def __str__(self):
-        return "{}. {}, {}.".format(self.code,
+        return "№ {}. {}, {}.".format(self.code,
                                     self.customer_name.capitalize(),
                                     self.customer_email.lower())
+
+    def get_items(self):
+        return self.basket.productinbasket_set.all()
 
     class Meta:
         verbose_name = "Замовлення"
@@ -142,7 +151,7 @@ class Basket(models.Model):
                                    null=True,
                                    verbose_name='Ключ сесії покупця')
 
-    order = models.ForeignKey(Order,
+    order = models.OneToOneField(Order,
                               on_delete=models.CASCADE,
                               blank=True,
                               null=True,
