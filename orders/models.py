@@ -179,6 +179,14 @@ class Basket(models.Model):
         else:
             return 'Корзина для замовлення {}'.format(self.order)
 
+    def save(self, *args, **kwargs):
+        if self.productinbasket_set.all():
+            sum_ = 0
+            for prod in self.productinbasket_set.all():
+                sum_ += prod.total_price
+            self.total_basket_price = sum_
+        super(Basket, self).save(*args, **kwargs)
+
 
 class ProductInBasket(models.Model):
     basket = models.ForeignKey(Basket,

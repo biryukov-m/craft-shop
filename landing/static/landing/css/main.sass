@@ -1215,25 +1215,53 @@ a:hover
           font-size: 1.1rem
 
     .opened-order
+      font-family: "Open Sans", sans-serif
       .container
         h2
+          border-bottom: solid $light 1px
+          padding-bottom: 5px
+          margin-bottom: 15px
+        .costumer-info
+          font-family: "Open Sans", sans-serif
+          font-weight: 100
+          color: #000
+          font-size: 0.9rem
+          border-bottom: 1px $light solid
+          margin-bottom: 15px
+          padding-bottom: 15px
+
         .basket-list
+          margin-bottom: 15px
           table
             tbody
               tr.item
-                border-bottom: solid rgba(255, 255, 255, 0) 40px
-                td.image-container
-                  width: 75px
-                  img
-                    height: 100%
-                    width: 100%
+                box-shadow: 0 1px  0 0 $light
+                td
+                  border-bottom: 15px solid transparent
 
+                td.image-container
+                  width: 12%
+                  img
+                    max-width: 95%
                 td.text-container
+                  max-width: 66%
                   .brand
+                    font-size: 0.85rem
                   .name
+                    font-size: 0.8rem
                   .price
+                    font-size: 0.75rem
+                td.quantity
+                  font-size: 0.85rem
                 td.total
+                  text-align: end
+                  font-size: 0.85rem
+
                   .item-total-price
+        .overall-price
+          display: flex
+          justify-content: space-between
+          margin-bottom: 15px
 
     .basket
       .basket-container

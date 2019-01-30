@@ -165,10 +165,11 @@ def checkout(request):
             if basket:
                 new_order = form.save(commit=False)
                 new_order.session_key = session_key
-                new_order.save()
                 basket.order = new_order
                 basket.is_closed = True
                 basket.save()
+                new_order.basket.tota
+                new_order.save()
 
         return redirect('orders:checkout_success')
     else:

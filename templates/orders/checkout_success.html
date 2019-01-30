@@ -14,6 +14,17 @@
         <div class="col-md-6 opened-order">
             <div class="container">
                 <h2>Замовлення № {{ order.code }}</h2>
+                <div class="costumer-info">
+                    <ul>
+                        <li>Покупець: {{ order.customer_name }} </li>
+                        <li>E-mail: {{ order.customer_email }}</li>
+                        <li>Номер телефону: {{ order.customer_phone }}</li>
+                        <li>Спосіб доставки: {{ order.delivery_method }}</li>
+                        <li>Місто: {{ order.customer_city }}</li>
+                        <li>Адреса: {{ order.customer_address }}</li>
+                        <li>Поштовий індекс: {% if order.postal_index  %}{{ order.postal_index }}{% else %} -{% endif %}</li>
+                    </ul>
+                </div>
                 <div class="basket-list">
                     <table>
                         <tbody>
@@ -32,8 +43,9 @@
                                         {{ item.product.item_type.name|capfirst }} "{{ item.product.brand.name|capfirst }}"
                                     </div>
                                     <div class="name size">{{ item.product.name|capfirst }} {{ item.size.name }}</div>
-                                    <div class="price">{{ item.product.price }}</div>
+                                    <div class="price">{{ item.product.price }}<span class="currency"> грн</span></div>
                                 </td>
+                                <td class="quantity">х {{ item.quantity }}</td>
                                 <td class="total">
                                     <span class="item-total-price">{{ item.total_price }}</span><span class="currency"> грн</span>
                                 </td>
@@ -45,7 +57,7 @@
                 <div class="overall-price">
                     <span class="caption">Сума замовлення: </span>
                     <div class="price-wrapper">
-                        <span class="basket-total-price">{{ get_basket.basket_total_price }}</span><span class="currency">грн</span>
+                        <span class="basket-total-price">{{ order.basket.total_basket_price }}</span><span class="currency">грн</span>
                     </div>
                 </div>
             </div>
