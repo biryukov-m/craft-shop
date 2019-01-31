@@ -1208,12 +1208,46 @@ a:hover
     .checkout-success
       font-family: "Open Sans", sans-serif
       color: black
+      h2
+        padding-bottom: 5px
+        border-bottom: 1px $light solid
+
       .text-body
+        //border-bottom: 1px $light solid
+        margin-bottom: 15px
         h1
           font-size: 2.1rem
         p
           font-size: 1.1rem
-
+      .checkout-navigate
+        border: 1px $light solid
+        padding: 5px 30px 15px 30px
+        .header
+          text-align: center
+          margin-bottom: 10px
+          font-size: 1.7rem
+          color: $darker
+        .buttons
+          display: flex
+          align-items: center
+          justify-content: center
+          button
+            padding: 8px 12px
+            border-radius: 5px
+            background: $highlight_darkest
+            color: #451710
+            border: none
+            cursor: pointer
+            &:hover
+              background: $highlight_darker
+              box-shadow: 0 4px 6px 0 rgba(32,33,36,0.28)
+              position: relative
+              top: -3px
+            i
+              padding-right: 8px
+          .go-shopping
+            margin-right: 30px
+          .go-order-page
     .opened-order
       font-family: "Open Sans", sans-serif
       .container
@@ -1229,7 +1263,6 @@ a:hover
           border-bottom: 1px $light solid
           margin-bottom: 15px
           padding-bottom: 15px
-
         .basket-list
           margin-bottom: 15px
           table
@@ -1262,6 +1295,7 @@ a:hover
           display: flex
           justify-content: space-between
           margin-bottom: 15px
+          font-size: 1.1rem
 
     .basket
       .basket-container

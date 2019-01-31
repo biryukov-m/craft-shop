@@ -10,6 +10,13 @@
                 <p>Для того, щоб наше спілкування було продуктивним, збережіть номер замовлення - № {{ order.code }}.</p>
                 <p>Дякуємо!</p>
             </div>
+            <div class="checkout-navigate">
+                <div class="header">Куди далі?</div>
+                <div class="buttons">
+                    <button class="go-shopping"><a href="{% url "landing:shop" %}"><i class="fas fa-shopping-cart"></i>До магазину</a></button>
+                    <button class="go-order-page"><i class="fas fa-list-ul"></i>До замовлення</button>
+                </div>
+            </div>
         </div>
         <div class="col-md-6 opened-order">
             <div class="container">

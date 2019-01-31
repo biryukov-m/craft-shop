@@ -1207,11 +1207,53 @@ a:hover {
   font-family: "Open Sans", sans-serif;
   color: black;
 }
+.main-layout .checkout-container .checkout-success h2 {
+  padding-bottom: 5px;
+  border-bottom: 1px #939393 solid;
+}
+.main-layout .checkout-container .checkout-success .text-body {
+  margin-bottom: 15px;
+}
 .main-layout .checkout-container .checkout-success .text-body h1 {
   font-size: 2.1rem;
 }
 .main-layout .checkout-container .checkout-success .text-body p {
   font-size: 1.1rem;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate {
+  border: 1px #939393 solid;
+  padding: 5px 30px 15px 30px;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .header {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.7rem;
+  color: #282828;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .buttons button {
+  padding: 8px 12px;
+  border-radius: 5px;
+  background: #e54833;
+  color: #451710;
+  border: none;
+  cursor: pointer;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .buttons button:hover {
+  background: #ea704c;
+  box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+  position: relative;
+  top: -3px;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .buttons button i {
+  padding-right: 8px;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .buttons .go-shopping {
+  margin-right: 30px;
 }
 .main-layout .checkout-container .opened-order {
   font-family: "Open Sans", sans-serif;
@@ -1268,6 +1310,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  font-size: 1.1rem;
 }
 .main-layout .checkout-container .basket .basket-container {
   border: solid #939393 1px;
