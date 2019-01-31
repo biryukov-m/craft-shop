@@ -5,6 +5,7 @@ from orders.views import basket_change_quantity
 from orders.views import checkout
 from orders.views import checkout_success
 from orders.views import single_order
+from orders.views import GenerateOrderPdf
 
 urlpatterns = [
     path('basket_add/', basket_add, name='basket_add'),
@@ -13,6 +14,7 @@ urlpatterns = [
     path('checkout/', checkout, name='checkout'),
     path('checkout/success/', checkout_success, name='checkout_success'),
     path('order/<int:code>/', single_order, name='single_order'),
+    path('order/<int:code>/pdf/', GenerateOrderPdf.as_view(), name='order-pdf'),
 ]
 
 app_name = 'orders'

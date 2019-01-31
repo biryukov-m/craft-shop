@@ -2,13 +2,16 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from django.http import HttpResponse
 from django.http import Http404
+from django.views.generic import View
 from .models import ProductInBasket
 from .models import Basket
 from .models import Order
 from product.models import Item
 from properties.models import Size
 from .forms import OrderForm
+from .utils import render_to_pdf
 
 
 def basket_add(request):
@@ -204,3 +207,14 @@ def single_order(request, code):
         return render(request, template_name, context=context)
     else:
         raise Http404
+
+
+class GenerateOrderPdf(View):
+    def get(self, request, code, *args, **kwargs):
+        context = {}
+        # session_key = request.session.session_key
+        order = get_object_or_404(Order, code=code)
+        context['order'] = order
+        pdf = render_to_pdf('orders/pdf/order.html', context)
+        return HttpResponse(pdf, content_type='application/pdf')
+
