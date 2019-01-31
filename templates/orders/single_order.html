@@ -2,22 +2,6 @@
 {% block inclusive_basket %}{% endblock %}
 {% block content %}
     <div class="checkout-container row">
-        <div class="col-md-6 checkout-success">
-            <h2>Вітаємо!</h2>
-            <div class="text-body">
-                <p>Ваше замовлення успішно оформлене.</p>
-                <p>Наш менеджер зателефонує Вам за вказаним номером {{ order.customer_phone }} для узгодження деталей.</p>
-                <p>Для того, щоб наше спілкування було продуктивним, збережіть номер замовлення - № {{ order.code }}.</p>
-                <p>Дякуємо!</p>
-            </div>
-            <div class="checkout-navigate">
-                <div class="header">Куди далі?</div>
-                <div class="buttons">
-                    <a href="{% url "landing:shop" %}"><button class="go-shopping"><i class="fas fa-shopping-cart"></i>До магазину</button></a>
-                    <a href="{% url "landing:shop" %}"><button class="go-order-page"><i class="fas fa-list-ul"></i>До замовлення</button></a>
-                </div>
-            </div>
-        </div>
         <div class="col-md-6 opened-order">
             <div class="wrapper">
                 <h2>Замовлення № {{ order.code }}</h2>
@@ -29,7 +13,7 @@
                         <li>Спосіб доставки: {{ order.delivery_method }}</li>
                         <li>Місто: {{ order.customer_city }}</li>
                         <li>Адреса: {{ order.customer_address }}</li>
-                        <li>Поштовий індекс: {% if order.postal_index  %}{{ order.postal_index }}{% else %} -{% endif %}</li>
+                        <li>Поштовий індекс: {% if order.postal_index %}{{ order.postal_index }}{% else %} -{% endif %}</li>
                     </ul>
                 </div>
                 <div class="basket-list">

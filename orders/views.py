@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.http import Http404
 from .models import ProductInBasket
@@ -180,6 +181,23 @@ def checkout_success(request):
     context = {}
     session_key = request.session.session_key
     order = Order.objects.filter(session_key=session_key)
+    if order and session_key:
+        order = order.latest(field_name="created")
+        context['order'] = order
+        return render(request, template_name, context=context)
+    else:
+        raise Http404
+
+
+def single_order(request, code):
+    template_name = 'orders/single_order.html'
+    context = {}
+    session_key = request.session.session_key
+    order = get_object_or_404(Order, code=code)
+    # order = Order.objects.filter(session_key=session_key)
+    context['order'] = order
+    return render(request, template_name, context=context)
+
     if order and session_key:
         order = order.latest(field_name="created")
         context['order'] = order

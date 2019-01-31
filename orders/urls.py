@@ -4,6 +4,7 @@ from orders.views import basket_remove
 from orders.views import basket_change_quantity
 from orders.views import checkout
 from orders.views import checkout_success
+from orders.views import single_order
 
 urlpatterns = [
     path('basket_add/', basket_add, name='basket_add'),
@@ -11,6 +12,7 @@ urlpatterns = [
     path('basket_change_quantity/', basket_change_quantity, name='basket_change_quantity'),
     path('checkout/', checkout, name='checkout'),
     path('checkout/success/', checkout_success, name='checkout_success'),
+    path('order/<int:code>/', single_order, name='single_order'),
 ]
 
 app_name = 'orders'

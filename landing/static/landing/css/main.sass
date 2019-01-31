@@ -1232,14 +1232,16 @@ a:hover
           align-items: center
           justify-content: center
           button
+            font-family: "Open Sans", sans-serif
             padding: 8px 12px
             border-radius: 5px
-            background: $highlight_darkest
+            background: $highlight_darker
             color: #451710
             border: none
             cursor: pointer
             &:hover
-              background: $highlight_darker
+              background: $highlight_darkest
+
               box-shadow: 0 4px 6px 0 rgba(32,33,36,0.28)
               position: relative
               top: -3px
@@ -1250,7 +1252,7 @@ a:hover
           .go-order-page
     .opened-order
       font-family: "Open Sans", sans-serif
-      .container
+      .wrapper
         h2
           border-bottom: solid $light 1px
           padding-bottom: 5px
@@ -1259,7 +1261,7 @@ a:hover
           font-family: "Open Sans", sans-serif
           font-weight: 100
           color: #000
-          font-size: 0.9rem
+          font-size: 1rem
           border-bottom: 1px $light solid
           margin-bottom: 15px
           padding-bottom: 15px
@@ -1835,7 +1837,6 @@ footer
 @media screen and (max-width: 991px)
   html
     font-size: 12px
-
   .top-menu-layout
     .top-menu
       .menu-list ul li
@@ -1843,8 +1844,6 @@ footer
         height: 5.5rem
         a
           font-size: 1.1rem
-
-
 
   .main-layout
     .products
@@ -1876,7 +1875,45 @@ footer
       .description
         font-size: 1rem
         width: 100%
-
+    .checkout-container
+      .checkout-success
+        .text-body
+          h1
+            font-size: 2.5rem
+          p
+            font-size: 1.3rem
+        .checkout-navigate
+          padding: 5px 5px 15px 5px
+          .buttons
+            button
+              font-size: 1.2rem
+              padding: 10px 5px
+              i
+                padding-right: 5px
+            .go-shopping
+              margin-right: 15px
+      .opened-order
+        .wrapper
+          .costumer-info
+            font-weight: 100
+            font-size: 1.3rem
+          .basket-list
+            table
+              tbody
+                tr.item
+                  td.text-container
+                    .brand
+                      font-size: 1rem
+                    .name
+                      font-size: 0.9rem
+                    .price
+                      font-size: 0.85rem
+                  td.quantity
+                    font-size: 0.9rem
+                  td.total
+                    font-size: 0.9rem
+          .overall-price
+            font-size: 1.3rem
   .footer-background
     .footer-layout
       .footer-wrapper
@@ -1962,20 +1999,16 @@ footer
 @media screen and (max-width: 767px)
   html
     font-size: 10px
-
   .top-menu-layout
     .top-menu
       .menu-list ul li
         padding: 0 2px
-
       .icons
         .icons-inner
           display: flex
           justify-content: space-between
-
           .circle-counter
             top: 20px
-
           a ~ a:before
             content: ""
 
@@ -2017,7 +2050,41 @@ footer
     .selectors
       .col.line
         display: none
-
+    .checkout-container
+      .checkout-success
+        .text-body
+          padding-bottom: 15px
+          h1
+            font-size: 2.5rem
+          p
+            font-size: 1.5rem
+            margin-bottom: 5px
+        .checkout-navigate
+          display: none
+      .opened-order
+        .wrapper
+          .costumer-info
+            font-weight: 500
+            font-size: 1.4rem
+          .basket-list
+            table
+              tbody
+                tr.item
+                  td.image-container
+                    width: 15%
+                  td.text-container
+                    .brand
+                      font-size: 1.5rem
+                    .name
+                      font-size: 1.3rem
+                    .price
+                      font-size: 1.2rem
+                  td.quantity
+                    font-size: 1.2rem
+                  td.total
+                    font-size: 1.2rem
+          .overall-price
+            font-size: 1.6rem
 
   .shop-catalogue
     .content

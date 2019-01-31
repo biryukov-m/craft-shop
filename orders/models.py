@@ -1,33 +1,33 @@
 from django.db import models
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_save
 
 from product.models import Item
 from properties import models as properties
 
-#
-# class Status(models.Model):
-#     name = models.CharField(null=True,
-#                             default=None,
-#                             max_length=64,
-#                             verbose_name="Програмна назва")
-#
-#     verbose_name = models.CharField(null=True,
-#                                     default=None,
-#                                     max_length=64,
-#                                     verbose_name="Назва")
-#
-#     description = models.TextField(blank=True,
-#                                    null=True,
-#                                    default=None,
-#                                    max_length=300,
-#                                    verbose_name="Опис")
-#
-#     def __str__(self):
-#         return "{}".format(self.verbose_name)
-#
-#     class Meta:
-#         verbose_name = "Статус замовлення"
-#         verbose_name_plural = "Статуси замовлень"
+
+class Status(models.Model):
+    name = models.CharField(null=True,
+                            default=None,
+                            max_length=64,
+                            verbose_name="Програмна назва")
+
+    verbose_name = models.CharField(null=True,
+                                    default=None,
+                                    max_length=64,
+                                    verbose_name="Назва")
+
+    description = models.TextField(blank=True,
+                                   null=True,
+                                   default=None,
+                                   max_length=300,
+                                   verbose_name="Опис")
+
+    def __str__(self):
+        return "{}".format(self.verbose_name)
+
+    class Meta:
+        verbose_name = "Статус замовлення"
+        verbose_name_plural = "Статуси замовлень"
 
 
 class DeliveryMethod(models.Model):
@@ -61,8 +61,6 @@ class Order(models.Model):
     code = models.PositiveSmallIntegerField(default=None, blank=True, null=True, editable=False, verbose_name="Код")
 
     session_key = models.CharField(max_length=128,
-                                   blank=True,
-                                   default=None,
                                    null=True,
                                    verbose_name='Ключ сесії покупця')
 
@@ -70,14 +68,10 @@ class Order(models.Model):
                                      verbose_name="Ім'я покупця")
 
     customer_email = models.EmailField(max_length=30,
-                                       blank=True,
                                        null=True,
-                                       default=None,
                                        verbose_name="Електронна пошта покупця")
 
-    customer_phone = models.CharField(blank=True,
-                                      null=True,
-                                      default=None,
+    customer_phone = models.CharField(null=True,
                                       max_length=40,
                                       verbose_name="Телефон покупця")
 
@@ -88,27 +82,23 @@ class Order(models.Model):
                                         verbose_name="Комментар до замовлення")
 
     customer_city = models.CharField(max_length=20,
-                                     blank=True,
                                      null=True,
-                                     default=None,
                                      verbose_name='Місто покупця')
 
     customer_address = models.CharField(max_length=20,
-                                        blank=True,
                                         null=True,
-                                        default=None,
                                         verbose_name='Адреса (вулиця, будинок) покупця')
 
     postal_code = models.PositiveSmallIntegerField(verbose_name='Поштовий код', blank=True, null=True, default=None)
 
     delivery_method = models.ForeignKey(DeliveryMethod, verbose_name='Спосіб доставки', null=True, on_delete=models.SET_NULL)
 
-    # status = models.ForeignKey(Status,
-    #                            on_delete=models.CASCADE,
-    #                            default=None,
-    #                            blank=True,
-    #                            null=True,
-    #                            verbose_name="Статус замовлення")
+    status = models.ForeignKey(Status,
+                               on_delete=models.SET_NULL,
+                               default=None,
+                               blank=True,
+                               null=True,
+                               verbose_name="Статус замовлення")
 
     manager_comment = models.TextField(blank=True,
                                        null=True,
@@ -116,17 +106,10 @@ class Order(models.Model):
                                        max_length=300,
                                        verbose_name="Примітки")
 
-    is_new = models.BooleanField(default=True, editable=False, verbose_name="Нове")
-    is_opened = models.BooleanField(default=False, editable=False, verbose_name="Прочитано менеджером")
-    is_verified = models.BooleanField(default=False, verbose_name="Інформацію перевірено та підтверджено менеджером")
-    is_sent = models.BooleanField(default=False, verbose_name="Відправлено до замовника")
-    is_received = models.BooleanField(default=False, verbose_name="Отримано замовником")
-    is_paid = models.BooleanField(default=False, verbose_name="Оплачено замовником")
-
     def __str__(self):
         return "№ {}. {}, {}.".format(self.code,
-                                    self.customer_name.capitalize(),
-                                    self.customer_email.lower())
+                                      self.customer_name.capitalize(),
+                                      self.customer_email.lower())
 
     def get_items(self):
         return self.basket.productinbasket_set.all()
