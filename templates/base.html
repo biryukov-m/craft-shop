@@ -45,19 +45,25 @@
                 </li>
             </ul>
         </div>
-        <div class="col-sm-3 icons">
-            <ul class="icons-inner">
-                <li>
+        <div class="col-sm-3 user-interface">
+            <ul class="icons">
+                <li class="icon">
                     <a href="#" class="search">
                         <img src="/static/landing/img/search.png">
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="user">
+                <li class="user icon">
+                    <a href="#">
                         <img src="/static/landing/img/user.png">
                     </a>
+                    <ul>
+                        <li><a href="#">Увійти</a></li>
+                        <li><a href="#">Зареєструватися</a></li>
+                        <li><a href="#">Знайти замовлення</a></li>
+                        <li><a href="#">Мої замовлення</a></li>
+                    </ul>
                 </li>
-                <li>
+                <li class="icon">
                     <a href="#" id="basket-icon" class="basket">
                         <img src="/static/landing/img/shopping_cart.png">
                         {% if get_basket.items_count > 0 %}
@@ -68,7 +74,7 @@
                     </a>
 
                 </li>
-                <li>
+                <li class="icon">
                     <a href="#" class="settings">
                         <img src="/static/landing/img/config.png">
                     </a>

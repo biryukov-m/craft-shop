@@ -16,14 +16,12 @@
 //$highlight_darker: #fe4080
 //$highlight_darkest: #c1185b
 
-
 //Блекло красный
 //$highlight_lightest: #ffb8c5
 //$highlight_lighter: #ff8192
 //$highlight_darker: #ff6777
 //$highlight_darkest: #cf545c
 //$highlight: #f95461
-
 
 // Морковный
 $highlight_lightest: #f6b28f
@@ -116,34 +114,28 @@ a:hover
         left: 0
         background: $highlight
 
-    .icons
+    .user-interface
       display: flex
       align-items: end
       justify-content: end
       position: relative
-
-      .icons-inner
-        li ~ li
+      ul.icons
+        .icon ~ .icon
           margin-left: 20px
-
-        li ~ li:before
+        .icon ~ .icon:before
           content: "/"
           display: inline
           margin: 0 15px 0 0
           color: $lighter
 
-        li
+        .icon
           display: inline-block
-
-          a
+          &>a
             line-height: 5.5rem
             vertical-align: middle
             position: relative
-
             img
               vertical-align: baseline
-
-
           .circle-counter
             height: 1.1rem
             width: 1.1rem
@@ -156,8 +148,25 @@ a:hover
             position: absolute
             right: -9px
             top: -6px
-
-
+        .icon.user
+          position: relative
+          ul
+            position: absolute
+            z-index: 400
+            padding: 4px 8px
+            border: solid $lighter 2px
+            background: #f1ebed
+            width: max-content
+            bottom: -95px
+            li
+              a
+                display: block
+                font-family: "Open Sans", sans-serif
+                font-size: 0.8rem
+                color: $darker
+                padding: 4px 6px
+            li:not(:last-child)
+                border-bottom: 1px solid $lighter
       .basket-container
         position: absolute
         z-index: 200
@@ -165,18 +174,15 @@ a:hover
         left: -8vw
         border: solid $lighter 2px
         background: #f1ebed
-
         .basket-list
           display: block
           background: white
           max-height: 40vh
           overflow-y: auto
           margin-bottom: 20px
-
           .item
             display: flex
             padding: 4px 3px
-
             .image-container
               flex-basis: 80px
 
