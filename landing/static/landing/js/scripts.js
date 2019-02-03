@@ -245,4 +245,17 @@ $(document).ready(function () {
         });
 
     })
+
+// Обработка кликов user-interface в top menu
+    var user_icon = $('#user-topmenu-icon');
+    var user_menu = $('#drop-user-menu');
+    function toggle_user_menu() {
+        user_menu.toggleClass('hidden');
+        // в css аттрибут active дает цвет, нужный для подсветки
+        user_icon.toggleClass('active');
+    }
+    // Показать/скрыть юзер-меню по клику
+    user_icon.on('click mouseenter' , toggle_user_menu);
+    // Скрыть меню, если курсор мыши сьехал
+    user_menu.on('mouseleave', toggle_user_menu);
 });

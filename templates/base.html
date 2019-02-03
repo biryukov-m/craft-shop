@@ -15,13 +15,13 @@
           integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
           crossorigin="anonymous">
     <link rel="stylesheet" href="{% static "landing/jquery-ui-1.12/jquery-ui.min.css" %}">
-    <title>Лавка гоблина</title>
+    <title>Майстерня вишиванок</title>
 </head>
 <body>
 <div class="container-fluid top-menu-head"></div>
 <div class="container top-menu-layout">
     <header class="row top-menu">
-        <div class="col-12 col-sm-3 top-logo">
+        <div class="col-12 col-sm-3 top-logo global-logo">
 {#            <img src="/static/landing/img/logo.png">#}
             <span class="bigger">Майстерня</span>
             <span class="smaller">вишиванок</span>
@@ -49,23 +49,17 @@
             <ul class="icons">
                 <li class="icon">
                     <a href="#" class="search">
-                        <img src="/static/landing/img/search.png">
+                        <i class="fas fa-search"></i>
                     </a>
                 </li>
                 <li class="user icon">
-                    <a href="#">
-                        <img src="/static/landing/img/user.png">
+                    <a id="user-topmenu-icon" href="#">
+                        <i class="fas fa-user"></i>
                     </a>
-                    <ul>
-                        <li><a href="#">Увійти</a></li>
-                        <li><a href="#">Зареєструватися</a></li>
-                        <li><a href="#">Знайти замовлення</a></li>
-                        <li><a href="#">Мої замовлення</a></li>
-                    </ul>
                 </li>
                 <li class="icon">
                     <a href="#" id="basket-icon" class="basket">
-                        <img src="/static/landing/img/shopping_cart.png">
+                        <i class="fas fa-shopping-basket"></i>
                         {% if get_basket.items_count > 0 %}
                             <span id="circle-counter" class="circle-counter">{{ get_basket.items_count }}</span>
                         {% else %}
@@ -76,10 +70,19 @@
                 </li>
                 <li class="icon">
                     <a href="#" class="settings">
-                        <img src="/static/landing/img/config.png">
+                        <i class="fas fa-cog"></i>
                     </a>
                 </li>
             </ul>
+            <div class="drop-user-menu hidden" id="drop-user-menu">
+                <ul>
+                    <li><a title="Увійти" href="#">Увійти</a></li>
+                    <li><a title="Зареєструватися" href="#">Зареєструватися</a></li>
+                    <li><a title="Знайти замовлення" href="#">Знайти замовлення</a></li>
+                    <li><a title="Мої замовлення" href="#">Мої замовлення</a></li>
+                </ul>
+            </div>
+
 {% block inclusive_basket %}
             <div class="basket-container hidden" id="basket-container">
                 <ul class="basket-list" id="basket-list">
