@@ -197,16 +197,11 @@ def single_order(request, code):
     context = {}
     session_key = request.session.session_key
     order = get_object_or_404(Order, code=code)
-    # order = Order.objects.filter(session_key=session_key)
-    context['order'] = order
-    return render(request, template_name, context=context)
-
-    if order and session_key:
-        order = order.latest(field_name="created")
+    if session_key == order.session_key:
         context['order'] = order
-        return render(request, template_name, context=context)
     else:
         raise Http404
+    return render(request, template_name, context=context)
 
 
 class GenerateOrderPdf(View):
@@ -217,4 +212,3 @@ class GenerateOrderPdf(View):
         context['order'] = order
         pdf = render_to_pdf('orders/pdf/order.html', context)
         return HttpResponse(pdf, content_type='application/pdf')
-
