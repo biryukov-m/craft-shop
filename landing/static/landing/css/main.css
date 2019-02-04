@@ -151,7 +151,7 @@ a:hover {
   vertical-align: middle;
   position: relative;
   color: #464646;
-  font-size: 1.2rem;
+  font-size: 19px;
   padding: 10px;
 }
 .top-menu-layout .top-menu .user-interface ul.icons .icon a img {
@@ -1304,116 +1304,6 @@ a:hover {
   font-size: 1.3rem;
   padding-right: 5px;
 }
-.main-layout .checkout-container .checkout-success {
-  font-family: "Open Sans", sans-serif;
-  color: black;
-}
-.main-layout .checkout-container .checkout-success h2 {
-  padding-bottom: 5px;
-  border-bottom: 1px #939393 solid;
-}
-.main-layout .checkout-container .checkout-success .text-body {
-  margin-bottom: 15px;
-}
-.main-layout .checkout-container .checkout-success .text-body h1 {
-  font-size: 2.1rem;
-}
-.main-layout .checkout-container .checkout-success .text-body p {
-  font-size: 1.1rem;
-}
-.main-layout .checkout-container .checkout-success .checkout-navigate {
-  border: 1px #939393 solid;
-  padding: 5px 30px 15px 30px;
-}
-.main-layout .checkout-container .checkout-success .checkout-navigate .header {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 1.7rem;
-  color: #282828;
-}
-.main-layout .checkout-container .checkout-success .checkout-navigate .buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.main-layout .checkout-container .checkout-success .checkout-navigate .buttons button {
-  font-family: "Open Sans", sans-serif;
-  padding: 8px 12px;
-  border-radius: 5px;
-  background: #ea704c;
-  color: #451710;
-  border: none;
-  cursor: pointer;
-}
-.main-layout .checkout-container .checkout-success .checkout-navigate .buttons button:hover {
-  background: #e54833;
-  box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
-  position: relative;
-  top: -3px;
-}
-.main-layout .checkout-container .checkout-success .checkout-navigate .buttons button i {
-  padding-right: 8px;
-}
-.main-layout .checkout-container .checkout-success .checkout-navigate .buttons .go-shopping {
-  margin-right: 30px;
-}
-.main-layout .checkout-container .opened-order {
-  font-family: "Open Sans", sans-serif;
-}
-.main-layout .checkout-container .opened-order .wrapper h2 {
-  border-bottom: solid #939393 1px;
-  padding-bottom: 5px;
-  margin-bottom: 15px;
-}
-.main-layout .checkout-container .opened-order .wrapper .costumer-info {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 100;
-  color: #000;
-  font-size: 1rem;
-  border-bottom: 1px #939393 solid;
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-}
-.main-layout .checkout-container .opened-order .wrapper .basket-list {
-  margin-bottom: 15px;
-}
-.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item {
-  box-shadow: 0 1px 0 0 #939393;
-}
-.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td {
-  border-bottom: 15px solid transparent;
-}
-.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.image-container {
-  width: 12%;
-}
-.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.image-container img {
-  max-width: 95%;
-}
-.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.text-container {
-  max-width: 66%;
-}
-.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.text-container .brand {
-  font-size: 0.85rem;
-}
-.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.text-container .name {
-  font-size: 0.8rem;
-}
-.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.text-container .price {
-  font-size: 0.75rem;
-}
-.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.quantity {
-  font-size: 0.85rem;
-}
-.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.total {
-  text-align: end;
-  font-size: 0.85rem;
-}
-.main-layout .checkout-container .opened-order .wrapper .overall-price {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  font-size: 1.1rem;
-}
 .main-layout .checkout-container .basket .basket-container {
   border: solid #939393 1px;
   background: #f8f8f8;
@@ -1527,6 +1417,126 @@ a:hover {
   padding: 5px 4px;
   margin-bottom: 5px;
   font-size: 1.6rem;
+}
+.main-layout .checkout-container .checkout-success {
+  font-family: "Open Sans", sans-serif;
+  color: black;
+}
+.main-layout .checkout-container .checkout-success h2 {
+  padding-bottom: 5px;
+  border-bottom: 1px #939393 solid;
+}
+.main-layout .checkout-container .checkout-success .text-body {
+  margin-bottom: 15px;
+}
+.main-layout .checkout-container .checkout-success .text-body h1 {
+  font-size: 2.1rem;
+}
+.main-layout .checkout-container .checkout-success .text-body p {
+  font-size: 1.1rem;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate {
+  border: 1px #939393 solid;
+  padding: 5px 30px 15px 30px;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .header {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.7rem;
+  color: #282828;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice {
+  width: 50%;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code {
+  font-family: "Philosopher", sans-serif;
+  padding: 2px 4px;
+  background: #ea704c;
+  color: #451710;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code:hover {
+  background: #451710;
+  color: #ea704c;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register button {
+  font-family: "Open Sans", sans-serif;
+  padding: 8px 12px;
+  border-radius: 5px;
+  background: #ea704c;
+  color: #451710;
+  border: none;
+  cursor: pointer;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register button:hover {
+  background: #e54833;
+  box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+  position: relative;
+  top: -3px;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register button i {
+  padding-right: 8px;
+}
+.main-layout .checkout-container .opened-order .wrapper h2 {
+  border-bottom: solid #939393 1px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+.main-layout .checkout-container .opened-order .wrapper .costumer-info {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+  color: #000;
+  font-size: 1rem;
+  border-bottom: 1px #939393 solid;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+.main-layout .checkout-container .opened-order .wrapper .basket-list {
+  margin-bottom: 15px;
+}
+.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item {
+  box-shadow: 0 1px 0 0 #939393;
+}
+.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td {
+  border-bottom: 15px solid transparent;
+}
+.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.image-container {
+  width: 12%;
+}
+.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.image-container img {
+  max-width: 95%;
+}
+.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.text-container {
+  max-width: 66%;
+}
+.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.text-container .brand {
+  font-size: 0.85rem;
+}
+.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.text-container .name {
+  font-size: 0.8rem;
+}
+.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.text-container .price {
+  font-size: 0.75rem;
+}
+.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.quantity {
+  font-size: 0.85rem;
+}
+.main-layout .checkout-container .opened-order .wrapper .basket-list table tbody tr.item td.total {
+  text-align: end;
+  font-size: 0.85rem;
+}
+.main-layout .checkout-container .opened-order .wrapper .overall-price {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
 }
 
 #sort-by-menu .ui-menu-item-wrapper {

@@ -13,27 +13,24 @@
             <div class="text-body">
                 <h2>Увага!</h2>
                 <p>Щоб переглянути статус виконання замовлення, необхідно зареєструватися.
-                    Ми запам'ятаємо Вас, та зробимо наступні замовлення легкими,
-                    та будемо інформувати про усі Ваші замовлення.</p>
+                    Ми запам'ятаємо Вас, та зробимо наступні оформлення легкими.</p>
                 <p>Швидко зареєструватися можна за номером телефона ({{ order.customer_phone }}).
-                    Ми поважаємо Ваш час, тому не будемо його використовувати для СМС-розсилок (та будь-яких сповіщень, тільки
-                    живе спілкування).</p>
+                    <span class="smaller">Ми поважаємо Ваш час, тому не будемо його використовувати для СМС-розсилок
+                        (та будь-яких сповіщень, тількиживе спілкування).</span>
+                </p>
                 <p>Якщо, все ж таки, реєстрація не бажана, даємо унікальний код для доступу до замовлення.</p>
-                <p class="choose">Отже, зробіть вибір:</p>
-                <div class="choice code">
-                    Я збережу унікальний код для доступу до замовлення.
-                    <span>{{ order.code }}</span>
-                </div>
-                <div class="choice register">
-                    Запам'ятайте мене, я ще повернусь.
-                    <button type="button">Зареєструватися</button>
-                </div>
             </div>
             <div class="checkout-navigate">
-                <div class="header">Куди далі?</div>
-                <div class="buttons">
-                    <a href="{% url "landing:shop" %}"><button class="go-shopping"><i class="fas fa-shopping-cart"></i>До магазину</button></a>
-                    <a href="{% url "landing:shop" %}"><button class="go-order-page"><i class="fas fa-list-ul"></i>До замовлення</button></a>
+                <div class="header">Отже, зробіть вибір:</div>
+                <div class="choices">
+                    <div class="choice save-code">
+                        <p>Збережу унікальний код для доступу до замовлення.</p>
+                        <span id="order-hash-code" class="code">{{ order.code }}</span>
+                    </div>
+                    <div class="choice register">
+                        <p>Запам'ятайте мене, я ще повернусь.</p>
+                        <a href="{% url "landing:shop" %}"><button class="go-order-page"><i class="fas fa-user-tie"></i>Зареєструватися</button></a>
+                    </div>
                 </div>
             </div>
         </div>

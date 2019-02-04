@@ -83,7 +83,6 @@ a:hover
         font-weight: normal
         display: block
         line-height: 0.8
-
       .bigger
         font-size: 2.7rem
 
@@ -149,7 +148,7 @@ a:hover
             vertical-align: middle
             position: relative
             color: $dark
-            font-size: 1.2rem
+            font-size: 19px
             padding: 10px
             img
               vertical-align: baseline
@@ -1255,7 +1254,6 @@ a:hover
           cursor: pointer
           font-family: "Open Sans", sans-serif
           font-size: 1.2rem
-
           &:hover
             box-shadow: 0 4px 6px 0 rgba(32,33,36,0.28)
             position: relative
@@ -1263,101 +1261,6 @@ a:hover
           i
             font-size: 1.3rem
             padding-right: 5px
-
-    .checkout-success
-      font-family: "Open Sans", sans-serif
-      color: black
-      h2
-        padding-bottom: 5px
-        border-bottom: 1px $light solid
-
-      .text-body
-        //border-bottom: 1px $light solid
-        margin-bottom: 15px
-        h1
-          font-size: 2.1rem
-        p
-          font-size: 1.1rem
-      .checkout-navigate
-        border: 1px $light solid
-        padding: 5px 30px 15px 30px
-        .header
-          text-align: center
-          margin-bottom: 10px
-          font-size: 1.7rem
-          color: $darker
-        .buttons
-          display: flex
-          align-items: center
-          justify-content: center
-          button
-            font-family: "Open Sans", sans-serif
-            padding: 8px 12px
-            border-radius: 5px
-            background: $highlight_darker
-            color: #451710
-            border: none
-            cursor: pointer
-            &:hover
-              background: $highlight_darkest
-
-              box-shadow: 0 4px 6px 0 rgba(32,33,36,0.28)
-              position: relative
-              top: -3px
-            i
-              padding-right: 8px
-          .go-shopping
-            margin-right: 30px
-          .go-order-page
-    .opened-order
-      font-family: "Open Sans", sans-serif
-      .wrapper
-        h2
-          border-bottom: solid $light 1px
-          padding-bottom: 5px
-          margin-bottom: 15px
-        .costumer-info
-          font-family: "Open Sans", sans-serif
-          font-weight: 100
-          color: #000
-          font-size: 1rem
-          border-bottom: 1px $light solid
-          margin-bottom: 15px
-          padding-bottom: 15px
-        .basket-list
-          margin-bottom: 15px
-          table
-            tbody
-              tr.item
-                box-shadow: 0 1px  0 0 $light
-                td
-                  border-bottom: 15px solid transparent
-
-                td.image-container
-                  width: 12%
-                  img
-                    max-width: 95%
-                td.text-container
-                  max-width: 66%
-                  .brand
-                    font-size: 0.85rem
-                  .name
-                    font-size: 0.8rem
-                  .price
-                    font-size: 0.75rem
-                td.quantity
-                  font-size: 0.85rem
-                td.total
-                  text-align: end
-                  font-size: 0.85rem
-
-                  .item-total-price
-        .overall-price
-          display: flex
-          justify-content: space-between
-          margin-bottom: 15px
-          font-size: 1.1rem
-
     .basket
       .basket-container
         border: solid $light 1px
@@ -1407,7 +1310,6 @@ a:hover
                       font-size: 0.9rem
                       text-align: center
                       color: black
-
                     .number::-webkit-inner-spin-button
                       -webkit-appearance: none
                     .number::-webkit-outer-spin-button
@@ -1432,7 +1334,6 @@ a:hover
                   max-width: 30%
                   text-align: right
                   .total-price
-
                   button
                     background: none
                     border: none
@@ -1456,6 +1357,110 @@ a:hover
           padding: 5px 4px
           margin-bottom: 5px
           font-size: 1.6rem
+    .checkout-success
+      font-family: "Open Sans", sans-serif
+      color: black
+      h2
+        padding-bottom: 5px
+        border-bottom: 1px $light solid
+      .text-body
+        margin-bottom: 15px
+        h1
+          font-size: 2.1rem
+        p
+          font-size: 1.1rem
+      .checkout-navigate
+        border: 1px $light solid
+        padding: 5px 30px 15px 30px
+        .header
+          text-align: center
+          margin-bottom: 10px
+          font-size: 1.7rem
+          color: $darker
+        .choices
+          display: flex
+          align-items: center
+          justify-content: center
+          .choice
+            width: 50%
+            &.save-code
+              .code
+                //font-family: "Open Sans", sans-serif
+                font-family: "Philosopher", sans-serif
+                padding: 2px 4px
+                background: $highlight_darker
+                color: #451710
+                border: none
+                cursor: pointer
+                font-size: 2rem
+                &:hover
+                  background: #451710
+                  color: $highlight_darker
+            &.register
+              button
+                font-family: "Open Sans", sans-serif
+                padding: 8px 12px
+                border-radius: 5px
+                background: $highlight_darker
+                color: #451710
+                border: none
+                cursor: pointer
+                &:hover
+                  background: $highlight_darkest
+                  box-shadow: 0 4px 6px 0 rgba(32,33,36,0.28)
+                  position: relative
+                  top: -3px
+                i
+                  padding-right: 8px
+
+    .opened-order
+        .wrapper
+          h2
+            border-bottom: solid $light 1px
+            padding-bottom: 5px
+            margin-bottom: 15px
+          .costumer-info
+            font-family: "Open Sans", sans-serif
+            font-weight: 100
+            color: #000
+            font-size: 1rem
+            border-bottom: 1px $light solid
+            margin-bottom: 15px
+            padding-bottom: 15px
+          .basket-list
+            margin-bottom: 15px
+            table
+              tbody
+                tr.item
+                  box-shadow: 0 1px  0 0 $light
+                  td
+                    border-bottom: 15px solid transparent
+
+                  td.image-container
+                    width: 12%
+                    img
+                      max-width: 95%
+                  td.text-container
+                    max-width: 66%
+                    .brand
+                      font-size: 0.85rem
+                    .name
+                      font-size: 0.8rem
+                    .price
+                      font-size: 0.75rem
+                  td.quantity
+                    font-size: 0.85rem
+                  td.total
+                    text-align: end
+                    font-size: 0.85rem
+
+                    .item-total-price
+          .overall-price
+            display: flex
+            justify-content: space-between
+            margin-bottom: 15px
+            font-size: 1.1rem
+
 #sort-by-menu
   .ui-menu-item-wrapper
     font-family: "Open Sans", sans-serif
