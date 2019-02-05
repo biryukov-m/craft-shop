@@ -23,14 +23,23 @@
             <div class="checkout-navigate">
                 <div class="header">Отже, зробіть вибір:</div>
                 <div class="choices">
-                    <div class="choice save-code">
-                        <p>Збережу унікальний код для доступу до замовлення.</p>
-                        <span id="order-hash-code" class="code">{{ order.code }}</span>
-                    </div>
                     <div class="choice register">
                         <p>Запам'ятайте мене, я ще повернусь.</p>
-                        <a href="{% url "landing:shop" %}"><button class="go-order-page"><i class="fas fa-user-tie"></i>Зареєструватися</button></a>
+                        <div class="register-wrapper">
+                            <a href="{% url "landing:shop" %}">
+                                <button class="go-order-page"><i class="fas fa-user-tie"></i>Зареєструватися</button>
+                            </a>
+                        </div>
                     </div>
+                    <div class="choice save-code">
+                            <p>Збережу унікальний код для доступу до замовлення.</p>
+                            <div class="code-wrapper">
+                                <span id="order-hash-code" class="code">{{ order.code }}</span>
+                                <button class="to-clipboard" data-clipboard-text="{{ order.code }}">
+                                    <i class="fas fa-clipboard-list"></i>
+                                </button>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -90,4 +99,6 @@
 {% load static %}
 {% block javascripts %}
     {{ block.super }}
+    <script src="{% static 'landing/js/clipboard.js' %}"></script>
+    <script src="{% static 'landing/js/checkout_success.js' %}"></script>
 {% endblock %}

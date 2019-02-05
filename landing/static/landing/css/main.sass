@@ -1370,8 +1370,8 @@ a:hover
         p
           font-size: 1.1rem
       .checkout-navigate
-        border: 1px $light solid
-        padding: 5px 30px 15px 30px
+        //border: 1px $light solid
+        //padding: 5px 30px 15px 30px
         .header
           text-align: center
           margin-bottom: 10px
@@ -1379,40 +1379,71 @@ a:hover
           color: $darker
         .choices
           display: flex
-          align-items: center
-          justify-content: center
           .choice
-            width: 50%
+            max-width: 50%
+            border: 1px solid $lighter
+            padding: 5px 10px
+            &:hover
+              border-color: $dark
+              p
+                color: #000
+            p
+              font-family: "Open Sans", sans-serif
+              font-size: 1rem
+              color: $dark
+              cursor: default
             &.save-code
-              .code
-                //font-family: "Open Sans", sans-serif
-                font-family: "Philosopher", sans-serif
-                padding: 2px 4px
-                background: $highlight_darker
-                color: #451710
-                border: none
-                cursor: pointer
-                font-size: 2rem
-                &:hover
-                  background: #451710
-                  color: $highlight_darker
+              margin-left: 25px
+              .code-wrapper
+                display: flex
+                justify-content: center
+                .code
+                  font-family: "Philosopher", sans-serif
+                  padding: 2px 8px
+                  background: $highlight_darker
+                  color: #451710
+                  border: none
+                  cursor: pointer
+                  font-size: 1.5rem
+                  border-top-left-radius: 5px
+                  border-bottom-left-radius: 5px
+                .to-clipboard
+                  font-family: "Philosopher", sans-serif
+                  padding: 2px 8px
+                  background: $highlight_darker
+                  color: #451710
+                  border: none
+                  cursor: pointer
+                  font-size: 1.5rem
+                  border-left: #451710 1px solid
+                  border-top-right-radius: 5px
+                  border-bottom-right-radius: 5px
+                  &:hover
+                    background: #451710
+                    color: $highlight_darker
             &.register
-              button
-                font-family: "Open Sans", sans-serif
-                padding: 8px 12px
-                border-radius: 5px
-                background: $highlight_darker
-                color: #451710
-                border: none
-                cursor: pointer
-                &:hover
-                  background: $highlight_darkest
-                  box-shadow: 0 4px 6px 0 rgba(32,33,36,0.28)
-                  position: relative
-                  top: -3px
-                i
-                  padding-right: 8px
-
+              .register-wrapper
+                display: flex
+                justify-content: center
+                button
+                  height: 40px
+                  font-family: "Philosopher", sans-serif
+                  padding: 2px 8px
+                  background: $highlight_darker
+                  color: #451710
+                  border: none
+                  cursor: pointer
+                  font-size: 1.3rem
+                  //padding: 8px 12px
+                  border-radius: 5px
+                  background: $highlight_darker
+                  &:hover
+                    background: $highlight_darkest
+                    box-shadow: 0 4px 6px 0 rgba(32,33,36,0.28)
+                    position: relative
+                    top: -3px
+                  i
+                    padding-right: 8px
     .opened-order
         .wrapper
           h2

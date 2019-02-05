@@ -1435,10 +1435,6 @@ a:hover {
 .main-layout .checkout-container .checkout-success .text-body p {
   font-size: 1.1rem;
 }
-.main-layout .checkout-container .checkout-success .checkout-navigate {
-  border: 1px #939393 solid;
-  padding: 5px 30px 15px 30px;
-}
 .main-layout .checkout-container .checkout-success .checkout-navigate .header {
   text-align: center;
   margin-bottom: 10px;
@@ -1447,41 +1443,81 @@ a:hover {
 }
 .main-layout .checkout-container .checkout-success .checkout-navigate .choices {
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice {
-  width: 50%;
+  max-width: 50%;
+  border: 1px solid #cecece;
+  padding: 5px 10px;
 }
-.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code {
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice:hover {
+  border-color: #464646;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice:hover p {
+  color: #000;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  color: #464646;
+  cursor: default;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code {
+  margin-left: 25px;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .code {
   font-family: "Philosopher", sans-serif;
-  padding: 2px 4px;
+  padding: 2px 8px;
   background: #ea704c;
   color: #451710;
   border: none;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
-.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code:hover {
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .to-clipboard {
+  font-family: "Philosopher", sans-serif;
+  padding: 2px 8px;
+  background: #ea704c;
+  color: #451710;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-left: #451710 1px solid;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .to-clipboard:hover {
   background: #451710;
   color: #ea704c;
 }
-.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register button {
-  font-family: "Open Sans", sans-serif;
-  padding: 8px 12px;
-  border-radius: 5px;
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register .register-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register .register-wrapper button {
+  height: 40px;
+  font-family: "Philosopher", sans-serif;
+  padding: 2px 8px;
   background: #ea704c;
   color: #451710;
   border: none;
   cursor: pointer;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  background: #ea704c;
 }
-.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register button:hover {
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register .register-wrapper button:hover {
   background: #e54833;
   box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
   position: relative;
   top: -3px;
 }
-.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register button i {
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register .register-wrapper button i {
   padding-right: 8px;
 }
 .main-layout .checkout-container .opened-order .wrapper h2 {
