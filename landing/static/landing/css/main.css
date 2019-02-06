@@ -1458,6 +1458,7 @@ a:hover {
 .main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice p {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
+  margin-bottom: 20px;
   color: #464646;
   cursor: default;
 }
@@ -1467,6 +1468,7 @@ a:hover {
 .main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .code {
   font-family: "Philosopher", sans-serif;
@@ -1491,7 +1493,24 @@ a:hover {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .to-clipboard:hover {
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .event-result {
+  position: absolute;
+  top: -25px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .event-result span {
+  color: #000;
+  font-size: 0.8rem;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .event-result span.error {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
+}
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .event-result:hover {
   background: #451710;
   color: #ea704c;
 }

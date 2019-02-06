@@ -1390,6 +1390,7 @@ a:hover
             p
               font-family: "Open Sans", sans-serif
               font-size: 1rem
+              margin-bottom: 20px
               color: $dark
               cursor: default
             &.save-code
@@ -1397,6 +1398,7 @@ a:hover
               .code-wrapper
                 display: flex
                 justify-content: center
+                position: relative
                 .code
                   font-family: "Philosopher", sans-serif
                   padding: 2px 8px
@@ -1418,9 +1420,24 @@ a:hover
                   border-left: #451710 1px solid
                   border-top-right-radius: 5px
                   border-bottom-right-radius: 5px
+                .event-result
+                  position: absolute
+                  top: -25px
+                  left: 0
+                  right: 0
+                  text-align: center
+                  span
+                    color: #000
+                    font-size: 0.8rem
+                    &.error
+                      position: absolute
+                      top: 4px
+                      left: 0
+                      right: 0
                   &:hover
                     background: #451710
                     color: $highlight_darker
+
             &.register
               .register-wrapper
                 display: flex
