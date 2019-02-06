@@ -1493,6 +1493,10 @@ a:hover {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .to-clipboard:hover {
+  background: #451710;
+  color: #ea704c;
+}
 .main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .event-result {
   position: absolute;
   top: -25px;
@@ -1509,10 +1513,6 @@ a:hover {
   top: 4px;
   left: 0;
   right: 0;
-}
-.main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.save-code .code-wrapper .event-result:hover {
-  background: #451710;
-  color: #ea704c;
 }
 .main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register .register-wrapper {
   display: flex;
@@ -1531,10 +1531,8 @@ a:hover {
   background: #ea704c;
 }
 .main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register .register-wrapper button:hover {
-  background: #e54833;
-  box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
-  position: relative;
-  top: -3px;
+  background: #451710;
+  color: #ea704c;
 }
 .main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register .register-wrapper button i {
   padding-right: 8px;

@@ -1420,6 +1420,9 @@ a:hover
                   border-left: #451710 1px solid
                   border-top-right-radius: 5px
                   border-bottom-right-radius: 5px
+                  &:hover
+                      background: #451710
+                      color: $highlight_darker
                 .event-result
                   position: absolute
                   top: -25px
@@ -1434,10 +1437,6 @@ a:hover
                       top: 4px
                       left: 0
                       right: 0
-                  &:hover
-                    background: #451710
-                    color: $highlight_darker
-
             &.register
               .register-wrapper
                 display: flex
@@ -1455,10 +1454,8 @@ a:hover
                   border-radius: 5px
                   background: $highlight_darker
                   &:hover
-                    background: $highlight_darkest
-                    box-shadow: 0 4px 6px 0 rgba(32,33,36,0.28)
-                    position: relative
-                    top: -3px
+                    background: #451710
+                    color: $highlight_darker
                   i
                     padding-right: 8px
     .opened-order
