@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from product.models import Item
 from properties import models as properties
+from utils.generators import generate_order_hash
 
 
 class Status(models.Model):
@@ -58,6 +59,8 @@ class Order(models.Model):
                                    verbose_name="Оновлено")
 
     code = models.PositiveSmallIntegerField(default=None, blank=True, null=True, editable=False, verbose_name="Код")
+
+    hash_code = models.CharField(default=None, blank=True, null=True, editable=False, max_length=64, verbose_name='хеш-код')
 
     session_key = models.CharField(max_length=128,
                                    null=True,
@@ -301,7 +304,9 @@ def post_save_for_order(instance, **kwargs):
     if not instance.code:
         code = instance.pk + 100
         instance.code = code
-        instance.save()
+    hash_code = generate_order_hash(instance.code)
+    instance.hash_code = hash_code
+    instance.save()
 
 
 post_save.connect(post_save_for_order, sender=Order)
