@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.signals import post_save
+from django.shortcuts import reverse
 from product.models import Item
 from properties import models as properties
 from utils.generators import generate_order_hash
@@ -115,6 +116,10 @@ class Order(models.Model):
 
     def get_items(self):
         return self.basket.productinbasket_set.all()
+
+    def get_absolute_url(self):
+        url = reverse('orders:single_order_hash_code', kwargs={"hash_code": self.hash_code})
+        return url
 
     class Meta:
         verbose_name = "Замовлення"
@@ -241,72 +246,14 @@ class ProductInBasket(models.Model):
         verbose_name = "Замовлений товар у корзині"
         verbose_name_plural = "Замовлені товари у корзині"
 
-    # class ProductInOrder(models.Model):
-    #     order = models.ForeignKey(Order,
-    #                               on_delete=models.CASCADE,
-    #                               default=None, verbose_name="Замовлення")
-    #     product = models.ForeignKey(Item,
-    #                                 on_delete=models.CASCADE,
-    #                                 default=None,
-    #                                 verbose_name="Товар")
-    #     quantity = models.PositiveSmallIntegerField(default=1, verbose_name="Одиниць")
-    #     one_product_price = models.DecimalField(blank=True,
-    #                                             null=True,
-    #                                             default=None,
-    #                                             editable=False,
-    #                                             decimal_places=2,
-    #                                             max_digits=10,
-    #                                             verbose_name="Ціна за одну одиницю")
-    #     total_price = models.DecimalField(blank=True,
-    #                                       null=True,
-    #                                       default=None,
-    #                                       editable=False,
-    #                                       decimal_places=2,
-    #                                       max_digits=10,
-    #                                       verbose_name="Загальна ціна по товару")
-    #     is_inactive = models.BooleanField(default=False, verbose_name="Товар відмінено")
-    #     created = models.DateTimeField(auto_now=False,
-    #                                    auto_now_add=True,
-    #                                    verbose_name="Створено")
-    #     updated = models.DateTimeField(auto_now=True,
-    #                                    auto_now_add=False,
-    #                                    verbose_name="Оновлено")
-    #
-    #     def __str__(self):
-    #         return '''{} - {}'''.format(self.product.name, self.product.price)
-    #
-    #     def save(self, *args, **kwargs):
-    #         try:
-    #             self.one_product_price = self.product.price
-    #             self.total_price = self.quantity*self.one_product_price
-    #         except:
-    #             print("Вы пытаетесь добавить в заказ товар без или с неправильной ценой/количеством")
-    #             raise ValueError
-    #         super(ProductInOrder, self).save(*args, **kwargs)
-    #
-    #     class Meta:
-    #         verbose_name = "Замовлений товар"
-    #         verbose_name_plural = "Замовлені товари"
-    #
-
-
-# def count_order_total_price(instance, **kwargs):
-#     all_products_in_order = ProductInOrder.objects.filter(order=instance.order, is_inactive=False)
-#     order_total_price = 0
-#     for product in all_products_in_order:
-#         order_total_price += product.total_price
-#     instance.order.total_price = order_total_price
-#     instance.order.save(force_update=True)
-# post_save.connect(count_order_total_price, sender=ProductInOrder)
-# post_delete.connect(count_order_total_price, sender=ProductInOrder)
 
 def post_save_for_order(instance, **kwargs):
-    if not instance.code:
+    if not (instance.code or instance.hash_code):
         code = instance.pk + 100
+        hash_code = generate_order_hash(code)
         instance.code = code
-    hash_code = generate_order_hash(instance.code)
-    instance.hash_code = hash_code
-    instance.save()
+        instance.hash_code = hash_code
+        instance.save()
 
 
 post_save.connect(post_save_for_order, sender=Order)

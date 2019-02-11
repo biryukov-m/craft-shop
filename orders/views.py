@@ -192,15 +192,15 @@ def checkout_success(request):
         raise Http404
 
 
-def single_order(request, code):
+def single_order(request, *args, **kwargs):
     template_name = 'orders/single_order.html'
     context = {}
-    session_key = request.session.session_key
-    order = get_object_or_404(Order, code=code)
-    if session_key == order.session_key:
+    hash_code = kwargs.get('hash_code')
+    if hash_code:
+        print('Accessing order by hash: {}'.format(hash_code))
+        order = get_object_or_404(Order, hash_code=hash_code)
         context['order'] = order
-    else:
-        raise Http404
+    by_code = kwargs.get('code')
     return render(request, template_name, context=context)
 
 

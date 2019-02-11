@@ -33,9 +33,12 @@
                     </div>
                     <div class="choice save-code">
                             <p>Збережу унікальний код для доступу до замовлення.</p>
+                            <p><span>{{ order.get_absolute_url }}</span></p>
+                            <p><a href="{{ order.get_absolute_url }}">{{ order.hash_code }}</a></p>
                             <div class="code-wrapper">
-                                <span id="order-hash-code" class="code">{{ order.code }}</span>
-                                <button class="to-clipboard" data-clipboard-text="{{ order.code }}">
+                                <span id="order-hash-code" class="code">{{ order.hash_code }}</span>
+
+                                <button class="to-clipboard" data-clipboard-text="{{ order.hash_code }}">
                                     <i class="fas fa-clipboard-list"></i>
                                 </button>
                                 <div class="event-result">

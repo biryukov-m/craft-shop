@@ -13,7 +13,8 @@ urlpatterns = [
     path('basket_change_quantity/', basket_change_quantity, name='basket_change_quantity'),
     path('checkout/', checkout, name='checkout'),
     path('checkout/success/', checkout_success, name='checkout_success'),
-    path('order/<int:code>/', single_order, name='single_order'),
+    path('order/<int:code>/', single_order, name='single_order_code'),
+    path('order/hash/<str:hash_code>/', single_order, name='single_order_hash_code'),
     path('order/<int:code>/pdf/', GenerateOrderPdf.as_view(), name='order-pdf'),
 ]
 
