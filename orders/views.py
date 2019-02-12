@@ -8,6 +8,7 @@ from django.views.generic import View
 from .models import ProductInBasket
 from .models import Basket
 from .models import Order
+from .models import Status
 from product.models import Item
 from properties.models import Size
 from .forms import OrderForm
@@ -196,6 +197,8 @@ def single_order(request, *args, **kwargs):
     template_name = 'orders/single_order.html'
     context = {}
     hash_code = kwargs.get('hash_code')
+    statuses = Status.objects.all().order_by('number')
+    context['statuses'] = statuses
     if hash_code:
         print('Accessing order by hash: {}'.format(hash_code))
         order = get_object_or_404(Order, hash_code=hash_code)

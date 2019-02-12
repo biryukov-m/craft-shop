@@ -23,8 +23,10 @@ class Status(models.Model):
                                    max_length=300,
                                    verbose_name="Опис")
 
+    number = models.PositiveSmallIntegerField(null=True, blank=True, default=True, verbose_name='Порядковий номер')
+
     def __str__(self):
-        return "{}".format(self.verbose_name)
+        return "{} - {}".format(self.number, self.verbose_name)
 
     class Meta:
         verbose_name = "Статус замовлення"
@@ -96,12 +98,11 @@ class Order(models.Model):
 
     delivery_method = models.ForeignKey(DeliveryMethod, verbose_name='Спосіб доставки', null=True, on_delete=models.SET_NULL)
 
-    status = models.ForeignKey(Status,
-                               on_delete=models.SET_NULL,
-                               default=None,
-                               blank=True,
-                               null=True,
-                               verbose_name="Статус замовлення")
+    status = models.ManyToManyField(Status,
+                                    default=None,
+                                    blank=True,
+                                    null=True,
+                                    verbose_name="Статус замовлення")
 
     manager_comment = models.TextField(blank=True,
                                        null=True,

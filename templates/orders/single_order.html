@@ -54,6 +54,22 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6 order-status">
+            <div class="wrapper">
+                <h2>Статус виконання</h2>
+                <ul class="statuses">
+                    {% for status in statuses %}
+                        <li class="status">
+                            <span class="status-name">{{ status.verbose_name }}</span>
+                            <span class="state">{% if status in order.status.all %}<i class="fas fa-check"></i>{% endif %}</span>
+                        </li>
+                        <li class="description">{{ status.description }}</li>
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+        </div>
     </div>
 {% endblock %}
 {% load static %}
