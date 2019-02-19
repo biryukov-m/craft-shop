@@ -63,7 +63,7 @@ class Order(models.Model):
 
     code = models.PositiveSmallIntegerField(default=None, blank=True, null=True, editable=False, verbose_name="Код")
 
-    hash_code = models.CharField(default=None, blank=True, null=True, editable=False, max_length=64, verbose_name='хеш-код')
+    hash_code = models.CharField(default=None, blank=True, null=True, max_length=64, verbose_name='хеш-код')
 
     session_key = models.CharField(max_length=128,
                                    null=True,
@@ -101,7 +101,6 @@ class Order(models.Model):
     status = models.ManyToManyField(Status,
                                     default=None,
                                     blank=True,
-                                    null=True,
                                     verbose_name="Статус замовлення")
 
     manager_comment = models.TextField(blank=True,

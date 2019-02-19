@@ -4,7 +4,7 @@
     <div class="checkout-container row">
         <div class="col-md-6 opened-order">
             <div class="wrapper">
-                <h2>Замовлення № {{ order.code }}</h2>
+                <h2>Замовлення № {{ order.code }}<span> від {{ order.created | date:"d.m.y" }}</span></h2>
                 <div class="costumer-info">
                     <ul>
                         <li>Покупець: {{ order.customer_name }} </li>
@@ -14,7 +14,6 @@
                         <li>Місто: {{ order.customer_city }}</li>
                         <li>Адреса: {{ order.customer_address }}</li>
                         <li>Поштовий індекс: {% if order.postal_index %}{{ order.postal_index }}{% else %} -{% endif %}</li>
-                        <li>URL: {{ order.get_absolute_url }}</li>
                     </ul>
                 </div>
                 <div class="basket-list">
@@ -60,8 +59,12 @@
                 <ul class="statuses">
                     {% for status in statuses %}
                         <li class="status">
-                            <span class="status-name">{{ status.verbose_name }}</span>
-                            <span class="state">{% if status in order.status.all %}<i class="fas fa-check"></i>{% endif %}</span>
+                            {% if status in order.status.all %}
+                                <span class="status-name checked">{{ status.verbose_name }}</span>
+                                <span class="state"><i class="fas fa-check"></i></span>
+                            {% else %}
+                                <span class="status-name">{{ status.verbose_name }}</span>
+                            {% endif %}
                         </li>
                         <li class="description">{{ status.description }}</li>
                     {% endfor %}

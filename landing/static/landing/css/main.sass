@@ -1045,7 +1045,6 @@ a:hover
                 color: #fff
                 cursor: pointer
 
-
       .extra-images
         margin-bottom: 30px
         .image-wrapper
@@ -1134,7 +1133,6 @@ a:hover
             letter-spacing: 1.2px
             text-decoration: underline
             padding-bottom: 12px
-
   .section-wrapper
     .banner
       background: $dark
@@ -1464,6 +1462,10 @@ a:hover
             border-bottom: solid $light 1px
             padding-bottom: 5px
             margin-bottom: 15px
+            font-family: "Open Sans", sans-serif
+            span
+              font-size: 1.5rem
+              font-weight: 100
           .costumer-info
             font-family: "Open Sans", sans-serif
             font-weight: 100
@@ -1505,7 +1507,31 @@ a:hover
             justify-content: space-between
             margin-bottom: 15px
             font-size: 1.1rem
-
+    .order-status
+      .wrapper
+        h2
+          font-family: "Open Sans", sans-serif
+          border-bottom: solid $light 1px
+          padding-bottom: 5px
+          margin-bottom: 15px
+        ul.statuses
+          font-family: "Open Sans", sans-serif
+          color: black
+          font-size: 1rem
+          li.status
+            .status-name
+              font-weight: 500
+              &.checked
+                font-weight: 600
+            .state
+              color: #27a81a
+              font-size: 1.2rem
+              padding-left: 7px
+          li.description
+            font-weight: 100
+            font-size: 0.8rem
+            color: $dark
+            margin-bottom: 15px
 #sort-by-menu
   .ui-menu-item-wrapper
     font-family: "Open Sans", sans-serif
