@@ -290,18 +290,19 @@ a:hover {
   background: #ffffff;
   width: max-content;
 }
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li a {
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li a, .top-menu-layout .top-menu .user-interface .drop-user-menu ul li label {
   display: block;
+  background: white;
   font-family: "Open Sans", sans-serif;
   font-size: 0.8rem;
   color: #282828;
   padding: 4px 6px;
 }
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li a:hover {
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li a:hover, .top-menu-layout .top-menu .user-interface .drop-user-menu ul li label:hover {
   color: #ff4081;
   font-weight: bold;
 }
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li a:before {
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li a:before, .top-menu-layout .top-menu .user-interface .drop-user-menu ul li label:before {
   display: block;
   content: attr(title);
   font-weight: bold;
@@ -310,11 +311,44 @@ a:hover {
   visibility: hidden;
   padding: 0 1px;
 }
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li:not(:last-child) a {
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li:not(:last-child) a, .top-menu-layout .top-menu .user-interface .drop-user-menu ul li:not(:last-child) label {
   border-bottom: 1px solid #cecece;
 }
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li:not(:last-child) a:hover {
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li:not(:last-child):hover {
   border-color: #ff4081;
+}
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order {
+  display: none;
+}
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form {
+  border: 1px solid #cecece;
+  width: 150px;
+  display: flex;
+}
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form:hover {
+  border-color: #ff4081;
+}
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form input {
+  border: none;
+  overflow: auto;
+  background: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8rem;
+  color: #282828;
+  padding: 4px 6px;
+  padding-right: 0;
+}
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form button {
+  border: none;
+  background: white;
+  padding: 0 5px;
+}
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form button i {
+  color: #464646;
+}
+.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form button i:hover {
+  color: #ff4081;
+  transform: scale(1.1);
 }
 
 .main-layout .top-billboard {

@@ -258,4 +258,13 @@ $(document).ready(function () {
     user_icon.on('click mouseenter' , toggle_user_menu);
     // Скрыть меню, если курсор мыши сьехал
     user_menu.on('mouseleave', toggle_user_menu);
+
+//    Обработка клика в user-interface на поиск заказа
+    var find_order_button = $('#find-order');
+    var hidden_search_order_input = $('#hidden-search-order-input');
+    find_order_button.on('click', function (e) {
+        hidden_search_order_input.toggle();
+    });
+
 });
+

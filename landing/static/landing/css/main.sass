@@ -276,14 +276,14 @@ a:hover
           background: #ffffff
           width: max-content
           li
-            a
+            a, label
               display: block
+              background: white
               font-family: "Open Sans", sans-serif
               font-size: 0.8rem
               color: $darker
               padding: 4px 6px
               &:hover
-                //background: $lighter
                 color: $highlight
                 font-weight: bold
               &:before
@@ -294,10 +294,39 @@ a:hover
                 overflow: hidden
                 visibility: hidden
                 padding: 0 1px
-          li:not(:last-child) a
-            border-bottom: 1px solid $lighter
+          li:not(:last-child)
+            a, label
+              border-bottom: 1px solid $lighter
             &:hover
               border-color: $highlight
+          li.search-order
+            display: none
+            form
+              border: 1px solid $lighter
+              width: 150px
+              display: flex
+              &:hover
+                border-color: $highlight
+              input
+                border: none
+                overflow: auto
+                //display: inline
+                background: white
+                font-family: "Open Sans", sans-serif
+                font-size: 0.8rem
+                color: $darker
+                padding: 4px 6px
+                padding-right: 0
+              button
+                border: none
+                //display: inline
+                background: white
+                padding: 0 5px
+                i
+                  color: $dark
+                  &:hover
+                    color: $highlight
+                    transform: scale(1.1)
 .main-layout
   .top-billboard
     margin-bottom: 30px

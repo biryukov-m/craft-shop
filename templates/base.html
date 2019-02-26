@@ -74,11 +74,17 @@
                     </a>
                 </li>
             </ul>
-            <div class="drop-user-menu hidden" id="drop-user-menu">
+            <div class="drop-user-menu" id="drop-user-menu">
                 <ul>
                     <li><a title="Увійти" href="#">Увійти</a></li>
                     <li><a title="Зареєструватися" href="#">Зареєструватися</a></li>
-                    <li><a title="Знайти замовлення" href="#">Знайти замовлення</a></li>
+                    <li id="find-order"><label title="Знайти замовлення" for="search-order">Знайти замовлення</label></li>
+                    <li class="search-order" id="hidden-search-order-input">
+                        <form>
+                            <input id="search-order" type="text" placeholder="код замовлення">
+                            <button type="submit"><i class="fas fa-sm fa-search"></i></button>
+                        </form>
+                    </li>
                     <li><a title="Мої замовлення" href="#">Мої замовлення</a></li>
                 </ul>
             </div>
