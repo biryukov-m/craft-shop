@@ -196,7 +196,10 @@ def checkout_success(request):
 def single_order(request, *args, **kwargs):
     template_name = 'orders/single_order.html'
     context = {}
-    hash_code = kwargs.get('hash_code')
+    print(request)
+    print(request.GET)
+    # hash_code = kwargs.get('hash_code')
+    hash_code = request.GET.get('hash_code')
     statuses = Status.objects.all().order_by('number')
     context['statuses'] = statuses
     if hash_code:
