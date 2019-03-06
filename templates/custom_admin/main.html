@@ -1,1 +1,98 @@
 {% extends 'custom_admin/base.html' %}
+
+{% block sidebar %}
+    <div class="functions-block">
+        <div class="header">Замовлення</div>
+        <ul class="functions">
+            <li>
+                <label for="find-order-by-number">Знайти замовлення за номером</label>
+                <form class="find-order" action="">
+                    <input type="number" name="find-order-by-number" id="find-order-by-number" min="0" max="1000000">
+                    <button><i class="fas fa-search"></i></button>
+                </form>
+            </li>
+            <li><a href="#">Замовлення в роботі</a></li>
+            <li><a href="#">Нові замовлення</a></li>
+            <li><a href="#">Усі замовлення</a></li>
+        </ul>
+    </div>
+    <div class="functions-block">
+        <div class="header">Товари</div>
+        <ul class="functions">
+            <li><a href="#">Перейти до списку товарів</a></li>
+            <li><a href="#">Додати новий товар</a></li>
+        </ul>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="functions-block">
+        <div class="header">Замовлення</div>
+        <ul class="row functions">
+            <div class="col-md-3">
+                <div class="square-block">
+                    <div class="icon">№ ...</div>
+                    <div class="description">
+                        <li>
+                            <label for="find-order-by-number">Знайти за номером</label>
+                            <form class="find-order" action="">
+                                <input type="number" name="find-order-by-number" id="find-order-by-number" min="0" max="1000000">
+                                <button><i class="fas fa-search"></i></button>
+                            </form>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="square-block">
+                    <div class="icon">
+                        <i class="fas fa-3x fa-file-contract"></i>
+                    </div>
+                    <div class="description">
+                        <li><a href="#">В роботі</a></li>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="square-block">
+                    <div class="icon">
+                        <i class="fas fa-3x fa-asterisk"></i>
+                    </div>
+                    <div class="description">
+                        <li><a href="#">Нові</a></li>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="square-block">
+                    <div class="icon"></div>
+                    <div class="description">
+                        <li><a href="#">Усі</a></li>
+                    </div>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <div class="functions-block">
+        <div class="header">Товари</div>
+        <ul class="row functions">
+            <div class="col-md-3">
+                <div class="square-block">
+                    <div class="icon"></div>
+                    <div class="description">
+                        <li><a href="#">Перейти до списку товарів</a></li>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="square-block">
+                    <div class="icon">
+                        <i class="fas fa-3x fa-plus"></i>
+                    </div>
+                    <div class="description">
+                        <li><a href="#">Додати новий товар</a></li>
+                    </div>
+                </div>
+            </div>
+        </ul>
+    </div>
+{% endblock %}

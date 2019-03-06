@@ -40,30 +40,27 @@ a:hover
   .top-menu
     .top-logo
       display: flex
-      align-items: flex-start
+      //align-items: center
       justify-content: center
       flex-direction: column
-      span
+      .logo
         font-family: "logo1", sans-serif
         color: #000
         font-weight: normal
-        display: block
-        line-height: 0.8
-      .bigger
-        font-size: 2.7rem
-
-      .smaller
-        font-size: 1.7rem
-        font-weight: 100
-        color: #f10
-
+        line-height: 0.9
+        font-size: 1.4rem
+        .smaller
+          font-weight: 100
+          color: #f10
+      .speciality
+        font-family: "Open Sans", sans-serif
+        font-size: 1rem
     .menu-list ul li
       display: inline-flex
       height: 5.5rem
       align-items: center
       padding: 0 5px
       position: relative
-
       a
         font-family: 'Open Sans', sans-serif
         color: $dark
@@ -77,11 +74,9 @@ a:hover
         overflow: hidden
         visibility: hidden
         padding: 0 1px
-
       a:hover
         color: $highlight
         font-weight: bold
-
       a:hover:after
         display: inline-block
         position: absolute
@@ -91,7 +86,6 @@ a:hover
         bottom: 5px
         left: 0
         background: $highlight
-
     .user-interface
       display: flex
       align-items: end
@@ -132,164 +126,64 @@ a:hover
             position: absolute
             right: -1px
             top: 0
-      .basket-container
-        position: absolute
-        z-index: 200
-        top: 55px
-        left: -8vw
-        border: solid $lighter 2px
-        background: #f1ebed
-        .basket-list
-          display: block
-          background: white
-          max-height: 40vh
-          overflow-y: auto
-          margin-bottom: 20px
-          .item
-            display: flex
-            padding: 4px 3px
-            .image-container
-              flex-basis: 80px
-
-              img
-                display: block
-                width: 100%
-
-            .text-container
-              display: flex
-              align-items: flex-start
-              justify-content: center
-              flex-direction: column
-              font-family: "Open Sans", sans-serif
-              padding: 0 4px
-              color: $darker
-              font-weight: 400
-              flex-grow: 1
-
-              .name
-                font-size: 0.8rem
-
-              .size
-                font-size: 0.7rem
-
-              .price
-                color: $dark
-                font-size: 0.65rem
-                font-weight: 600
-
-            .horizontal-text-container
-              display: flex
-              align-items: center
-              justify-content: baseline
-              flex-direction: row
-              font-family: "Open Sans", sans-serif
-              color: $darker
-              flex-basis: 100px
-
-              .count
-                padding: 0 4px
-                font-size: 0.8rem
-
-              .item-total-price
-                padding: 0 4px
-                font-size: 0.8rem
-
-              .remove
-                padding: 0
-                font-size: 0.8rem
-                background: none
-                border: none
-                color: $highlight_darker
-                margin: 0
-          .item.new
-            background-color: $highlight_lightest
-        .overall-cart-price
-          text-align: right
-          padding-right: 15px
-          font-family: "Open Sans", sans-serif
+.main-layout
+  .main
+    .sidebar
+      .functions-block
+        font-family: "Open Sans", sans-serif
+        color: black
+        margin-bottom: 20px
+        .header
           font-weight: bold
-          color: #000000
-          font-size: 0.9rem
+          font-size: 1.2rem
+          border-bottom: 2px solid $lighter
           margin-bottom: 10px
-
-        a
-          float: right
-          margin-right: 15px
-          margin-bottom: 5px
-          border: solid 2px $lighter
-          cursor: pointer
-          background: none
-          color: #ffffff
-          padding: 3px 5px
-          border-radius: 6px
-          font-family: "Open Sans", sans-serif
-          font-size: 0.8rem
-
-        .view-cart
-          background: $highlight_darker
-
-        .checkout
-          background: $highlight_darkest
-      .drop-user-menu
-        position: absolute
-        top: 58px
-        left: 73px
-        z-index: 400
-        ul
-          padding: 3px 8px
-          border: solid $lighter 2px
-          border-radius: 5px
-          background: #ffffff
-          width: max-content
+        ul.functions
+          font-size: 0.9rem
           li
-            a, label
-              display: block
-              background: white
-              font-family: "Open Sans", sans-serif
-              font-size: 0.8rem
+            margin-bottom: 5px
+            a
               color: $darker
-              padding: 4px 6px
-              &:hover
-                color: $highlight
-                font-weight: bold
-              &:before
-                display: block
-                content: attr(title)
-                font-weight: bold
-                height: 0
-                overflow: hidden
-                visibility: hidden
-                padding: 0 1px
-          li:not(:last-child)
-            a, label
-              border-bottom: 1px solid $lighter
-            &:hover
-              border-color: $highlight
-          li.search-order
-            display: none
-            form
-              border: 1px solid $lighter
-              width: 150px
-              display: flex
-              &:hover
-                border-color: $highlight
-              input
-                border: none
-                overflow: auto
-                //display: inline
-                background: white
-                font-family: "Open Sans", sans-serif
-                font-size: 0.8rem
-                color: $darker
-                padding: 4px 6px
-                padding-right: 0
-              button
-                border: none
-                //display: inline
-                background: white
-                padding: 0 5px
-                i
-                  color: $dark
-                  &:hover
-                    color: $highlight
-                    transform: scale(1.1)
+          form
+            display: flex
+            width: 100%
+            input
+              display: block
+              flex-grow: 1
+              border: 1px $light solid
+              padding: 1px 3px
+            button
+              display: block
+              background: none
+              border: 1px solid $light
+              border-left: none
+              padding: 3px 5px
+    .content
+      .functions-block
+        font-family: "Open Sans", sans-serif
+        color: black
+        margin-bottom: 20px
+        .header
+          font-weight: bold
+          font-size: 1.2rem
+          border-bottom: 2px solid $lighter
+          margin-bottom: 10px
+        .square-block
+          background: $lighter
+          padding: 5px
+          border: 1px solid $light
+          height: 110px
+          .icon
+            height: 60%
+            display: flex
+            align-items: center
+            justify-content: center
+          .description
+            display: flex
+            align-items: center
+            justify-content: center
+            text-align: center
+            height: 40%
+            font-family: "Open Sans", sans-serif
+            font-size: 0.9rem
+            color: black

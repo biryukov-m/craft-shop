@@ -22,7 +22,7 @@
 <div class="container top-menu-layout">
     <header class="row top-menu">
         <div class="col-12 col-sm-3 top-logo global-logo">
-{#            <img src="/static/landing/img/logo.png">#}
+            {#            <img src="/static/landing/img/logo.png">#}
             <span class="bigger">Майстерня</span>
             <span class="smaller">вишиванок</span>
         </div>
@@ -89,44 +89,44 @@
                 </ul>
             </div>
 
-{% block inclusive_basket %}
-            <div class="basket-container hidden" id="basket-container">
-                <ul class="basket-list" id="basket-list">
-                {% if get_basket.items %}
-                    {% for item in get_basket.items %}
-                        <li class="item {{ forloop.counter }}">
-                            <div class="image-container">
-                                <img class="" src="{{ item.product.get_image_basic.url }}">
-                            </div>
-                            <div class="text-container">
-                                <div class="name">{{ item.product.name }}</div>
-                                <div class="size">{{ item.size.name }}</div>
-                                <div class="price">{{ item.product.price }}</div>
-                            </div>
-                            <div class="horizontal-text-container" id="token-holder">
-                                <span class="count">x {{ item.quantity }}</span>
-                                <span class="item-total-price">{{ item.total_price }}</span>
-                                <button
-                                        id="item_remove"
-                                        class="item_remove remove"
-                                        data-item_id = "{{ item.id }}"
-                                        data-item_size = "{{ item.size.name }}"
-                                        data-url = "{% url 'orders:basket_remove' %}"
-                                        data-counter = "{{ forloop.counter }}"
-                                        value="X">X</button>
-                            </div>
-                        </li>
-                    {% endfor %}
-                {% endif %}
-                </ul>
-                <div class="overall-cart-price">
-                    Сума замовлення:
-                    <span id="basket-total-price" class="basket-total-price">{{ get_basket.basket_total_price }}</span>
+            {% block inclusive_basket %}
+                <div class="basket-container hidden" id="basket-container">
+                    <ul class="basket-list" id="basket-list">
+                        {% if get_basket.items %}
+                            {% for item in get_basket.items %}
+                                <li class="item {{ forloop.counter }}">
+                                    <div class="image-container">
+                                        <img class="" src="{{ item.product.get_image_basic.url }}">
+                                    </div>
+                                    <div class="text-container">
+                                        <div class="name">{{ item.product.name }}</div>
+                                        <div class="size">{{ item.size.name }}</div>
+                                        <div class="price">{{ item.product.price }}</div>
+                                    </div>
+                                    <div class="horizontal-text-container" id="token-holder">
+                                        <span class="count">x {{ item.quantity }}</span>
+                                        <span class="item-total-price">{{ item.total_price }}</span>
+                                        <button
+                                                id="item_remove"
+                                                class="item_remove remove"
+                                                data-item_id = "{{ item.id }}"
+                                                data-item_size = "{{ item.size.name }}"
+                                                data-url = "{% url 'orders:basket_remove' %}"
+                                                data-counter = "{{ forloop.counter }}"
+                                                value="X">X</button>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <div class="overall-cart-price">
+                        Сума замовлення:
+                        <span id="basket-total-price" class="basket-total-price">{{ get_basket.basket_total_price }}</span>
+                    </div>
+                    <a href="{% url 'orders:checkout' %}" class="checkout">Оформити замовлення</a>
+                    <a href="{% url 'orders:checkout' %}" class="view-cart">До корзини</a>
                 </div>
-                <a href="{% url 'orders:checkout' %}" class="checkout">Оформити замовлення</a>
-                <a href="{% url 'orders:checkout' %}" class="view-cart">До корзини</a>
-            </div>
-{% endblock %}
+            {% endblock %}
         </div>
     </header>
 </div>

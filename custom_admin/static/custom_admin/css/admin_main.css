@@ -38,24 +38,23 @@ a:hover {
 
 .top-menu-layout .top-menu .top-logo {
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
 }
-.top-menu-layout .top-menu .top-logo span {
+.top-menu-layout .top-menu .top-logo .logo {
   font-family: "logo1", sans-serif;
   color: #000;
   font-weight: normal;
-  display: block;
-  line-height: 0.8;
+  line-height: 0.9;
+  font-size: 1.4rem;
 }
-.top-menu-layout .top-menu .top-logo .bigger {
-  font-size: 2.7rem;
-}
-.top-menu-layout .top-menu .top-logo .smaller {
-  font-size: 1.7rem;
+.top-menu-layout .top-menu .top-logo .logo .smaller {
   font-weight: 100;
   color: #f10;
+}
+.top-menu-layout .top-menu .top-logo .speciality {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
 }
 .top-menu-layout .top-menu .menu-list ul li {
   display: inline-flex;
@@ -139,182 +138,76 @@ a:hover {
   right: -1px;
   top: 0;
 }
-.top-menu-layout .top-menu .user-interface .basket-container {
-  position: absolute;
-  z-index: 200;
-  top: 55px;
-  left: -8vw;
-  border: solid #cecece 2px;
-  background: #f1ebed;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list {
-  display: block;
-  background: white;
-  max-height: 40vh;
-  overflow-y: auto;
+
+.main-layout .main .sidebar .functions-block {
+  font-family: "Open Sans", sans-serif;
+  color: black;
   margin-bottom: 20px;
 }
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item {
-  display: flex;
-  padding: 4px 3px;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item .image-container {
-  flex-basis: 80px;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item .image-container img {
-  display: block;
-  width: 100%;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item .text-container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-  font-family: "Open Sans", sans-serif;
-  padding: 0 4px;
-  color: #282828;
-  font-weight: 400;
-  flex-grow: 1;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item .text-container .name {
-  font-size: 0.8rem;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item .text-container .size {
-  font-size: 0.7rem;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item .text-container .price {
-  color: #464646;
-  font-size: 0.65rem;
-  font-weight: 600;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item .horizontal-text-container {
-  display: flex;
-  align-items: center;
-  justify-content: baseline;
-  flex-direction: row;
-  font-family: "Open Sans", sans-serif;
-  color: #282828;
-  flex-basis: 100px;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item .horizontal-text-container .count {
-  padding: 0 4px;
-  font-size: 0.8rem;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item .horizontal-text-container .item-total-price {
-  padding: 0 4px;
-  font-size: 0.8rem;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item .horizontal-text-container .remove {
-  padding: 0;
-  font-size: 0.8rem;
-  background: none;
-  border: none;
-  color: #ea704c;
-  margin: 0;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .basket-list .item.new {
-  background-color: #f6b28f;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .overall-cart-price {
-  text-align: right;
-  padding-right: 15px;
-  font-family: "Open Sans", sans-serif;
+.main-layout .main .sidebar .functions-block .header {
   font-weight: bold;
-  color: #000000;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #cecece;
   margin-bottom: 10px;
 }
-.top-menu-layout .top-menu .user-interface .basket-container a {
-  float: right;
-  margin-right: 15px;
+.main-layout .main .sidebar .functions-block ul.functions {
+  font-size: 0.9rem;
+}
+.main-layout .main .sidebar .functions-block ul.functions li {
   margin-bottom: 5px;
-  border: solid 2px #cecece;
-  cursor: pointer;
-  background: none;
-  color: #ffffff;
-  padding: 3px 5px;
-  border-radius: 6px;
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.8rem;
 }
-.top-menu-layout .top-menu .user-interface .basket-container .view-cart {
-  background: #ea704c;
-}
-.top-menu-layout .top-menu .user-interface .basket-container .checkout {
-  background: #e54833;
-}
-.top-menu-layout .top-menu .user-interface .drop-user-menu {
-  position: absolute;
-  top: 58px;
-  left: 73px;
-  z-index: 400;
-}
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul {
-  padding: 3px 8px;
-  border: solid #cecece 2px;
-  border-radius: 5px;
-  background: #ffffff;
-  width: max-content;
-}
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li a, .top-menu-layout .top-menu .user-interface .drop-user-menu ul li label {
-  display: block;
-  background: white;
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.8rem;
+.main-layout .main .sidebar .functions-block ul.functions li a {
   color: #282828;
-  padding: 4px 6px;
 }
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li a:hover, .top-menu-layout .top-menu .user-interface .drop-user-menu ul li label:hover {
-  color: #ff4081;
-  font-weight: bold;
-}
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li a:before, .top-menu-layout .top-menu .user-interface .drop-user-menu ul li label:before {
-  display: block;
-  content: attr(title);
-  font-weight: bold;
-  height: 0;
-  overflow: hidden;
-  visibility: hidden;
-  padding: 0 1px;
-}
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li:not(:last-child) a, .top-menu-layout .top-menu .user-interface .drop-user-menu ul li:not(:last-child) label {
-  border-bottom: 1px solid #cecece;
-}
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li:not(:last-child):hover {
-  border-color: #ff4081;
-}
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order {
-  display: none;
-}
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form {
-  border: 1px solid #cecece;
-  width: 150px;
+.main-layout .main .sidebar .functions-block ul.functions form {
   display: flex;
+  width: 100%;
 }
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form:hover {
-  border-color: #ff4081;
+.main-layout .main .sidebar .functions-block ul.functions form input {
+  display: block;
+  flex-grow: 1;
+  border: 1px #939393 solid;
+  padding: 1px 3px;
 }
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form input {
-  border: none;
-  overflow: auto;
-  background: white;
+.main-layout .main .sidebar .functions-block ul.functions form button {
+  display: block;
+  background: none;
+  border: 1px solid #939393;
+  border-left: none;
+  padding: 3px 5px;
+}
+.main-layout .main .content .functions-block {
   font-family: "Open Sans", sans-serif;
-  font-size: 0.8rem;
-  color: #282828;
-  padding: 4px 6px;
-  padding-right: 0;
+  color: black;
+  margin-bottom: 20px;
 }
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form button {
-  border: none;
-  background: white;
-  padding: 0 5px;
+.main-layout .main .content .functions-block .header {
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #cecece;
+  margin-bottom: 10px;
 }
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form button i {
-  color: #464646;
+.main-layout .main .content .functions-block .square-block {
+  background: #cecece;
+  padding: 5px;
+  border: 1px solid #939393;
+  height: 110px;
 }
-.top-menu-layout .top-menu .user-interface .drop-user-menu ul li.search-order form button i:hover {
-  color: #ff4081;
-  transform: scale(1.1);
+.main-layout .main .content .functions-block .square-block .icon {
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-layout .main .content .functions-block .square-block .description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 40%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  color: black;
 }
 
 /*# sourceMappingURL=admin_main.css.map */
