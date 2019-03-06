@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&subset=cyrillic')
+@import url('https://fonts.googleapis.com/css?family=Philosopher')
+@import "_fonts.sass"
+//$highlight_lightest: #e18cad
+//$highlight_lighter: #fe8cb9
+//$highlight : #cf2027
+//$highlight : #ff4081
+//$highlight_lightest: #e18cad
+//$highlight_lighter: #fe8cb9
+//$highlight_darker: #fe4080
+//$highlight_darkest: #c1185b
+//Блекло красный
+//$highlight_lightest: #ffb8c5
+//$highlight_lighter: #ff8192
+//$highlight_darker: #ff6777
+//$highlight_darkest: #cf545c
+//$highlight: #f95461
+// Морковный
+$highlight_lightest: #f6b28f
+$highlight_lighter: #f1936c
+$highlight_darker: #ea704c
+$highlight_darkest: #e54833
+$highlight_opaque: rgba(229, 72, 51, 0.8)
+$highlight: #ff4081
+$lighter: #cecece
+$light: #939393
+$dark: #464646
+$darker: #282828
+*
+  padding: 0
+  margin: 0
+ul
+  list-style: none
+  margin: 0
+.hidden
+  visibility: hidden
+a:hover
+  text-decoration: none
+.top-menu-layout
+  .top-menu
+    .top-logo
+      display: flex
+      align-items: flex-start
+      justify-content: center
+      flex-direction: column
+      span
+        font-family: "logo1", sans-serif
+        color: #000
+        font-weight: normal
+        display: block
+        line-height: 0.8
+      .bigger
+        font-size: 2.7rem
+
+      .smaller
+        font-size: 1.7rem
+        font-weight: 100
+        color: #f10
+
+    .menu-list ul li
+      display: inline-flex
+      height: 5.5rem
+      align-items: center
+      padding: 0 5px
+      position: relative
+
+      a
+        font-family: 'Open Sans', sans-serif
+        color: $dark
+        font-size: 0.9rem
+      // Хак, чтобы когда шрифт толстел - элементы не смещались. Место для жирного шрифта заранее резервировано
+      a:before
+        display: block
+        content: attr(title)
+        font-weight: bold
+        height: 0
+        overflow: hidden
+        visibility: hidden
+        padding: 0 1px
+
+      a:hover
+        color: $highlight
+        font-weight: bold
+
+      a:hover:after
+        display: inline-block
+        position: absolute
+        content: ""
+        width: 100%
+        height: 5px
+        bottom: 5px
+        left: 0
+        background: $highlight
+
+    .user-interface
+      display: flex
+      align-items: end
+      justify-content: end
+      position: relative
+      ul.icons
+        .icon ~ .icon
+          margin-left: 9px
+        .icon ~ .icon:before
+          display: inline
+          margin: 0 7px 0 0
+          content: "/"
+          font-size: 1.3rem
+          color: $lighter
+          vertical-align: middle
+        .icon
+          display: inline-block
+          a
+            line-height: 5.5rem
+            vertical-align: middle
+            position: relative
+            color: $dark
+            font-size: 19px
+            padding: 10px
+            img
+              vertical-align: baseline
+            &:hover, &.active
+              color: $highlight
+          .circle-counter
+            height: 1.2rem
+            width: 1.2rem
+            line-height: 1.2rem
+            border-radius: 50%
+            background: $highlight
+            text-align: center
+            font-size: 0.7rem
+            color: white
+            position: absolute
+            right: -1px
+            top: 0
+      .basket-container
+        position: absolute
+        z-index: 200
+        top: 55px
+        left: -8vw
+        border: solid $lighter 2px
+        background: #f1ebed
+        .basket-list
+          display: block
+          background: white
+          max-height: 40vh
+          overflow-y: auto
+          margin-bottom: 20px
+          .item
+            display: flex
+            padding: 4px 3px
+            .image-container
+              flex-basis: 80px
+
+              img
+                display: block
+                width: 100%
+
+            .text-container
+              display: flex
+              align-items: flex-start
+              justify-content: center
+              flex-direction: column
+              font-family: "Open Sans", sans-serif
+              padding: 0 4px
+              color: $darker
+              font-weight: 400
+              flex-grow: 1
+
+              .name
+                font-size: 0.8rem
+
+              .size
+                font-size: 0.7rem
+
+              .price
+                color: $dark
+                font-size: 0.65rem
+                font-weight: 600
+
+            .horizontal-text-container
+              display: flex
+              align-items: center
+              justify-content: baseline
+              flex-direction: row
+              font-family: "Open Sans", sans-serif
+              color: $darker
+              flex-basis: 100px
+
+              .count
+                padding: 0 4px
+                font-size: 0.8rem
+
+              .item-total-price
+                padding: 0 4px
+                font-size: 0.8rem
+
+              .remove
+                padding: 0
+                font-size: 0.8rem
+                background: none
+                border: none
+                color: $highlight_darker
+                margin: 0
+          .item.new
+            background-color: $highlight_lightest
+        .overall-cart-price
+          text-align: right
+          padding-right: 15px
+          font-family: "Open Sans", sans-serif
+          font-weight: bold
+          color: #000000
+          font-size: 0.9rem
+          margin-bottom: 10px
+
+        a
+          float: right
+          margin-right: 15px
+          margin-bottom: 5px
+          border: solid 2px $lighter
+          cursor: pointer
+          background: none
+          color: #ffffff
+          padding: 3px 5px
+          border-radius: 6px
+          font-family: "Open Sans", sans-serif
+          font-size: 0.8rem
+
+        .view-cart
+          background: $highlight_darker
+
+        .checkout
+          background: $highlight_darkest
+      .drop-user-menu
+        position: absolute
+        top: 58px
+        left: 73px
+        z-index: 400
+        ul
+          padding: 3px 8px
+          border: solid $lighter 2px
+          border-radius: 5px
+          background: #ffffff
+          width: max-content
+          li
+            a, label
+              display: block
+              background: white
+              font-family: "Open Sans", sans-serif
+              font-size: 0.8rem
+              color: $darker
+              padding: 4px 6px
+              &:hover
+                color: $highlight
+                font-weight: bold
+              &:before
+                display: block
+                content: attr(title)
+                font-weight: bold
+                height: 0
+                overflow: hidden
+                visibility: hidden
+                padding: 0 1px
+          li:not(:last-child)
+            a, label
+              border-bottom: 1px solid $lighter
+            &:hover
+              border-color: $highlight
+          li.search-order
+            display: none
+            form
+              border: 1px solid $lighter
+              width: 150px
+              display: flex
+              &:hover
+                border-color: $highlight
+              input
+                border: none
+                overflow: auto
+                //display: inline
+                background: white
+                font-family: "Open Sans", sans-serif
+                font-size: 0.8rem
+                color: $darker
+                padding: 4px 6px
+                padding-right: 0
+              button
+                border: none
+                //display: inline
+                background: white
+                padding: 0 5px
+                i
+                  color: $dark
+                  &:hover
+                    color: $highlight
+                    transform: scale(1.1)

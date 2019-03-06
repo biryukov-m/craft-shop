@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "custom_admin/css/admin_main.css" %}">
+{#    <link rel="stylesheet" href="{% static  %}">#}
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+          integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "landing/jquery-ui-1.12/jquery-ui.min.css" %}">
+    <title>Управління</title>
+</head>
+<body>
+<div class="container top-menu-layout">
+    <header class="row top-menu">
+        <div class="col-12 col-sm-3 top-logo global-logo">
+            <span class="bigger">Майстерня</span>
+            <span class="smaller">вишиванок</span>
+        </div>
+        <div class="col-sm-6 menu-list">
+            <ul>
+                <li>
+                    <a href="#" title="Замовлення"><span>Замовлення</span></a>
+                </li>
+                <li>
+                    <a href="{% url 'landing:shop' %}" title="Товари"><span>Товари</span></a>
+                </li>
+                <li>
+                    <a href="#" title="Блог"><span>Блог</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-3 user-interface">
+            <ul class="icons">
+                <li class="icon">
+                    <a href="#" class="search">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </li>
+                <li class="user icon">
+                    <a id="user-topmenu-icon" href="#">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                <li class="icon">
+                    <a href="#" id="basket-icon" class="basket">
+                        <i class="fas fa-shopping-basket"></i>
+                        {% if get_basket.items_count > 0 %}
+                            <span id="circle-counter" class="circle-counter">{{ get_basket.items_count }}</span>
+                        {% else %}
+                            <span id="circle-counter" class="circle-counter hidden">{{ get_basket.items_count }}</span>
+                        {% endif %}
+                    </a>
+
+                </li>
+                <li class="icon">
+                    <a href="#" class="settings">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="drop-user-menu" id="drop-user-menu">
+                <ul>
+                    <li><a title="Увійти" href="#">Увійти</a></li>
+                    <li><a title="Зареєструватися" href="#">Зареєструватися</a></li>
+                    <li id="find-order"><label title="Знайти замовлення" for="search-order">Знайти замовлення</label></li>
+                    <li class="search-order" id="hidden-search-order-input">
+                        <form method="GET" action="{% url "orders:single_order_hash_code" %}">
+                            <input id="hash_code" name="hash_code" type="text" placeholder="код замовлення">
+                            <button type="submit"><i class="fas fa-sm fa-search"></i></button>
+                        </form>
+                    </li>
+                    <li><a title="Мої замовлення" href="#">Мої замовлення</a></li>
+                </ul>
+            </div>
+
+            {% block inclusive_basket %}
+                <div class="basket-container hidden" id="basket-container">
+                    <ul class="basket-list" id="basket-list">
+                        {% if get_basket.items %}
+                            {% for item in get_basket.items %}
+                                <li class="item {{ forloop.counter }}">
+                                    <div class="image-container">
+                                        <img class="" src="{{ item.product.get_image_basic.url }}">
+                                    </div>
+                                    <div class="text-container">
+                                        <div class="name">{{ item.product.name }}</div>
+                                        <div class="size">{{ item.size.name }}</div>
+                                        <div class="price">{{ item.product.price }}</div>
+                                    </div>
+                                    <div class="horizontal-text-container" id="token-holder">
+                                        <span class="count">x {{ item.quantity }}</span>
+                                        <span class="item-total-price">{{ item.total_price }}</span>
+                                        <button
+                                                id="item_remove"
+                                                class="item_remove remove"
+                                                data-item_id = "{{ item.id }}"
+                                                data-item_size = "{{ item.size.name }}"
+                                                data-url = "{% url 'orders:basket_remove' %}"
+                                                data-counter = "{{ forloop.counter }}"
+                                                value="X">X</button>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <div class="overall-cart-price">
+                        Сума замовлення:
+                        <span id="basket-total-price" class="basket-total-price">{{ get_basket.basket_total_price }}</span>
+                    </div>
+                    <a href="{% url 'orders:checkout' %}" class="checkout">Оформити замовлення</a>
+                    <a href="{% url 'orders:checkout' %}" class="view-cart">До корзини</a>
+                </div>
+            {% endblock %}
+        </div>
+    </header>
+</div>
+{% block csrf_token %}<form id="csrf-token">{% csrf_token %}</form>{% endblock %}
+<div class="container main-layout">
+    {% block content %}{% endblock %}
+</div>
+{% block javascripts %}
+    {% include 'base__scripts.html' %}
+{% endblock %}
+</body>
+</html>

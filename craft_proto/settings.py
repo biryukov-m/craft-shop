@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'product',
     'properties',
     'orders',
+    'custom_admin',
     'eav',
     'django_filters',
 ]
