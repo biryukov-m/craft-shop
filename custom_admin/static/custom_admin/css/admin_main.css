@@ -199,6 +199,11 @@ a:hover {
   align-items: center;
   justify-content: center;
 }
+.main-layout .main .content .functions-block .square-block .icon.number {
+  font-family: "Open Sans", sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+}
 .main-layout .main .content .functions-block .square-block .description {
   display: flex;
   align-items: center;
@@ -208,6 +213,12 @@ a:hover {
   font-family: "Open Sans", sans-serif;
   font-size: 0.9rem;
   color: black;
+}
+.main-layout .main .content .functions-block .square-block .description label {
+  margin: 0;
+}
+.main-layout .main .content .functions-block .square-block .description form input {
+  max-width: 70%;
 }
 
 /*# sourceMappingURL=admin_main.css.map */
