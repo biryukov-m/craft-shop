@@ -69,10 +69,10 @@ class Order(models.Model):
                                    null=True,
                                    verbose_name='Ключ сесії покупця')
 
-    customer_name = models.CharField(max_length=64,
+    customer_name = models.CharField(max_length=80,
                                      verbose_name="Ім'я покупця")
 
-    customer_email = models.EmailField(max_length=30,
+    customer_email = models.EmailField(max_length=70,
                                        null=True,
                                        verbose_name="Електронна пошта покупця")
 
@@ -86,11 +86,11 @@ class Order(models.Model):
                                         max_length=300,
                                         verbose_name="Комментар до замовлення")
 
-    customer_city = models.CharField(max_length=20,
+    customer_city = models.CharField(max_length=80,
                                      null=True,
                                      verbose_name='Місто покупця')
 
-    customer_address = models.CharField(max_length=20,
+    customer_address = models.CharField(max_length=100,
                                         null=True,
                                         verbose_name='Адреса (вулиця, будинок) покупця')
 
@@ -120,6 +120,7 @@ class Order(models.Model):
     def get_absolute_url(self):
         url = reverse('orders:single_order_hash_code', kwargs={"hash_code": self.hash_code})
         return url
+
 
     class Meta:
         verbose_name = "Замовлення"
@@ -249,11 +250,20 @@ class ProductInBasket(models.Model):
 
 def post_save_for_order(instance, **kwargs):
     if not (instance.code or instance.hash_code):
-        code = instance.pk + 100
-        hash_code = generate_order_hash(code)
-        instance.code = code
-        instance.hash_code = hash_code
-        instance.save()
+        try:
+            code = instance.pk + 100
+            hash_code = generate_order_hash(code)
+            instance.code = code
+            instance.hash_code = hash_code
+            new_order_status = Status.objects.get(pk=1)
+            instance.status.add(new_order_status)
+            instance.save()
+        except:
+            print('ERROR WITH post_save_for_order:'
+                  'probably something wrong with order status,'
+                  'order code, or order hash_code generation')
+            print('Deleting instance with error')
+            instance.delete()
 
 
 post_save.connect(post_save_for_order, sender=Order)

@@ -165,9 +165,11 @@ a:hover {
 }
 .main-layout .main .sidebar .functions-block ul.functions form input {
   display: block;
+  background: white;
+  color: black;
   flex-grow: 1;
   border: 1px #939393 solid;
-  padding: 1px 3px;
+  padding: 3px 5px;
 }
 .main-layout .main .sidebar .functions-block ul.functions form button {
   display: block;
@@ -187,38 +189,85 @@ a:hover {
   border-bottom: 2px solid #cecece;
   margin-bottom: 10px;
 }
-.main-layout .main .content .functions-block .square-block {
-  background: #cecece;
+.main-layout .main .content .functions-block li .square-block {
+  background: #feffec;
   padding: 5px;
-  border: 1px solid #939393;
+  border: 2px solid #babab2;
   height: 110px;
 }
-.main-layout .main .content .functions-block .square-block .icon {
+.main-layout .main .content .functions-block li .square-block .icon {
   height: 60%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  color: #616158;
 }
-.main-layout .main .content .functions-block .square-block .icon.number {
+.main-layout .main .content .functions-block li .square-block .icon.number {
   font-family: "Open Sans", sans-serif;
   font-size: 3rem;
   font-weight: 900;
 }
-.main-layout .main .content .functions-block .square-block .description {
+.main-layout .main .content .functions-block li .square-block .description {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   text-align: center;
   height: 40%;
   font-family: "Open Sans", sans-serif;
   font-size: 0.9rem;
+  font-weight: 600;
+  color: #616158;
+}
+.main-layout .main .content .functions-block li .square-block .description.find-by-number {
+  flex-direction: column;
+  align-items: center;
+}
+.main-layout .main .content .functions-block li .square-block .description.find-by-number label {
+  font-size: 0.8rem;
+}
+.main-layout .main .content .functions-block li .square-block .description form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 69%;
+}
+.main-layout .main .content .functions-block li .square-block .description form input {
+  max-width: 100%;
+  background: white;
+  color: black;
+  padding: 1px 5px;
+  padding-right: 35px;
+  border: 1px solid #babab2;
+  font-size: 0.8rem;
+}
+.main-layout .main .content .functions-block li .square-block .description form button {
+  position: absolute;
+  right: 0;
+  color: #6a656c;
+  background: white;
+  height: 24px;
+  padding: 0 8px;
+  cursor: pointer;
+  border: 1px solid #babab2;
+}
+.main-layout .main .content .functions-block li .square-block .description form button:hover {
   color: black;
 }
-.main-layout .main .content .functions-block .square-block .description label {
-  margin: 0;
+.main-layout .main .content .functions-block li:hover .square-block {
+  border-color: #ff537d;
 }
-.main-layout .main .content .functions-block .square-block .description form input {
-  max-width: 70%;
+.main-layout .main .content .functions-block li:hover .icon {
+  color: #ff537d;
+}
+.main-layout .main .content .functions-block li:hover .description {
+  color: #ff537d;
+}
+.main-layout .main .content .orders-table-content .table-wrapper table {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  color: black;
 }
 
 /*# sourceMappingURL=admin_main.css.map */

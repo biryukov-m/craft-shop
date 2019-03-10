@@ -59,7 +59,7 @@
                         <li>Спосіб доставки: {{ order.delivery_method }}</li>
                         <li>Місто: {{ order.customer_city }}</li>
                         <li>Адреса: {{ order.customer_address }}</li>
-                        <li>Поштовий індекс: {% if order.postal_index  %}{{ order.postal_index }}{% else %} -{% endif %}</li>
+                        <li>Поштовий індекс: {% if order.postal_code  %}{{ order.postal_code }}{% else %} -{% endif %}</li>
                     </ul>
                 </div>
                 <div class="basket-list">

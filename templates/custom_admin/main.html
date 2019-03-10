@@ -7,7 +7,8 @@
             <li>
                 <label for="find-order-by-number">Знайти замовлення за номером</label>
                 <form class="find-order" action="">
-                    <input type="number" name="find-order-by-number" id="find-order-by-number" min="0" max="1000000">
+                    <input type="text" pattern="[0-9]{3,10}" name="find-order-by-number" id="find-order-by-number">
+
                     <button><i class="fas fa-search"></i></button>
                 </form>
             </li>
@@ -27,48 +28,50 @@
 {% block content %}
     <div class="functions-block">
         <div class="header">Замовлення</div>
-        <ul class="row functions">
+        <ul class="row">
             <div class="col-md-3">
-                <div class="square-block">
-                    <div class="icon number">№ ...</div>
-                    <div class="description">
-                        <li>
-                            <span for="find-order-by-number">Знайти за номером</span>
+                <li>
+                    <div class="square-block">
+                        <div class="icon number">№ ...</div>
+                        <div class="description find-by-number">
                             <form class="find-order" action="">
-                                <input type="number" name="find-order-by-number" id="find-order-by-number" min="0" max="1000000">
+                                <input type="text" pattern="[0-9]{3,10}" name="content-find-order-by-number" id="content-find-order-by-number">
                                 <button><i class="fas fa-search"></i></button>
                             </form>
-                        </li>
+                            <label for="content-find-order-by-number">Знайти за номером</label>
+                        </div>
                     </div>
-                </div>
+                </li>
             </div>
-            <div class="col-md-3 ">
-                <div class="square-block">
-                    <div class="icon">
-                        <i class="fas fa-3x fa-file-contract"></i>
+            <div class="col-md-3">
+                <li>
+                    <div class="square-block">
+                        <a href="#">
+                            <div class="icon"><i class="fas fa-3x fa-file-contract"></i></div>
+                            <div class="description">В роботі</div>
+                        </a>
                     </div>
-                    <div class="description">
-                        <li><a href="#">В роботі</a></li>
-                    </div>
-                </div>
+                </li>
             </div>
-            <div class="col-md-3 ">
-                <div class="square-block">
-                    <div class="icon">
-                        <i class="fas fa-3x fa-asterisk"></i>
+            <div class="col-md-3">
+                <li>
+                    <div class="square-block">
+                        <a href="#">
+                            <div class="icon"><i class="fas fa-3x fa-asterisk"></i></div>
+                            <div class="description">Нові</div>
+                        </a>
                     </div>
-                    <div class="description">
-                        <li><a href="#">Нові</a></li>
-                    </div>
-                </div>
+                </li>
             </div>
-            <div class="col-md-3 ">
-                <div class="square-block">
-                    <div class="icon"><i class="fas fa-3x fa-file-alt"></i></div>
-                    <div class="description">
-                        <li><a href="#">Усі</a></li>
+            <div class="col-md-3">
+                <li>
+                    <div class="square-block">
+                        <a href="#">
+                            <div class="icon"><i class="fas fa-3x fa-file-alt"></i></div>
+                            <div class="description">Усі</div>
+                        </a>
                     </div>
-                </div>
+                </li>
             </div>
         </ul>
     </div>
@@ -76,22 +79,24 @@
         <div class="header">Товари</div>
         <ul class="row functions">
             <div class="col-md-3">
-                <div class="square-block">
-                    <div class="icon"><i class="fas fa-3x fa-list"></i></div>
-                    <div class="description">
-                        <li><a href="#">Перейти до списку товарів</a></li>
+                <li>
+                    <div class="square-block">
+                        <a href="#">
+                            <div class="icon"><i class="fas fa-3x fa-list"></i></div>
+                            <div class="description">До списку товарів</div>
+                        </a>
                     </div>
-                </div>
+                </li>
             </div>
             <div class="col-md-3">
-                <div class="square-block">
-                    <div class="icon">
-                        <i class="fas fa-3x fa-plus"></i>
+                <li>
+                    <div class="square-block">
+                        <a href="#">
+                            <div class="icon"><i class="fas fa-3x fa-plus"></i></div>
+                            <div class="description">Додати новий товар</div>
+                        </a>
                     </div>
-                    <div class="description">
-                        <li><a href="#">Додати новий товар</a></li>
-                    </div>
-                </div>
+                </li>
             </div>
         </ul>
     </div>

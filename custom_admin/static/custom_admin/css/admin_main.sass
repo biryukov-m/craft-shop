@@ -149,9 +149,11 @@ a:hover
             width: 100%
             input
               display: block
+              background: white
+              color: black
               flex-grow: 1
               border: 1px $light solid
-              padding: 1px 3px
+              padding: 3px 5px
             button
               display: block
               background: none
@@ -168,31 +170,85 @@ a:hover
           font-size: 1.2rem
           border-bottom: 2px solid $lighter
           margin-bottom: 10px
-        .square-block
-          background: $lighter
-          padding: 5px
-          border: 1px solid $light
-          height: 110px
-          .icon
-            height: 60%
-            display: flex
-            align-items: center
-            justify-content: center
-            &.number
+        li
+          .square-block
+            background: #feffec
+            padding: 5px
+            border: 2px solid #babab2
+            height: 110px
+            .icon
+              height: 60%
+              display: flex
+              align-items: flex-end
+              justify-content: center
+              color: #616158
+              &.number
+                font-family: "Open Sans", sans-serif
+                font-size: 3rem
+                font-weight: 900
+            .description
+              display: flex
+              align-items: flex-end
+              justify-content: center
+              text-align: center
+              height: 40%
               font-family: "Open Sans", sans-serif
-              font-size: 3rem
-              font-weight: 900
-          .description
-            display: flex
-            align-items: center
-            justify-content: center
-            text-align: center
-            height: 40%
+              font-size: 0.9rem
+              font-weight: 600
+              color: #616158
+              &.find-by-number
+                flex-direction: column
+                align-items: center
+                label
+                  font-size: 0.8rem
+              form
+                position: relative
+                display: flex
+                align-items: center
+                justify-content: center
+                margin: 0 auto
+                width: 69%
+                input
+                  max-width: 100%
+                  background: white
+                  color: black
+                  padding: 1px 5px
+                  padding-right: 35px
+                  border: 1px solid #babab2
+                  font-size: 0.8rem
+                button
+                  position: absolute
+                  right: 0
+                  color: #6a656c
+                  background: white
+                  height: 24px
+                  padding: 0 8px
+                  cursor: pointer
+                  border: 1px solid #babab2
+                  &:hover
+                    color: black
+          &:hover
+            .square-block
+              border-color: #ff537d
+            .icon
+              color: #ff537d
+            .description
+              color: #ff537d
+
+      .orders-table-content
+        .header
+        .display-functions
+          ul
+            li
+        .table-wrapper
+          table
             font-family: "Open Sans", sans-serif
             font-size: 0.9rem
             color: black
-            label
-              margin: 0
-            form
-              input
-                max-width: 70%
+            thead
+              tr
+                th
+            tbody
+              tr
+                th
+                td
