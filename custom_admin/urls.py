@@ -1,11 +1,11 @@
 from django.urls import path
 from .views import main
-from .views import orders
+from .views import Orders
 
 
 urlpatterns = [
     path('', main, name='main'),
-    path('orders/', orders, name='orders'),
+    path('orders/', Orders.as_view(), name='orders'),
 ]
 
 app_name = 'custom_admin'

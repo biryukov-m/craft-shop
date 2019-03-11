@@ -192,7 +192,7 @@ a:hover {
 .main-layout .main .content .functions-block li .square-block {
   background: #feffec;
   padding: 5px;
-  border: 2px solid #babab2;
+  border: 2px solid #cecece;
   height: 110px;
 }
 .main-layout .main .content .functions-block li .square-block .icon {
@@ -200,7 +200,7 @@ a:hover {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  color: #616158;
+  color: #727272;
 }
 .main-layout .main .content .functions-block li .square-block .icon.number {
   font-family: "Open Sans", sans-serif;
@@ -216,7 +216,7 @@ a:hover {
   font-family: "Open Sans", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #616158;
+  color: #727272;
 }
 .main-layout .main .content .functions-block li .square-block .description.find-by-number {
   flex-direction: column;
@@ -263,6 +263,11 @@ a:hover {
 }
 .main-layout .main .content .functions-block li:hover .description {
   color: #ff537d;
+}
+.main-layout .main .content .orders-table-content header h3 {
+  font-family: "Open Sans", sans-serif;
+  color: black;
+  font-weight: bold;
 }
 .main-layout .main .content .orders-table-content .table-wrapper table {
   font-family: "Open Sans", sans-serif;

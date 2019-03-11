@@ -12,9 +12,9 @@
                     <button><i class="fas fa-search"></i></button>
                 </form>
             </li>
-            <li><a href="#">Замовлення в роботі</a></li>
-            <li><a href="#">Нові замовлення</a></li>
-            <li><a href="#">Усі замовлення</a></li>
+            <li><a href="{% url "custom_admin:orders" %}">Замовлення в роботі</a></li>
+            <li><a href="{% url "custom_admin:orders" %}">Нові замовлення</a></li>
+            <li><a href="{% url "custom_admin:orders" %}">Усі замовлення</a></li>
         </ul>
     </div>
     <div class="functions-block">
@@ -46,7 +46,7 @@
             <div class="col-md-3">
                 <li>
                     <div class="square-block">
-                        <a href="#">
+                        <a href="{% url "custom_admin:orders" %}">
                             <div class="icon"><i class="fas fa-3x fa-file-contract"></i></div>
                             <div class="description">В роботі</div>
                         </a>
@@ -56,7 +56,7 @@
             <div class="col-md-3">
                 <li>
                     <div class="square-block">
-                        <a href="#">
+                        <a href="{% url "custom_admin:orders" %}">
                             <div class="icon"><i class="fas fa-3x fa-asterisk"></i></div>
                             <div class="description">Нові</div>
                         </a>
@@ -66,7 +66,7 @@
             <div class="col-md-3">
                 <li>
                     <div class="square-block">
-                        <a href="#">
+                        <a href="{% url "custom_admin:orders" %}">
                             <div class="icon"><i class="fas fa-3x fa-file-alt"></i></div>
                             <div class="description">Усі</div>
                         </a>

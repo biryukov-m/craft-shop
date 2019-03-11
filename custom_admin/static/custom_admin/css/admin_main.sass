@@ -174,14 +174,14 @@ a:hover
           .square-block
             background: #feffec
             padding: 5px
-            border: 2px solid #babab2
+            border: 2px solid $lighter
             height: 110px
             .icon
               height: 60%
               display: flex
               align-items: flex-end
               justify-content: center
-              color: #616158
+              color: #727272
               &.number
                 font-family: "Open Sans", sans-serif
                 font-size: 3rem
@@ -195,7 +195,7 @@ a:hover
               font-family: "Open Sans", sans-serif
               font-size: 0.9rem
               font-weight: 600
-              color: #616158
+              color: #727272
               &.find-by-number
                 flex-direction: column
                 align-items: center
@@ -236,7 +236,11 @@ a:hover
               color: #ff537d
 
       .orders-table-content
-        .header
+        header
+          h3
+            font-family: "Open Sans", sans-serif
+            color: black
+            font-weight: bold
         .display-functions
           ul
             li
