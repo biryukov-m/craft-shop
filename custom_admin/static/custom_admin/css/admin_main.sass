@@ -145,15 +145,16 @@ a:hover
             a
               font-family: "Open Sans", sans-serif
               color: black
+              font-size: 0.95rem
               &:hover
                 color: $highlight
 
-        form
+        form.filters
           .attribute
             margin-bottom: 10px
             .header-wrapper
               .header
-              .line
+                font-size: 1rem
             .select-wrapper
               display: flex
               input[type=text]
@@ -173,8 +174,6 @@ a:hover
                     align-items: center
                   input[type=checkbox]
                     margin-right: 5px
-
-
     .content
       .functions-block
         font-family: "Open Sans", sans-serif
@@ -244,12 +243,11 @@ a:hover
                     color: black
           &:hover
             .square-block
-              border-color: #ff537d
+              border-color: $highlight
             .icon
-              color: #ff537d
+              color: $highlight
             .description
-              color: #ff537d
-
+              color: $highlight
       .orders-table-content
         header
           h3

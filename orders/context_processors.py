@@ -2,12 +2,12 @@ from orders.models import Basket
 
 
 def get_basket(request):
-    print('Getting basket...')
     session_key = request.session.session_key
     if not session_key:
+        print("Didn't find session key, so we cycling new")
         request.session.cycle_key()
-    print('Session key is {}'.format(session_key))
-    print('Trying to find basket with this session key...')
+        return
+    print('Trying to find basket with this session key {}'.format(session_key))
     if Basket.objects.filter(session_key=session_key, is_closed=False).exists():
         basket = Basket.objects.get(session_key=session_key, is_closed=False)
         print('Found basket, which is {}'.format(basket))

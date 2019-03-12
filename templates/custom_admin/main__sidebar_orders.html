@@ -1,0 +1,64 @@
+<div class="functions-block">
+    <div class="header">Замовлення</div>
+    <ul class="functions">
+        <li><a href="{% url "custom_admin:orders" %}" class="new-orders-shortcut">Нові замовлення</a></li>
+        <li><a href="{% url "custom_admin:orders" %}" class="opened-orders-shortcut">Замовлення в роботі</a></li>
+        <li><a href="{% url "custom_admin:orders" %}" class="all-orders-shortcut">Усі замовлення</a></li>
+    </ul>
+
+    <form class="filters" action="{% url "custom_admin:orders" %}">
+        <div class="attribute customer_name">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За ім'ям</span></div>
+            </div>
+            <div class="select-wrapper">{{ form.customer_name }}</div>
+        </div>
+
+        <div class="attribute code">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За кодом</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.code }}
+            </div>
+        </div>
+
+        <div class="attribute customer_email">
+            <div class="header-wrapper">
+                <div class="header"><span class="thin">За ел. поштою</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.customer_email }}
+            </div>
+        </div>
+
+        <div class="attribute customer_phone">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За телефоном</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.customer_phone }}
+            </div>
+        </div>
+
+        <div class="attribute delivery_method">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За способом доставки</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.delivery_method }}
+            </div>
+        </div>
+
+        <div class="attribute status">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За статусом</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.status }}
+            </div>
+        </div>
+
+        <button class="orders-search-submit">Пошук<i class="fas fa-search"></i></button>
+    </form>
+</div>

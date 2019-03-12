@@ -1,29 +1,8 @@
 {% extends 'custom_admin/base.html' %}
 
 {% block sidebar %}
-    <div class="functions-block">
-        <div class="header">Замовлення</div>
-        <ul class="functions">
-            <li>
-                <label for="find-order-by-number">Знайти замовлення за номером</label>
-                <form class="find-order" action="">
-                    <input type="text" pattern="[0-9]{3,10}" name="find-order-by-number" id="find-order-by-number">
-
-                    <button><i class="fas fa-search"></i></button>
-                </form>
-            </li>
-            <li><a href="{% url "custom_admin:orders" %}">Замовлення в роботі</a></li>
-            <li><a href="{% url "custom_admin:orders" %}">Нові замовлення</a></li>
-            <li><a href="{% url "custom_admin:orders" %}">Усі замовлення</a></li>
-        </ul>
-    </div>
-    <div class="functions-block">
-        <div class="header">Товари</div>
-        <ul class="functions">
-            <li><a href="#">Перейти до списку товарів</a></li>
-            <li><a href="#">Додати новий товар</a></li>
-        </ul>
-    </div>
+{% include 'custom_admin/main__sidebar_orders.html' %}
+{% include 'custom_admin/main__sidebar_products.html' %}
 {% endblock %}
 {% block content %}
     <div class="functions-block">
@@ -35,10 +14,10 @@
                         <div class="icon number">№ ...</div>
                         <div class="description find-by-number">
                             <form class="find-order" action="">
-                                <input type="text" pattern="[0-9]{3,10}" name="content-find-order-by-number" id="content-find-order-by-number">
-                                <button><i class="fas fa-search"></i></button>
+                                <input pattern="[0-9]{3,10}" class="find-order-by-number-shortcut-input">
+                                <button class="find-order-by-number-shortcut-submit"><i class="fas fa-search"></i></button>
                             </form>
-                            <label for="content-find-order-by-number">Знайти за номером</label>
+                            <label for="content-find-order-by-number">Знайти за кодом</label>
                         </div>
                     </div>
                 </li>
@@ -46,7 +25,7 @@
             <div class="col-md-3">
                 <li>
                     <div class="square-block">
-                        <a href="{% url "custom_admin:orders" %}">
+                        <a href="{% url "custom_admin:orders" %}" class="opened-orders-shortcut">
                             <div class="icon"><i class="fas fa-3x fa-file-contract"></i></div>
                             <div class="description">В роботі</div>
                         </a>
@@ -56,7 +35,7 @@
             <div class="col-md-3">
                 <li>
                     <div class="square-block">
-                        <a href="{% url "custom_admin:orders" %}">
+                        <a href="{% url "custom_admin:orders" %}" class="new-orders-shortcut">
                             <div class="icon"><i class="fas fa-3x fa-asterisk"></i></div>
                             <div class="description">Нові</div>
                         </a>

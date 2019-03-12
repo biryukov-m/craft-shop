@@ -1,80 +1,7 @@
 {% extends 'custom_admin/base.html' %}
 
 {% block sidebar %}
-    <div class="functions-block">
-        <div class="header">Замовлення</div>
-        <ul class="functions">
-            <li><a href="{% url "custom_admin:orders" %}">Замовлення в роботі</a></li>
-            <li><a href="{% url "custom_admin:orders" %}">Нові замовлення</a></li>
-            <li><a href="{% url "custom_admin:orders" %}">Усі замовлення</a></li>
-        </ul>
-
-        <form class="filters" action="">
-            <div class="attribute customer_name">
-                <div class="header-wrapper">
-                    <div class="header"><span class="bold"></span><span class="thin">За ім'ям</span></div>
-                    <div class="line"></div>
-                </div>
-                <div class="select-wrapper">
-                    {{ form.customer_name }}
-                </div>
-            </div>
-
-            <div class="attribute code">
-                <div class="header-wrapper">
-                    <div class="header"><span class="bold"></span><span class="thin">За номером</span></div>
-                    <div class="line"></div>
-                </div>
-                <div class="select-wrapper">
-                    {{ form.code }}
-                </div>
-            </div>
-
-            <div class="attribute customer_email">
-                <div class="header-wrapper">
-                    <div class="header"><span class="thin">За ел. поштою</span></div>
-                    <div class="line"></div>
-                </div>
-                <div class="select-wrapper">
-                    {{ form.customer_email }}
-                </div>
-            </div>
-
-            <div class="attribute customer_phone">
-                <div class="header-wrapper">
-                    <div class="header"><span class="bold"></span><span class="thin">За телефоном</span></div>
-                    <div class="line"></div>
-                </div>
-                <div class="select-wrapper">
-                    {{ form.customer_phone }}
-                </div>
-            </div>
-
-            <div class="attribute delivery_method">
-                <div class="header-wrapper">
-                    <div class="header"><span class="bold"></span><span class="thin">За способом доставки</span></div>
-                    <div class="line"></div>
-                </div>
-                <div class="select-wrapper">
-                    {{ form.delivery_method }}
-                </div>
-            </div>
-
-            <div class="attribute status">
-                <div class="header-wrapper">
-                    <div class="header"><span class="bold"></span><span class="thin">За статусом</span></div>
-                    <div class="line"></div>
-                </div>
-                <div class="select-wrapper">
-                    {{ form.status }}
-                </div>
-            </div>
-
-            <button type="submit">Пошук<i class="fas fa-search"></i></button>
-        </form>
-
-
-    </div>
+    {% include 'custom_admin/main__sidebar_orders.html' %}
 {% endblock %}
 {% block content %}
     <div class="row orders-table-content">
@@ -101,7 +28,7 @@
                     <tbody class="table-striped table-bordered">
                     {% for order in order_filter.qs %}
                         <tr>
-                            <th scope="row">{{ order.code }}</th>
+                            <th>{{ order.code }}</th>
                             <td>{{ order.created|date:"j.m.y" }}</td>
                             <td>{{ order.updated|date:"j.m.y" }}</td>
                             <td>{{ order.customer_phone }}</td>

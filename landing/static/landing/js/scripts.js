@@ -1,9 +1,12 @@
 $(document).ready(function () {
-    var form = $('#buying-product');
-    var container = $('#basket-container');
+//
+// Обработка корзины
+//
+    var basket_form = $('#buying-product');
+    var basket_container = $('#basket-container');
     var button_remove = $('.item_remove');
-    var decrease_item_quantity_button = $('.decrease_item_quantity');
-    var increase_item_quantity_button = $('.increase_item_quantity');
+    var basket_decrease_item_quantity_button = $('.decrease_item_quantity');
+    var basket_increase_item_quantity_button = $('.increase_item_quantity');
     // Функция для пересчета общей цены корзины на клиентской стороне после аякса
     function recalculate_basket_price(){
         var basket_price = 0;
@@ -26,12 +29,12 @@ $(document).ready(function () {
     }
     function toggle_basket () {
         if ($('#circle-counter').hasClass('hidden')) {
-            container.addClass('hidden');
+            basket_container.addClass('hidden');
         } else {
-            container.toggleClass('hidden');
+            basket_container.toggleClass('hidden');
         }
     }
-    form.on('submit', function (e) {
+    basket_form.on('submit', function (e) {
         e.preventDefault();
         // Обработка нажатия submit на форме - отдача ajax с данными товара бэкэнду
         // Считываем все данные, что висят на кнопке
@@ -44,7 +47,7 @@ $(document).ready(function () {
         var item_image = button.data('item_image');
         // Сначала отдача на бэкэнд желаемого товара в корзину
         // Считываем url, что генерится в шаблоне для ajax
-        var url = form.attr('action');
+        var url = basket_form.attr('action');
         var csrf_token = $('#csrf-token [name="csrfmiddlewaretoken"]').val();
         // Подготовка словаря дата для передачи в ajax
         var data = {};
@@ -85,7 +88,7 @@ $(document).ready(function () {
                     '                    </li>');
                 recalculate_basket_price();
                 recalculate_basket_items_count();
-                container.removeClass('hidden');
+                basket_container.removeClass('hidden');
             },
             error: function () {
                 console.log('Error ajax');
@@ -121,14 +124,13 @@ $(document).ready(function () {
                 console.log('Error remove item ajax');
             }
         });
-
     });
     // Показать/скрыть корзину по клику
     $('#basket-icon').on('click', toggle_basket);
     // Скрыть корзину, если курсор мыши сьехал
-    container.on('mouseleave', toggle_basket);
+    basket_container.on('mouseleave', toggle_basket);
     // Кнопка уменьшения количества
-    decrease_item_quantity_button.on('click', function (e) {
+    basket_decrease_item_quantity_button.on('click', function (e) {
         function decrease_item_quantity(target) {
             var quantity = Number($('.spinner-selector .number').val());
             console.log('quantity is - ', quantity);
@@ -187,7 +189,7 @@ $(document).ready(function () {
         });
     });
     // Кнопка увеличения количества
-    increase_item_quantity_button.on('click', function (e) {
+    basket_increase_item_quantity_button.on('click', function (e) {
         function increase_item_quantity(target) {
             var quantity = Number($('.spinner-selector .number').val());
             var item_price = target.closest('.item').find("td.text-container div.price").text();
@@ -245,8 +247,9 @@ $(document).ready(function () {
         });
 
     })
-
-// Обработка кликов user-interface в top menu
+//
+// Обработка кликов user-interface в top menu магазина
+//
     var user_icon = $('#user-topmenu-icon');
     var user_menu = $('#drop-user-menu');
     function toggle_user_menu() {
@@ -258,13 +261,10 @@ $(document).ready(function () {
     user_icon.on('click mouseenter' , toggle_user_menu);
     // Скрыть меню, если курсор мыши сьехал
     user_menu.on('mouseleave', toggle_user_menu);
-
-//    Обработка клика в user-interface на поиск заказа
+    // Обработка клика в user-interface на поиск заказа
     var find_order_button = $('#find-order');
     var hidden_search_order_input = $('#hidden-search-order-input');
     find_order_button.on('click', function (e) {
         hidden_search_order_input.toggle();
     });
-
 });
-

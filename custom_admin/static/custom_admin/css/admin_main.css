@@ -159,17 +159,21 @@ a:hover {
 .main-layout .main .sidebar .functions-block ul li a {
   font-family: "Open Sans", sans-serif;
   color: black;
+  font-size: 0.95rem;
 }
 .main-layout .main .sidebar .functions-block ul li a:hover {
   color: #ff4081;
 }
-.main-layout .main .sidebar .functions-block form .attribute {
+.main-layout .main .sidebar .functions-block form.filters .attribute {
   margin-bottom: 10px;
 }
-.main-layout .main .sidebar .functions-block form .attribute .select-wrapper {
+.main-layout .main .sidebar .functions-block form.filters .attribute .header-wrapper .header {
+  font-size: 1rem;
+}
+.main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper {
   display: flex;
 }
-.main-layout .main .sidebar .functions-block form .attribute .select-wrapper input[type=text] {
+.main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper input[type=text] {
   flex-grow: 1;
   display: block;
   background: white;
@@ -178,13 +182,13 @@ a:hover {
   padding: 3px 5px;
   font-size: 0.85rem;
 }
-.main-layout .main .sidebar .functions-block form .attribute .select-wrapper ul li label {
+.main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper ul li label {
   color: black;
   font-size: 0.8rem;
   display: flex;
   align-items: center;
 }
-.main-layout .main .sidebar .functions-block form .attribute .select-wrapper ul li input[type=checkbox] {
+.main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper ul li input[type=checkbox] {
   margin-right: 5px;
 }
 .main-layout .main .content .functions-block {
@@ -265,13 +269,13 @@ a:hover {
   color: black;
 }
 .main-layout .main .content .functions-block li:hover .square-block {
-  border-color: #ff537d;
+  border-color: #ff4081;
 }
 .main-layout .main .content .functions-block li:hover .icon {
-  color: #ff537d;
+  color: #ff4081;
 }
 .main-layout .main .content .functions-block li:hover .description {
-  color: #ff537d;
+  color: #ff4081;
 }
 .main-layout .main .content .orders-table-content header h3 {
   font-family: "Open Sans", sans-serif;
