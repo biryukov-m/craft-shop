@@ -4,13 +4,6 @@
     <div class="functions-block">
         <div class="header">Замовлення</div>
         <ul class="functions">
-            <li>
-                <label for="find-order-by-number">Знайти замовлення за номером</label>
-                <form class="find-order" action="">
-                    <input type="text" pattern="[0-9]{3,10}" name="find-order-by-number" id="find-order-by-number">
-                    <button><i class="fas fa-search"></i></button>
-                </form>
-            </li>
             <li><a href="{% url "custom_admin:orders" %}">Замовлення в роботі</a></li>
             <li><a href="{% url "custom_admin:orders" %}">Нові замовлення</a></li>
             <li><a href="{% url "custom_admin:orders" %}">Усі замовлення</a></li>
@@ -19,7 +12,7 @@
         <form class="filters" action="">
             <div class="attribute customer_name">
                 <div class="header-wrapper">
-                    <div class="header"><span class="bold">Знайти </span><span class="thin">за ім'ям</span></div>
+                    <div class="header"><span class="bold"></span><span class="thin">За ім'ям</span></div>
                     <div class="line"></div>
                 </div>
                 <div class="select-wrapper">
@@ -29,7 +22,7 @@
 
             <div class="attribute code">
                 <div class="header-wrapper">
-                    <div class="header"><span class="bold">Знайти </span><span class="thin">номером</span></div>
+                    <div class="header"><span class="bold"></span><span class="thin">За номером</span></div>
                     <div class="line"></div>
                 </div>
                 <div class="select-wrapper">
@@ -39,7 +32,7 @@
 
             <div class="attribute customer_email">
                 <div class="header-wrapper">
-                    <div class="header"><span class="bold">Знайти </span><span class="thin">ел. поштою</span></div>
+                    <div class="header"><span class="thin">За ел. поштою</span></div>
                     <div class="line"></div>
                 </div>
                 <div class="select-wrapper">
@@ -49,7 +42,7 @@
 
             <div class="attribute customer_phone">
                 <div class="header-wrapper">
-                    <div class="header"><span class="bold">Знайти </span><span class="thin">телефоном</span></div>
+                    <div class="header"><span class="bold"></span><span class="thin">За телефоном</span></div>
                     <div class="line"></div>
                 </div>
                 <div class="select-wrapper">
@@ -59,7 +52,7 @@
 
             <div class="attribute delivery_method">
                 <div class="header-wrapper">
-                    <div class="header"><span class="bold">Знайти </span><span class="thin">способом доставки</span></div>
+                    <div class="header"><span class="bold"></span><span class="thin">За способом доставки</span></div>
                     <div class="line"></div>
                 </div>
                 <div class="select-wrapper">
@@ -69,7 +62,7 @@
 
             <div class="attribute status">
                 <div class="header-wrapper">
-                    <div class="header"><span class="bold">Знайти </span><span class="thin">статусом</span></div>
+                    <div class="header"><span class="bold"></span><span class="thin">За статусом</span></div>
                     <div class="line"></div>
                 </div>
                 <div class="select-wrapper">
@@ -77,17 +70,10 @@
                 </div>
             </div>
 
-            <input type="submit" />
+            <button type="submit">Пошук<i class="fas fa-search"></i></button>
         </form>
 
 
-    </div>
-    <div class="functions-block">
-        <div class="header">Товари</div>
-        <ul class="functions">
-            <li><a href="#">Перейти до списку товарів</a></li>
-            <li><a href="#">Додати новий товар</a></li>
-        </ul>
     </div>
 {% endblock %}
 {% block content %}
@@ -113,17 +99,6 @@
                         </tr>
                     </thead>
                     <tbody class="table-striped table-bordered">
-{#                    {% for order in orders_query %}#}
-{#                        <tr>#}
-{#                            <th scope="row">{{ order.code }}</th>#}
-{#                            <td>{{ order.created|date:"j.m.y" }}</td>#}
-{#                            <td>{{ order.updated|date:"j.m.y" }}</td>#}
-{#                            <td>{{ order.customer_phone }}</td>#}
-{#                            <td>{{ order.customer_name }}</td>#}
-{#                            <td>{{ order.customer_city }}</td>#}
-{#                            <td>{% for status in order.status.all %}{{ status.verbose_name }}{% endfor %}</td>#}
-{#                        </tr>#}
-{#                    {% endfor %}#}
                     {% for order in order_filter.qs %}
                         <tr>
                             <th scope="row">{{ order.code }}</th>

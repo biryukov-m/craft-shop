@@ -138,28 +138,43 @@ a:hover
           font-size: 1.2rem
           border-bottom: 2px solid $lighter
           margin-bottom: 10px
-        ul.functions
-          font-size: 0.9rem
+        ul
+          margin-bottom: 10px
           li
-            margin-bottom: 5px
+            margin-bottom: 4px
             a
-              color: $darker
-          form
-            display: flex
-            width: 100%
-            input
-              display: block
-              background: white
+              font-family: "Open Sans", sans-serif
               color: black
-              flex-grow: 1
-              border: 1px $light solid
-              padding: 3px 5px
-            button
-              display: block
-              background: none
-              border: 1px solid $light
-              border-left: none
-              padding: 3px 5px
+              &:hover
+                color: $highlight
+
+        form
+          .attribute
+            margin-bottom: 10px
+            .header-wrapper
+              .header
+              .line
+            .select-wrapper
+              display: flex
+              input[type=text]
+                flex-grow: 1
+                display: block
+                background: white
+                color: black
+                border: 1px $light solid
+                padding: 3px 5px
+                font-size: 0.85rem
+              ul
+                li
+                  label
+                    color: black
+                    font-size: 0.8rem
+                    display: flex
+                    align-items: center
+                  input[type=checkbox]
+                    margin-right: 5px
+
+
     .content
       .functions-block
         font-family: "Open Sans", sans-serif

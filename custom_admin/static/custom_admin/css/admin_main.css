@@ -150,33 +150,42 @@ a:hover {
   border-bottom: 2px solid #cecece;
   margin-bottom: 10px;
 }
-.main-layout .main .sidebar .functions-block ul.functions {
-  font-size: 0.9rem;
+.main-layout .main .sidebar .functions-block ul {
+  margin-bottom: 10px;
 }
-.main-layout .main .sidebar .functions-block ul.functions li {
-  margin-bottom: 5px;
+.main-layout .main .sidebar .functions-block ul li {
+  margin-bottom: 4px;
 }
-.main-layout .main .sidebar .functions-block ul.functions li a {
-  color: #282828;
+.main-layout .main .sidebar .functions-block ul li a {
+  font-family: "Open Sans", sans-serif;
+  color: black;
 }
-.main-layout .main .sidebar .functions-block ul.functions form {
+.main-layout .main .sidebar .functions-block ul li a:hover {
+  color: #ff4081;
+}
+.main-layout .main .sidebar .functions-block form .attribute {
+  margin-bottom: 10px;
+}
+.main-layout .main .sidebar .functions-block form .attribute .select-wrapper {
   display: flex;
-  width: 100%;
 }
-.main-layout .main .sidebar .functions-block ul.functions form input {
+.main-layout .main .sidebar .functions-block form .attribute .select-wrapper input[type=text] {
+  flex-grow: 1;
   display: block;
   background: white;
   color: black;
-  flex-grow: 1;
   border: 1px #939393 solid;
   padding: 3px 5px;
+  font-size: 0.85rem;
 }
-.main-layout .main .sidebar .functions-block ul.functions form button {
-  display: block;
-  background: none;
-  border: 1px solid #939393;
-  border-left: none;
-  padding: 3px 5px;
+.main-layout .main .sidebar .functions-block form .attribute .select-wrapper ul li label {
+  color: black;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+.main-layout .main .sidebar .functions-block form .attribute .select-wrapper ul li input[type=checkbox] {
+  margin-right: 5px;
 }
 .main-layout .main .content .functions-block {
   font-family: "Open Sans", sans-serif;
