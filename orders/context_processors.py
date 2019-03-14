@@ -2,14 +2,14 @@ from orders.models import Basket
 
 
 def get_basket(request):
+    print('Getting basket...')
     session_key = request.session.session_key
     if not session_key:
-        print("Didn't find session key, so we cycling new")
         request.session.cycle_key()
-        return
-    print('Trying to find basket with this session key {}'.format(session_key))
-    if Basket.objects.filter(session_key=session_key, is_closed=False).exists():
-        basket = Basket.objects.get(session_key=session_key, is_closed=False)
+    print('Session key is {}'.format(session_key))
+    print('Trying to find basket with this session key...')
+    if Basket.objects.filter(session_key=session_key).exists():
+        basket = Basket.objects.get(session_key=session_key)
         print('Found basket, which is {}'.format(basket))
     else:
         print('Basket does not exist.')
@@ -18,7 +18,7 @@ def get_basket(request):
     if basket.productinbasket_set.all().exists():
         items = basket.productinbasket_set.all()
         print('Item set is {}'.format(items))
-        items_count = items.count()
+        items_count = items.count
         print('Item count is {}'.format(items_count))
         print('Trying to count total price...')
         basket_total_price = 0
@@ -31,5 +31,4 @@ def get_basket(request):
         print('Basket is empty.')
         return {'get_basket': ''}
     return context
-
 

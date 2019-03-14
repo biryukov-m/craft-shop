@@ -11,7 +11,8 @@
             <div class="header-wrapper">
                 <div class="header"><span class="bold"></span><span class="thin">За ім'ям</span></div>
             </div>
-            <div class="select-wrapper">{{ form.customer_name }}</div>
+            <div class="select-wrapper">{{ form.customer_name }}
+            <button class="find-order by-name-shortcut-submit"><i class="fas fa-search"></i></button></div>
         </div>
 
         <div class="attribute code">
@@ -20,6 +21,7 @@
             </div>
             <div class="select-wrapper">
                 {{ form.code }}
+                <button class="find-order by-number-shortcut-submit"><i class="fas fa-search"></i></button>
             </div>
         </div>
 
@@ -29,6 +31,7 @@
             </div>
             <div class="select-wrapper">
                 {{ form.customer_email }}
+                <button class="find-order by-email-shortcut-submit"><i class="fas fa-search"></i></button>
             </div>
         </div>
 
@@ -38,6 +41,7 @@
             </div>
             <div class="select-wrapper">
                 {{ form.customer_phone }}
+                <button class="find-order by-phone-shortcut-submit"><i class="fas fa-search"></i></button>
             </div>
         </div>
 

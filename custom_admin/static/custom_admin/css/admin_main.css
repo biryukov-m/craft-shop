@@ -172,6 +172,27 @@ a:hover {
 }
 .main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper {
   display: flex;
+  position: relative;
+}
+.main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper input.find-order {
+  max-width: 100%;
+  background: white;
+  color: black;
+  padding: 1px 5px;
+  padding-right: 35px;
+  border: 1px solid #babab2;
+  font-size: 0.8rem;
+}
+.main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper button {
+  color: #464646;
+  background: white;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid #939393;
+  border-left: none;
+}
+.main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper button:hover {
+  color: black;
 }
 .main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper input[type=text] {
   flex-grow: 1;

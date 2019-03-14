@@ -157,6 +157,24 @@ a:hover
                 font-size: 1rem
             .select-wrapper
               display: flex
+              position: relative
+              input.find-order
+                max-width: 100%
+                background: white
+                color: black
+                padding: 1px 5px
+                padding-right: 35px
+                border: 1px solid #babab2
+                font-size: 0.8rem
+              button
+                color: $dark
+                background: white
+                padding: 0 10px
+                cursor: pointer
+                border: 1px solid $light
+                border-left: none
+                &:hover
+                  color: black
               input[type=text]
                 flex-grow: 1
                 display: block
