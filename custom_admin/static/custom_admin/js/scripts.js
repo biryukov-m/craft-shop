@@ -58,5 +58,12 @@ $(document).ready(function () {
         clear_form();
         input_field.val(current_val);
         orders_search_submit_button.click();
+    });
+
+    // В таблице заказов при нажатии на строку заказа - переход на его детальное отображение
+    $('.orders-table-content table tbody tr').on('click', function () {
+        var url = this.getAttribute('data-url');
+        window.location = url;
     })
+
 });

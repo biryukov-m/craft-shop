@@ -308,5 +308,8 @@ a:hover {
   font-size: 0.9rem;
   color: black;
 }
+.main-layout .main .content .orders-table-content .table-wrapper table tbody tr {
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=admin_main.css.map */

@@ -121,6 +121,9 @@ class Order(models.Model):
         url = reverse('orders:single_order_hash_code', kwargs={"hash_code": self.hash_code})
         return url
 
+    def get_absolute_admin_url(self):
+        url = reverse('custom_admin:order', kwargs={"order_code": self.code})
+        return url
 
     class Meta:
         verbose_name = "Замовлення"

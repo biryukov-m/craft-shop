@@ -7,11 +7,6 @@
     <div class="row orders-table-content">
         <div class="col-sm-12">
             <header><h3>{{ breadcrumbs }}</h3></header>
-{#            <div class="display-functions">#}
-{#                <ul>#}
-{#                    <li>Сортувати за:</li>#}
-{#                </ul>#}
-{#            </div>#}
             <div class="table-wrapper">
                 <table class="table table-hover table-sm">
                     <thead class="thead-light table-bordered">
@@ -27,7 +22,7 @@
                     </thead>
                     <tbody class="table-striped table-bordered">
                     {% for order in order_filter.qs %}
-                        <tr>
+                        <tr data-url="{{ order.get_absolute_admin_url }}">
                             <th>{{ order.code }}</th>
                             <td>{{ order.created|date:"j.m.y" }}</td>
                             <td>{{ order.updated|date:"j.m.y" }}</td>
