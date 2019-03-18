@@ -311,5 +311,26 @@ a:hover {
 .main-layout .main .content .orders-table-content .table-wrapper table tbody tr {
   cursor: pointer;
 }
+.main-layout .main .content .order-detail .header {
+  font-family: "Open Sans", sans-serif;
+  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid #cecece;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.main-layout .main .content .order-detail form.order-edit {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  color: black;
+}
+.main-layout .main .content .order-detail form.order-edit input, .main-layout .main .content .order-detail form.order-edit label {
+  display: block;
+  margin-bottom: 0;
+}
+.main-layout .main .content .order-detail form.order-edit input {
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
 
 /*# sourceMappingURL=admin_main.css.map */

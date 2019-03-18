@@ -19,8 +19,8 @@ class OrderFilter(django_filters.FilterSet):
 class OrderAdminForm(forms.ModelForm):
     class Meta:
         model = Order
-        # fields = ('customer_name', 'customer_email', 'customer_phone', 'delivery_method',  'postal_code', 'customer_city', 'customer_address',  'customer_comment')
-        exclude = ()
+        exclude = ('hash_code', 'session_key')
+
     def __init__(self, *args, **kwargs):
         super(OrderAdminForm, self).__init__(*args, **kwargs)
         self.fields['delivery_method'].empty_label = "Оберіть спосіб доставки..."
