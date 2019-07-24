@@ -70,15 +70,15 @@ class Order(models.Model):
                                    verbose_name='Ключ сесії покупця')
 
     customer_name = models.CharField(max_length=80,
-                                     verbose_name="Ім'я покупця")
+                                     verbose_name="Ім'я покупця", default=None, null=True)
 
     customer_email = models.EmailField(max_length=70,
                                        null=True,
-                                       verbose_name="Електронна пошта покупця")
+                                       verbose_name="Електронна пошта покупця", default=None)
 
     customer_phone = models.CharField(null=True,
                                       max_length=40,
-                                      verbose_name="Телефон покупця")
+                                      verbose_name="Телефон покупця", default=None)
 
     customer_comment = models.TextField(blank=True,
                                         null=True,
@@ -88,11 +88,11 @@ class Order(models.Model):
 
     customer_city = models.CharField(max_length=80,
                                      null=True,
-                                     verbose_name='Місто покупця')
+                                     verbose_name='Місто покупця', default=None)
 
     customer_address = models.CharField(max_length=100,
                                         null=True,
-                                        verbose_name='Адреса (вулиця, будинок) покупця')
+                                        verbose_name='Адреса (вулиця, будинок) покупця', default=None)
 
     postal_code = models.PositiveSmallIntegerField(verbose_name='Поштовий код', blank=True, null=True, default=None)
 

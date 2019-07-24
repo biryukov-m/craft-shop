@@ -35,12 +35,12 @@
                     </div>
                     <div class="field customer-city">
 {#                        {{ form.customer_city.errors }}#}
-                        <label for="{{ form.customer_city.id_for_label }}">Місто</label>
+                        <label class="required" for="{{ form.customer_city.id_for_label }}">Місто</label>
                         <i class="fas fa-angle-right fa-lg"></i>{{ form.customer_city }}
                     </div>
                     <div class="field customer-address">
 {#                        {{ form.customer_address.errors }}#}
-                        <label for="{{ form.customer_address.id_for_label }}">Адреса доставки</label>
+                        <label class="required" for="{{ form.customer_address.id_for_label }}">Адреса доставки</label>
                         <i class="fas fa-angle-right fa-lg"></i>{{ form.customer_address }}
                     </div>
                     <div class="field customer-comment">

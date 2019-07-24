@@ -14,7 +14,7 @@
     <div class="row order-detail">
         <div class="col-sm-12">
             <div class="header">{{ order.code }} від {{ order.created | date:"j.m.y" }}</div>
-            <form class="order-edit" autocomplete="off" action="">
+            <form class="order-edit" autocomplete="off" action="" method="post">
                 {% csrf_token %}
 
                 <div class="row">
@@ -85,9 +85,8 @@
                         </div>
                     </div>
                 </div>
-                <button><i class="fas fa-shopping-cart"></i>Оформити замовлення</button>
+                <button type="submit"><i class="fas fa-shopping-cart"></i>Оформити замовлення</button>
             </form>
-            <button>Зберегти</button>
         </div>
     </div>
 {% endblock %}

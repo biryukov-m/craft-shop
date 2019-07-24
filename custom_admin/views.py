@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
 from orders.models import Order
 from django.views import View
 
@@ -51,6 +52,21 @@ class OrderDetail(View):
 
     def get(self, request, order_code, *args, **kwargs):
         order = get_object_or_404(Order, code=order_code)
-        order_admin_form = OrderAdminForm(instance=order)
-        context = {'order': order, 'order_admin_form': order_admin_form}
+        form = OrderAdminForm(instance=order)
+        context = {'order': order, 'order_admin_form': form}
         return render(request, template_name=self.template_name, context=context)
+
+    def post(self, request, order_code, *args, **kwargs):
+        order = get_object_or_404(Order, code=order_code)
+        form = OrderAdminForm(request.POST, instance=order)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.save()
+        else:
+            print("Помилка в редагуванні форми замовлення у адмін-інтерфейса")
+            context = {'order': order, 'order_admin_form': form}
+            for f in form.fields:
+                if form.has_error(f):
+                    print("Помилка у полі: ", form.has_error(f))
+            return render(request, template_name=self.template_name, context=context)
+        return redirect(order.get_absolute_admin_url())

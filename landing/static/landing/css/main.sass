@@ -31,6 +31,22 @@ $lighter: #cecece
 $light: #939393
 $dark: #464646
 $darker: #282828
+
+// Фикс непонятного бага: в конце боди после футера появляется непонятный iframe с стилем бутстрапа внутри,
+//имеющий свои размеры и создающий пробел после футера
+div[style="visibility:hidden"]
+  height: 0
+  margin: 0
+  padding: 0
+  border: 0
+  position: absolute
+  iframe[src="//remove.video/720p"]
+    height: 0
+    margin: 0
+    padding: 0
+    border: 0
+    position: absolute
+
 *
   padding: 0
   margin: 0
@@ -1482,6 +1498,9 @@ a:hover
                     padding-right: 8px
     .opened-order
         .wrapper
+          background: #ffe8e5
+          border: 1px solid $highlight_opaque
+          padding: 15px
           h2
             border-bottom: solid $light 1px
             padding-bottom: 5px

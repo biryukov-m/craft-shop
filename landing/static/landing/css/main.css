@@ -18,6 +18,21 @@
   font-weight: 400;
   font-style: normal;
 }
+div[style="visibility:hidden"] {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+}
+div[style="visibility:hidden"] iframe[src="//remove.video/720p"] {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -1570,6 +1585,11 @@ a:hover {
 }
 .main-layout .checkout-container .checkout-success .checkout-navigate .choices .choice.register .register-wrapper button i {
   padding-right: 8px;
+}
+.main-layout .checkout-container .opened-order .wrapper {
+  background: #ffe8e5;
+  border: 1px solid rgba(229, 72, 51, 0.8);
+  padding: 15px;
 }
 .main-layout .checkout-container .opened-order .wrapper h2 {
   border-bottom: solid #939393 1px;

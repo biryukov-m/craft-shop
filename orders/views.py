@@ -157,7 +157,7 @@ def checkout(request):
         raise Http404
     if request.method == 'POST':
         print("Request method is POST, checking if form is valid...")
-        if form.is_valid:
+        if form.is_valid():
             print("Form is valid.")
             print("Got POST with parameters {}".format(request.POST))
             session_key = request.session.session_key
