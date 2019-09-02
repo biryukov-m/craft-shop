@@ -6,7 +6,7 @@
         <ul class="functions">
             <li><a href="{% url "custom_admin:orders" %}" class="">Редагувати</a></li>
             <li><a href="{% url "custom_admin:orders" %}" class="">Закрити</a></li>
-            <li><a href="{% url "custom_admin:orders" %}" class="">Видалити</a></li>
+            <li><a href="{{ order.get_remove_url }}" class="">Видалити</a></li>
         </ul>
     </div>
 {% endblock %}

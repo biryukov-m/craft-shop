@@ -156,6 +156,11 @@ a:hover {
 .main-layout .main .sidebar .functions-block ul li {
   margin-bottom: 4px;
 }
+.main-layout .main .sidebar .functions-block ul li.shortcuts {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 .main-layout .main .sidebar .functions-block ul li a {
   font-family: "Open Sans", sans-serif;
   color: black;

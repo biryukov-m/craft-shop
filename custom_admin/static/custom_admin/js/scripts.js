@@ -1,6 +1,8 @@
 $(document).ready(function () {
     var opened_orders_shortcut = $('.opened-orders-shortcut');
     var new_orders_shortcut = $('.new-orders-shortcut');
+    var removed_orders_shortcut = $('.removed-orders-shortcut');
+    var all_orders_shortcut = $('.all-orders-shortcut');
 
     var status_waiting_for_accept_checkbox = $('#id_status_0');
     var status_verified = $('#id_status_1');
@@ -8,6 +10,8 @@ $(document).ready(function () {
     var status_in_delivery = $('#id_status_3');
     var status_delivered = $('#id_status_4');
     var status_closed = $('#id_status_5');
+
+    var filter_is_removed = $('#id_is_removed');
 
     var orders_search_submit_button = $('.orders-search-submit');
 
@@ -30,7 +34,8 @@ $(document).ready(function () {
         inputs_list.push($('#id_customer_phone'));
         $.each(inputs_list, function (index, element) {
             element.val('');
-        })
+        });
+        filter_is_removed.val('');
     }
 
     opened_orders_shortcut.on('click', function (e) {
@@ -40,6 +45,7 @@ $(document).ready(function () {
         status_paid.prop('checked', true);
         status_in_delivery.prop('checked', true);
         status_delivered.prop('checked', true);
+        filter_is_removed.val('3');
         orders_search_submit_button.click();
     });
 
@@ -47,6 +53,21 @@ $(document).ready(function () {
         e.preventDefault();
         clear_form();
         status_waiting_for_accept_checkbox.prop('checked', true);
+        filter_is_removed.val('3');
+        orders_search_submit_button.click();
+    });
+
+    removed_orders_shortcut.on('click', function (e) {
+        e.preventDefault();
+        clear_form();
+        filter_is_removed.val('2');
+        orders_search_submit_button.click();
+    });
+
+    all_orders_shortcut.on('click', function (e) {
+        e.preventDefault();
+        clear_form();
+        filter_is_removed.val('3');
         orders_search_submit_button.click();
     });
 

@@ -14,6 +14,7 @@ class OrderFilter(django_filters.FilterSet):
     customer_phone = django_filters.CharFilter(lookup_expr='icontains')
     delivery_method = django_filters.ModelMultipleChoiceFilter(queryset=DeliveryMethod.objects.all(), widget=forms.CheckboxSelectMultiple)
     status = django_filters.ModelMultipleChoiceFilter(queryset=Status.objects.all(), widget=forms.CheckboxSelectMultiple)
+    is_removed = django_filters.BooleanFilter()
 
 
 class OrderAdminForm(forms.ModelForm):

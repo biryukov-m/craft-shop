@@ -1,9 +1,14 @@
 <div class="functions-block">
     <div class="header">Замовлення</div>
     <ul class="functions">
-        <li><a href="{% url "custom_admin:orders" %}" class="new-orders-shortcut">Нові замовлення</a></li>
-        <li><a href="{% url "custom_admin:orders" %}" class="opened-orders-shortcut">Замовлення в роботі</a></li>
-        <li><a href="{% url "custom_admin:orders" %}" class="all-orders-shortcut">Усі замовлення</a></li>
+        <li class="shortcuts">
+            <a href="{% url "custom_admin:orders" %}" class="new-orders-shortcut">Нові</a>
+            <a href="{% url "custom_admin:orders" %}" class="opened-orders-shortcut">В роботі</a>
+        </li>
+        <li class="shortcuts">
+            <a href="{% url "custom_admin:orders" %}" class="all-orders-shortcut">Усі</a>
+            <a href="{% url "custom_admin:orders" %}" class="removed-orders-shortcut">Видалені</a>
+        </li>
     </ul>
 
     <form class="filters" action="{% url "custom_admin:orders" %}">
@@ -62,6 +67,16 @@
                 {{ form.status }}
             </div>
         </div>
+
+        <div class="attribute">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">Видалені</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.is_removed }}
+            </div>
+        </div>
+
 
         <button class="orders-search-submit">Пошук<i class="fas fa-search"></i></button>
     </form>

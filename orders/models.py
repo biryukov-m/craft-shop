@@ -109,6 +109,8 @@ class Order(models.Model):
                                        max_length=300,
                                        verbose_name="Примітки")
 
+    is_removed = models.BooleanField(default=False, verbose_name="Видалене")
+
     def __str__(self):
         return "№ {}. {}, {}.".format(self.code,
                                       self.customer_name.capitalize(),
@@ -123,6 +125,10 @@ class Order(models.Model):
 
     def get_absolute_admin_url(self):
         url = reverse('custom_admin:order', kwargs={"order_code": self.code})
+        return url
+
+    def get_remove_url(self):
+        url = reverse('custom_admin:order_remove', kwargs={"order_code": self.code})
         return url
 
     class Meta:
