@@ -2,10 +2,15 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import reverse
-from orders.models import Order
+
 from django.views import View
+from orders.models import Order
+from product.models import Department
+from product.models import Item
+from django.db.models import Max, Min
 
 from .forms import OrderFilter
+from .forms import ItemFilter
 from .forms import OrderAdminForm
 
 
@@ -83,3 +88,55 @@ class OrderRemove(View):
         order.is_removed = True
         order.save()
         return redirect(reverse('custom_admin:orders'))
+
+
+# Поведение с товарами
+
+class AllItems(View):
+    template_name = 'custom_admin/items.html'
+
+    def get_context_data(self, request, *args, **kwargs):
+        sidebar = {}
+        departments = Department.objects.all()
+        for department in departments:
+            sidebar[department] = {}
+            for section in department.get_sections():
+                sidebar[department][section] = []
+                for item_type in section.get_item_types():
+                    sidebar[department][section].append(item_type)
+        print(sidebar)
+
+        items_list = Item.objects.all()
+        item_filter = ItemFilter(request.GET, queryset=items_list)
+        form = item_filter.form
+        #
+        # items_list = item_type_obj.get_items()
+        # product_filter = ProductFilter(request.GET, queryset=items_list)
+        # form = product_filter.form
+        # # Аггрегация макс и мин цены из всего списка товаров
+        # min_price = items_list.aggregate(Min('price'))
+        # max_price = items_list.aggregate(Max('price'))
+        # # Достать из аггрегации конкретные значения цен
+        # try:
+        #     min_price = int(min_price['price__min'])
+        #     max_price = int(max_price['price__max'])
+        # except TypeError:
+        #     min_price, max_price = 0, 0
+        #
+        # if 'price_min' in request.GET:
+        #     current_min_price = request.GET.get('price_min')
+        # else:
+        #     current_min_price = min_price
+        #
+        # if 'price_max' in request.GET:
+        #     current_max_price = request.GET.get('price_max')
+        # else:
+        #     current_max_price = max_price
+
+        context = locals()
+
+        return context
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(request, *args, **kwargs)
+        return render(request, self.template_name, context=context)

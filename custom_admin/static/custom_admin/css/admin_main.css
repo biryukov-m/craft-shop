@@ -217,6 +217,27 @@ a:hover {
 .main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper ul li input[type=checkbox] {
   margin-right: 5px;
 }
+.main-layout .main .sidebar .functions-block form.filters .attribute .item-types-wrapper .department-header {
+  display: block;
+  font-size: 1.1rem;
+}
+.main-layout .main .sidebar .functions-block form.filters .attribute .item-types-wrapper #id_item_type .department-header {
+  font-size: 1rem;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+.main-layout .main .sidebar .functions-block form.filters .attribute .item-types-wrapper #id_item_type .section-header {
+  font-size: 0.9rem;
+  margin-left: 10px;
+  margin-bottom: 8px;
+}
+.main-layout .main .sidebar .functions-block form.filters .attribute .item-types-wrapper #id_item_type .item-type {
+  margin-left: 15px;
+  font-size: 0.8rem;
+}
+.main-layout .main .sidebar .functions-block form.filters .attribute .item-types-wrapper #id_item_type .item-type label {
+  margin-bottom: 0;
+}
 .main-layout .main .content .functions-block {
   font-family: "Open Sans", sans-serif;
   color: black;

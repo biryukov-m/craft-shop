@@ -1,6 +1,5 @@
 from django import forms
 
-from product.models import Item
 from properties.models import Fabric
 from properties.models import Color
 from properties.models import Brand

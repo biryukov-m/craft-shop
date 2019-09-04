@@ -1,8 +1,14 @@
 from django import forms
+
 from orders.models import Order
 from orders.models import DeliveryMethod
 from orders.models import Status
-
+from properties.models import Fabric
+from properties.models import Color
+from properties.models import Brand
+from properties.models import Gender
+from properties.models import Size
+from product.models import ItemType
 
 import django_filters
 
@@ -15,6 +21,16 @@ class OrderFilter(django_filters.FilterSet):
     delivery_method = django_filters.ModelMultipleChoiceFilter(queryset=DeliveryMethod.objects.all(), widget=forms.CheckboxSelectMultiple)
     status = django_filters.ModelMultipleChoiceFilter(queryset=Status.objects.all(), widget=forms.CheckboxSelectMultiple)
     is_removed = django_filters.BooleanFilter()
+
+
+class ItemFilter(django_filters.FilterSet):
+    name = django_filters.CharFilter(lookup_expr='icontains')
+    price = django_filters.RangeFilter(field_name='price')
+    size = django_filters.ModelMultipleChoiceFilter(queryset=Size.objects.all(), widget=forms.CheckboxSelectMultiple)
+    fabric = django_filters.ModelMultipleChoiceFilter(queryset=Fabric.objects.all(), widget=forms.CheckboxSelectMultiple)
+    color = django_filters.ModelMultipleChoiceFilter(queryset=Color.objects.all(), widget=forms.CheckboxSelectMultiple)
+    brand = django_filters.ModelMultipleChoiceFilter(queryset=Brand.objects.all(), widget=forms.CheckboxSelectMultiple)
+    item_type = django_filters.ModelMultipleChoiceFilter(queryset=ItemType.objects.all(), widget=forms.CheckboxSelectMultiple)
 
 
 class OrderAdminForm(forms.ModelForm):
