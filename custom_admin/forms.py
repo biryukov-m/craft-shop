@@ -6,7 +6,6 @@ from orders.models import Status
 from properties.models import Fabric
 from properties.models import Color
 from properties.models import Brand
-from properties.models import Gender
 from properties.models import Size
 from product.models import ItemType
 

@@ -4,20 +4,20 @@ from urllib.parse import urlencode
 # Create your models here.
 
 
-class Gender(models.Model):
-    name = models.CharField(verbose_name="назва", max_length=30)
-    slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
-
-    class Meta:
-        verbose_name = "стать"
-        verbose_name_plural = "стать"
-
-    def __str__(self):
-        return self.name.upper()
-
-    def get_search_param(self):
-        params = '?gender={}'.format(self.slug)
-        return params
+# class Gender(models.Model):
+#     name = models.CharField(verbose_name="назва", max_length=30)
+#     slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
+#
+#     class Meta:
+#         verbose_name = "стать"
+#         verbose_name_plural = "стать"
+#
+#     def __str__(self):
+#         return self.name.upper()
+#
+#     def get_search_param(self):
+#         params = '?gender={}'.format(self.slug)
+#         return params
 
 
 class Brand(models.Model):

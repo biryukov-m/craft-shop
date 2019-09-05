@@ -26,7 +26,7 @@ class ItemAdminForm(BaseDynamicEntityForm):
 class ItemAdmin(BaseEntityAdmin):
     form = ItemAdminForm
     list_display = ["name", "item_type", "brand", "price", "created"]
-    list_filter = ["brand", "item_type", "gender", "fabric", "color", "created"]
+    list_filter = ["brand", "item_type", "fabric", "color", "created"]
     search_fields = ["name"]
     inlines = [
         ImageInline,

@@ -3,7 +3,6 @@ from django import forms
 from properties.models import Fabric
 from properties.models import Color
 from properties.models import Brand
-from properties.models import Gender
 from properties.models import Size
 
 import django_filters
@@ -16,4 +15,3 @@ class ProductFilter(django_filters.FilterSet):
     fabric = django_filters.ModelMultipleChoiceFilter(queryset=Fabric.objects.all(), widget=forms.CheckboxSelectMultiple)
     color = django_filters.ModelMultipleChoiceFilter(queryset=Color.objects.all(), widget=forms.CheckboxSelectMultiple)
     brand = django_filters.ModelMultipleChoiceFilter(queryset=Brand.objects.all(), widget=forms.CheckboxSelectMultiple)
-    gender = django_filters.ModelMultipleChoiceFilter(queryset=Gender.objects.all(), widget=forms.CheckboxSelectMultiple)

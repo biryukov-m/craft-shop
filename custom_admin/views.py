@@ -104,7 +104,6 @@ class AllItems(View):
                 sidebar[department][section] = []
                 for item_type in section.get_item_types():
                     sidebar[department][section].append(item_type)
-        print(sidebar)
 
         items_list = Item.objects.all()
         item_filter = ItemFilter(request.GET, queryset=items_list)
