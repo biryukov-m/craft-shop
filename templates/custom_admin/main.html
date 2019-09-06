@@ -1,8 +1,10 @@
 {% extends 'custom_admin/base.html' %}
 
 {% block sidebar %}
-{% include 'custom_admin/main__sidebar_orders.html' %}
-{% include 'custom_admin/main__sidebar_products.html' %}
+{#{% include 'custom_admin/main__sidebar_orders.html' %}#}
+{#{% include 'custom_admin/main__sidebar_products.html' %}#}
+
+    Зарезервировано для функционала
 {% endblock %}
 {% block content %}
     <div class="functions-block">
@@ -46,7 +48,7 @@
             <div class="col-md-3">
                 <li>
                     <div class="square-block">
-                        <a href="#">
+                        <a href="{% url "custom_admin:products" %}">
                             <div class="icon"><i class="fas fa-3x fa-list"></i></div>
                             <div class="description">До списку товарів</div>
                         </a>

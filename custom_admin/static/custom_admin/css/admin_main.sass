@@ -196,24 +196,43 @@ a:hover
                     align-items: center
                   input[type=checkbox]
                     margin-right: 5px
-            .item-types-wrapper
-              .department-header
+          .department-header
+            display: block
+            font-size: 1.1rem
+          ul#id_item_type
+            cursor: pointer
+            li.department-header
+              a.parent
                 display: block
-                font-size: 1.1rem
-              #id_item_type
-                .department-header
-                  font-size: 1rem
-                  margin-left: 5px
-                  margin-bottom: 5px
-                .section-header
-                  font-size: 0.9rem
-                  margin-left: 10px
-                  margin-bottom: 8px
-                .item-type
-                  margin-left: 15px
-                  font-size: 0.8rem
-                  label
-                    margin-bottom: 0
+                font-size: 1rem
+                margin-left: 5px
+                padding-bottom: 10px
+                &.opened
+                  color: $highlight
+                  font-weight: 600
+                  text-decoration: underline
+              ul
+                display: none
+                li.section-header
+                  a.parent
+                    font-size: 0.9rem
+                    margin-left: 10px
+                    padding-bottom: 5px
+                  ul
+                    display: none
+                    margin-left: 10px
+                    li.item-type
+                      font-size: 0.8rem
+                      label
+                        margin-bottom: 3px
+                        cursor: pointer
+                        display: flex
+                        align-items: center
+                        &[checked="checked"]
+                          color: $highlight
+                          font-weight: 600
+                        input[type='checkbox']
+                          margin-right: 5px
 
 
     .content

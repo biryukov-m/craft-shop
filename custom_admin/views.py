@@ -92,8 +92,8 @@ class OrderRemove(View):
 
 # Поведение с товарами
 
-class AllItems(View):
-    template_name = 'custom_admin/items.html'
+class AllProducts(View):
+    template_name = 'custom_admin/products.html'
 
     def get_context_data(self, request, *args, **kwargs):
         sidebar = {}

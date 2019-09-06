@@ -1,7 +1,93 @@
 <div class="functions-block">
-    <div class="header">Товари</div>
-    <ul class="functions">
-        <li><a href="#">Перейти до списку товарів</a></li>
-        <li><a href="#">Додати новий товар</a></li>
-    </ul>
+
+    <form class="filters" action="{% url "custom_admin:products" %}">
+        <div class="attribute item_types">
+            <div class="header-wrapper">
+                <div class="header">Типи товару</div>
+                <div class="line"></div>
+            </div>
+            <ul id="id_item_type">
+                {% for dep, secs in sidebar.items %}
+                    <li class="department-header"><a class="parent">{{ dep.name | capfirst }}</a>
+                        <ul>
+                            {% for sec in secs %}
+                                <li class="section-header"><a class="parent">{{ sec.name | capfirst }}</a>
+                                    <ul>
+                                        {% for it in sec.get_item_types %}
+                                            <li class="item-type">
+                                                <label for="id_item_type_{{ it.id }}">
+                                                    <input type="checkbox"
+                                                           name="item_type"
+                                                           value="{{ it.id|add:"1" }}"
+                                                           id="id_item_type_{{ it.id }}"
+                                                    > {{ it.name|capfirst }}
+                                                </label>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="attribute">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За назвою</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.name }}
+            </div>
+        </div>
+        <div class="attribute">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За ціною</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.price }}
+            </div>
+        </div>
+        <div class="attribute">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За розміром</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.size }}
+            </div>
+        </div>
+        <div class="attribute">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За тканиною</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.fabric }}
+            </div>
+        </div>
+        <div class="attribute">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За кольором</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.color }}
+            </div>
+        </div>
+        <div class="attribute">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За призначенням</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.gender }}
+            </div>
+        </div>
+        <div class="attribute">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">За виробником</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.brand }}
+            </div>
+        </div>
+        <button class="orders-search-submit">Пошук<i class="fas fa-search"></i></button>
+    </form>
 </div>

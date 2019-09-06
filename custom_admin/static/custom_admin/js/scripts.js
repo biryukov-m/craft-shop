@@ -1,18 +1,16 @@
 $(document).ready(function () {
+    // Обработка фильтров на странице main__sidebar_orders.html
     var opened_orders_shortcut = $('.opened-orders-shortcut');
     var new_orders_shortcut = $('.new-orders-shortcut');
     var removed_orders_shortcut = $('.removed-orders-shortcut');
     var all_orders_shortcut = $('.all-orders-shortcut');
-
     var status_waiting_for_accept_checkbox = $('#id_status_0');
     var status_verified = $('#id_status_1');
     var status_paid = $('#id_status_2');
     var status_in_delivery = $('#id_status_3');
     var status_delivered = $('#id_status_4');
     var status_closed = $('#id_status_5');
-
     var filter_is_removed = $('#id_is_removed');
-
     var orders_search_submit_button = $('.orders-search-submit');
 
     function clear_form() {
@@ -83,8 +81,13 @@ $(document).ready(function () {
 
     // В таблице заказов при нажатии на строку заказа - переход на его детальное отображение
     $('.orders-table-content table tbody tr').on('click', function () {
-        var url = this.getAttribute('data-url');
-        window.location = url;
-    })
+               window.location = this.getAttribute('data-url');
+    });
+
+    //  Скрипты сайдбара   main__sidebar_products.html
+    $('#id_item_type a.parent').on('click', function () {
+        $(this).toggleClass('opened');
+        $(this).siblings('ul').slideToggle();
+    });
 
 });

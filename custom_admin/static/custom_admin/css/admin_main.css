@@ -217,26 +217,51 @@ a:hover {
 .main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper ul li input[type=checkbox] {
   margin-right: 5px;
 }
-.main-layout .main .sidebar .functions-block form.filters .attribute .item-types-wrapper .department-header {
+.main-layout .main .sidebar .functions-block form.filters .department-header {
   display: block;
   font-size: 1.1rem;
 }
-.main-layout .main .sidebar .functions-block form.filters .attribute .item-types-wrapper #id_item_type .department-header {
+.main-layout .main .sidebar .functions-block form.filters ul#id_item_type {
+  cursor: pointer;
+}
+.main-layout .main .sidebar .functions-block form.filters ul#id_item_type li.department-header a.parent {
+  display: block;
   font-size: 1rem;
   margin-left: 5px;
-  margin-bottom: 5px;
+  padding-bottom: 10px;
 }
-.main-layout .main .sidebar .functions-block form.filters .attribute .item-types-wrapper #id_item_type .section-header {
+.main-layout .main .sidebar .functions-block form.filters ul#id_item_type li.department-header a.parent.opened {
+  color: #ff4081;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.main-layout .main .sidebar .functions-block form.filters ul#id_item_type li.department-header ul {
+  display: none;
+}
+.main-layout .main .sidebar .functions-block form.filters ul#id_item_type li.department-header ul li.section-header a.parent {
   font-size: 0.9rem;
   margin-left: 10px;
-  margin-bottom: 8px;
+  padding-bottom: 5px;
 }
-.main-layout .main .sidebar .functions-block form.filters .attribute .item-types-wrapper #id_item_type .item-type {
-  margin-left: 15px;
+.main-layout .main .sidebar .functions-block form.filters ul#id_item_type li.department-header ul li.section-header ul {
+  display: none;
+  margin-left: 10px;
+}
+.main-layout .main .sidebar .functions-block form.filters ul#id_item_type li.department-header ul li.section-header ul li.item-type {
   font-size: 0.8rem;
 }
-.main-layout .main .sidebar .functions-block form.filters .attribute .item-types-wrapper #id_item_type .item-type label {
-  margin-bottom: 0;
+.main-layout .main .sidebar .functions-block form.filters ul#id_item_type li.department-header ul li.section-header ul li.item-type label {
+  margin-bottom: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.main-layout .main .sidebar .functions-block form.filters ul#id_item_type li.department-header ul li.section-header ul li.item-type label[checked=checked] {
+  color: #ff4081;
+  font-weight: 600;
+}
+.main-layout .main .sidebar .functions-block form.filters ul#id_item_type li.department-header ul li.section-header ul li.item-type label input[type=checkbox] {
+  margin-right: 5px;
 }
 .main-layout .main .content .functions-block {
   font-family: "Open Sans", sans-serif;

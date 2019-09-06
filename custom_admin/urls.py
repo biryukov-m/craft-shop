@@ -3,7 +3,7 @@ from .views import Main
 from .views import OrdersList
 from .views import OrderDetail
 from .views import OrderRemove
-from .views import AllItems
+from .views import AllProducts
 
 
 urlpatterns = [
@@ -11,7 +11,7 @@ urlpatterns = [
     path('orders/', OrdersList.as_view(), name='orders'),
     path('order/<int:order_code>', OrderDetail.as_view(), name='order'),
     path('order/<int:order_code>/remove', OrderRemove.as_view(), name='order_remove'),
-    path('items/', AllItems.as_view(), name='items'),
+    path('products/', AllProducts.as_view(), name='products'),
 ]
 
 app_name = 'custom_admin'

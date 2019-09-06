@@ -246,7 +246,7 @@ $(document).ready(function () {
             }
         });
 
-    })
+    });
 //
 // Обработка кликов user-interface в top menu магазина
 //
