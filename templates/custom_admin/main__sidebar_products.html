@@ -1,5 +1,4 @@
 <div class="functions-block">
-
     <form class="filters" action="{% url "custom_admin:products" %}">
         <div class="attribute item_types">
             <div class="header-wrapper">
@@ -16,14 +15,16 @@
                                         {% for it in sec.get_item_types %}
                                             <li class="item-type">
                                                 <label for="id_item_type_{{ it.id }}">
-                                                    <input type="checkbox"
+                                                    <input class="item_type_checkbox"
+                                                            type="checkbox"
                                                            name="item_type"
                                                            value="{{ it.id|add:"1" }}"
                                                            id="id_item_type_{{ it.id }}"
-                                                    > {{ it.name|capfirst }}
+                                                    >{{ it.name|capfirst }}
                                                 </label>
                                             </li>
                                         {% endfor %}
+
                                     </ul>
                                 </li>
                             {% endfor %}
@@ -40,12 +41,12 @@
                 {{ form.name }}
             </div>
         </div>
-        <div class="attribute">
+        <div class="attribute price">
             <div class="header-wrapper">
                 <div class="header"><span class="bold"></span><span class="thin">За ціною</span></div>
             </div>
             <div class="select-wrapper">
-                {{ form.price }}
+                <div class="price-wrapper">{{ form.price }}</div>
             </div>
         </div>
         <div class="attribute">
@@ -53,7 +54,7 @@
                 <div class="header"><span class="bold"></span><span class="thin">За розміром</span></div>
             </div>
             <div class="select-wrapper">
-                {{ form.size }}
+                {{ form.available_sizes }}
             </div>
         </div>
         <div class="attribute">
@@ -70,14 +71,6 @@
             </div>
             <div class="select-wrapper">
                 {{ form.color }}
-            </div>
-        </div>
-        <div class="attribute">
-            <div class="header-wrapper">
-                <div class="header"><span class="bold"></span><span class="thin">За призначенням</span></div>
-            </div>
-            <div class="select-wrapper">
-                {{ form.gender }}
             </div>
         </div>
         <div class="attribute">

@@ -152,7 +152,6 @@ a:hover
               font-size: 0.95rem
               &:hover
                 color: $highlight
-
         form.filters
           .attribute
             margin-bottom: 10px
@@ -196,6 +195,14 @@ a:hover
                     align-items: center
                   input[type=checkbox]
                     margin-right: 5px
+          .attribute.price
+            .select-wrapper
+              display: block
+              .price-wrapper
+                width: 100%
+                display: flex
+                input
+                  width: 45%
           .department-header
             display: block
             font-size: 1.1rem
@@ -233,8 +240,6 @@ a:hover
                           font-weight: 600
                         input[type='checkbox']
                           margin-right: 5px
-
-
     .content
       .functions-block
         font-family: "Open Sans", sans-serif
@@ -309,29 +314,24 @@ a:hover
               color: $highlight
             .description
               color: $highlight
-      .orders-table-content
+      .table
         header
-          h3
-            font-family: "Open Sans", sans-serif
-            color: black
-            font-weight: bold
-        .display-functions
-          ul
-            li
+          font-family: "Open Sans", sans-serif
+          color: black
+          font-weight: bold
         .table-wrapper
           table
             font-family: "Open Sans", sans-serif
             font-size: 0.9rem
             color: black
-            thead
-              tr
-                th
-                  td
             tbody
               tr
                 cursor: pointer
-                th
-                  td
+                td
+                  img
+                    display: block
+                    max-width: 100%
+
       .order-detail
         .header
           font-family: "Open Sans", sans-serif
@@ -355,3 +355,13 @@ a:hover
             margin-bottom: 15px
             font-size: 0.9rem
             padding: 3px 6px
+      .products-table-content
+        header
+          font-family: "Open Sans", sans-serif
+          color: black
+          font-weight: bold
+          border-bottom: 2px solid $lighter
+          font-size: 1.2rem
+          margin-bottom: 10px
+          h3
+            font-family: "Open Sans"

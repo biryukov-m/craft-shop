@@ -81,7 +81,7 @@ $(document).ready(function () {
 
     // В таблице заказов при нажатии на строку заказа - переход на его детальное отображение
     $('.orders-table-content table tbody tr').on('click', function () {
-               window.location = this.getAttribute('data-url');
+        window.location = this.getAttribute('data-url');
     });
 
     //  Скрипты сайдбара   main__sidebar_products.html
@@ -90,4 +90,29 @@ $(document).ready(function () {
         $(this).siblings('ul').slideToggle();
     });
 
+
+    // Обработка отмеченых чекбоксов в фильтре.
+    // При клике переносится в локал сторадж состояние "checked"
+    $('.item_type_checkbox').click(function(e){
+        if (e.target.checked) {
+            localStorage.setItem('admin_sidebar_'+this.id, 'yes');
+        } else {
+            localStorage.setItem('admin_sidebar_'+this.id, 'no');
+        }
+    });
+    // При загрузке страницы, у каждого чекбокса запрашивает из локал стораджа информацию
+    // о предыдущем состоянии, и согласно этому ставит или удаляет атрибут checked
+    $('.item_type_checkbox').each(
+        function () {
+            if (localStorage.getItem('admin_sidebar_'+this.id)==='yes'){
+                this.setAttribute('checked', '');
+                $(this).closest('a').addClass('opened');
+                // Тут надо придумать способ сменить ближайшей ссылке "а" класс на opened
+                console.log($(this).closest('a'));
+            }
+            else {
+                this.removeAttribute('checked');
+            }
+        }
+    )
 });

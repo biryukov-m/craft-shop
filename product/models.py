@@ -1,11 +1,14 @@
 import os
 from django.db import models
-from properties import models as properties
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import reverse
+from django.db.models.signals import post_save
+
 from eav.decorators import register_eav
+
+from properties import models as properties
 
 
 def get_upload_path(instance, filename):
@@ -162,7 +165,7 @@ class ItemImage(models.Model):
 # Класс для единицы товара
 @register_eav()
 class Item(models.Model):
-    # code = models.PositiveIntegerField(default=None, blank=True, verbose_name="код", unique=True, editable=False)
+    code = models.IntegerField(null=True, blank=True, verbose_name="код", unique=True, editable=False)
     name = models.CharField(default=None,
                             blank=True,
                             verbose_name='найменування',
@@ -239,3 +242,16 @@ class Item(models.Model):
 
     def get_sizes(self):
         return self.available_sizes.all()
+
+
+def post_save_for_item(instance, **kwargs):
+    if not instance.code:
+        try:
+            instance.code = instance.pk + 100
+            instance.save()
+        except:
+            print('ERROR WITH post_save_for_item:'
+                  'probably something wrong with code generation')
+            print('Deleting instance with error')
+            instance.delete()
+post_save.connect(post_save_for_item, sender=Item)

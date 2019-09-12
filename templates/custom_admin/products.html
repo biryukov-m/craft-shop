@@ -1,14 +1,9 @@
-
-
-
-
 {% extends 'custom_admin/base.html' %}
-
 {% block sidebar %}
     {% include 'custom_admin/main__sidebar_products.html' %}
 {% endblock %}
 {% block content %}
-    <div class="row orders-table-content">
+    <div class="row table products">
         <div class="col-sm-12">
             <header><h3>{{ breadcrumbs }}</h3></header>
             <div class="table-wrapper">
@@ -16,24 +11,30 @@
                     <thead class="thead-light table-bordered">
                         <tr>
                             <th scope="col">Код</th>
-                            <th scope="col">Створено</th>
-                            <th scope="col">Оновлено</th>
-                            <th scope="col">Телефон</th>
-                            <th scope="col">Ім`я</th>
-                            <th scope="col">Місто</th>
-                            <th scope="col">Статус</th>
+                            <th scope="col">Назва</th>
+                            <th scope="col">Тип</th>
+                            <th scope="col">Ціна</th>
+                            <th scope="col">Виробник</th>
+                            <th scope="col">Тканина</th>
+                            <th scope="col">Колір</th>
+                            <th scope="col">Доступні розміри</th>
+                            <th scope="col">Фото</th>
+                            <th scope="col">Доступність</th>
                         </tr>
                     </thead>
                     <tbody class="table-striped table-bordered">
-                    {% for order in order_filter.qs %}
-                        <tr data-url="{{ order.get_absolute_admin_url }}">
-                            <th>{{ order.code }}</th>
-                            <td>{{ order.created|date:"j.m.y" }}</td>
-                            <td>{{ order.updated|date:"j.m.y" }}</td>
-                            <td>{{ order.customer_phone }}</td>
-                            <td>{{ order.customer_name }}</td>
-                            <td>{{ order.customer_city }}</td>
-                            <td>{% for status in order.status.all %}{{ status.verbose_name }}{% endfor %}</td>
+                    {% for item in item_filter.qs %}
+                        <tr data-url="{{ item.get_absolute_admin_url }}">
+                            <th>{{ item.code }}</th>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.item_type }}</td>
+                            <td>{{ item.price }}</td>
+                            <td>{{ item.brand }}</td>
+                            <td>{{ item.fabric }}</td>
+                            <td>{{ item.color }}</td>
+                            <td>{% for size in item.get_sizes %}{{ size }} {% endfor %}</td>
+                            <td><img src="{{ item.get_image_basic_url }}"></td>
+                            <td>{% if item.available %}Так{% else %}Ні{% endif %}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

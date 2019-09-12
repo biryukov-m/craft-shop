@@ -217,6 +217,16 @@ a:hover {
 .main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper ul li input[type=checkbox] {
   margin-right: 5px;
 }
+.main-layout .main .sidebar .functions-block form.filters .attribute.price .select-wrapper {
+  display: block;
+}
+.main-layout .main .sidebar .functions-block form.filters .attribute.price .select-wrapper .price-wrapper {
+  width: 100%;
+  display: flex;
+}
+.main-layout .main .sidebar .functions-block form.filters .attribute.price .select-wrapper .price-wrapper input {
+  width: 45%;
+}
 .main-layout .main .sidebar .functions-block form.filters .department-header {
   display: block;
   font-size: 1.1rem;
@@ -349,18 +359,22 @@ a:hover {
 .main-layout .main .content .functions-block li:hover .description {
   color: #ff4081;
 }
-.main-layout .main .content .orders-table-content header h3 {
+.main-layout .main .content .table header {
   font-family: "Open Sans", sans-serif;
   color: black;
   font-weight: bold;
 }
-.main-layout .main .content .orders-table-content .table-wrapper table {
+.main-layout .main .content .table .table-wrapper table {
   font-family: "Open Sans", sans-serif;
   font-size: 0.9rem;
   color: black;
 }
-.main-layout .main .content .orders-table-content .table-wrapper table tbody tr {
+.main-layout .main .content .table .table-wrapper table tbody tr {
   cursor: pointer;
+}
+.main-layout .main .content .table .table-wrapper table tbody tr td img {
+  display: block;
+  max-width: 100%;
 }
 .main-layout .main .content .order-detail .header {
   font-family: "Open Sans", sans-serif;
@@ -387,6 +401,17 @@ a:hover {
   margin-bottom: 15px;
   font-size: 0.9rem;
   padding: 3px 6px;
+}
+.main-layout .main .content .products-table-content header {
+  font-family: "Open Sans", sans-serif;
+  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid #cecece;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.main-layout .main .content .products-table-content header h3 {
+  font-family: "Open Sans";
 }
 
 /*# sourceMappingURL=admin_main.css.map */

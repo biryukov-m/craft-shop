@@ -14,11 +14,6 @@ from .forms import ItemFilter
 from .forms import OrderAdminForm
 
 
-def main(request):
-    template = 'custom_admin/main.html'
-    return render(request, template)
-
-
 class Main(View):
     template_name = 'custom_admin/main.html'
 
@@ -91,7 +86,6 @@ class OrderRemove(View):
 
 
 # Поведение с товарами
-
 class AllProducts(View):
     template_name = 'custom_admin/products.html'
 
@@ -108,29 +102,6 @@ class AllProducts(View):
         items_list = Item.objects.all()
         item_filter = ItemFilter(request.GET, queryset=items_list)
         form = item_filter.form
-        #
-        # items_list = item_type_obj.get_items()
-        # product_filter = ProductFilter(request.GET, queryset=items_list)
-        # form = product_filter.form
-        # # Аггрегация макс и мин цены из всего списка товаров
-        # min_price = items_list.aggregate(Min('price'))
-        # max_price = items_list.aggregate(Max('price'))
-        # # Достать из аггрегации конкретные значения цен
-        # try:
-        #     min_price = int(min_price['price__min'])
-        #     max_price = int(max_price['price__max'])
-        # except TypeError:
-        #     min_price, max_price = 0, 0
-        #
-        # if 'price_min' in request.GET:
-        #     current_min_price = request.GET.get('price_min')
-        # else:
-        #     current_min_price = min_price
-        #
-        # if 'price_max' in request.GET:
-        #     current_max_price = request.GET.get('price_max')
-        # else:
-        #     current_max_price = max_price
 
         context = locals()
 

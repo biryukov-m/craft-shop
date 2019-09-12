@@ -274,5 +274,4 @@ def post_save_for_order(instance, **kwargs):
             print('Deleting instance with error')
             instance.delete()
 
-
 post_save.connect(post_save_for_order, sender=Order)
