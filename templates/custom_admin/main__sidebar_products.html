@@ -18,13 +18,12 @@
                                                     <input class="item_type_checkbox"
                                                             type="checkbox"
                                                            name="item_type"
-                                                           value="{{ it.id|add:"1" }}"
+                                                           value="{{ it.id }}"
                                                            id="id_item_type_{{ it.id }}"
                                                     >{{ it.name|capfirst }}
                                                 </label>
                                             </li>
                                         {% endfor %}
-
                                     </ul>
                                 </li>
                             {% endfor %}

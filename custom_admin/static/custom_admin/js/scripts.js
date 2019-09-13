@@ -106,9 +106,10 @@ $(document).ready(function () {
         function () {
             if (localStorage.getItem('admin_sidebar_'+this.id)==='yes'){
                 this.setAttribute('checked', '');
-                $(this).closest('a').addClass('opened');
-                // Тут надо придумать способ сменить ближайшей ссылке "а" класс на opened
-                console.log($(this).closest('a'));
+                $(this).closest('li.department-header').children('a.parent').addClass('opened');
+                $(this).closest('li.department-header').children('a.parent').siblings('ul').css('display', 'block');
+                $(this).closest('li.section-header').children('a.parent').addClass('opened');
+                $(this).closest('li.section-header').children('a.parent').siblings('ul').css('display', 'block');
             }
             else {
                 this.removeAttribute('checked');
