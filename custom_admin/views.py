@@ -98,13 +98,10 @@ class AllProducts(View):
                 sidebar[department][section] = []
                 for item_type in section.get_item_types():
                     sidebar[department][section].append(item_type)
-
         items_list = Item.objects.all()
         item_filter = ItemFilter(request.GET, queryset=items_list)
         form = item_filter.form
-
         context = locals()
-
         return context
 
     def get(self, request, *args, **kwargs):

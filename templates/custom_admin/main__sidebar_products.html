@@ -1,5 +1,5 @@
 <div class="functions-block">
-    <form class="filters" action="{% url "custom_admin:products" %}">
+    <form class="filters products" action="{% url "custom_admin:products" %}">
         <div class="attribute item_types">
             <div class="header-wrapper">
                 <div class="header">Типи товару</div>
@@ -81,5 +81,7 @@
             </div>
         </div>
         <button class="orders-search-submit">Пошук<i class="fas fa-search"></i></button>
+        <button type=reset class="orders-search-submit">Ресет<i class="fas fa-search"></i></button>
+
     </form>
 </div>

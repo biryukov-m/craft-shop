@@ -100,6 +100,15 @@ $(document).ready(function () {
             localStorage.setItem('admin_sidebar_'+this.id, 'no');
         }
     });
+    // Скрипт для формы на админ-странице списка товаров, который очищает форму, если в get запросе не было параметров
+    if (window.location.search.length < 2){
+        $('form.filters.products .item_type_checkbox').each(function () {
+                $(this).removeAttr('checked');
+                localStorage.setItem('admin_sidebar_'+this.id, 'no');
+            }
+        );
+        console.log('No get parameters in request, setting checkboxes to unchecked.')
+    }
     // При загрузке страницы, у каждого чекбокса запрашивает из локал стораджа информацию
     // о предыдущем состоянии, и согласно этому ставит или удаляет атрибут checked
     $('.item_type_checkbox').each(
@@ -115,5 +124,5 @@ $(document).ready(function () {
                 this.removeAttribute('checked');
             }
         }
-    )
+    );
 });
