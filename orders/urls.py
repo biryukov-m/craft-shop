@@ -16,7 +16,6 @@ urlpatterns = [
     path('order/<int:code>/pdf/', GenerateOrderPdf.as_view(), name='order-pdf'),
     path('order/<int:code>/', single_order, name='single_order_code'),
     path('order/', single_order, name='single_order_hash_code'),
-
 ]
 
 app_name = 'orders'

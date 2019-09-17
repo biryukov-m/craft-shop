@@ -8,6 +8,7 @@ from properties.models import Color
 from properties.models import Brand
 from properties.models import Size
 from product.models import ItemType
+from product.models import Item
 
 import django_filters
 
@@ -40,3 +41,19 @@ class OrderAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(OrderAdminForm, self).__init__(*args, **kwargs)
         self.fields['delivery_method'].empty_label = "Оберіть спосіб доставки..."
+
+
+class ProductAdminForm(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = ('name',
+                  'item_type',
+                  'description',
+                  'price',
+                  'available',
+                  'brand',
+                  'fabric',
+                  'color',
+                  'available_sizes',
+                  'slug',)
+        # exclude = ('hash_code', 'session_key')

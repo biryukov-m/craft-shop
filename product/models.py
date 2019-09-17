@@ -216,6 +216,10 @@ class Item(models.Model):
             }
         )
 
+    def get_absolute_admin_url(self):
+        url = reverse('custom_admin:product', kwargs={"product_code": self.code})
+        return url
+
     def get_images_extra(self):
         return self.images.filter(is_basic=False)
 

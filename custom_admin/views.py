@@ -7,11 +7,11 @@ from django.views import View
 from orders.models import Order
 from product.models import Department
 from product.models import Item
-from django.db.models import Max, Min
 
 from .forms import OrderFilter
 from .forms import ItemFilter
 from .forms import OrderAdminForm
+from .forms import ProductAdminForm
 
 
 class Main(View):
@@ -107,3 +107,30 @@ class AllProducts(View):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(request, *args, **kwargs)
         return render(request, self.template_name, context=context)
+
+
+class ProductDetail(View):
+    template_name = 'custom_admin/product_detail.html'
+
+    def get(self, request, product_code, *args, **kwargs):
+        product = get_object_or_404(Item, code=product_code)
+        form = ProductAdminForm(instance=product)
+        context = {'product': product, 'product_admin_form': form}
+        return render(request, template_name=self.template_name, context=context)
+
+    # def post(self, request, order_code, *args, **kwargs):
+    #     order = get_object_or_404(Order, code=order_code)
+    #     form = OrderAdminForm(request.POST, instance=order)
+    #     if form.is_valid():
+    #         order = form.save(commit=False)
+    #         order.save()
+    #         print("Форму збережено - {}".format(order))
+    #         print(order.status)
+    #     else:
+    #         print("Помилка в редагуванні форми замовлення у адмін-інтерфейса")
+    #         context = {'order': order, 'order_admin_form': form}
+    #         for f in form.fields:
+    #             if form.has_error(f):
+    #                 print("Помилка у полі: ", form.has_error(f))
+    #         return render(request, template_name=self.template_name, context=context)
+    #     return redirect(order.get_absolute_admin_url())

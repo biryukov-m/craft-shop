@@ -10,4 +10,3 @@ class OrderForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(OrderForm, self).__init__(*args, **kwargs)
         self.fields['delivery_method'].empty_label = "Оберіть спосіб доставки..."
-        # self.fields['delivery_method'].queryset = Choice.objects.all().values_list('id', 'field')

@@ -84,6 +84,11 @@ $(document).ready(function () {
         window.location = this.getAttribute('data-url');
     });
 
+    // В таблице заказов при нажатии на строку заказа - переход на его детальное отображение
+    $('.products-table-content table tbody tr').on('click', function () {
+        window.location = this.getAttribute('data-url');
+    });
+
     //  Скрипты сайдбара   main__sidebar_products.html
     $('#id_item_type a.parent').on('click', function () {
         $(this).toggleClass('opened');
