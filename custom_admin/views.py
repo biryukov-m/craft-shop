@@ -115,7 +115,8 @@ class ProductDetail(View):
     def get(self, request, product_code, *args, **kwargs):
         product = get_object_or_404(Item, code=product_code)
         form = ProductAdminForm(instance=product)
-        context = {'product': product, 'product_admin_form': form}
+        form_image = ProductAdminForm(instance=product.images)
+        context = {'product': product, 'product_admin_form': form, 'form_image': form_image}
         return render(request, template_name=self.template_name, context=context)
 
     # def post(self, request, order_code, *args, **kwargs):

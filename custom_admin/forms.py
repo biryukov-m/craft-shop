@@ -9,6 +9,7 @@ from properties.models import Brand
 from properties.models import Size
 from product.models import ItemType
 from product.models import Item
+from product.models import ItemImage
 
 import django_filters
 
@@ -56,4 +57,9 @@ class ProductAdminForm(forms.ModelForm):
                   'color',
                   'available_sizes',
                   'slug',)
-        # exclude = ('hash_code', 'session_key')
+
+
+class ProductImageForm(forms.ModelForm):
+    class Meta:
+        model = ItemImage
+        exclude = ('is_basic',)
