@@ -140,28 +140,6 @@ class ItemType(models.Model):
         return sections_and_item_types
 
 
-# Абстрактный класс для изображений товаров
-class ItemImage(models.Model):
-    created = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='додано')
-    updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='редаговано')
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    product_object = GenericForeignKey('content_type', 'object_id')
-    is_active = models.BooleanField(default=True, verbose_name='показувати')
-    is_basic = models.BooleanField(default=False, verbose_name='основне фото')
-    image = models.ImageField(default=None,
-                              blank=True,
-                              verbose_name='фото товару',
-                              upload_to=get_upload_path)
-
-    def __str__(self):
-        return "Изображение для {}".format(self.content_type.model)
-
-    class Meta:
-        verbose_name = "Зображення товару"
-        verbose_name_plural = "Зображення товарів"
-
-
 # Класс для единицы товара
 @register_eav()
 class Item(models.Model):
@@ -196,7 +174,6 @@ class Item(models.Model):
     color = models.ForeignKey(properties.Color, on_delete=models.PROTECT, verbose_name="колір")
     available_sizes = models.ManyToManyField(properties.Size, verbose_name="доступні розміри")
     slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
-    images = GenericRelation(ItemImage)
 
     class Meta:
         verbose_name = "Товар"
@@ -221,10 +198,10 @@ class Item(models.Model):
         return url
 
     def get_images_extra(self):
-        return self.images.filter(is_basic=False)
+        return self.itemimage_set.filter(is_basic=False)
 
     def get_images_extra_urls(self):
-        images = self.images.filter(is_basic=False)
+        images = self.itemimage_set.filter(is_basic=False)
         urls = []
         try:
             for obj in images:
@@ -235,10 +212,10 @@ class Item(models.Model):
         return urls
 
     def get_image_basic(self):
-        return self.images.filter(is_basic=True).first().image
+        return self.itemimage_set.filter(is_basic=True).first().image
 
     def get_image_basic_url(self):
-        basic_image = self.images.filter(is_basic=True).first()
+        basic_image = self.itemimage_set.filter(is_basic=True).first()
 
         if not basic_image:
             return None
@@ -246,6 +223,29 @@ class Item(models.Model):
 
     def get_sizes(self):
         return self.available_sizes.all()
+
+
+#  класс для изображений товаров
+class ItemImage(models.Model):
+    created = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='додано')
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='редаговано')
+    # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    # object_id = models.PositiveIntegerField()
+    # product_object = GenericForeignKey('content_type', 'object_id')
+    item_related = models.ForeignKey(Item, on_delete=models.CASCADE, verbose_name="для товару")
+    is_active = models.BooleanField(default=True, verbose_name='показувати')
+    is_basic = models.BooleanField(default=False, verbose_name='основне фото')
+    image = models.ImageField(default=None,
+                              blank=True,
+                              verbose_name='фото товару',
+                              upload_to=get_upload_path)
+
+    def __str__(self):
+        return "Изображение для {}".format(self.image.name)
+
+    class Meta:
+        verbose_name = "Зображення товару"
+        verbose_name_plural = "Зображення товарів"
 
 
 def post_save_for_item(instance, **kwargs):
@@ -258,4 +258,5 @@ def post_save_for_item(instance, **kwargs):
                   'probably something wrong with code generation')
             print('Deleting instance with error')
             instance.delete()
+
 post_save.connect(post_save_for_item, sender=Item)

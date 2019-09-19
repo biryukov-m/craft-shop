@@ -7,12 +7,16 @@ from django.views import View
 from orders.models import Order
 from product.models import Department
 from product.models import Item
+from product.models import ItemImage
 
 from .forms import OrderFilter
 from .forms import ItemFilter
 from .forms import OrderAdminForm
 from .forms import ProductAdminForm
-
+from django.contrib.contenttypes.forms import generic_inlineformset_factory
+from django.contrib.contenttypes.forms import ModelForm
+from django.contrib.contenttypes.forms import BaseGenericInlineFormSet
+from django import forms
 
 class Main(View):
     template_name = 'custom_admin/main.html'
@@ -111,12 +115,19 @@ class AllProducts(View):
 
 class ProductDetail(View):
     template_name = 'custom_admin/product_detail.html'
+    # form_image = generic_inlineformset_factory(ItemImage,
+    #                                            form=ModelForm,
+    #                                            formset=BaseGenericInlineFormSet,
+    #                                            ct_field='content_type',
+    #                                            fk_field='object_id',
+    #                                            extra=1)
 
     def get(self, request, product_code, *args, **kwargs):
         product = get_object_or_404(Item, code=product_code)
+
         form = ProductAdminForm(instance=product)
-        form_image = ProductAdminForm(instance=product.images)
-        context = {'product': product, 'product_admin_form': form, 'form_image': form_image}
+        # formset = self.form_image(instance=product)
+        context = {'product': product, 'product_admin_form': form}
         return render(request, template_name=self.template_name, context=context)
 
     # def post(self, request, order_code, *args, **kwargs):

@@ -16,8 +16,20 @@
             <div class="header">{{ product.code }} від {{ product.created | date:"j.m.y" }}</div>
             <form class="product-edit" autocomplete="off" action="" method="post">
                 {% csrf_token %}
-                {{ product_admin_form }}
-                {{ form_image }}
+{#                {{ product_admin_form }}#}
+                {% for form in formset %}
+                    IMAGA
+                    {{ form.as_p }}
+                    IMAGA
+
+                {% endfor %}
+{#            {{ formset.fields }}#}
+{#            {{ formset.field }}#}
+{#                {% for i in formset %}#}
+{#                    {{ i.widget }}#}
+{#                    {{ i.widgets }}#}
+{#                {% endfor %}#}
+            </form>
 
 {#                <div class="row">#}
 {#                    <div class="col-sm-4">#}
