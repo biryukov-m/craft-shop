@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.contenttypes.admin import GenericTabularInline
+from django.contrib.admin import TabularInline
 
 from .models import Department
 from .models import Section
@@ -15,7 +15,7 @@ admin.site.register(Section)
 admin.site.register(ItemType)
 
 
-class ImageInline(GenericTabularInline):
+class ImageInline(TabularInline):
     model = ItemImage
 
 
@@ -31,5 +31,6 @@ class ItemAdmin(BaseEntityAdmin):
     inlines = [
         ImageInline,
     ]
+
 
 admin.site.register(Item, ItemAdmin)
