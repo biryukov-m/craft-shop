@@ -67,8 +67,9 @@ class OrderDetail(View):
         if form.is_valid():
             order = form.save(commit=False)
             order.save()
+            form.save_m2m()
             print("Форму збережено - {}".format(order))
-            print(order.status)
+            print(order.status.all())
         else:
             print("Помилка в редагуванні форми замовлення у адмін-інтерфейса")
             context = {'order': order, 'order_admin_form': form}

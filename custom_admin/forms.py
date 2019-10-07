@@ -37,7 +37,25 @@ class ItemFilter(django_filters.FilterSet):
 class OrderAdminForm(forms.ModelForm):
     class Meta:
         model = Order
-        exclude = ('hash_code', 'session_key')
+        # exclude = ('hash_code', 'session_key')
+        fields = (
+            'customer_name',
+            'customer_email',
+            'customer_phone',
+            'customer_comment',
+            'customer_city',
+            'customer_address',
+            'postal_code',
+            'delivery_method',
+            'status',
+            'manager_comment',
+            'is_removed',
+            'hash_code',
+        )
+
+        widgets = {
+            'status': forms.CheckboxSelectMultiple(choices=Status.objects.all()),
+        }
 
     def __init__(self, *args, **kwargs):
         super(OrderAdminForm, self).__init__(*args, **kwargs)
