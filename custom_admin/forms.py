@@ -77,6 +77,15 @@ class ProductAdminForm(forms.ModelForm):
                   'slug',)
 
 
+class ImageAdminForm(forms.ModelForm):
+    class Meta:
+        model = ItemImage
+        fields = ('image',
+                  'item_related',
+                  'is_basic',
+                  'is_active',)
+
+
 class ProductImageForm(forms.ModelForm):
     class Meta:
         model = ItemImage

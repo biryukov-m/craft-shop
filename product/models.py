@@ -229,9 +229,6 @@ class Item(models.Model):
 class ItemImage(models.Model):
     created = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='додано')
     updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='редаговано')
-    # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    # object_id = models.PositiveIntegerField()
-    # product_object = GenericForeignKey('content_type', 'object_id')
     item_related = models.ForeignKey(Item, on_delete=models.CASCADE, verbose_name="для товару")
     is_active = models.BooleanField(default=True, verbose_name='показувати')
     is_basic = models.BooleanField(default=False, verbose_name='основне фото')
