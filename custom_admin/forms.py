@@ -65,16 +65,7 @@ class OrderAdminForm(forms.ModelForm):
 class ProductAdminForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ('name',
-                  'item_type',
-                  'description',
-                  'price',
-                  'available',
-                  'brand',
-                  'fabric',
-                  'color',
-                  'available_sizes',
-                  'slug',)
+        fields = '__all__'
 
 
 class ImageAdminForm(forms.ModelForm):

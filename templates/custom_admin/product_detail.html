@@ -16,18 +16,7 @@
             <div class="header">{{ product.code }} від {{ product.created | date:"j.m.y" }}</div>
             <form class="product-edit" autocomplete="off" action="" method="post">
                 {% csrf_token %}
-                {{ product_form }}
-                {{ images_form }}
-                {#                {{ product_admin_form }}#}
-                {% for form in formset %}
-                    {{ form.as_p }}
-                {% endfor %}
-                {#            {{ formset.fields }}#}
-                {#            {{ formset.field }}#}
-                {#                {% for i in formset %}#}
-                {#                    {{ i.widget }}#}
-                {#                    {{ i.widgets }}#}
-                {#                {% endfor %}#}
+                {{ product_form.as_p }}
             </form>
 
             {#                <div class="row">#}
@@ -98,7 +87,7 @@
             {#                        </div>#}
             {#                    </div>#}
             {#                </div>#}
-            <button type="submit"><i class="fas fa-shopping-cart"></i>Оформити замовлення</button>
+            <button type="submit"><i class="fas fa-shopping-cart"></i>Зберегти</button>
             </form>
         </div>
     </div>
