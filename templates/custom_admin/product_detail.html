@@ -17,77 +17,10 @@
             <form class="product-edit" autocomplete="off" action="" method="post">
                 {% csrf_token %}
                 {{ product_form.as_p }}
-            </form>
-
-            {#                <div class="row">#}
-            {#                    <div class="col-sm-4">#}
-            {#                        <div class="field customer-name">#}
-            {#                            <label for="{{ order_admin_form.customer_name.id_for_label }}">Ім'я</label>#}
-            {#                            {{ order_admin_form.customer_name }}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {##}
-            {#                    <div class="col-sm-4">#}
-            {#                        <div class="field customer-email">#}
-            {#                            <label for="{{ order_admin_form.customer_email.id_for_label }}">E-mail</label>#}
-            {#                            {{ order_admin_form.customer_email }}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {##}
-            {#                    <div class="col-sm-4">#}
-            {#                        <div class="field customer-phone">#}
-            {#                            <label for="{{ order_admin_form.customer_phone.id_for_label }}">Телефон</label>#}
-            {#                            {{ order_admin_form.customer_phone }}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {##}
-            {#                    <div class="col-sm-4">#}
-            {#                        <div class="field customer-city">#}
-            {#                            <label for="{{ order_admin_form.customer_city.id_for_label }}">Місто</label>#}
-            {#                            {{ order_admin_form.customer_city }}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {##}
-            {#                    <div class="col-sm-4">#}
-            {#                        <div class="field customer-address">#}
-            {#                            <label for="{{ order_admin_form.customer_address.id_for_label }}">Адреса</label>#}
-            {#                            {{ order_admin_form.customer_address }}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {##}
-            {#                    <div class="col-sm-4">#}
-            {#                        <div class="field customer-postal">#}
-            {#                            <label for="{{ order_admin_form.postal_code.id_for_label }}">Поштовий індекс</label>#}
-            {#                            {{ order_admin_form.postal_code }}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {##}
-            {#                    <div class="col-sm-12">#}
-            {#                        <div class="field delivery">#}
-            {#                            <label for="{{ order_admin_form.delivery_method.id_for_label }}">Спосіб доставки</label>#}
-            {#                            {{ order_admin_form.delivery_method }}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                    <div class="col-sm-12">#}
-            {#                        <div class="field status">#}
-            {#                            <label for="{{ order_admin_form.status.id_for_label }}">Статус</label>#}
-            {#                            {{ order_admin_form.status }}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                    <div class="col-sm-12">#}
-            {#                        <div class="field customer-comment">#}
-            {#                            <label for="{{ order_admin_form.customer_comment.id_for_label }}">Коментар</label>#}
-            {#                            {{ order_admin_form.customer_comment }}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                    <div class="col-sm-12">#}
-            {#                        <div class="field manager_comment">#}
-            {#                            <label for="{{ order_admin_form.manager_comment.id_for_label }}">Примітки менеджера</label>#}
-            {#                            {{ order_admin_form.manager_comment }}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            <button type="submit"><i class="fas fa-shopping-cart"></i>Зберегти</button>
+                {% for form in image_formset %}
+                    {{ form }}
+                {% endfor %}
+            <button><i class="fas fa-shopping-cart"></i>Зберегти</button>
             </form>
         </div>
     </div>

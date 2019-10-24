@@ -62,22 +62,9 @@ class OrderAdminForm(forms.ModelForm):
         self.fields['delivery_method'].empty_label = "Оберіть спосіб доставки..."
 
 
-class ProductAdminForm(forms.ModelForm):
+class ProductForm(forms.ModelForm):
     class Meta:
         model = Item
         fields = '__all__'
 
-
-class ImageAdminForm(forms.ModelForm):
-    class Meta:
-        model = ItemImage
-        fields = ('image',
-                  'item_related',
-                  'is_basic',
-                  'is_active',)
-
-
-class ProductImageForm(forms.ModelForm):
-    class Meta:
-        model = ItemImage
-        exclude = ('is_basic',)
+ImageFormset = forms.inlineformset_factory(Item, ItemImage, fields='__all__')
