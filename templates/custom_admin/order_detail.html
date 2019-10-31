@@ -16,7 +16,6 @@
             <div class="header">{{ order.code }} від {{ order.created | date:"j.m.y" }}</div>
             <form class="order-edit" autocomplete="off" action="" method="post">
                 {% csrf_token %}
-
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="field customer-name">

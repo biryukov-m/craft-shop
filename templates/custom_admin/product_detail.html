@@ -11,16 +11,92 @@
     </div>
 {% endblock %}
 {% block content %}
-    <div class="row order-detail">
+    <div class="row product-detail">
         <div class="col-sm-12">
             <div class="header">{{ product.code }} від {{ product.created | date:"j.m.y" }}</div>
+            <div class="main-image-wrapper col-sm-6">
+                <img src="{{ product.get_image_basic.url }}">
+            </div>
+            <div class="extra-images row">
+                {% for image in product.get_images_extra %}
+                    <div class="image-wrapper col-2">
+                        <img src="{{ image.image.url }}">
+                    </div>
+                {% endfor %}
+            </div>
             <form class="product-edit" autocomplete="off" action="" method="post">
                 {% csrf_token %}
-                {{ product_form.as_p }}
+                {{ product_form.non_field_errors }}
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="field name">
+                            <label for="{{ product_form.name.id_for_label }}">Найменування: </label>
+                            {{ product_form.name }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="field item_type">
+                            <label for="{{ product_form.item_type.id_for_label }}">Тип товару: </label>
+                            {{ product_form.item_type }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="field price">
+                            <label for="{{ product_form.price.id_for_label }}">Ціна: </label>
+                            {{ product_form.price }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="field brand">
+                            <label for="{{ product_form.brand.id_for_label }}">Виробник: </label>
+                            {{ product_form.brand }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="field fabric">
+                            <label for="{{ product_form.fabric.id_for_label }}">Тканина: </label>
+                            {{ product_form.fabric }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="field color">
+                            <label for="{{ product_form.color.id_for_label }}">Колір: </label>
+                            {{ product_form.color }}
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="field available">
+                            <label for="{{ product_form.available.id_for_label }}">Доступність: </label>{{ product_form.available }}
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="field available_sizes">
+                            <label for="{{ product_form.available_sizes.id_for_label }}">Розміри: </label>
+                            {{ product_form.available_sizes }}
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="field description">
+                            <label for="{{ product_form.description.id_for_label }}">Описання: </label>
+                            {{ product_form.description }}
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="field slug">
+                            <label for="{{ product_form.slug.id_for_label }}">URL: </label>
+                            {{ product_form.slug }}
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
                 {% for form in image_formset %}
                     {{ form }}
                 {% endfor %}
-            <button><i class="fas fa-shopping-cart"></i>Зберегти</button>
+                <button><i class="fas fa-shopping-cart"></i>Зберегти</button>
             </form>
         </div>
     </div>

@@ -376,7 +376,7 @@ a:hover {
   display: block;
   max-width: 100%;
 }
-.main-layout .main .content .order-detail .header {
+.main-layout .main .content .order-detail .header, .main-layout .main .content .product-detail .header {
   font-family: "Open Sans", sans-serif;
   color: black;
   font-weight: bold;
@@ -384,18 +384,18 @@ a:hover {
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
-.main-layout .main .content .order-detail form.order-edit {
+.main-layout .main .content .order-detail form, .main-layout .main .content .product-detail form {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   color: black;
 }
-.main-layout .main .content .order-detail form.order-edit input, .main-layout .main .content .order-detail form.order-edit label, .main-layout .main .content .order-detail form.order-edit select, .main-layout .main .content .order-detail form.order-edit textarea {
+.main-layout .main .content .order-detail form input, .main-layout .main .content .order-detail form label, .main-layout .main .content .order-detail form select, .main-layout .main .content .order-detail form textarea, .main-layout .main .content .product-detail form input, .main-layout .main .content .product-detail form label, .main-layout .main .content .product-detail form select, .main-layout .main .content .product-detail form textarea {
   display: block;
   margin-bottom: 0;
   background: #fff;
   color: #000;
 }
-.main-layout .main .content .order-detail form.order-edit input, .main-layout .main .content .order-detail form.order-edit select, .main-layout .main .content .order-detail form.order-edit textarea, .main-layout .main .content .order-detail form.order-edit button {
+.main-layout .main .content .order-detail form input, .main-layout .main .content .order-detail form select, .main-layout .main .content .order-detail form textarea, .main-layout .main .content .order-detail form button, .main-layout .main .content .product-detail form input, .main-layout .main .content .product-detail form select, .main-layout .main .content .product-detail form textarea, .main-layout .main .content .product-detail form button {
   border: 1px solid #464646;
   border-radius: 3px;
   margin-bottom: 15px;

@@ -165,10 +165,6 @@ class Item(models.Model):
     updated = models.DateTimeField(auto_now=True,
                                    auto_now_add=False,
                                    verbose_name='редаговано')
-    # item_code = models.CharField(default=None,
-    #                              blank=True,
-    #                              max_length=20)
-    # gender = models.ForeignKey(properties.Gender, on_delete=models.PROTECT, verbose_name="стать")
     brand = models.ForeignKey(properties.Brand, on_delete=models.PROTECT, verbose_name="виробник")
     fabric = models.ForeignKey(properties.Fabric, on_delete=models.PROTECT, verbose_name="тканина")
     color = models.ForeignKey(properties.Color, on_delete=models.PROTECT, verbose_name="колір")
