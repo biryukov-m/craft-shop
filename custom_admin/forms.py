@@ -67,4 +67,4 @@ class ProductForm(forms.ModelForm):
         model = Item
         fields = '__all__'
 
-ImageFormset = forms.inlineformset_factory(Item, ItemImage, fields='__all__')
+ImageFormset = forms.inlineformset_factory(Item, ItemImage, fields=('is_active', 'is_basic', 'image'))

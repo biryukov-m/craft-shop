@@ -402,7 +402,73 @@ a:hover {
   font-size: 0.9rem;
   padding: 3px 6px;
 }
-.main-layout .main .content .products-table-content header {
+.main-layout .main .content .product-detail .product-images {
+  display: flex;
+}
+.main-layout .main .content .product-detail .product-images img {
+  display: block;
+  width: 100%;
+  border: 2px solid #939393;
+}
+.main-layout .main .content .product-detail .product-images img.main {
+  border: 2px solid #ff4081;
+}
+.main-layout .main .content .product-detail .product-images img:not(:last-of-type) {
+  margin-right: 4px;
+}
+.main-layout .main .content .product-detail form.product-edit input {
+  max-width: 100%;
+}
+.main-layout .main .content .product-detail form.product-edit .field.available {
+  display: flex;
+  align-items: baseline;
+}
+.main-layout .main .content .product-detail form.product-edit .field.available label {
+  margin-right: 5px;
+}
+.main-layout .main .content .product-detail form.product-edit .field.description textarea {
+  width: 100%;
+  overflow: auto;
+  height: 200px;
+}
+.main-layout .main .content .product-detail form.product-edit .image-admin-fieldset {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 0 0 14px 0;
+}
+.main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .image-admin-field {
+  font-size: 0.85rem;
+}
+.main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .image-admin-field a {
+  font-size: 0.8rem;
+}
+.main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .image-admin-field.file label, .main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .image-admin-field.file input {
+  display: inline-block;
+}
+.main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .image-admin-field.file input[type=checkbox] {
+  margin-left: 10px;
+}
+.main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+.main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .wrapper .image-admin-field.is-active {
+  margin-right: 10px;
+}
+.main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .wrapper .image-admin-field.is-active, .main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .wrapper .image-admin-field.is-basic {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .wrapper .image-admin-field.is-active input[type=checkbox], .main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .wrapper .image-admin-field.is-basic input[type=checkbox] {
+  margin: 0 0 0 5px;
+}
+.main-layout .main .content .products .products-table-content header {
   font-family: "Open Sans", sans-serif;
   color: black;
   font-weight: bold;
@@ -410,8 +476,8 @@ a:hover {
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
-.main-layout .main .content .products-table-content header h3 {
-  font-family: "Open Sans";
+.main-layout .main .content .products .products-table-content header h3 {
+  font-family: "Open Sans", sans-serif;
 }
 
 /*# sourceMappingURL=admin_main.css.map */

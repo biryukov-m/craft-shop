@@ -331,7 +331,6 @@ a:hover
                   img
                     display: block
                     max-width: 100%
-
       .order-detail, .product-detail
         .header
           font-family: "Open Sans", sans-serif
@@ -355,13 +354,68 @@ a:hover
             margin-bottom: 15px
             font-size: 0.9rem
             padding: 3px 6px
-      .products-table-content
-        header
-          font-family: "Open Sans", sans-serif
-          color: black
-          font-weight: bold
-          border-bottom: 2px solid $lighter
-          font-size: 1.2rem
-          margin-bottom: 10px
-          h3
-            font-family: "Open Sans"
+      .product-detail
+        .product-images
+          display: flex
+          img
+            display: block
+            width: 100%
+            border: 2px solid $light
+            &.main
+              border: 2px solid $highlight
+            &:not(:last-of-type)
+              margin-right: 4px
+        form.product-edit
+          input
+            max-width: 100%
+          .field.available
+            display: flex
+            align-items: baseline
+            label
+              margin-right: 5px
+          .field.description
+            textarea
+              width: 100%
+              overflow: auto
+              height: 200px
+          .image-admin-fieldset
+            display: flex
+            flex-direction: column
+            border: 1px solid black
+            border-radius: 4px
+            padding: 8px 12px
+            margin: 0 0 14px 0
+
+            .image-admin-field
+              font-size: 0.85rem
+              a
+                font-size: 0.8rem
+            .image-admin-field.file
+              label, input
+                display: inline-block
+              input[type='checkbox']
+                margin-left: 10px
+            .wrapper
+              display: flex
+              flex-direction: row
+              align-items: baseline
+              justify-content: flex-start
+              .image-admin-field.is-active
+                margin-right: 10px
+              .image-admin-field.is-active, .image-admin-field.is-basic
+                display: flex
+                flex-direction: row
+                align-items: baseline
+                input[type='checkbox']
+                  margin: 0 0 0 5px
+      .products
+        .products-table-content
+          header
+            font-family: "Open Sans", sans-serif
+            color: black
+            font-weight: bold
+            border-bottom: 2px solid $lighter
+            font-size: 1.2rem
+            margin-bottom: 10px
+            h3
+              font-family: "Open Sans", sans-serif
