@@ -402,18 +402,23 @@ a:hover {
   font-size: 0.9rem;
   padding: 3px 6px;
 }
-.main-layout .main .content .product-detail .product-images {
+.main-layout .main .content .product-detail .product-images .wrapper {
   display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 15px;
 }
-.main-layout .main .content .product-detail .product-images img {
-  display: block;
-  width: 100%;
+.main-layout .main .content .product-detail .product-images .wrapper img {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  display: inline-block;
   border: 2px solid #939393;
 }
-.main-layout .main .content .product-detail .product-images img.main {
+.main-layout .main .content .product-detail .product-images .wrapper img.main {
   border: 2px solid #ff4081;
 }
-.main-layout .main .content .product-detail .product-images img:not(:last-of-type) {
+.main-layout .main .content .product-detail .product-images .wrapper img:not(:last-of-type) {
   margin-right: 4px;
 }
 .main-layout .main .content .product-detail form.product-edit input {

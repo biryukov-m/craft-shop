@@ -12,10 +12,16 @@ from properties import models as properties
 
 
 def get_upload_path(instance, filename):
+    print("Saving uploaded image to:")
+    print(os.path.join(
+        'item_images',
+        "item",
+        "{}".format(instance.item_related.id),
+        filename))
     return os.path.join(
         'item_images',
-        "{}".format(instance.content_type.model),
-        "{}".format(instance.object_id),
+        "item",
+        "{}".format(instance.item_related.id),
         filename
     )
 

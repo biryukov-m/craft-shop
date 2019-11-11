@@ -356,15 +356,21 @@ a:hover
             padding: 3px 6px
       .product-detail
         .product-images
-          display: flex
-          img
-            display: block
-            width: 100%
-            border: 2px solid $light
-            &.main
-              border: 2px solid $highlight
-            &:not(:last-of-type)
-              margin-right: 4px
+          .wrapper
+            display: flex
+            align-items: flex-end
+            justify-content: center
+            margin-bottom: 15px
+            img
+              width: auto
+              height: 100%
+              max-width: 100%
+              display: inline-block
+              border: 2px solid $light
+              &.main
+                border: 2px solid $highlight
+              &:not(:last-of-type)
+                margin-right: 4px
         form.product-edit
           input
             max-width: 100%

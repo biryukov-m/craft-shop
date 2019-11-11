@@ -15,12 +15,13 @@
         <div class="col-sm-12">
             <div class="header">Редагування товару "{{ product.name }}" від {{ product.created | date:"j.m.y" }}</div>
             <div class="product-images col-sm-12">
-                <img class="main" src="{{ product.get_image_basic.url }}" title="{{ product.get_image_basic }}">
-                {% for image in product.get_images_extra %}
-                    <img src="{{ image.image.url }}" title="{{ image.image }}">
-                {% endfor %}
+                <div class="wrapper">
+                    <img class="main" src="{{ product.get_image_basic.url|default_if_none:'#' }}" title="{{ product.get_image_basic }}">
+                    {% for image in product.get_images_extra %}
+                        <img src="{{ image.image.url|default_if_none:'#' }}" title="{{ image.image }}">
+                    {% endfor %}</div>
             </div>
-            <form class="product-edit" autocomplete="off" action="" method="post">
+            <form class="product-edit" autocomplete="off" action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ product_form.non_field_errors }}
                 <div class="row">
@@ -85,7 +86,11 @@
                     </div>
                 </div>
                 <h3>Редагування фотографій</h3>
+                {{ image_formset.management_form }}
                 {% for form in image_formset %}
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
                     <div class="image-admin-fieldset">
                         <div class="image-admin-field file">
                             <label for="{{ form.image.id_for_label }}">Фото {{ forloop.counter }}.</label>
@@ -106,4 +111,5 @@
                 <button>Зберегти</button>
             </form>
         </div>
+    </div>
 {% endblock %}

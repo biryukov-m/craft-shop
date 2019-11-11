@@ -123,8 +123,11 @@ class ProductDetail(View):
 
     def post(self, request, product_code, *args, **kwargs):
         product = get_object_or_404(Item, code=product_code)
-        product_form = ProductForm(request.POST, instance=product, prefix='product')
+        product_form = ProductForm(request.POST, request.FILES, instance=product, prefix='product')
         image_formset = ImageFormset(request.POST, request.FILES, instance=product, prefix='images')
+        print(image_formset.errors)
+        print(image_formset.deleted_forms)
+
         if image_formset.is_valid() and product_form.is_valid():
             image_formset.save()
             product_form.save()
