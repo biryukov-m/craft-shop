@@ -258,4 +258,14 @@ def post_save_for_item(instance, **kwargs):
             print('Deleting instance with error')
             instance.delete()
 
+
+def post_save_for_itemimage(instance, **kwargs):
+    if not instance.image:
+        try:
+            instance.delete()
+            print('Image {} deleted, and instance deleted too'.format(instance))
+        except:
+            print('ERROR WITH post_save_for_itemimage')
+
 post_save.connect(post_save_for_item, sender=Item)
+post_save.connect(post_save_for_itemimage, sender=ItemImage)
