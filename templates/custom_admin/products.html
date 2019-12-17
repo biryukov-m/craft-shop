@@ -12,6 +12,7 @@
                         <tr>
                             <th scope="col">Код</th>
                             <th scope="col">Назва</th>
+                            <th scope="col">Секція</th>
                             <th scope="col">Тип</th>
                             <th scope="col">Ціна</th>
                             <th scope="col">Виробник</th>
@@ -27,6 +28,7 @@
                         <tr data-url="{{ item.get_absolute_admin_url }}">
                             <th>{{ item.code }}</th>
                             <td>{{ item.name }}</td>
+                            <td>{{ item.item_type.section }}</td>
                             <td>{{ item.item_type }}</td>
                             <td>{{ item.price }}</td>
                             <td>{{ item.brand }}</td>

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'custom_admin',
     'eav',
     'django_filters',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [

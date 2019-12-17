@@ -12,7 +12,6 @@ from .models import Status
 from product.models import Item
 from properties.models import Size
 from .forms import OrderForm
-from .utils import render_to_pdf
 
 
 def basket_add(request):

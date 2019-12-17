@@ -80,8 +80,16 @@
                 {{ form.brand }}
             </div>
         </div>
-        <button class="orders-search-submit">Пошук<i class="fas fa-search"></i></button>
-        <button type=reset class="orders-search-submit">Ресет<i class="fas fa-search"></i></button>
+        <div class="attribute">
+            <div class="header-wrapper">
+                <div class="header"><span class="bold"></span><span class="thin">Видалені</span></div>
+            </div>
+            <div class="select-wrapper">
+                {{ form.pseudo_deleted }}
+            </div>
+        </div>
+        <button class="search-submit">Пошук  <i class="fas fa-search"></i></button>
+        <button type=reset class="reset">Скинути фільтри  <i class="fas fa-undo"></i></button>
 
     </form>
 </div>

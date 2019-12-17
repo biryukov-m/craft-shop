@@ -32,6 +32,7 @@ class ItemFilter(django_filters.FilterSet):
     color = django_filters.ModelMultipleChoiceFilter(queryset=Color.objects.all(), widget=forms.CheckboxSelectMultiple)
     brand = django_filters.ModelMultipleChoiceFilter(queryset=Brand.objects.all(), widget=forms.CheckboxSelectMultiple)
     item_type = django_filters.ModelMultipleChoiceFilter(queryset=ItemType.objects.all(), widget=forms.CheckboxSelectMultiple)
+    pseudo_deleted = django_filters.BooleanFilter(field_name='pseudo_deleted')
 
 
 class OrderAdminForm(forms.ModelForm):

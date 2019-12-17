@@ -4,9 +4,7 @@
     <div class="functions-block">
         <div class="header">Товар</div>
         <ul class="functions">
-            <li><a href="{% url "custom_admin:orders" %}" class="">Редагувати</a></li>
-            <li><a href="{% url "custom_admin:orders" %}" class="">Закрити</a></li>
-            <li><a href="#" class="">Видалити</a></li>
+            <li><a href="{% url "custom_admin:products" %}" class="">До списку товарів</a></li>
         </ul>
     </div>
 {% endblock %}
@@ -109,6 +107,7 @@
                     </div>
                 {% endfor %}
                 <button>Зберегти</button>
+                <button class="delete">Видалити назавжди</button>
             </form>
         </div>
     </div>

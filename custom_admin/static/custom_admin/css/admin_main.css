@@ -188,7 +188,7 @@ a:hover {
   border: 1px solid #babab2;
   font-size: 0.8rem;
 }
-.main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper button {
+.main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper button.find-order {
   color: #464646;
   background: white;
   padding: 0 10px;
@@ -196,7 +196,7 @@ a:hover {
   border: 1px solid #939393;
   border-left: none;
 }
-.main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper button:hover {
+.main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper button.find-order:hover {
   color: black;
 }
 .main-layout .main .sidebar .functions-block form.filters .attribute .select-wrapper input[type=text] {
@@ -272,6 +272,16 @@ a:hover {
 }
 .main-layout .main .sidebar .functions-block form.filters ul#id_item_type li.department-header ul li.section-header ul li.item-type label input[type=checkbox] {
   margin-right: 5px;
+}
+.main-layout .main .sidebar .functions-block form.filters button.orders-search-submit {
+  max-width: 80%;
+  background-color: #f6b28f;
+  border: 1px solid #282828;
+  color: black;
+  font-weight: 600;
+  padding: 4px 10px;
+  margin: 10px 0;
+  cursor: pointer;
 }
 .main-layout .main .content .functions-block {
   font-family: "Open Sans", sans-serif;
@@ -397,7 +407,6 @@ a:hover {
 }
 .main-layout .main .content .order-detail form input, .main-layout .main .content .order-detail form select, .main-layout .main .content .order-detail form textarea, .main-layout .main .content .order-detail form button, .main-layout .main .content .product-detail form input, .main-layout .main .content .product-detail form select, .main-layout .main .content .product-detail form textarea, .main-layout .main .content .product-detail form button {
   border: 1px solid #464646;
-  border-radius: 3px;
   margin-bottom: 15px;
   font-size: 0.9rem;
   padding: 3px 6px;
@@ -423,6 +432,9 @@ a:hover {
 }
 .main-layout .main .content .product-detail form.product-edit input {
   max-width: 100%;
+}
+.main-layout .main .content .product-detail form.product-edit input[type=file] {
+  border: none;
 }
 .main-layout .main .content .product-detail form.product-edit .field.available {
   display: flex;
@@ -472,6 +484,19 @@ a:hover {
 }
 .main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .wrapper .image-admin-field.is-active input[type=checkbox], .main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .wrapper .image-admin-field.is-basic input[type=checkbox] {
   margin: 0 0 0 5px;
+}
+.main-layout .main .content .product-detail form.product-edit button {
+  margin-bottom: 15px;
+  background-color: #00ff1cb0;
+  border: 1px solid #282828;
+  color: black;
+  font-weight: 600;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.main-layout .main .content .product-detail form.product-edit button.delete {
+  background-color: #ff000096;
+  margin-left: 15px;
 }
 .main-layout .main .content .products .products-table-content header {
   font-family: "Open Sans", sans-serif;

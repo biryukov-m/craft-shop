@@ -1,7 +1,5 @@
 import os
 from django.db import models
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import reverse
 from django.db.models.signals import post_save
@@ -131,7 +129,7 @@ class ItemType(models.Model):
         )
 
     def get_items(self):
-        return self.item_set.all().order_by('created')
+        return self.item_set.all().order_by('created').exclude(pseudo_deleted=True)
 
     def get_sidebar(self):
         department_obj = self.section.department
@@ -176,13 +174,14 @@ class Item(models.Model):
     color = models.ForeignKey(properties.Color, on_delete=models.PROTECT, verbose_name="колір")
     available_sizes = models.ManyToManyField(properties.Size, verbose_name="доступні розміри")
     slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
+    pseudo_deleted = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "Товар"
         verbose_name_plural = "Товари"
 
     def __str__(self):
-        return "{} - {} ({})".format(self.item_type, self.brand.name, self.name)
+        return '''{} "{}" ({})'''.format(self.item_type, self.name, self.brand.name)
 
     def get_absolute_url(self):
         return reverse(

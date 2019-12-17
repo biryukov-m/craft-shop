@@ -169,7 +169,7 @@ a:hover
                 padding-right: 35px
                 border: 1px solid #babab2
                 font-size: 0.8rem
-              button
+              button.find-order
                 color: $dark
                 background: white
                 padding: 0 10px
@@ -186,6 +186,7 @@ a:hover
                 border: 1px $light solid
                 padding: 3px 5px
                 font-size: 0.85rem
+
               ul
                 li
                   label
@@ -240,6 +241,15 @@ a:hover
                           font-weight: 600
                         input[type='checkbox']
                           margin-right: 5px
+          button.orders-search-submit
+            max-width: 80%
+            background-color: $highlight_lightest
+            border: 1px solid $darker
+            color: black
+            font-weight: 600
+            padding: 4px 10px
+            margin: 10px 0
+            cursor: pointer
     .content
       .functions-block
         font-family: "Open Sans", sans-serif
@@ -350,7 +360,6 @@ a:hover
             color: #000
           input, select, textarea, button
             border: 1px solid $dark
-            border-radius: 3px
             margin-bottom: 15px
             font-size: 0.9rem
             padding: 3px 6px
@@ -374,6 +383,8 @@ a:hover
         form.product-edit
           input
             max-width: 100%
+            &[type=file]
+              border: none
           .field.available
             display: flex
             align-items: baseline
@@ -414,6 +425,17 @@ a:hover
                 align-items: baseline
                 input[type='checkbox']
                   margin: 0 0 0 5px
+          button
+            margin-bottom: 15px
+            background-color: #00ff1cb0
+            border: 1px solid $darker
+            color: black
+            font-weight: 600
+            padding: 5px 10px
+            cursor: pointer
+            &.delete
+              background-color: #ff000096
+              margin-left: 15px
       .products
         .products-table-content
           header
