@@ -273,15 +273,23 @@ a:hover {
 .main-layout .main .sidebar .functions-block form.filters ul#id_item_type li.department-header ul li.section-header ul li.item-type label input[type=checkbox] {
   margin-right: 5px;
 }
-.main-layout .main .sidebar .functions-block form.filters button.orders-search-submit {
-  max-width: 80%;
+.main-layout .main .sidebar .functions-block form.filters .button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  border-top: 2px solid #cecece;
+  padding-top: 5px;
+}
+.main-layout .main .sidebar .functions-block form.filters .button-wrapper button {
   background-color: #f6b28f;
   border: 1px solid #282828;
   color: black;
-  font-weight: 600;
-  padding: 4px 10px;
-  margin: 10px 0;
+  font-weight: 300;
+  padding: 2px 5px;
   cursor: pointer;
+}
+.main-layout .main .sidebar .functions-block form.filters .button-wrapper button:hover {
+  background-color: #f1936c;
 }
 .main-layout .main .content .functions-block {
   font-family: "Open Sans", sans-serif;
@@ -411,6 +419,27 @@ a:hover {
   font-size: 0.9rem;
   padding: 3px 6px;
 }
+.main-layout .main .content .order-detail form .button-wrapper, .main-layout .main .content .product-detail form .button-wrapper {
+  display: flex;
+  margin-top: 20px;
+  border-top: 2px solid #cecece;
+  padding-top: 5px;
+}
+.main-layout .main .content .order-detail form .button-wrapper button, .main-layout .main .content .product-detail form .button-wrapper button {
+  background-color: #f6b28f;
+  border: 1px solid #282828;
+  color: black;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+.main-layout .main .content .order-detail form .button-wrapper button:hover, .main-layout .main .content .product-detail form .button-wrapper button:hover {
+  background-color: #f1936c;
+}
+.main-layout .main .content .order-detail form .button-wrapper button:first-of-type, .main-layout .main .content .product-detail form .button-wrapper button:first-of-type {
+  margin-right: 10px;
+}
 .main-layout .main .content .product-detail .product-images .wrapper {
   display: flex;
   align-items: flex-end;
@@ -485,18 +514,126 @@ a:hover {
 .main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .wrapper .image-admin-field.is-active input[type=checkbox], .main-layout .main .content .product-detail form.product-edit .image-admin-fieldset .wrapper .image-admin-field.is-basic input[type=checkbox] {
   margin: 0 0 0 5px;
 }
-.main-layout .main .content .product-detail form.product-edit button {
+.main-layout .main .content .order-detail .opened-order {
   margin-bottom: 15px;
-  background-color: #00ff1cb0;
-  border: 1px solid #282828;
-  color: black;
-  font-weight: 600;
-  padding: 5px 10px;
-  cursor: pointer;
 }
-.main-layout .main .content .product-detail form.product-edit button.delete {
-  background-color: #ff000096;
-  margin-left: 15px;
+.main-layout .main .content .order-detail .opened-order .wrapper {
+  background: #ffe8e5;
+  border: 1px solid rgba(229, 72, 51, 0.8);
+  padding: 15px;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper h2 {
+  border-bottom: solid #939393 1px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  font-family: "Open Sans", sans-serif;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper h2 span {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .costumer-info {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+  color: #000;
+  font-size: 1rem;
+  border-bottom: 1px #939393 solid;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .costumer-info ul li {
+  display: block;
+  margin-bottom: 5px;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .costumer-info ul label, .main-layout .main .content .order-detail .opened-order .wrapper .costumer-info ul input, .main-layout .main .content .order-detail .opened-order .wrapper .costumer-info ul select, .main-layout .main .content .order-detail .opened-order .wrapper .costumer-info ul textarea {
+  display: inline;
+  margin: 0;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .costumer-info ul label {
+  background: none;
+  margin-right: 10px;
+  font-family: "Open Sans", sans-serif;
+  color: black;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .costumer-info ul input, .main-layout .main .content .order-detail .opened-order .wrapper .costumer-info ul select, .main-layout .main .content .order-detail .opened-order .wrapper .costumer-info ul textarea {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-bottom: 1px solid #282828;
+  padding: 0 5px;
+  font-family: "Open Sans", sans-serif;
+  color: black;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .costumer-info ul label.for-comment {
+  display: block;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .costumer-info ul textarea {
+  background: #ffffff;
+  border: 1px solid #282828;
+  width: 95%;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .basket-list {
+  margin-bottom: 15px;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .basket-list table tbody tr.item {
+  box-shadow: 0 1px 0 0 #939393;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .basket-list table tbody tr.item td {
+  border-bottom: 15px solid transparent;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .basket-list table tbody tr.item td.image-container {
+  width: 12%;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .basket-list table tbody tr.item td.image-container img {
+  max-width: 95%;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .basket-list table tbody tr.item td.text-container {
+  max-width: 66%;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .basket-list table tbody tr.item td.text-container .brand {
+  font-size: 0.85rem;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .basket-list table tbody tr.item td.text-container .name {
+  font-size: 0.8rem;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .basket-list table tbody tr.item td.text-container .price {
+  font-size: 0.75rem;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .basket-list table tbody tr.item td.quantity {
+  font-size: 0.85rem;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .basket-list table tbody tr.item td.total {
+  text-align: end;
+  font-size: 0.85rem;
+}
+.main-layout .main .content .order-detail .opened-order .wrapper .overall-price {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+.main-layout .main .content .order-detail .order-status .wrapper h2 {
+  font-family: "Open Sans", sans-serif;
+  border-bottom: solid #939393 1px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+.main-layout .main .content .order-detail .order-status .wrapper ul.statuses {
+  font-family: "Open Sans", sans-serif;
+  color: black;
+  font-size: 1rem;
+}
+.main-layout .main .content .order-detail .order-status .wrapper ul.statuses li.status {
+  font-weight: 500;
+}
+.main-layout .main .content .order-detail .order-status .wrapper ul.statuses label, .main-layout .main .content .order-detail .order-status .wrapper ul.statuses input {
+  display: inline;
+}
+.main-layout .main .content .order-detail .order-status .wrapper ul.statuses input {
+  margin: 0;
 }
 .main-layout .main .content .products .products-table-content header {
   font-family: "Open Sans", sans-serif;

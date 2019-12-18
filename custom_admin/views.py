@@ -5,6 +5,7 @@ from django.shortcuts import reverse
 
 from django.views import View
 from orders.models import Order
+from orders.models import Status
 from product.models import Department
 from product.models import Item
 
@@ -55,7 +56,9 @@ class OrderDetail(View):
     def get(self, request, order_code, *args, **kwargs):
         order = get_object_or_404(Order, code=order_code)
         form = OrderAdminForm(instance=order)
-        context = {'order': order, 'order_admin_form': form}
+        products_in_basket = order.basket.productinbasket_set.all()
+        statuses = Status.objects.all().order_by('number')
+        context = {'order': order, 'order_admin_form': form, 'products_in_basket': products_in_basket, 'statuses':statuses}
         return render(request, template_name=self.template_name, context=context)
 
     def post(self, request, order_code, *args, **kwargs):

@@ -174,7 +174,7 @@ class Item(models.Model):
     color = models.ForeignKey(properties.Color, on_delete=models.PROTECT, verbose_name="колір")
     available_sizes = models.ManyToManyField(properties.Size, verbose_name="доступні розміри")
     slug = models.SlugField(default=None, blank=True, null=True, max_length=30, verbose_name="URL в адресній стрічці броузера")
-    pseudo_deleted = models.BooleanField(default=False)
+    pseudo_deleted = models.BooleanField(default=False, verbose_name="видалений")
 
     class Meta:
         verbose_name = "Товар"

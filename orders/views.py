@@ -195,9 +195,6 @@ def checkout_success(request):
 def single_order(request, *args, **kwargs):
     template_name = 'orders/single_order.html'
     context = {}
-    print(request)
-    print(request.GET)
-    # hash_code = kwargs.get('hash_code')
     hash_code = request.GET.get('hash_code')
     statuses = Status.objects.all().order_by('number')
     context['statuses'] = statuses
@@ -205,15 +202,4 @@ def single_order(request, *args, **kwargs):
         print('Accessing order by hash: {}'.format(hash_code))
         order = get_object_or_404(Order, hash_code=hash_code)
         context['order'] = order
-    by_code = kwargs.get('code')
     return render(request, template_name, context=context)
-
-
-class GenerateOrderPdf(View):
-    def get(self, request, code, *args, **kwargs):
-        context = {}
-        # session_key = request.session.session_key
-        order = get_object_or_404(Order, code=code)
-        context['order'] = order
-        pdf = render_to_pdf('orders/pdf/order.html', context)
-        return HttpResponse(pdf, content_type='application/pdf')

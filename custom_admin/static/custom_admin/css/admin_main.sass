@@ -241,15 +241,21 @@ a:hover
                           font-weight: 600
                         input[type='checkbox']
                           margin-right: 5px
-          button.orders-search-submit
-            max-width: 80%
-            background-color: $highlight_lightest
-            border: 1px solid $darker
-            color: black
-            font-weight: 600
-            padding: 4px 10px
-            margin: 10px 0
-            cursor: pointer
+          .button-wrapper
+            display: flex
+            justify-content: space-between
+            margin-top: 20px
+            border-top: 2px solid $lighter
+            padding-top: 5px
+            button
+              background-color: $highlight_lightest
+              border: 1px solid $darker
+              color: black
+              font-weight: 300
+              padding: 2px 5px
+              cursor: pointer
+              &:hover
+                background-color: $highlight_lighter
     .content
       .functions-block
         font-family: "Open Sans", sans-serif
@@ -363,6 +369,23 @@ a:hover
             margin-bottom: 15px
             font-size: 0.9rem
             padding: 3px 6px
+          .button-wrapper
+            display: flex
+            margin-top: 20px
+            border-top: 2px solid $lighter
+            padding-top: 5px
+            button
+              background-color: $highlight_lightest
+              border: 1px solid $darker
+              color: black
+              font-weight: 500
+              font-size: 1rem
+              padding: 2px 5px
+              cursor: pointer
+              &:hover
+                background-color: $highlight_lighter
+              &:first-of-type
+                margin-right: 10px
       .product-detail
         .product-images
           .wrapper
@@ -425,17 +448,108 @@ a:hover
                 align-items: baseline
                 input[type='checkbox']
                   margin: 0 0 0 5px
-          button
-            margin-bottom: 15px
-            background-color: #00ff1cb0
-            border: 1px solid $darker
-            color: black
-            font-weight: 600
-            padding: 5px 10px
-            cursor: pointer
-            &.delete
-              background-color: #ff000096
-              margin-left: 15px
+      .order-detail
+        .opened-order
+          margin-bottom: 15px
+          .wrapper
+            background: #ffe8e5
+            border: 1px solid $highlight_opaque
+            padding: 15px
+            h2
+              border-bottom: solid $light 1px
+              padding-bottom: 5px
+              margin-bottom: 15px
+              font-family: "Open Sans", sans-serif
+              span
+                font-size: 1.5rem
+                font-weight: 100
+            .costumer-info
+              font-family: "Open Sans", sans-serif
+              font-weight: 100
+              color: #000
+              font-size: 1rem
+              border-bottom: 1px $light solid
+              margin-bottom: 15px
+              padding-bottom: 15px
+              ul
+                li
+                  display: block
+                  margin-bottom: 5px
+                label, input, select, textarea
+                  display: inline
+                  margin: 0
+                label
+                  background: none
+                  margin-right: 10px
+                  font-family: "Open Sans", sans-serif
+                  color: black
+                  font-size: 1rem
+                  font-weight: 500
+                input, select, textarea
+                  background: rgba(255,255,255,0.1)
+                  border: none
+                  border-bottom: 1px solid $darker
+                  padding: 0 5px
+                  font-family: "Open Sans", sans-serif
+                  color: black
+                  font-size: 1rem
+                  font-weight: 500
+                label.for-comment
+                  display: block
+                textarea
+                  background: #ffffff
+                  border: 1px solid $darker
+                  width: 95%
+            .basket-list
+              margin-bottom: 15px
+              table
+                tbody
+                  tr.item
+                    box-shadow: 0 1px  0 0 $light
+                    td
+                      border-bottom: 15px solid transparent
+
+                    td.image-container
+                      width: 12%
+                      img
+                        max-width: 95%
+                    td.text-container
+                      max-width: 66%
+                      .brand
+                        font-size: 0.85rem
+                      .name
+                        font-size: 0.8rem
+                      .price
+                        font-size: 0.75rem
+                    td.quantity
+                      font-size: 0.85rem
+                    td.total
+                      text-align: end
+                      font-size: 0.85rem
+
+                      .item-total-price
+            .overall-price
+              display: flex
+              justify-content: space-between
+              margin-bottom: 15px
+              font-size: 1.1rem
+        .order-status
+          .wrapper
+            h2
+              font-family: "Open Sans", sans-serif
+              border-bottom: solid $light 1px
+              padding-bottom: 5px
+              margin-bottom: 15px
+            ul.statuses
+              font-family: "Open Sans", sans-serif
+              color: black
+              font-size: 1rem
+              li.status
+                font-weight: 500
+              label, input
+                    display: inline
+              input
+                margin: 0
       .products
         .products-table-content
           header

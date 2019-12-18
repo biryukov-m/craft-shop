@@ -1,6 +1,7 @@
 {% extends 'custom_admin/base.html' %}
 
 {% block sidebar %}
+
     <div class="functions-block">
         <div class="header">Замовлення</div>
         <ul class="functions">
@@ -11,81 +12,112 @@
     </div>
 {% endblock %}
 {% block content %}
-    <div class="row order-detail">
-        <div class="col-sm-12">
-            <div class="header">{{ order.code }} від {{ order.created | date:"j.m.y" }}</div>
-            <form class="order-edit" autocomplete="off" action="" method="post">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="field customer-name">
-                            <label for="{{ order_admin_form.customer_name.id_for_label }}">Ім'я</label>
-                            {{ order_admin_form.customer_name }}
-                        </div>
+    <div class="order-detail">
+        <form class="order-edit" autocomplete="off" action="" method="post">
+            {% csrf_token %}
+            <div class="opened-order">
+                <div class="wrapper">
+                    <h2>Замовлення № {{ order.code }}<span> від {{ order.created | date:"d.m.y" }} (код доступу {{ order.hash_code }})</span></h2>
+                    <div class="costumer-info">
+                        <ul>
+                            <li>
+                                <label for="{{ order_admin_form.customer_name.id_for_label }}">Ім'я</label>
+                                {{ order_admin_form.customer_name }}
+                            </li>
+                            <li>
+                                <label for="{{ order_admin_form.customer_email.id_for_label }}">E-mail</label>
+                                {{ order_admin_form.customer_email }}
+                            </li>
+                            <li>
+                                <label for="{{ order_admin_form.customer_phone.id_for_label }}">Телефон</label>
+                                {{ order_admin_form.customer_phone }}
+                            </li>
+                            <li>
+                                <label for="{{ order_admin_form.delivery_method.id_for_label }}">Спосіб доставки</label>
+                                {{ order_admin_form.delivery_method }}
+                            </li>
+                            <li>
+                                <label for="{{ order_admin_form.customer_city.id_for_label }}">Місто</label>
+                                {{ order_admin_form.customer_city }}
+                            </li>
+                            <li>
+                                <label for="{{ order_admin_form.customer_address.id_for_label }}">Адреса</label>
+                                {{ order_admin_form.customer_address }}
+                            </li>
+                            <li>
+                                <label for="{{ order_admin_form.postal_code.id_for_label }}">Поштовий індекс</label>
+                                {{ order_admin_form.postal_code }}
+                            </li>
+                            <div class="comments row">
+                                <div class="comments-wrapper col-lg-6">
+                                    <label class="for-comment" for="{{ order_admin_form.customer_comment.id_for_label }}">Примітки покупця</label>
+                                    {{ order_admin_form.customer_comment }}
+                                </div>
+                                <div class="comments-wrapper  col-lg-6">
+                                    <label class="for-comment" for="{{ order_admin_form.manager_comment.id_for_label }}">Примітки менеджера</label>
+                                    {{ order_admin_form.manager_comment }}
+                                </div>
+                            </div>
+                        </ul>
                     </div>
-
-                    <div class="col-sm-4">
-                        <div class="field customer-email">
-                            <label for="{{ order_admin_form.customer_email.id_for_label }}">E-mail</label>
-                            {{ order_admin_form.customer_email }}
-                        </div>
+                    <div class="basket-list">
+                        <table>
+                            <tbody>
+                            {% for item in order.get_items %}
+                                <tr class="item"
+                                    data-item_id="{{ item.product.id }}"
+                                    data-item_quantity = "{{ item.quantity }}"
+                                    data-item_size="{{ item.size.name }}"
+                                    data-url="{% url 'orders:basket_change_quantity' %}"
+                                >
+                                    <td class="image-container">
+                                        <img class="" src="{{ item.product.get_image_basic.url }}">
+                                    </td>
+                                    <td class="text-container">
+                                        <div class="brand">
+                                            {{ item.product.item_type.name|capfirst }} "{{ item.product.brand.name|capfirst }}"
+                                        </div>
+                                        <div class="name size">{{ item.product.name|capfirst }} {{ item.size.name }}</div>
+                                        <div class="price">{{ item.product.price }}<span class="currency"> грн</span></div>
+                                    </td>
+                                    <td class="quantity">х {{ item.quantity }}</td>
+                                    <td class="total">
+                                        <span class="item-total-price">{{ item.total_price }}</span><span class="currency"> грн</span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
-
-                    <div class="col-sm-4">
-                        <div class="field customer-phone">
-                            <label for="{{ order_admin_form.customer_phone.id_for_label }}">Телефон</label>
-                            {{ order_admin_form.customer_phone }}
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="field customer-city">
-                            <label for="{{ order_admin_form.customer_city.id_for_label }}">Місто</label>
-                            {{ order_admin_form.customer_city }}
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="field customer-address">
-                            <label for="{{ order_admin_form.customer_address.id_for_label }}">Адреса</label>
-                            {{ order_admin_form.customer_address }}
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="field customer-postal">
-                            <label for="{{ order_admin_form.postal_code.id_for_label }}">Поштовий індекс</label>
-                            {{ order_admin_form.postal_code }}
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="field delivery">
-                            <label for="{{ order_admin_form.delivery_method.id_for_label }}">Спосіб доставки</label>
-                            {{ order_admin_form.delivery_method }}
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="field status">
-                            <label for="{{ order_admin_form.status.id_for_label }}">Статус</label>
-                            {{ order_admin_form.status }}
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="field customer-comment">
-                            <label for="{{ order_admin_form.customer_comment.id_for_label }}">Коментар</label>
-                            {{ order_admin_form.customer_comment }}
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="field manager_comment">
-                            <label for="{{ order_admin_form.manager_comment.id_for_label }}">Примітки менеджера</label>
-                            {{ order_admin_form.manager_comment }}
+                    <div class="overall-price">
+                        <span class="caption">Сума замовлення: </span>
+                        <div class="price-wrapper">
+                            <span class="basket-total-price">{{ order.basket.total_basket_price }}</span><span class="currency"> грн</span>
                         </div>
                     </div>
                 </div>
-                <button type="submit"><i class="fas fa-shopping-cart"></i>Оформити замовлення</button>
-            </form>
-        </div>
+            </div>
+            <div class="order-status">
+                <div class="wrapper">
+                    <h2>Статус виконання</h2>
+                    <ul class="statuses">
+                        <li class="status">
+                            <label for="{{ order_admin_form.status.id_for_label }}">Статус</label>
+                            {{ order_admin_form.status }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="button-wrapper">
+                <button class="save">Зберегти  <i class="fas fa-save"></i></button>
+                <button class="delete">Видалити назавжди  <i class="fas fa-trash-alt"></i></button>
+            </div>
+        </form>
+
     </div>
+
+
+
+
+
 {% endblock %}
