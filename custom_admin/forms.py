@@ -19,19 +19,27 @@ class OrderFilter(django_filters.FilterSet):
     customer_name = django_filters.CharFilter(lookup_expr='iexact')
     customer_email = django_filters.CharFilter(lookup_expr='iexact')
     customer_phone = django_filters.CharFilter(lookup_expr='icontains')
-    delivery_method = django_filters.ModelMultipleChoiceFilter(queryset=DeliveryMethod.objects.all(), widget=forms.CheckboxSelectMultiple)
-    status = django_filters.ModelMultipleChoiceFilter(queryset=Status.objects.all(), widget=forms.CheckboxSelectMultiple)
+    try:
+        if DeliveryMethod.objects.all() and Status.objects.all():
+            delivery_method = django_filters.ModelMultipleChoiceFilter(queryset=DeliveryMethod.objects.all(), widget=forms.CheckboxSelectMultiple)
+            status = django_filters.ModelMultipleChoiceFilter(queryset=Status.objects.all(), widget=forms.CheckboxSelectMultiple)
+    except:
+        print('Таблиц для Status.objects.all() и DeliveryMethod.objects.all() не существует')
     is_removed = django_filters.BooleanFilter()
 
 
 class ItemFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr='icontains')
     price = django_filters.RangeFilter(field_name='price')
-    available_sizes = django_filters.ModelMultipleChoiceFilter(queryset=Size.objects.all(), widget=forms.CheckboxSelectMultiple)
-    fabric = django_filters.ModelMultipleChoiceFilter(queryset=Fabric.objects.all(), widget=forms.CheckboxSelectMultiple)
-    color = django_filters.ModelMultipleChoiceFilter(queryset=Color.objects.all(), widget=forms.CheckboxSelectMultiple)
-    brand = django_filters.ModelMultipleChoiceFilter(queryset=Brand.objects.all(), widget=forms.CheckboxSelectMultiple)
-    item_type = django_filters.ModelMultipleChoiceFilter(queryset=ItemType.objects.all(), widget=forms.CheckboxSelectMultiple)
+    try:
+        if Size.objects.all() and Fabric.objects.all() and Color.objects.all() and Brand.objects.all() and ItemType.objects.all():
+            available_sizes = django_filters.ModelMultipleChoiceFilter(queryset=Size.objects.all(), widget=forms.CheckboxSelectMultiple)
+            fabric = django_filters.ModelMultipleChoiceFilter(queryset=Fabric.objects.all(), widget=forms.CheckboxSelectMultiple)
+            color = django_filters.ModelMultipleChoiceFilter(queryset=Color.objects.all(), widget=forms.CheckboxSelectMultiple)
+            brand = django_filters.ModelMultipleChoiceFilter(queryset=Brand.objects.all(), widget=forms.CheckboxSelectMultiple)
+            item_type = django_filters.ModelMultipleChoiceFilter(queryset=ItemType.objects.all(), widget=forms.CheckboxSelectMultiple)
+    except:
+        print('Таблиц для Size.objects.all() and Fabric.objects.all() and Color.objects.all() and Brand.objects.all() and ItemType.objects.all() не существует')
     pseudo_deleted = django_filters.BooleanFilter(field_name='pseudo_deleted')
 
 
@@ -53,10 +61,13 @@ class OrderAdminForm(forms.ModelForm):
             'is_removed',
             'hash_code',
         )
-
-        widgets = {
-            'status': forms.CheckboxSelectMultiple(choices=Status.objects.all()),
-        }
+        try:
+            if Status.objects.all():
+                widgets = {
+                    'status': forms.CheckboxSelectMultiple(choices=Status.objects.all()),
+                }
+        except:
+            print('Таблиц для Status.objects.all() и DeliveryMethod.objects.all() не существует')
 
     def __init__(self, *args, **kwargs):
         super(OrderAdminForm, self).__init__(*args, **kwargs)

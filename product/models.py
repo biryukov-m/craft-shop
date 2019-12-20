@@ -4,7 +4,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import reverse
 from django.db.models.signals import post_save
 
-from eav.decorators import register_eav
 
 from properties import models as properties
 
@@ -145,7 +144,6 @@ class ItemType(models.Model):
 
 
 # Класс для единицы товара
-@register_eav()
 class Item(models.Model):
     code = models.IntegerField(null=True, blank=True, verbose_name="код", unique=True, editable=False)
     name = models.CharField(default=None,

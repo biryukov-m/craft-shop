@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import TabularInline
+from django.contrib.admin import ModelAdmin
+from django.forms import ModelForm
 
 from .models import Department
 from .models import Section
@@ -7,8 +9,6 @@ from .models import ItemType
 from .models import Item
 from .models import ItemImage
 
-from eav.forms import BaseDynamicEntityForm
-from eav.admin import BaseEntityAdmin
 
 admin.site.register(Department)
 admin.site.register(Section)
@@ -19,11 +19,11 @@ class ImageInline(TabularInline):
     model = ItemImage
 
 
-class ItemAdminForm(BaseDynamicEntityForm):
+class ItemAdminForm(ModelForm):
     model = Item
 
 
-class ItemAdmin(BaseEntityAdmin):
+class ItemAdmin(ModelAdmin):
     form = ItemAdminForm
     list_display = ["name", "item_type", "brand", "price", "created"]
     list_filter = ["brand", "item_type", "fabric", "color", "created"]

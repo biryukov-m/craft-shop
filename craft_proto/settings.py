@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'properties',
     'orders',
     'custom_admin',
-    'eav',
     'django_filters',
     'django_cleanup',
 ]
