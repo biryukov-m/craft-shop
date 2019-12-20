@@ -14,9 +14,9 @@
             <div class="header">Редагування товару "{{ product.name }}" від {{ product.created | date:"j.m.y" }}</div>
             <div class="product-images col-sm-12">
                 <div class="wrapper">
-                    <img class="main" src="{{ product.get_image_basic.url|default_if_none:'#' }}" title="{{ product.get_image_basic }}">
-                    {% for image in product.get_images_extra %}
-                        <img src="{{ image.image.url|default_if_none:'#' }}" title="{{ image.image }}">
+                    <img class="main" src="{{ product.get_image_basic_url|default_if_none:'#' }}" title="{{ product.get_image_basic_url }}">
+                    {% for url in product.get_images_extra_urls %}
+                        <img src="{{ url|default_if_none:'#' }}" title="{{ url }}">
                     {% endfor %}</div>
             </div>
             <form class="product-edit" autocomplete="off" action="" method="POST" enctype="multipart/form-data">

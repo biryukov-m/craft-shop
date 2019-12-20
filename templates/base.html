@@ -92,7 +92,7 @@
                             {% for item in get_basket.items %}
                                 <li class="item {{ forloop.counter }}">
                                     <div class="image-container">
-                                        <img class="" src="{{ item.product.get_image_basic.url }}">
+                                        <img class="" src="{{ item.product.get_image_basic_url }}">
                                     </div>
                                     <div class="text-container">
                                         <div class="name">{{ item.product.name }}</div>

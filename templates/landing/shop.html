@@ -23,7 +23,7 @@
                 <div class="section">
                     <div class="face">
                         <div class="image-wrapper">
-                            <img class="background" src="{{ sec.image.url }}">
+                            <img class="background" src="{% if sec.image %}{{ sec.image.url }}{% endif %}">
                             <div class="active">
                                 <div class="menu-wrapper">
                                     <div class="menu">

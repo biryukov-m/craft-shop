@@ -31,9 +31,11 @@
                             <td>{{ order.customer_city }}</td>
                             <td>
                                 <ul>
-                                    {% for status in order.status.all %}
-                                        <li>{{ status.verbose_name }}</li>
-                                    {% endfor %}
+                                    {% if order.status %}
+                                        {% for status in order.status.all %}
+                                            <li>{{ status.verbose_name }}</li>
+                                        {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </td>
                         </tr>
