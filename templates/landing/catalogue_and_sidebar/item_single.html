@@ -4,7 +4,7 @@
     <div class="single-item-page">
         <div class="single-item-view row">
             <div class="main-image-wrapper col-sm-6">
-                <img src="{{ item.get_image_basic.url }}">
+                <img src="{{ item.get_image_basic_url }}">
             </div>
             <div class="product-info col-sm-6">
                 <div class="title">{{ item.name }}</div>
@@ -15,13 +15,11 @@
                 <div class="rating">*****</div>
                 <div class="price">{{ item.price }} ₴</div>
                 <div class="share-section">
-                    <div class="name">Поділитись: </div>
+                    <div class="name">Поділитися: </div>
                     <div class="facebook"><img></div>
                     <div class="instagram"><img></div>
                     <div class="twitter"><img></div>
-                    <div class="gplus"><img></div>
                 </div>
-{#                <div class="description">{{ item.description }}</div>#}
                 <div class="brand attribute">
                     <span class="name">Виробник:</span>
                     <span class="value">{{ item.brand.name }}</span>
@@ -74,16 +72,16 @@
                                 data-item_id = "{{ item.id }}"
                                 data-item_name = "{{ item.name }}"
                                 data-item_price = "{{ item.price }}"
-                                data-item_image = "{{ item.get_image_basic.url }}"
+                                data-item_image = "{{ item.get_image_basic_url }}"
                         >Додати до кошику</button>
                     </div>
                 </form>
             </div>
         </div>
         <div class="extra-images row">
-            {% for image in item.get_images_extra %}
+            {% for url in item.get_images_extra_urls %}
             <div class="image-wrapper col-2">
-                <img src="{{ image.image.url }}">
+                <img src="{{ url }}">
             </div>
             {% endfor %}
         </div>
