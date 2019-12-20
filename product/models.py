@@ -179,7 +179,7 @@ class Item(models.Model):
         verbose_name_plural = "Товари"
 
     def __str__(self):
-        return '''{} "{}" ({})'''.format(self.item_type, self.name, self.brand.name)
+        return '''{} "{}" ({})'''.format(self.item_type.name, self.name, self.brand.name)
 
     def get_absolute_url(self):
         return reverse(
@@ -196,9 +196,6 @@ class Item(models.Model):
         url = reverse('custom_admin:product', kwargs={"product_code": self.code})
         return url
 
-    def get_images_extra(self):
-        return self.itemimage_set.filter(is_basic=False)
-
     def get_images_extra_urls(self):
         images = self.itemimage_set.filter(is_basic=False)
         urls = []
@@ -209,9 +206,6 @@ class Item(models.Model):
             return None
 
         return urls
-
-    def get_image_basic(self):
-        return self.itemimage_set.filter(is_basic=True).first().image
 
     def get_image_basic_url(self):
         basic_image = self.itemimage_set.filter(is_basic=True).first()
